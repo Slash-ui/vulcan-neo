@@ -1,0 +1,109 @@
+.pagination {
+  display: inline-flex;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--neo-font-family);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+  background: var(--neo-bg);
+  border: none;
+  cursor: pointer;
+  transition: box-shadow var(--neo-transition-fast),
+              color var(--neo-transition-fast);
+  outline: none;
+
+  /* Convex shadow */
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+/* Sizes */
+.sm .button {
+  min-width: 32px;
+  height: 32px;
+  font-size: var(--neo-font-size-sm);
+  border-radius: 8px;
+}
+
+.md .button {
+  min-width: 40px;
+  height: 40px;
+  font-size: var(--neo-font-size-md);
+  border-radius: var(--neo-radius-sm);
+}
+
+.lg .button {
+  min-width: 48px;
+  height: 48px;
+  font-size: var(--neo-font-size-lg);
+  border-radius: var(--neo-radius-sm);
+}
+
+.pageButton {
+  padding: 0 var(--neo-space-sm);
+}
+
+/* Hover state */
+.button:hover:not(:disabled):not(.active) {
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+/* Active state */
+.button:active:not(:disabled):not(.active) {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Current page - concave appearance */
+.button.active {
+  color: var(--neo-accent-primary);
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Disabled state */
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  color: var(--neo-text-disabled);
+}
+
+/* Focus visible */
+.button:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Dots */
+.dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  font-family: var(--neo-font-family);
+  color: var(--neo-text-secondary);
+}
+
+/* Disabled pagination */
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
