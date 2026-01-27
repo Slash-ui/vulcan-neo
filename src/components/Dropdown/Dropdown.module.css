@@ -1,0 +1,139 @@
+.container {
+  display: inline-block;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.trigger {
+  cursor: pointer;
+}
+
+/* Menu - Convex appearance */
+.menu {
+  position: absolute;
+  min-width: 180px;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  padding: var(--neo-space-xs);
+  z-index: 100;
+
+  /* Convex shadow */
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Placements */
+.bottom-start {
+  top: calc(100% + 8px);
+  left: 0;
+}
+
+.bottom-end {
+  top: calc(100% + 8px);
+  right: 0;
+}
+
+.top-start {
+  bottom: calc(100% + 8px);
+  left: 0;
+}
+
+.top-end {
+  bottom: calc(100% + 8px);
+  right: 0;
+}
+
+/* Menu item */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  width: 100%;
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color var(--neo-transition-fast);
+  text-align: left;
+}
+
+.item:hover:not(.itemDisabled) {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.item:active:not(.itemDisabled) {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: -2px;
+}
+
+/* Icon */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--neo-text-secondary);
+}
+
+.label {
+  flex: 1;
+}
+
+/* Danger item */
+.danger {
+  color: var(--neo-accent-error);
+}
+
+.danger .icon {
+  color: var(--neo-accent-error);
+}
+
+/* Disabled item */
+.itemDisabled {
+  color: var(--neo-text-disabled);
+  cursor: not-allowed;
+}
+
+.itemDisabled .icon {
+  color: var(--neo-text-disabled);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--neo-shadow-dark);
+  opacity: 0.2;
+  margin: var(--neo-space-xs) 0;
+}
+
+/* Disabled container */
+.disabled .trigger {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

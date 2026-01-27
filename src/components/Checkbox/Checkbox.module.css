@@ -1,0 +1,173 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+.container.left {
+  flex-direction: row;
+}
+
+.container.right {
+  flex-direction: row;
+}
+
+.label {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text);
+}
+
+.checkbox {
+  position: relative;
+  display: inline-flex;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Box - Convex (unchecked) appearance */
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  transition: box-shadow var(--neo-transition-normal),
+              background-color var(--neo-transition-normal);
+
+  /* Convex shadow */
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+/* Sizes */
+.sm .box {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.md .box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+
+.lg .box {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+}
+
+/* Check icon */
+.checkIcon {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity var(--neo-transition-fast),
+              transform var(--neo-transition-fast);
+  color: var(--neo-accent-primary);
+}
+
+.sm .checkIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.md .checkIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.lg .checkIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Indeterminate icon */
+.indeterminateIcon {
+  position: absolute;
+  background: var(--neo-accent-primary);
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity var(--neo-transition-fast);
+}
+
+.sm .indeterminateIcon {
+  width: 8px;
+  height: 2px;
+}
+
+.md .indeterminateIcon {
+  width: 10px;
+  height: 2px;
+}
+
+.lg .indeterminateIcon {
+  width: 12px;
+  height: 3px;
+}
+
+/* Checked state - Concave appearance */
+.input:checked + .box {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+.input:checked + .box .checkIcon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Indeterminate state */
+.input:indeterminate + .box {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+.input:indeterminate + .box .checkIcon {
+  opacity: 0;
+}
+
+.input:indeterminate + .box .indeterminateIcon {
+  opacity: 1;
+}
+
+/* Focus state */
+.input:focus-visible + .box {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Hover state */
+.container:hover:not(.disabled) .box {
+  box-shadow:
+    -5px -5px 10px var(--neo-shadow-light),
+    5px 5px 10px var(--neo-shadow-dark);
+}
+
+.container:hover:not(.disabled) .input:checked + .box,
+.container:hover:not(.disabled) .input:indeterminate + .box {
+  box-shadow:
+    inset 5px 5px 10px var(--neo-shadow-dark),
+    inset -5px -5px 10px var(--neo-shadow-light);
+}
+
+/* Disabled state */
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.disabled .label {
+  color: var(--neo-text-disabled);
+}
