@@ -1,0 +1,207 @@
+.progressSteps {
+  display: flex;
+  font-family: var(--neo-font-family);
+}
+
+/* Orientation */
+.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+/* Sizes */
+.sm {
+  --indicator-size: 28px;
+  --indicator-font: var(--neo-font-size-xs);
+  --label-font: var(--neo-font-size-sm);
+  --desc-font: var(--neo-font-size-xs);
+  --connector-thickness: 2px;
+}
+
+.md {
+  --indicator-size: 36px;
+  --indicator-font: var(--neo-font-size-sm);
+  --label-font: var(--neo-font-size-md);
+  --desc-font: var(--neo-font-size-sm);
+  --connector-thickness: 2px;
+}
+
+.lg {
+  --indicator-size: 44px;
+  --indicator-font: var(--neo-font-size-md);
+  --label-font: var(--neo-font-size-lg);
+  --desc-font: var(--neo-font-size-md);
+  --connector-thickness: 3px;
+}
+
+/* Step */
+.step {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.horizontal .step {
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical .step {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* Step button */
+.stepButton {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: default;
+  text-align: left;
+  outline: none;
+}
+
+.horizontal .stepButton {
+  flex-direction: column;
+  text-align: center;
+}
+
+.vertical .stepButton {
+  flex-direction: row;
+}
+
+.stepButton.clickable {
+  cursor: pointer;
+}
+
+.stepButton.clickable:focus-visible .stepIndicator {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Step indicator */
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--indicator-size);
+  height: var(--indicator-size);
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--neo-bg);
+  transition: all var(--neo-transition-fast);
+  z-index: 1;
+}
+
+/* Status-based indicator styles */
+.upcoming .stepIndicator {
+  color: var(--neo-text-disabled);
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.current .stepIndicator {
+  color: var(--neo-accent-primary);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.completed .stepIndicator {
+  color: var(--neo-accent-primary);
+  box-shadow:
+    inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -3px -3px 6px var(--neo-shadow-light);
+}
+
+.stepButton.clickable:hover .stepIndicator {
+  box-shadow:
+    -5px -5px 10px var(--neo-shadow-light),
+    5px 5px 10px var(--neo-shadow-dark);
+}
+
+/* Step number */
+.stepNumber {
+  font-size: var(--indicator-font);
+  font-weight: var(--neo-font-weight-semibold);
+}
+
+/* Check icon */
+.stepIndicator svg {
+  width: 50%;
+  height: 50%;
+}
+
+/* Step content */
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-xxs);
+}
+
+.horizontal .stepContent {
+  margin-top: var(--neo-space-sm);
+  align-items: center;
+}
+
+.vertical .stepContent {
+  padding-bottom: var(--neo-space-lg);
+}
+
+.stepLabel {
+  font-size: var(--label-font);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+  line-height: 1.3;
+}
+
+.upcoming .stepLabel {
+  color: var(--neo-text-disabled);
+}
+
+.current .stepLabel {
+  color: var(--neo-accent-primary);
+}
+
+.stepDescription {
+  font-size: var(--desc-font);
+  color: var(--neo-text-secondary);
+  line-height: 1.4;
+}
+
+.upcoming .stepDescription {
+  color: var(--neo-text-disabled);
+}
+
+/* Connector */
+.connector {
+  position: absolute;
+  background: var(--neo-shadow-dark);
+  transition: background var(--neo-transition-fast);
+}
+
+.horizontal .connector {
+  top: calc(var(--indicator-size) / 2);
+  left: calc(50% + var(--indicator-size) / 2 + var(--neo-space-xs));
+  right: calc(-50% + var(--indicator-size) / 2 + var(--neo-space-xs));
+  height: var(--connector-thickness);
+}
+
+.vertical .connector {
+  top: calc(var(--indicator-size) + var(--neo-space-xs));
+  left: calc(var(--indicator-size) / 2 - var(--connector-thickness) / 2);
+  bottom: var(--neo-space-xs);
+  width: var(--connector-thickness);
+}
+
+.completed .connector {
+  background: var(--neo-accent-primary);
+}

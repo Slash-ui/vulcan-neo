@@ -1,0 +1,207 @@
+.codeSnippet {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--neo-radius-md);
+  background: var(--neo-bg);
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+  overflow: hidden;
+
+  /* Concave appearance */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Sizes */
+.sm {
+  --code-font-size: 12px;
+  --line-height: 1.4;
+  --padding: var(--neo-space-sm);
+}
+
+.md {
+  --code-font-size: 14px;
+  --line-height: 1.5;
+  --padding: var(--neo-space-md);
+}
+
+.lg {
+  --code-font-size: 16px;
+  --line-height: 1.6;
+  --padding: var(--neo-space-lg);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--neo-space-sm) var(--padding);
+  border-bottom: 1px solid var(--neo-shadow-dark);
+  background: var(--neo-bg);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+}
+
+/* Window dots */
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--neo-bg);
+  box-shadow:
+    inset 2px 2px 3px var(--neo-shadow-dark),
+    inset -1px -1px 2px var(--neo-shadow-light);
+}
+
+.dot:nth-child(1) {
+  background: #ff5f56;
+}
+
+.dot:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.dot:nth-child(3) {
+  background: #27ca40;
+}
+
+.title {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+}
+
+.language {
+  padding: var(--neo-space-xxs) var(--neo-space-xs);
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-text-secondary);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-xs);
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+/* Copy button */
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-xxs);
+  padding: var(--neo-space-xxs) var(--neo-space-sm);
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-text-secondary);
+  background: var(--neo-bg);
+  border: none;
+  border-radius: var(--neo-radius-xs);
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+.copyButton:hover {
+  color: var(--neo-text);
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.copyButton:active,
+.copyButton.copied {
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.copyButton.copied {
+  color: var(--neo-success, #22c55e);
+}
+
+.copyButton svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Code container */
+.codeContainer {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--neo-shadow-dark) transparent;
+}
+
+.codeContainer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.codeContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.codeContainer::-webkit-scrollbar-thumb {
+  background: var(--neo-shadow-dark);
+  border-radius: 4px;
+}
+
+.pre {
+  margin: 0;
+  padding: var(--padding);
+}
+
+.code {
+  display: block;
+  font-size: var(--code-font-size);
+  line-height: var(--line-height);
+  color: var(--neo-text);
+  white-space: pre;
+}
+
+/* Line */
+.line {
+  display: flex;
+}
+
+.lineNumber {
+  flex-shrink: 0;
+  min-width: 2.5em;
+  padding-right: var(--neo-space-md);
+  color: var(--neo-text-disabled);
+  text-align: right;
+  user-select: none;
+}
+
+.lineContent {
+  flex: 1;
+}
+
+/* Highlighted line */
+.highlighted {
+  background: rgba(108, 92, 231, 0.1);
+  margin: 0 calc(-1 * var(--padding));
+  padding: 0 var(--padding);
+  border-left: 3px solid var(--neo-accent-primary);
+}
+
+.highlighted .lineNumber {
+  color: var(--neo-accent-primary);
+}
