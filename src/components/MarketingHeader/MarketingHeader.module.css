@@ -1,0 +1,220 @@
+.announcement {
+  background: var(--neo-primary);
+  color: white;
+  padding: var(--neo-space-xs) var(--neo-space-md);
+  text-align: center;
+  font-size: var(--neo-font-size-sm);
+  font-family: var(--neo-font-family);
+}
+
+.header {
+  background: var(--neo-bg);
+  font-family: var(--neo-font-family);
+  box-shadow:
+    0 4px 8px var(--neo-shadow-dark),
+    0 -2px 4px var(--neo-shadow-light);
+  z-index: 100;
+}
+
+.header.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.header.transparent {
+  background: transparent;
+  box-shadow: none;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--neo-space-md) var(--neo-space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--neo-space-xl);
+}
+
+.logoWrapper {
+  flex-shrink: 0;
+}
+
+.logoWrapper img {
+  height: 32px;
+  width: auto;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-lg);
+  flex: 1;
+  justify-content: center;
+}
+
+.navItemWrapper {
+  position: relative;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-xxs);
+  color: var(--neo-text);
+  font-size: var(--neo-font-size-md);
+  font-weight: 500;
+  text-decoration: none;
+  padding: var(--neo-space-xs) var(--neo-space-sm);
+  border-radius: var(--neo-radius-sm);
+  transition: color 0.2s, background 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.navLink:hover {
+  color: var(--neo-primary);
+  background: var(--neo-bg-secondary);
+}
+
+.chevron {
+  transition: transform 0.2s;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: var(--neo-space-xs);
+  min-width: 200px;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-md);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+  padding: var(--neo-space-xs);
+  z-index: 10;
+}
+
+.dropdownItem {
+  display: block;
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  color: var(--neo-text);
+  text-decoration: none;
+  font-size: var(--neo-font-size-sm);
+  border-radius: var(--neo-radius-sm);
+  transition: background 0.2s;
+}
+
+.dropdownItem:hover {
+  background: var(--neo-bg-secondary);
+  color: var(--neo-primary);
+}
+
+/* CTA Buttons */
+.ctaWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  flex-shrink: 0;
+}
+
+.secondaryCta {
+  color: var(--neo-text-secondary);
+}
+
+/* Mobile Menu Button */
+.mobileMenuBtn {
+  display: none;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  display: none;
+  background: var(--neo-bg);
+  padding: var(--neo-space-md);
+  border-top: 1px solid var(--neo-border);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-xs);
+}
+
+.mobileNavItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  color: var(--neo-text);
+  font-size: var(--neo-font-size-md);
+  text-decoration: none;
+  border-radius: var(--neo-radius-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+}
+
+.mobileNavLink:hover {
+  background: var(--neo-bg-secondary);
+}
+
+.mobileDropdown {
+  padding-left: var(--neo-space-md);
+}
+
+.mobileDropdownItem {
+  display: block;
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  color: var(--neo-text-secondary);
+  font-size: var(--neo-font-size-sm);
+  text-decoration: none;
+}
+
+.mobileDropdownItem:hover {
+  color: var(--neo-primary);
+}
+
+.mobileCta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-sm);
+  margin-top: var(--neo-space-md);
+  padding-top: var(--neo-space-md);
+  border-top: 1px solid var(--neo-border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .ctaWrapper {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: block;
+  }
+}
