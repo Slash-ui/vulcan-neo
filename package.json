@@ -48,7 +48,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "NODE_NO_WARNINGS=1 storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "yarn build"
   },

@@ -1,0 +1,117 @@
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  background: var(--neo-bg);
+  color: var(--neo-text);
+  transition: box-shadow var(--neo-transition-normal),
+              transform var(--neo-transition-fast);
+  user-select: none;
+  outline: none;
+}
+
+/* Shapes */
+.circle {
+  border-radius: var(--neo-radius-full);
+}
+
+.square {
+  border-radius: var(--neo-radius-sm);
+}
+
+/* Sizes */
+.sm {
+  width: 32px;
+  height: 32px;
+  font-size: var(--neo-font-size-sm);
+}
+
+.md {
+  width: 44px;
+  height: 44px;
+  font-size: var(--neo-font-size-md);
+}
+
+.lg {
+  width: 56px;
+  height: 56px;
+  font-size: var(--neo-font-size-lg);
+}
+
+/* Convex variant - Elevation Low */
+.elevation-low.convex {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.elevation-low.convex:active:not(.disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Convex variant - Elevation Mid */
+.elevation-mid.convex {
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+.elevation-mid.convex:active:not(.disabled) {
+  box-shadow:
+    inset 8px 8px 16px var(--neo-shadow-dark),
+    inset -8px -8px 16px var(--neo-shadow-light);
+}
+
+/* Convex variant - Elevation High */
+.elevation-high.convex {
+  box-shadow:
+    -16px -16px 32px var(--neo-shadow-light),
+    16px 16px 32px var(--neo-shadow-dark);
+}
+
+.elevation-high.convex:active:not(.disabled) {
+  box-shadow:
+    inset 16px 16px 32px var(--neo-shadow-dark),
+    inset -16px -16px 32px var(--neo-shadow-light);
+}
+
+/* Flat variant */
+.flat {
+  box-shadow: none;
+  background: transparent;
+}
+
+.flat:hover:not(.disabled) {
+  background: var(--neo-bg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.flat:active:not(.disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Hover effect */
+.convex:hover:not(.disabled):not(:active) {
+  transform: translateY(-1px);
+}
+
+/* Focus visible */
+.iconButton:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  color: var(--neo-text-disabled);
+}
