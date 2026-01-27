@@ -1,0 +1,108 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+}
+
+.stars {
+  display: inline-flex;
+  gap: 4px;
+}
+
+/* Sizes */
+.sm .star {
+  width: 20px;
+  height: 20px;
+}
+
+.md .star {
+  width: 28px;
+  height: 28px;
+}
+
+.lg .star {
+  width: 36px;
+  height: 36px;
+}
+
+/* Star button */
+.star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--neo-text-disabled);
+  transition: color var(--neo-transition-fast),
+              transform var(--neo-transition-fast);
+  border-radius: 4px;
+  outline: none;
+}
+
+.star:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.star:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Star icon */
+.starIcon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Filled star */
+.filled {
+  color: var(--neo-accent-warning);
+}
+
+/* Color variants */
+.color-default.filled {
+  color: var(--neo-text);
+}
+
+.color-warning.filled,
+.color-warning.half {
+  color: var(--neo-accent-warning);
+}
+
+.color-primary.filled,
+.color-primary.half {
+  color: var(--neo-accent-primary);
+}
+
+/* Half star */
+.half {
+  color: var(--neo-accent-warning);
+}
+
+/* Value text */
+.value {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text-secondary);
+}
+
+/* Read-only */
+.readOnly .star {
+  cursor: default;
+}
+
+.readOnly .star:hover:not(:disabled) {
+  transform: none;
+}
+
+/* Disabled */
+.disabled {
+  opacity: 0.6;
+}
+
+.disabled .star {
+  cursor: not-allowed;
+}
