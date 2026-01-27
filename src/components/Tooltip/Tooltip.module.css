@@ -1,0 +1,82 @@
+.container {
+  display: inline-flex;
+}
+
+.trigger {
+  display: inline-flex;
+}
+
+/* Tooltip - Convex appearance */
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.tooltip.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.content {
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  white-space: nowrap;
+  max-width: 300px;
+
+  /* Convex shadow */
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+/* Arrow */
+.arrow {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--neo-bg);
+  transform: rotate(45deg);
+}
+
+/* Placement-specific arrow positioning */
+.top .arrow {
+  bottom: -6px;
+  left: 50%;
+  margin-left: -6px;
+  box-shadow:
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.bottom .arrow {
+  top: -6px;
+  left: 50%;
+  margin-left: -6px;
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light);
+}
+
+.left .arrow {
+  right: -6px;
+  top: 50%;
+  margin-top: -6px;
+  box-shadow:
+    3px -3px 6px var(--neo-shadow-dark),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.right .arrow {
+  left: -6px;
+  top: 50%;
+  margin-top: -6px;
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    -3px 3px 6px var(--neo-shadow-light);
+}

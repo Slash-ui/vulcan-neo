@@ -1,0 +1,86 @@
+.container {
+  display: inline-flex;
+  gap: var(--neo-space-sm);
+}
+
+.input {
+  font-family: var(--neo-font-family);
+  font-weight: var(--neo-font-weight-semibold);
+  color: var(--neo-text);
+  background: var(--neo-bg);
+  border: none;
+  text-align: center;
+  outline: none;
+  transition: box-shadow var(--neo-transition-normal);
+
+  /* Concave (inset) appearance */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Sizes */
+.sm {
+  width: 36px;
+  height: 40px;
+  font-size: var(--neo-font-size-md);
+  border-radius: 8px;
+}
+
+.md {
+  width: 48px;
+  height: 56px;
+  font-size: var(--neo-font-size-xl);
+  border-radius: var(--neo-radius-sm);
+}
+
+.lg {
+  width: 60px;
+  height: 68px;
+  font-size: 28px;
+  border-radius: var(--neo-radius-sm);
+}
+
+/* Focus state */
+.input:focus {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light),
+    0 0 0 2px var(--neo-accent-primary);
+}
+
+/* Filled state - subtle convex highlight */
+.input:not(:placeholder-shown) {
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+/* Error state */
+.error .input {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light),
+    0 0 0 2px var(--neo-accent-error);
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.6;
+}
+
+.disabled .input {
+  cursor: not-allowed;
+  color: var(--neo-text-disabled);
+}
+
+/* Remove spin buttons for number input */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type=number] {
+  -moz-appearance: textfield;
+}
