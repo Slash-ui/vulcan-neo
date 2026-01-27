@@ -1,0 +1,160 @@
+.carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-md);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-md);
+  padding: var(--neo-space-sm);
+  outline: none;
+
+  /* Convex appearance */
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+.carousel:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 4px;
+}
+
+/* Sizes */
+.sm {
+  --arrow-size: 32px;
+  --dot-size: 8px;
+}
+
+.md {
+  --arrow-size: 40px;
+  --dot-size: 10px;
+}
+
+.lg {
+  --arrow-size: 48px;
+  --dot-size: 12px;
+}
+
+/* Viewport */
+.viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--neo-radius-sm);
+
+  /* Concave inner area */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Track */
+.track {
+  display: flex;
+  transition: transform 0.3s ease-out;
+}
+
+/* Slide */
+.slide {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.slide > * {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  padding: 0;
+  background: var(--neo-bg);
+  border: none;
+  border-radius: var(--neo-radius-full);
+  color: var(--neo-text);
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.arrow:hover:not(:disabled) {
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+.arrow:active:not(:disabled) {
+  box-shadow:
+    inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -3px -3px 6px var(--neo-shadow-light);
+}
+
+.arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.arrow svg {
+  width: 50%;
+  height: 50%;
+}
+
+.arrowLeft {
+  left: calc(-1 * var(--arrow-size) / 2 - var(--neo-space-sm));
+}
+
+.arrowRight {
+  right: calc(-1 * var(--arrow-size) / 2 - var(--neo-space-sm));
+}
+
+/* Dots */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--neo-space-xs);
+}
+
+.dot {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  padding: 0;
+  background: var(--neo-bg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+.dot:hover:not(.active) {
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.dot.active {
+  background: var(--neo-accent-primary);
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
