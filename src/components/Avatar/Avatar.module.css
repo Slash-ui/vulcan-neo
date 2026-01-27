@@ -1,0 +1,139 @@
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-full);
+  overflow: hidden;
+  transition: box-shadow var(--neo-transition-normal);
+}
+
+/* Sizes */
+.xs {
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
+}
+
+.sm {
+  width: 32px;
+  height: 32px;
+  font-size: var(--neo-font-size-xs);
+}
+
+.md {
+  width: 44px;
+  height: 44px;
+  font-size: var(--neo-font-size-sm);
+}
+
+.lg {
+  width: 56px;
+  height: 56px;
+  font-size: var(--neo-font-size-md);
+}
+
+.xl {
+  width: 72px;
+  height: 72px;
+  font-size: var(--neo-font-size-lg);
+}
+
+/* Convex variant */
+.convex {
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+/* Concave variant */
+.concave {
+  box-shadow:
+    inset 6px 6px 12px var(--neo-shadow-dark),
+    inset -6px -6px 12px var(--neo-shadow-light);
+}
+
+/* Flat variant */
+.flat {
+  box-shadow: none;
+}
+
+/* Image */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fallback (initials) */
+.fallback {
+  font-family: var(--neo-font-family);
+  font-weight: var(--neo-font-weight-semibold);
+  color: var(--neo-text-secondary);
+  text-transform: uppercase;
+}
+
+/* Status indicator */
+.status {
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Status positions and sizes based on avatar size */
+.xs .status {
+  width: 6px;
+  height: 6px;
+  bottom: 0;
+  right: 0;
+}
+
+.sm .status {
+  width: 8px;
+  height: 8px;
+  bottom: 0;
+  right: 0;
+}
+
+.md .status {
+  width: 10px;
+  height: 10px;
+  bottom: 2px;
+  right: 2px;
+}
+
+.lg .status {
+  width: 12px;
+  height: 12px;
+  bottom: 2px;
+  right: 2px;
+}
+
+.xl .status {
+  width: 14px;
+  height: 14px;
+  bottom: 3px;
+  right: 3px;
+}
+
+/* Status border */
+.statusBorder {
+  border: 2px solid var(--neo-bg);
+}
+
+/* Status colors */
+.status-online {
+  background: var(--neo-accent-success);
+}
+
+.status-offline {
+  background: var(--neo-text-disabled);
+}
+
+.status-busy {
+  background: var(--neo-accent-error);
+}
+
+.status-away {
+  background: var(--neo-accent-warning);
+}

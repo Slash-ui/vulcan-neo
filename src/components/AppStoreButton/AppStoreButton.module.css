@@ -1,0 +1,171 @@
+.appStoreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  border: none;
+  cursor: pointer;
+  font-family: var(--neo-font-family);
+  color: var(--neo-text);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  transition: box-shadow var(--neo-transition-normal),
+              transform var(--neo-transition-fast);
+  user-select: none;
+  outline: none;
+  text-align: left;
+}
+
+/* Sizes */
+.sm {
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  min-height: 40px;
+}
+
+.sm .icon {
+  font-size: 20px;
+}
+
+.sm .subtext {
+  font-size: 8px;
+}
+
+.sm .storeName {
+  font-size: var(--neo-font-size-sm);
+}
+
+.md {
+  padding: var(--neo-space-sm) var(--neo-space-lg);
+  min-height: 48px;
+}
+
+.md .icon {
+  font-size: 24px;
+}
+
+.md .subtext {
+  font-size: 10px;
+}
+
+.md .storeName {
+  font-size: var(--neo-font-size-md);
+}
+
+.lg {
+  padding: var(--neo-space-md) var(--neo-space-xl);
+  min-height: 56px;
+}
+
+.lg .icon {
+  font-size: 28px;
+}
+
+.lg .subtext {
+  font-size: 11px;
+}
+
+.lg .storeName {
+  font-size: var(--neo-font-size-lg);
+}
+
+/* Convex variant - Elevation Low */
+.elevation-low.convex {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.elevation-low.convex:active:not(.disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Convex variant - Elevation Mid */
+.elevation-mid.convex {
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+.elevation-mid.convex:active:not(.disabled) {
+  box-shadow:
+    inset 8px 8px 16px var(--neo-shadow-dark),
+    inset -8px -8px 16px var(--neo-shadow-light);
+}
+
+/* Convex variant - Elevation High */
+.elevation-high.convex {
+  box-shadow:
+    -16px -16px 32px var(--neo-shadow-light),
+    16px 16px 32px var(--neo-shadow-dark);
+}
+
+.elevation-high.convex:active:not(.disabled) {
+  box-shadow:
+    inset 16px 16px 32px var(--neo-shadow-dark),
+    inset -16px -16px 32px var(--neo-shadow-light);
+}
+
+/* Flat variant */
+.flat {
+  box-shadow: none;
+  background: transparent;
+}
+
+.flat:hover:not(.disabled) {
+  background: var(--neo-bg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.flat:active:not(.disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Hover effect */
+.convex:hover:not(.disabled):not(:active) {
+  transform: translateY(-1px);
+}
+
+/* Focus visible */
+.appStoreButton:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  color: var(--neo-text-disabled);
+}
+
+/* Icon */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Text container */
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.subtext {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--neo-text-secondary);
+  line-height: 1;
+}
+
+.storeName {
+  font-weight: var(--neo-font-weight-semibold);
+  line-height: 1.2;
+}
