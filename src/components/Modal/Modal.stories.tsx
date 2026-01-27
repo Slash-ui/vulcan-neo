@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Modal } from './Modal';
 import { Surface } from '../Surface';
 import { Button } from '../Button';
-import { Input } from '../Input';
+import { InsetField } from '../InsetField';
 
 const meta: Meta<typeof Modal> = {
   title: 'Organisms/Modal',
@@ -124,9 +124,9 @@ export const WithForm: Story = {
           }
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <Input label="Full Name" placeholder="Enter your name" />
-            <Input label="Email" type="email" placeholder="Enter your email" />
-            <Input label="Password" type="password" placeholder="Enter a password" />
+            <InsetField label="Full Name" placeholder="Enter your name" />
+            <InsetField label="Email" type="email" placeholder="Enter your email" />
+            <InsetField label="Password" type="password" placeholder="Enter a password" />
           </div>
         </Modal>
       </>

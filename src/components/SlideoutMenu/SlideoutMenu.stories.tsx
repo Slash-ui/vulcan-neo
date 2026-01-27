@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { SlideoutMenu } from './SlideoutMenu';
 import { Surface } from '../Surface';
 import { Button } from '../Button';
-import { Input } from '../Input';
+import { InsetField } from '../InsetField';
 import { Checkbox } from '../Checkbox';
 
 const meta: Meta<typeof SlideoutMenu> = {
@@ -148,10 +148,10 @@ export const WithForm: Story = {
           }
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <Input label="Full Name" placeholder="John Doe" />
-            <Input label="Email" type="email" placeholder="john@example.com" />
-            <Input label="Phone" type="tel" placeholder="+1 (555) 000-0000" />
-            <Input label="Bio" placeholder="Tell us about yourself..." />
+            <InsetField label="Full Name" placeholder="John Doe" />
+            <InsetField label="Email" type="email" placeholder="john@example.com" />
+            <InsetField label="Phone" type="tel" placeholder="+1 (555) 000-0000" />
+            <InsetField label="Bio" placeholder="Tell us about yourself..." />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <Checkbox label="Receive email notifications" />
               <Checkbox label="Make profile public" />
