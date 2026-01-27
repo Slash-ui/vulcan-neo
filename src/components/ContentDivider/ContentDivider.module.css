@@ -1,0 +1,146 @@
+.divider {
+  display: flex;
+  align-items: center;
+}
+
+/* Horizontal */
+.horizontal {
+  width: 100%;
+  flex-direction: row;
+}
+
+.horizontal:not(.withLabel) {
+  height: 1px;
+}
+
+/* Vertical */
+.vertical {
+  height: 100%;
+  width: 1px;
+  min-height: 20px;
+}
+
+/* Spacing */
+.spacing-none {
+  margin: 0;
+}
+
+.spacing-sm {
+  margin: var(--neo-space-sm) 0;
+}
+
+.spacing-md {
+  margin: var(--neo-space-md) 0;
+}
+
+.spacing-lg {
+  margin: var(--neo-space-lg) 0;
+}
+
+.vertical.spacing-sm {
+  margin: 0 var(--neo-space-sm);
+}
+
+.vertical.spacing-md {
+  margin: 0 var(--neo-space-md);
+}
+
+.vertical.spacing-lg {
+  margin: 0 var(--neo-space-lg);
+}
+
+/* Solid variant - Neomorphic groove */
+.solid:not(.withLabel) {
+  background: linear-gradient(
+    to bottom,
+    var(--neo-shadow-dark),
+    var(--neo-shadow-light)
+  );
+}
+
+.vertical.solid:not(.withLabel) {
+  background: linear-gradient(
+    to right,
+    var(--neo-shadow-dark),
+    var(--neo-shadow-light)
+  );
+}
+
+/* Dashed variant */
+.dashed:not(.withLabel) {
+  background: repeating-linear-gradient(
+    to right,
+    var(--neo-shadow-dark) 0,
+    var(--neo-shadow-dark) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+.vertical.dashed:not(.withLabel) {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--neo-shadow-dark) 0,
+    var(--neo-shadow-dark) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+/* Groove variant - 3D neomorphic effect */
+.groove:not(.withLabel) {
+  height: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--neo-shadow-dark),
+    var(--neo-shadow-light)
+  );
+  box-shadow:
+    0 1px 0 var(--neo-shadow-light);
+}
+
+.vertical.groove:not(.withLabel) {
+  width: 2px;
+  height: auto;
+  background: linear-gradient(
+    to right,
+    var(--neo-shadow-dark),
+    var(--neo-shadow-light)
+  );
+  box-shadow:
+    1px 0 0 var(--neo-shadow-light);
+}
+
+/* With label */
+.withLabel {
+  gap: var(--neo-space-md);
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--neo-shadow-dark),
+    var(--neo-shadow-light)
+  );
+}
+
+.label {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+  white-space: nowrap;
+  padding: 0 var(--neo-space-sm);
+}
+
+/* Label position */
+.label-start .line:first-child {
+  flex: 0;
+  width: 0;
+}
+
+.label-end .line:last-child {
+  flex: 0;
+  width: 0;
+}

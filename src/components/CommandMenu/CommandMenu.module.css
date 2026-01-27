@@ -1,0 +1,220 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn var(--neo-transition-fast) ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu {
+  width: 100%;
+  max-width: 560px;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-lg);
+  overflow: hidden;
+  animation: slideDown var(--neo-transition-normal) ease-out;
+
+  /* Strong convex shadow */
+  box-shadow:
+    -12px -12px 24px var(--neo-shadow-light),
+    12px 12px 24px var(--neo-shadow-dark);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  padding: var(--neo-space-md) var(--neo-space-lg);
+  border-bottom: 1px solid var(--neo-shadow-dark);
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neo-text-secondary);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  padding: var(--neo-space-xs) 0;
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--neo-text-disabled);
+}
+
+.escKey {
+  flex-shrink: 0;
+  padding: var(--neo-space-xxs) var(--neo-space-xs);
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-text-secondary);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-xs);
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--neo-space-sm);
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--neo-space-xl);
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text-secondary);
+}
+
+.group {
+  margin-bottom: var(--neo-space-sm);
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.groupLabel {
+  padding: var(--neo-space-xs) var(--neo-space-sm);
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-xs);
+  font-weight: var(--neo-font-weight-semibold);
+  color: var(--neo-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  width: 100%;
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  font-family: var(--neo-font-family);
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: var(--neo-radius-sm);
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+  outline: none;
+}
+
+.item:hover:not(.disabled),
+.item.selected:not(.disabled) {
+  background: var(--neo-bg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.item.selected:not(.disabled) {
+  color: var(--neo-accent-primary);
+}
+
+.item.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--neo-text-secondary);
+}
+
+.item.selected .itemIcon {
+  color: var(--neo-accent-primary);
+}
+
+.itemIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.itemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemLabel {
+  display: block;
+  font-size: var(--neo-font-size-md);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item.selected .itemLabel {
+  color: var(--neo-accent-primary);
+}
+
+.itemDescription {
+  display: block;
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shortcut {
+  flex-shrink: 0;
+  padding: var(--neo-space-xxs) var(--neo-space-xs);
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-text-secondary);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-xs);
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
