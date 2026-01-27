@@ -1,0 +1,265 @@
+.fileUploader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-md);
+  font-family: var(--neo-font-family);
+}
+
+/* Sizes */
+.sm {
+  --icon-size: 32px;
+  --primary-font: var(--neo-font-size-sm);
+  --secondary-font: var(--neo-font-size-xs);
+  --dropzone-padding: var(--neo-space-md);
+}
+
+.md {
+  --icon-size: 48px;
+  --primary-font: var(--neo-font-size-md);
+  --secondary-font: var(--neo-font-size-sm);
+  --dropzone-padding: var(--neo-space-lg);
+}
+
+.lg {
+  --icon-size: 64px;
+  --primary-font: var(--neo-font-size-lg);
+  --secondary-font: var(--neo-font-size-md);
+  --dropzone-padding: var(--neo-space-xl);
+}
+
+/* Hidden file input */
+.input {
+  display: none;
+}
+
+/* Dropzone */
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--neo-space-md);
+  padding: var(--dropzone-padding);
+  border: 2px dashed var(--neo-shadow-dark);
+  border-radius: var(--neo-radius-md);
+  background: var(--neo-bg);
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+  outline: none;
+
+  /* Subtle concave appearance */
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.dropzone:hover:not(.disabled .dropzone) {
+  border-color: var(--neo-accent-primary);
+  box-shadow:
+    inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -3px -3px 6px var(--neo-shadow-light);
+}
+
+.dropzone:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Dragging state */
+.dragging .dropzone {
+  border-color: var(--neo-accent-primary);
+  background: rgba(108, 92, 231, 0.05);
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Button variant */
+.button .dropzone {
+  flex-direction: row;
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  border-style: solid;
+  border-width: 1px;
+
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.button .dropzone:active:not(.disabled .dropzone) {
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.button .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Disabled state */
+.disabled .dropzone {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--neo-text-secondary);
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--neo-space-xxs);
+  text-align: center;
+}
+
+.button .content {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.primary {
+  font-size: var(--primary-font);
+  color: var(--neo-text);
+}
+
+.secondary {
+  font-size: var(--secondary-font);
+  color: var(--neo-text-secondary);
+}
+
+/* File list */
+.fileList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-sm);
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.fileIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  color: var(--neo-accent-primary);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-xs);
+
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.fileIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fileInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.fileName {
+  display: block;
+  font-size: var(--neo-font-size-sm);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileSize {
+  display: block;
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-text-secondary);
+}
+
+.fileError {
+  display: block;
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-error, #ef4444);
+}
+
+/* Progress bar */
+.progressBar {
+  height: 4px;
+  margin-top: var(--neo-space-xs);
+  background: var(--neo-shadow-dark);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--neo-accent-primary);
+  transition: width var(--neo-transition-fast);
+}
+
+/* Remove button */
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: var(--neo-bg);
+  border: none;
+  border-radius: var(--neo-radius-xs);
+  color: var(--neo-text-secondary);
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+.removeButton:hover {
+  color: var(--neo-error, #ef4444);
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.removeButton:active {
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.removeButton svg {
+  width: 14px;
+  height: 14px;
+}
