@@ -1,0 +1,139 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-sm);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+}
+
+.value {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  font-weight: var(--neo-font-weight-semibold);
+  color: var(--neo-accent-primary);
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  touch-action: none;
+}
+
+/* Track - Concave appearance */
+.track {
+  width: 100%;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-full);
+  overflow: hidden;
+
+  /* Inset shadow */
+  box-shadow:
+    inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -3px -3px 6px var(--neo-shadow-light);
+}
+
+/* Sizes */
+.sm .track {
+  height: 6px;
+}
+
+.md .track {
+  height: 8px;
+}
+
+.lg .track {
+  height: 12px;
+}
+
+/* Fill (progress) */
+.fill {
+  height: 100%;
+  background: linear-gradient(135deg, var(--neo-accent-primary), var(--neo-accent-secondary));
+  border-radius: var(--neo-radius-full);
+  transition: width 0.05s ease-out;
+}
+
+/* Thumb - Convex appearance */
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--neo-bg);
+  border-radius: 50%;
+  transition: box-shadow var(--neo-transition-fast),
+              transform var(--neo-transition-fast);
+  outline: none;
+
+  /* Convex shadow */
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.sm .thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.md .thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.lg .thumb {
+  width: 28px;
+  height: 28px;
+}
+
+/* Thumb hover */
+.slider:hover .thumb {
+  box-shadow:
+    -5px -5px 10px var(--neo-shadow-light),
+    5px 5px 10px var(--neo-shadow-dark);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Thumb active/dragging */
+.dragging .thumb,
+.thumb:active {
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+/* Focus visible */
+.thumb:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.6;
+}
+
+.disabled .slider {
+  cursor: not-allowed;
+}
+
+.disabled .thumb {
+  pointer-events: none;
+}
+
+.disabled .fill {
+  background: var(--neo-text-disabled);
+}
