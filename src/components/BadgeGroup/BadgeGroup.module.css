@@ -1,0 +1,102 @@
+.badgeGroup {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Stacking direction */
+.right {
+  flex-direction: row;
+}
+
+.left {
+  flex-direction: row;
+}
+
+/* Item with overlap */
+.item {
+  position: relative;
+}
+
+.right .item:not(:first-child) {
+  margin-left: -8px;
+}
+
+.left .item:not(:last-child) {
+  margin-right: -8px;
+}
+
+/* Size-based overlap adjustments */
+.sm .item:not(:first-child) {
+  margin-left: -6px;
+}
+
+.sm.left .item:not(:last-child) {
+  margin-right: -6px;
+}
+
+.lg .item:not(:first-child) {
+  margin-left: -10px;
+}
+
+.lg.left .item:not(:last-child) {
+  margin-right: -10px;
+}
+
+/* Overflow indicator */
+.overflow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--neo-font-family);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text-secondary);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-full);
+  z-index: 0;
+
+  /* Convex shadow */
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+/* Size-based overflow sizing */
+.sm .overflow {
+  min-width: 24px;
+  height: 24px;
+  font-size: var(--neo-font-size-xs);
+  padding: 0 6px;
+  margin-left: -6px;
+}
+
+.md .overflow {
+  min-width: 32px;
+  height: 32px;
+  font-size: var(--neo-font-size-sm);
+  padding: 0 8px;
+  margin-left: -8px;
+}
+
+.lg .overflow {
+  min-width: 40px;
+  height: 40px;
+  font-size: var(--neo-font-size-md);
+  padding: 0 10px;
+  margin-left: -10px;
+}
+
+.left .overflow {
+  margin-left: 0;
+}
+
+.left.sm .overflow {
+  margin-right: -6px;
+}
+
+.left.md .overflow {
+  margin-right: -8px;
+}
+
+.left.lg .overflow {
+  margin-right: -10px;
+}

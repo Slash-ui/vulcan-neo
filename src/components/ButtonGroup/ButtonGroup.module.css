@@ -1,0 +1,145 @@
+.buttonGroup {
+  display: inline-flex;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  overflow: hidden;
+}
+
+/* Orientation */
+.horizontal {
+  flex-direction: row;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+/* Full width */
+.fullWidth {
+  width: 100%;
+}
+
+.fullWidth .item {
+  flex: 1;
+}
+
+/* Convex variant - Elevation Low */
+.elevation-low.convex {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+/* Convex variant - Elevation Mid */
+.elevation-mid.convex {
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+/* Convex variant - Elevation High */
+.elevation-high.convex {
+  box-shadow:
+    -16px -16px 32px var(--neo-shadow-light),
+    16px 16px 32px var(--neo-shadow-dark);
+}
+
+/* Flat variant */
+.flat {
+  box-shadow: none;
+  background: transparent;
+  gap: 2px;
+}
+
+/* Button Item */
+.item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--neo-font-family);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+  background: transparent;
+  transition: background-color var(--neo-transition-fast),
+              box-shadow var(--neo-transition-fast);
+  outline: none;
+  position: relative;
+}
+
+/* Item sizes */
+.sm .item {
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  font-size: var(--neo-font-size-sm);
+  min-height: 32px;
+}
+
+.md .item {
+  padding: var(--neo-space-sm) var(--neo-space-lg);
+  font-size: var(--neo-font-size-md);
+  min-height: 40px;
+}
+
+.lg .item {
+  padding: var(--neo-space-md) var(--neo-space-xl);
+  font-size: var(--neo-font-size-lg);
+  min-height: 48px;
+}
+
+/* Separator between items (horizontal) */
+.horizontal .item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: var(--neo-shadow-dark);
+  opacity: 0.3;
+}
+
+/* Separator between items (vertical) */
+.vertical .item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  height: 1px;
+  background: var(--neo-shadow-dark);
+  opacity: 0.3;
+}
+
+/* Item hover */
+.item:hover:not(.disabled):not(.selected) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Item active */
+.item:active:not(.disabled) {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Selected state - concave appearance */
+.item.selected {
+  background: var(--neo-bg);
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+  color: var(--neo-accent-primary);
+}
+
+/* Focus visible */
+.item:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+/* Disabled state */
+.item.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  color: var(--neo-text-disabled);
+}
