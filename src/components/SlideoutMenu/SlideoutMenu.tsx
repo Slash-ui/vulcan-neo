@@ -78,7 +78,7 @@ export const SlideoutMenu = forwardRef<HTMLDivElement, SlideoutMenuProps>(
       className,
       ...props
     },
-    ref
+    _ref
   ) => {
     const slideoutRef = useRef<HTMLDivElement>(null);
     const previousActiveElement = useRef<Element | null>(null);

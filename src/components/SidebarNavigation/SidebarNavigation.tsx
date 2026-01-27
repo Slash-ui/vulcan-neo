@@ -1,4 +1,4 @@
-import React, { forwardRef, createContext, useContext, useState } from 'react';
+import React, { forwardRef, createContext, useContext } from 'react';
 import styles from './SidebarNavigation.module.css';
 
 export type SidebarSize = 'sm' | 'md' | 'lg';
