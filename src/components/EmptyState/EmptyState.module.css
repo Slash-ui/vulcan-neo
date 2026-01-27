@@ -1,0 +1,95 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--neo-space-xl);
+  border-radius: var(--neo-radius-lg);
+  background: var(--neo-bg);
+
+  /* Subtle concave appearance */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Sizes */
+.sm {
+  --icon-size: 48px;
+  --title-size: var(--neo-font-size-md);
+  --desc-size: var(--neo-font-size-sm);
+  padding: var(--neo-space-lg);
+  gap: var(--neo-space-sm);
+}
+
+.md {
+  --icon-size: 64px;
+  --title-size: var(--neo-font-size-lg);
+  --desc-size: var(--neo-font-size-md);
+  padding: var(--neo-space-xl);
+  gap: var(--neo-space-md);
+}
+
+.lg {
+  --icon-size: 80px;
+  --title-size: var(--neo-font-size-xl);
+  --desc-size: var(--neo-font-size-md);
+  padding: var(--neo-space-xxl);
+  gap: var(--neo-space-lg);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--neo-text-secondary);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-full);
+
+  /* Convex appearance for icon container */
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+.icon svg {
+  width: 50%;
+  height: 50%;
+}
+
+.content {
+  max-width: 360px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--neo-font-family);
+  font-size: var(--title-size);
+  font-weight: var(--neo-font-weight-semibold);
+  color: var(--neo-text);
+  line-height: 1.4;
+}
+
+.description {
+  margin: var(--neo-space-xs) 0 0;
+  font-family: var(--neo-font-family);
+  font-size: var(--desc-size);
+  color: var(--neo-text-secondary);
+  line-height: 1.5;
+}
+
+.customContent {
+  margin-top: var(--neo-space-sm);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--neo-space-sm);
+  margin-top: var(--neo-space-md);
+}
