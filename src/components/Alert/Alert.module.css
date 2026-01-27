@@ -1,0 +1,111 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--neo-space-sm);
+  padding: var(--neo-space-md);
+  border-radius: var(--neo-radius-md);
+  font-family: var(--neo-font-family);
+  background: var(--neo-bg);
+
+  /* Convex shadow */
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+/* Variant colors */
+.info {
+  --alert-color: var(--neo-info, #3b82f6);
+}
+
+.success {
+  --alert-color: var(--neo-success, #22c55e);
+}
+
+.warning {
+  --alert-color: var(--neo-warning, #f59e0b);
+}
+
+.error {
+  --alert-color: var(--neo-error, #ef4444);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--alert-color);
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--neo-font-size-md);
+  font-weight: var(--neo-font-weight-semibold);
+  color: var(--neo-text);
+  line-height: 1.4;
+}
+
+.message {
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+  line-height: 1.5;
+  margin-top: var(--neo-space-xxs);
+}
+
+.title + .message {
+  margin-top: var(--neo-space-xs);
+}
+
+.action {
+  flex-shrink: 0;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: var(--neo-bg);
+  border: none;
+  border-radius: var(--neo-radius-xs);
+  color: var(--neo-text-secondary);
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+.closeButton:hover {
+  color: var(--neo-text);
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.closeButton:active {
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
