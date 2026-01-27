@@ -1,0 +1,134 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-md);
+  cursor: pointer;
+  user-select: none;
+}
+
+.container.left {
+  flex-direction: row;
+}
+
+.container.right {
+  flex-direction: row;
+}
+
+.label {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text);
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Track - Concave (sunken) appearance */
+.track {
+  display: flex;
+  align-items: center;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-full);
+  transition: background-color var(--neo-transition-normal);
+
+  /* Inset shadow for sunken track */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Thumb - Convex (elevated) appearance */
+.thumb {
+  border-radius: 50%;
+  background: var(--neo-bg);
+  transition: transform var(--neo-transition-normal),
+              box-shadow var(--neo-transition-normal);
+
+  /* Elevated shadow */
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+/* Sizes */
+.sm .track {
+  width: 36px;
+  height: 20px;
+  padding: 2px;
+}
+
+.sm .thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.md .track {
+  width: 48px;
+  height: 26px;
+  padding: 3px;
+}
+
+.md .thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.lg .track {
+  width: 60px;
+  height: 32px;
+  padding: 4px;
+}
+
+.lg .thumb {
+  width: 24px;
+  height: 24px;
+}
+
+/* Checked state - thumb moves right */
+.input:checked + .track .thumb {
+  transform: translateX(100%);
+  background: var(--neo-accent-primary);
+  box-shadow:
+    -2px -2px 4px rgba(108, 92, 231, 0.3),
+    2px 2px 4px rgba(108, 92, 231, 0.5),
+    0 0 8px rgba(108, 92, 231, 0.4);
+}
+
+/* Focus state */
+.input:focus-visible + .track {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Hover state */
+.container:hover:not(.disabled) .thumb {
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+/* Active/pressed state */
+.container:active:not(.disabled) .thumb {
+  box-shadow:
+    -1px -1px 2px var(--neo-shadow-light),
+    1px 1px 2px var(--neo-shadow-dark);
+}
+
+/* Disabled state */
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.disabled .label {
+  color: var(--neo-text-disabled);
+}

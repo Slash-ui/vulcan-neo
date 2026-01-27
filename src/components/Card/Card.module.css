@@ -1,0 +1,117 @@
+.card {
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-lg);
+  color: var(--neo-text);
+  font-family: var(--neo-font-family);
+  transition: box-shadow var(--neo-transition-normal),
+              transform var(--neo-transition-fast);
+}
+
+.padded {
+  padding: var(--neo-space-lg);
+}
+
+/* Variants */
+.flat {
+  box-shadow: none;
+}
+
+/* Convex (Elevated) */
+.convex.elevation-low {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.convex.elevation-mid {
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+.convex.elevation-high {
+  box-shadow:
+    -16px -16px 32px var(--neo-shadow-light),
+    16px 16px 32px var(--neo-shadow-dark);
+}
+
+/* Concave (Sunken) */
+.concave.elevation-low {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+.concave.elevation-mid {
+  box-shadow:
+    inset 8px 8px 16px var(--neo-shadow-dark),
+    inset -8px -8px 16px var(--neo-shadow-light);
+}
+
+.concave.elevation-high {
+  box-shadow:
+    inset 16px 16px 32px var(--neo-shadow-dark),
+    inset -16px -16px 32px var(--neo-shadow-light);
+}
+
+/* Interactive states */
+.interactive {
+  cursor: pointer;
+  outline: none;
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+}
+
+.interactive.convex:hover.elevation-low {
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+.interactive.convex:hover.elevation-mid {
+  box-shadow:
+    -10px -10px 20px var(--neo-shadow-light),
+    10px 10px 20px var(--neo-shadow-dark);
+}
+
+.interactive.convex:hover.elevation-high {
+  box-shadow:
+    -20px -20px 40px var(--neo-shadow-light),
+    20px 20px 40px var(--neo-shadow-dark);
+}
+
+.interactive:active {
+  transform: translateY(0);
+}
+
+.interactive.convex:active.elevation-low,
+.interactive.convex:active.elevation-mid,
+.interactive.convex:active.elevation-high {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+.interactive:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Sub-components */
+.header {
+  padding-bottom: var(--neo-space-md);
+  border-bottom: 1px solid var(--neo-shadow-dark);
+  margin-bottom: var(--neo-space-md);
+}
+
+.body {
+  flex: 1;
+}
+
+.footer {
+  padding-top: var(--neo-space-md);
+  border-top: 1px solid var(--neo-shadow-dark);
+  margin-top: var(--neo-space-md);
+}

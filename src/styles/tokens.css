@@ -1,0 +1,97 @@
+/**
+ * Vulcan Neo Design Tokens
+ * Neomorphism Design System
+ *
+ * Light source: Top-Left (135°)
+ * Background: Never pure white/black, use mid-tones
+ */
+
+:root {
+  /* Background Colors */
+  --neo-bg-light: #E0E5EC;
+  --neo-bg-dark: #292D32;
+
+  /* Light Theme Shadows */
+  --neo-shadow-light-color: rgba(255, 255, 255, 0.8);
+  --neo-shadow-dark-color: rgba(163, 177, 198, 0.6);
+
+  /* Dark Theme Shadows */
+  --neo-shadow-dark-light: rgba(60, 65, 72, 0.8);
+  --neo-shadow-dark-dark: rgba(20, 22, 25, 0.8);
+
+  /* Elevation Distances */
+  --neo-elevation-low: 4px;
+  --neo-elevation-mid: 8px;
+  --neo-elevation-high: 16px;
+
+  /* Border Radius */
+  --neo-radius-sm: 12px;
+  --neo-radius-md: 20px;
+  --neo-radius-lg: 32px;
+  --neo-radius-full: 9999px;
+
+  /* Spacing */
+  --neo-space-xs: 4px;
+  --neo-space-sm: 8px;
+  --neo-space-md: 16px;
+  --neo-space-lg: 24px;
+  --neo-space-xl: 32px;
+  --neo-space-2xl: 48px;
+
+  /* Typography */
+  --neo-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --neo-font-size-xs: 12px;
+  --neo-font-size-sm: 14px;
+  --neo-font-size-md: 16px;
+  --neo-font-size-lg: 18px;
+  --neo-font-size-xl: 24px;
+  --neo-font-weight-normal: 400;
+  --neo-font-weight-medium: 500;
+  --neo-font-weight-semibold: 600;
+  --neo-font-weight-bold: 700;
+
+  /* Text Colors - WCAG 4.5:1 compliant */
+  --neo-text-primary: #2D3436;
+  --neo-text-secondary: #636E72;
+  --neo-text-disabled: #A0A8AD;
+
+  /* Accent Colors */
+  --neo-accent-primary: #6C5CE7;
+  --neo-accent-secondary: #00CEC9;
+  --neo-accent-success: #00B894;
+  --neo-accent-warning: #FDCB6E;
+  --neo-accent-error: #E17055;
+
+  /* Transition */
+  --neo-transition-fast: 150ms ease;
+  --neo-transition-normal: 250ms ease;
+  --neo-transition-slow: 350ms ease;
+
+  /* Shadow Blur Multiplier */
+  --neo-blur-multiplier: 2;
+}
+
+/* Light Theme (default) */
+[data-theme="light"],
+:root {
+  --neo-bg: var(--neo-bg-light);
+  --neo-shadow-light: var(--neo-shadow-light-color);
+  --neo-shadow-dark: var(--neo-shadow-dark-color);
+  --neo-text: var(--neo-text-primary);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --neo-bg: var(--neo-bg-dark);
+  --neo-shadow-light: var(--neo-shadow-dark-light);
+  --neo-shadow-dark: var(--neo-shadow-dark-dark);
+  --neo-text: #E0E5EC;
+  --neo-text-secondary: #A0A8AD;
+}
+
+/* Base Styles */
+.neo-surface {
+  background: var(--neo-bg);
+  color: var(--neo-text);
+  font-family: var(--neo-font-family);
+}

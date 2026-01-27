@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-md);
+  width: 100%;
+}
+
+/* Track - Concave (sunken) appearance */
+.track {
+  flex: 1;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-full);
+  overflow: hidden;
+  position: relative;
+
+  /* Inset shadow for sunken track */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Sizes */
+.sm {
+  height: 8px;
+}
+
+.md {
+  height: 12px;
+}
+
+.lg {
+  height: 20px;
+}
+
+/* Fill - The progress indicator */
+.fill {
+  height: 100%;
+  border-radius: var(--neo-radius-full);
+  transition: width var(--neo-transition-normal);
+  position: relative;
+}
+
+/* Default variant - Raised appearance */
+.default {
+  background: var(--neo-bg);
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+/* Gradient variant */
+.gradient {
+  background: linear-gradient(
+    135deg,
+    var(--neo-accent-primary) 0%,
+    var(--neo-accent-secondary) 100%
+  );
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+/* Glow variant */
+.glow {
+  background: var(--neo-accent-primary);
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark),
+    0 0 12px rgba(108, 92, 231, 0.5),
+    0 0 24px rgba(108, 92, 231, 0.3);
+}
+
+/* Label */
+.label {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+  min-width: 40px;
+  text-align: right;
+}

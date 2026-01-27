@@ -1,0 +1,183 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--neo-space-sm);
+  border: none;
+  cursor: pointer;
+  font-family: var(--neo-font-family);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  transition: box-shadow var(--neo-transition-normal),
+              transform var(--neo-transition-fast);
+  user-select: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sizes */
+.sm {
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  font-size: var(--neo-font-size-sm);
+  min-height: 32px;
+}
+
+.md {
+  padding: var(--neo-space-md) var(--neo-space-lg);
+  font-size: var(--neo-font-size-md);
+  min-height: 44px;
+}
+
+.lg {
+  padding: var(--neo-space-md) var(--neo-space-xl);
+  font-size: var(--neo-font-size-lg);
+  min-height: 56px;
+}
+
+/* Elevation: Low (4px) */
+.elevation-low.convex {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.elevation-low.convex:active:not(.disabled),
+.elevation-low.convex.active {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Elevation: Mid (8px) - Default */
+.elevation-mid.convex {
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+.elevation-mid.convex:active:not(.disabled),
+.elevation-mid.convex.active {
+  box-shadow:
+    inset 8px 8px 16px var(--neo-shadow-dark),
+    inset -8px -8px 16px var(--neo-shadow-light);
+}
+
+/* Elevation: High (16px) */
+.elevation-high.convex {
+  box-shadow:
+    -16px -16px 32px var(--neo-shadow-light),
+    16px 16px 32px var(--neo-shadow-dark);
+}
+
+.elevation-high.convex:active:not(.disabled),
+.elevation-high.convex.active {
+  box-shadow:
+    inset 16px 16px 32px var(--neo-shadow-dark),
+    inset -16px -16px 32px var(--neo-shadow-light);
+}
+
+/* Flat variant */
+.flat {
+  box-shadow: none;
+  background: transparent;
+}
+
+.flat:hover:not(.disabled) {
+  background: var(--neo-bg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.flat:active:not(.disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* FAB variant */
+.fab {
+  border-radius: var(--neo-radius-full);
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  box-shadow:
+    -12px -12px 24px var(--neo-shadow-light),
+    12px 12px 24px var(--neo-shadow-dark);
+}
+
+.fab.sm {
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+}
+
+.fab.lg {
+  width: 72px;
+  height: 72px;
+  min-height: 72px;
+}
+
+.fab:active:not(.disabled) {
+  box-shadow:
+    inset 8px 8px 16px var(--neo-shadow-dark),
+    inset -8px -8px 16px var(--neo-shadow-light);
+}
+
+/* Hover effect */
+.convex:hover:not(.disabled):not(:active) {
+  transform: translateY(-1px);
+}
+
+/* Focus visible */
+.button:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Full width */
+.fullWidth {
+  width: 100%;
+}
+
+/* Disabled state */
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  color: var(--neo-text-disabled);
+}
+
+/* Loading state */
+.loading {
+  cursor: wait;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--neo-text-disabled);
+  border-top-color: var(--neo-accent-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icon */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.label {
+  flex-shrink: 0;
+}

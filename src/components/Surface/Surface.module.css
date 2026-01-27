@@ -1,0 +1,12 @@
+.surface {
+  background: var(--neo-bg);
+  color: var(--neo-text);
+  font-family: var(--neo-font-family);
+  padding: var(--neo-space-lg);
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+.fullHeight {
+  min-height: 100vh;
+}

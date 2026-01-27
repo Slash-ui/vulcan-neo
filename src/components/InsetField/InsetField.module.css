@@ -1,0 +1,129 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-xs);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.label {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+  margin-bottom: var(--neo-space-xs);
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  border: none;
+  transition: box-shadow var(--neo-transition-normal);
+
+  /* Inset/concave shadow - carved into surface */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Sizes */
+.sm {
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  min-height: 36px;
+}
+
+.md {
+  padding: var(--neo-space-md);
+  min-height: 48px;
+}
+
+.lg {
+  padding: var(--neo-space-md) var(--neo-space-lg);
+  min-height: 56px;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--neo-font-family);
+  color: var(--neo-text);
+  min-width: 0;
+}
+
+.sm .input {
+  font-size: var(--neo-font-size-sm);
+}
+
+.md .input {
+  font-size: var(--neo-font-size-md);
+}
+
+.lg .input {
+  font-size: var(--neo-font-size-lg);
+}
+
+.input::placeholder {
+  color: var(--neo-text-secondary);
+}
+
+/* Focus state - deeper inset */
+.inputWrapper:focus-within {
+  box-shadow:
+    inset 6px 6px 12px var(--neo-shadow-dark),
+    inset -6px -6px 12px var(--neo-shadow-light);
+}
+
+/* Focus visible indicator */
+.inputWrapper:focus-within {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Error state */
+.error {
+  outline: 2px solid var(--neo-accent-error);
+  outline-offset: 0;
+}
+
+.error:focus-within {
+  outline-color: var(--neo-accent-error);
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabled .input {
+  cursor: not-allowed;
+  color: var(--neo-text-disabled);
+}
+
+/* Icon */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neo-text-secondary);
+  flex-shrink: 0;
+}
+
+/* Helper text */
+.helperText {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-text-secondary);
+  margin-top: var(--neo-space-xs);
+}
+
+.errorText {
+  color: var(--neo-accent-error);
+}
