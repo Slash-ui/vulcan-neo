@@ -3,7 +3,7 @@ import styles from './CodeSnippet.module.css';
 
 export type CodeSnippetSize = 'sm' | 'md' | 'lg';
 
-export interface CodeSnippetProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CodeSnippetProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onCopy'> {
   /**
    * Code content
    */
