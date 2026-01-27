@@ -1,0 +1,246 @@
+.testimonials {
+  background: var(--neo-bg);
+  font-family: var(--neo-font-family);
+  padding: calc(var(--neo-space-xl) * 2) var(--neo-space-lg);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--neo-space-xl);
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--neo-primary);
+  font-size: var(--neo-font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--neo-space-sm);
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--neo-text);
+  margin: 0 0 var(--neo-space-md);
+  line-height: 1.2;
+}
+
+.description {
+  font-size: var(--neo-font-size-lg);
+  color: var(--neo-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Card */
+.card {
+  background: var(--neo-bg);
+  padding: var(--neo-space-lg);
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-md);
+}
+
+/* Rating */
+.rating {
+  display: flex;
+  gap: 2px;
+}
+
+.starFilled {
+  color: #fbbf24;
+}
+
+.starEmpty {
+  color: var(--neo-border);
+}
+
+/* Quote */
+.quote {
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+/* Author */
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorName {
+  font-size: var(--neo-font-size-md);
+  font-weight: 600;
+  color: var(--neo-text);
+}
+
+.authorRole {
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--neo-space-lg);
+}
+
+/* Carousel Layout */
+.carouselWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-md);
+}
+
+.carouselContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--neo-space-lg);
+}
+
+.carouselCard {
+  background: var(--neo-bg);
+  padding: var(--neo-space-xl);
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+}
+
+.carouselCard .rating {
+  justify-content: center;
+  margin-bottom: var(--neo-space-md);
+}
+
+.carouselQuote {
+  font-size: var(--neo-font-size-xl);
+  color: var(--neo-text);
+  line-height: 1.6;
+  margin: 0 0 var(--neo-space-lg);
+}
+
+.carouselCard .author {
+  justify-content: center;
+}
+
+.navButton {
+  flex-shrink: 0;
+}
+
+.dots {
+  display: flex;
+  gap: var(--neo-space-xs);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neo-border);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.dotActive {
+  background: var(--neo-primary);
+  transform: scale(1.25);
+}
+
+/* Single Layout */
+.singleCard {
+  background: var(--neo-bg);
+  padding: var(--neo-space-xl);
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.singleCard .rating {
+  justify-content: center;
+  margin-bottom: var(--neo-space-md);
+}
+
+.singleQuote {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--neo-text);
+  line-height: 1.6;
+  margin: 0 0 var(--neo-space-lg);
+  font-style: italic;
+}
+
+.singleCard .author {
+  justify-content: center;
+}
+
+/* Masonry Layout */
+.masonry {
+  column-count: 3;
+  column-gap: var(--neo-space-lg);
+}
+
+.masonry .card {
+  break-inside: avoid;
+  margin-bottom: var(--neo-space-lg);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .masonry {
+    column-count: 1;
+  }
+
+  .carouselWrapper {
+    flex-direction: column;
+  }
+
+  .navButton {
+    display: none;
+  }
+}

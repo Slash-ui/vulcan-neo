@@ -1,0 +1,215 @@
+.pricing {
+  background: var(--neo-bg);
+  font-family: var(--neo-font-family);
+  padding: calc(var(--neo-space-xl) * 2) var(--neo-space-lg);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--neo-space-xl);
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--neo-primary);
+  font-size: var(--neo-font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--neo-space-sm);
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--neo-text);
+  margin: 0 0 var(--neo-space-md);
+  line-height: 1.2;
+}
+
+.description {
+  font-size: var(--neo-font-size-lg);
+  color: var(--neo-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Billing Toggle */
+.billingToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--neo-space-md);
+  margin-top: var(--neo-space-lg);
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text-secondary);
+}
+
+.activeToggle {
+  color: var(--neo-text);
+  font-weight: 500;
+}
+
+.toggleButton {
+  width: 48px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--neo-bg-secondary);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.toggleKnob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--neo-bg);
+  transition: transform 0.2s;
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+.toggleKnobActive {
+  transform: translateX(24px);
+  background: var(--neo-primary);
+}
+
+.saveBadge {
+  margin-left: var(--neo-space-xs);
+}
+
+/* Plans Grid */
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(var(--plan-count), 1fr);
+  gap: var(--neo-space-lg);
+  align-items: stretch;
+}
+
+.planCard {
+  background: var(--neo-bg);
+  padding: var(--neo-space-xl);
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.popularCard {
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark),
+    0 0 0 2px var(--neo-primary);
+  transform: scale(1.02);
+}
+
+.planBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.planHeader {
+  margin-bottom: var(--neo-space-md);
+}
+
+.planName {
+  font-size: var(--neo-font-size-xl);
+  font-weight: 600;
+  color: var(--neo-text);
+  margin: 0 0 var(--neo-space-xs);
+}
+
+.planDescription {
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+  margin: 0;
+}
+
+.planPrice {
+  margin-bottom: var(--neo-space-lg);
+  padding-bottom: var(--neo-space-lg);
+  border-bottom: 1px solid var(--neo-border);
+}
+
+.priceAmount {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--neo-text);
+}
+
+.pricePeriod {
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text-secondary);
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--neo-space-lg);
+  flex: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  padding: var(--neo-space-sm) 0;
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text);
+}
+
+.featureNotIncluded {
+  color: var(--neo-text-tertiary);
+  text-decoration: line-through;
+}
+
+.checkIcon {
+  color: var(--neo-success);
+  flex-shrink: 0;
+}
+
+.xIcon {
+  color: var(--neo-text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .plansGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .popularCard {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .plansGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .billingToggle {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,236 @@
+.team {
+  background: var(--neo-bg);
+  font-family: var(--neo-font-family);
+  padding: calc(var(--neo-space-xl) * 2) var(--neo-space-lg);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--neo-space-xl);
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--neo-primary);
+  font-size: var(--neo-font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--neo-space-sm);
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--neo-text);
+  margin: 0 0 var(--neo-space-md);
+  line-height: 1.2;
+}
+
+.description {
+  font-size: var(--neo-font-size-lg);
+  color: var(--neo-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--neo-space-lg);
+}
+
+/* Member Card */
+.memberCard {
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.memberCard:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+.memberImage {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.memberAvatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 0;
+}
+
+.memberInfo {
+  padding: var(--neo-space-lg);
+}
+
+.memberName {
+  font-size: var(--neo-font-size-lg);
+  font-weight: 600;
+  color: var(--neo-text);
+  margin: 0 0 var(--neo-space-xxs);
+}
+
+.memberRole {
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-primary);
+  font-weight: 500;
+  margin: 0 0 var(--neo-space-sm);
+}
+
+.memberBio {
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+  margin: 0 0 var(--neo-space-md);
+  line-height: 1.5;
+}
+
+/* Social Links */
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: var(--neo-space-sm);
+}
+
+.socialLink {
+  color: var(--neo-text-tertiary);
+  transition: color 0.2s;
+}
+
+.socialLink:hover {
+  color: var(--neo-primary);
+}
+
+/* Compact variant */
+.compact .memberCard {
+  padding: var(--neo-space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-md);
+  text-align: left;
+}
+
+.compact .memberImage {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--neo-radius-full);
+  aspect-ratio: 1;
+}
+
+.compact .memberInfo {
+  padding: 0;
+}
+
+.compact .socialLinks {
+  justify-content: flex-start;
+}
+
+/* Featured Layout */
+.featured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-xl);
+}
+
+.featuredMain {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--neo-space-lg);
+}
+
+.featuredCard {
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-lg);
+  padding: var(--neo-space-lg);
+}
+
+.featuredImage {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--neo-radius-md);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.featuredCard .memberInfo {
+  padding: 0;
+  text-align: left;
+}
+
+.featuredCard .memberName {
+  font-size: var(--neo-font-size-xl);
+}
+
+.featuredCard .socialLinks {
+  justify-content: flex-start;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--neo-space-md);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featuredMain {
+    grid-template-columns: 1fr;
+  }
+
+  .featuredGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featuredCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .featuredCard .memberInfo {
+    text-align: center;
+  }
+
+  .featuredCard .socialLinks {
+    justify-content: center;
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr;
+  }
+}
