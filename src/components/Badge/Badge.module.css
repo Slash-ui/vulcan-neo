@@ -1,0 +1,120 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--neo-space-xs);
+  font-family: var(--neo-font-family);
+  font-weight: var(--neo-font-weight-medium);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-full);
+  transition: box-shadow var(--neo-transition-normal);
+  white-space: nowrap;
+}
+
+/* Sizes */
+.sm {
+  padding: 2px 8px;
+  font-size: var(--neo-font-size-xs);
+  min-height: 20px;
+}
+
+.md {
+  padding: 4px 12px;
+  font-size: var(--neo-font-size-sm);
+  min-height: 24px;
+}
+
+.lg {
+  padding: 6px 16px;
+  font-size: var(--neo-font-size-md);
+  min-height: 28px;
+}
+
+/* Dot variant */
+.dot {
+  padding: 0;
+  min-height: auto;
+}
+
+.dot.sm {
+  width: 6px;
+  height: 6px;
+}
+
+.dot.md {
+  width: 8px;
+  height: 8px;
+}
+
+.dot.lg {
+  width: 10px;
+  height: 10px;
+}
+
+/* Convex variant */
+.convex {
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+/* Concave variant */
+.concave {
+  box-shadow:
+    inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -3px -3px 6px var(--neo-shadow-light);
+}
+
+/* Flat variant */
+.flat {
+  box-shadow: none;
+}
+
+/* Color variants */
+.color-default {
+  color: var(--neo-text);
+}
+
+.color-primary {
+  color: var(--neo-accent-primary);
+}
+
+.color-primary.dot {
+  background: var(--neo-accent-primary);
+}
+
+.color-success {
+  color: var(--neo-accent-success);
+}
+
+.color-success.dot {
+  background: var(--neo-accent-success);
+}
+
+.color-warning {
+  color: var(--neo-accent-warning);
+}
+
+.color-warning.dot {
+  background: var(--neo-accent-warning);
+}
+
+.color-error {
+  color: var(--neo-accent-error);
+}
+
+.color-error.dot {
+  background: var(--neo-accent-error);
+}
+
+/* Icon */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.content {
+  flex-shrink: 0;
+}
