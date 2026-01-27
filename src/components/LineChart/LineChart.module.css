@@ -1,0 +1,72 @@
+.lineChart {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--neo-space-md);
+  padding: var(--neo-space-md);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-md);
+  font-family: var(--neo-font-family);
+
+  /* Convex appearance */
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+.lineChart svg {
+  display: block;
+}
+
+/* Axis styles */
+.axis path,
+.axis line {
+  stroke: var(--neo-shadow-dark);
+}
+
+.axis text {
+  fill: var(--neo-text-secondary);
+  font-size: 12px;
+}
+
+/* Grid */
+.grid line {
+  stroke: var(--neo-shadow-dark);
+  stroke-opacity: 0.5;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+/* Axis label */
+.axisLabel {
+  fill: var(--neo-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--neo-space-md);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-xs);
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.legendLabel {
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+}

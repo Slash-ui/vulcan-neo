@@ -1,0 +1,60 @@
+.pieChart {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--neo-space-lg);
+  padding: var(--neo-space-md);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-md);
+  font-family: var(--neo-font-family);
+
+  /* Convex appearance */
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+.pieChart svg {
+  display: block;
+}
+
+/* Slice label */
+.label {
+  fill: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--neo-space-md);
+  max-width: 100%;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-xs);
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text);
+}
+
+.legendValue {
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-text-secondary);
+  margin-left: var(--neo-space-xxs);
+}
