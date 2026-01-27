@@ -1,0 +1,178 @@
+.banner {
+  font-family: var(--neo-font-family);
+  padding: var(--neo-space-sm) var(--neo-space-lg);
+}
+
+/* Variants */
+.info {
+  background: var(--neo-bg-secondary);
+  color: var(--neo-text);
+}
+
+.success {
+  background: var(--neo-success);
+  color: white;
+}
+
+.warning {
+  background: var(--neo-warning);
+  color: var(--neo-text);
+}
+
+.error {
+  background: var(--neo-error);
+  color: white;
+}
+
+.primary {
+  background: var(--neo-primary);
+  color: white;
+}
+
+.gradient {
+  background: linear-gradient(135deg, var(--neo-primary) 0%, #a855f7 100%);
+  color: white;
+}
+
+/* Position */
+.position-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.position-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.position-inline {
+  position: relative;
+}
+
+/* Container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--neo-space-md);
+}
+
+/* Content */
+.content {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  flex: 1;
+  justify-content: center;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.message {
+  font-size: var(--neo-font-size-sm);
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  flex-shrink: 0;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-xxs);
+  font-size: var(--neo-font-size-sm);
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.ctaLink:hover {
+  gap: var(--neo-space-xs);
+}
+
+.ctaButton {
+  white-space: nowrap;
+}
+
+/* Style CTA button based on variant */
+.info .ctaButton {
+  color: var(--neo-primary);
+}
+
+.success .ctaButton,
+.error .ctaButton,
+.primary .ctaButton,
+.gradient .ctaButton {
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.success .ctaButton:hover,
+.error .ctaButton:hover,
+.primary .ctaButton:hover,
+.gradient .ctaButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.warning .ctaButton {
+  color: var(--neo-text);
+}
+
+.closeButton {
+  color: inherit;
+  opacity: 0.7;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.success .closeButton,
+.error .closeButton,
+.primary .closeButton,
+.gradient .closeButton {
+  color: white;
+  background: transparent;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .content {
+    flex-basis: 100%;
+    order: 1;
+  }
+
+  .actions {
+    order: 2;
+  }
+}
