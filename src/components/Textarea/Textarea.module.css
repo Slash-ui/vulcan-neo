@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-xs);
+}
+
+.label {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-sm);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+}
+
+.textarea {
+  font-family: var(--neo-font-family);
+  color: var(--neo-text);
+  background: var(--neo-bg);
+  border: none;
+  border-radius: var(--neo-radius-sm);
+  outline: none;
+  transition: box-shadow var(--neo-transition-normal);
+
+  /* Concave (inset) appearance */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+.textarea::placeholder {
+  color: var(--neo-text-disabled);
+}
+
+/* Sizes */
+.sm {
+  padding: var(--neo-space-sm);
+  font-size: var(--neo-font-size-sm);
+  min-height: 80px;
+}
+
+.md {
+  padding: var(--neo-space-md);
+  font-size: var(--neo-font-size-md);
+  min-height: 120px;
+}
+
+.lg {
+  padding: var(--neo-space-md);
+  font-size: var(--neo-font-size-lg);
+  min-height: 160px;
+}
+
+/* Resize options */
+.resize-none {
+  resize: none;
+}
+
+.resize-vertical {
+  resize: vertical;
+}
+
+.resize-horizontal {
+  resize: horizontal;
+}
+
+.resize-both {
+  resize: both;
+}
+
+/* Focus state */
+.textarea:focus {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light),
+    0 0 0 2px var(--neo-accent-primary);
+}
+
+/* Helper text */
+.helperText {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-text-secondary);
+}
+
+/* Error state */
+.error .textarea {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light),
+    0 0 0 2px var(--neo-accent-error);
+}
+
+.errorText {
+  font-family: var(--neo-font-family);
+  font-size: var(--neo-font-size-xs);
+  color: var(--neo-accent-error);
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.6;
+}
+
+.disabled .label {
+  color: var(--neo-text-disabled);
+}
+
+.disabled .textarea {
+  cursor: not-allowed;
+  color: var(--neo-text-disabled);
+}

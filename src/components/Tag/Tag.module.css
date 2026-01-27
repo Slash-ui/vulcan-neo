@@ -1,0 +1,124 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-xs);
+  font-family: var(--neo-font-family);
+  font-weight: var(--neo-font-weight-medium);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  transition: box-shadow var(--neo-transition-normal);
+  white-space: nowrap;
+}
+
+/* Sizes */
+.sm {
+  padding: 4px 8px;
+  font-size: var(--neo-font-size-xs);
+  min-height: 24px;
+  border-radius: 6px;
+}
+
+.md {
+  padding: 6px 12px;
+  font-size: var(--neo-font-size-sm);
+  min-height: 32px;
+}
+
+.lg {
+  padding: 8px 16px;
+  font-size: var(--neo-font-size-md);
+  min-height: 40px;
+}
+
+/* Convex variant */
+.convex {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+/* Concave variant */
+.concave {
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Flat variant */
+.flat {
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Color variants */
+.color-default {
+  color: var(--neo-text);
+}
+
+.color-primary {
+  color: var(--neo-accent-primary);
+}
+
+.color-success {
+  color: var(--neo-accent-success);
+}
+
+.color-warning {
+  color: var(--neo-accent-warning);
+}
+
+.color-error {
+  color: var(--neo-accent-error);
+}
+
+/* Icon */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.content {
+  flex-shrink: 0;
+}
+
+/* Close button */
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-left: 2px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity var(--neo-transition-fast);
+  border-radius: 50%;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 1px;
+}
+
+.sm .closeButton svg {
+  width: 12px;
+  height: 12px;
+}
+
+.md .closeButton svg {
+  width: 14px;
+  height: 14px;
+}
+
+.lg .closeButton svg {
+  width: 16px;
+  height: 16px;
+}
