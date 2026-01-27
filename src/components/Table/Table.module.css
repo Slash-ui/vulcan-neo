@@ -1,0 +1,144 @@
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--neo-radius-md);
+  background: var(--neo-bg);
+
+  /* Subtle convex appearance */
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--neo-font-family);
+}
+
+/* Sizes */
+.sm .th,
+.sm .td {
+  padding: var(--neo-space-xs) var(--neo-space-sm);
+  font-size: var(--neo-font-size-sm);
+}
+
+.md .th,
+.md .td {
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  font-size: var(--neo-font-size-md);
+}
+
+.lg .th,
+.lg .td {
+  padding: var(--neo-space-md) var(--neo-space-lg);
+  font-size: var(--neo-font-size-md);
+}
+
+/* Header */
+.thead {
+  background: var(--neo-bg);
+}
+
+.headerRow {
+  border-bottom: 1px solid var(--neo-shadow-dark);
+}
+
+.th {
+  font-weight: var(--neo-font-weight-semibold);
+  color: var(--neo-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* Alignment */
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* Body */
+.tbody {
+  background: var(--neo-bg);
+}
+
+.row {
+  transition: background var(--neo-transition-fast);
+}
+
+.row:not(:last-child) {
+  border-bottom: 1px solid var(--neo-shadow-dark);
+}
+
+.row:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.row.clickable {
+  cursor: pointer;
+}
+
+.row.selected {
+  background: rgba(108, 92, 231, 0.08);
+}
+
+.td {
+  color: var(--neo-text);
+  vertical-align: middle;
+}
+
+/* Striped variant */
+.striped .row:nth-child(even) {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .striped .row:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Bordered variant */
+.bordered .th,
+.bordered .td {
+  border: 1px solid var(--neo-shadow-dark);
+}
+
+/* Empty state */
+.emptyCell {
+  padding: var(--neo-space-xl) !important;
+  text-align: center;
+  color: var(--neo-text-secondary);
+}
+
+/* Loading state */
+.loadingCell {
+  padding: var(--neo-space-xl) !important;
+  text-align: center;
+}
+
+.loadingSpinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--neo-shadow-dark);
+  border-top-color: var(--neo-accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
