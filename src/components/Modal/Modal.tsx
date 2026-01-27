@@ -71,7 +71,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       className,
       ...props
     },
-    ref
+    _ref
   ) => {
     const modalRef = useRef<HTMLDivElement>(null);
     const previousActiveElement = useRef<Element | null>(null);
