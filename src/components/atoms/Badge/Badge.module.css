@@ -76,35 +76,196 @@
 }
 
 .color-primary {
-  color: var(--neo-accent-primary);
+  color: var(--neo-color-primary);
 }
 
 .color-primary.dot {
-  background: var(--neo-accent-primary);
+  background: var(--neo-color-primary);
+}
+
+.color-primary-light {
+  color: var(--neo-color-primary-light);
+}
+
+.color-primary-light.dot {
+  background: var(--neo-color-primary-light);
+}
+
+.color-primary-dark {
+  color: var(--neo-color-primary-dark);
+}
+
+.color-primary-dark.dot {
+  background: var(--neo-color-primary-dark);
+}
+
+.color-secondary {
+  color: var(--neo-color-secondary);
+}
+
+.color-secondary.dot {
+  background: var(--neo-color-secondary);
+}
+
+.color-secondary-light {
+  color: var(--neo-color-secondary-light);
+}
+
+.color-secondary-light.dot {
+  background: var(--neo-color-secondary-light);
+}
+
+.color-secondary-dark {
+  color: var(--neo-color-secondary-dark);
+}
+
+.color-secondary-dark.dot {
+  background: var(--neo-color-secondary-dark);
+}
+
+.color-tertiary {
+  color: var(--neo-color-tertiary);
+}
+
+.color-tertiary.dot {
+  background: var(--neo-color-tertiary);
+}
+
+.color-tertiary-light {
+  color: var(--neo-color-tertiary-light);
+}
+
+.color-tertiary-light.dot {
+  background: var(--neo-color-tertiary-light);
+}
+
+.color-tertiary-dark {
+  color: var(--neo-color-tertiary-dark);
+}
+
+.color-tertiary-dark.dot {
+  background: var(--neo-color-tertiary-dark);
 }
 
 .color-success {
-  color: var(--neo-accent-success);
+  color: var(--neo-color-success);
 }
 
 .color-success.dot {
-  background: var(--neo-accent-success);
+  background: var(--neo-color-success);
 }
 
 .color-warning {
-  color: var(--neo-accent-warning);
+  color: var(--neo-color-warning);
 }
 
 .color-warning.dot {
-  background: var(--neo-accent-warning);
+  background: var(--neo-color-warning);
 }
 
 .color-error {
-  color: var(--neo-accent-error);
+  color: var(--neo-color-error);
 }
 
 .color-error.dot {
-  background: var(--neo-accent-error);
+  background: var(--neo-color-error);
+}
+
+.color-info {
+  color: var(--neo-color-info);
+}
+
+.color-info.dot {
+  background: var(--neo-color-info);
+}
+
+/* Filled variants */
+.filled.color-default {
+  background: var(--neo-text-secondary);
+  color: var(--neo-bg);
+}
+
+.filled.color-primary {
+  background: var(--neo-color-primary);
+  color: var(--neo-color-on-primary);
+}
+
+.filled.color-primary-light {
+  background: var(--neo-color-primary-light);
+  color: var(--neo-color-primary-dark);
+}
+
+.filled.color-primary-dark {
+  background: var(--neo-color-primary-dark);
+  color: var(--neo-color-on-primary);
+}
+
+.filled.color-secondary {
+  background: var(--neo-color-secondary);
+  color: var(--neo-color-on-secondary);
+}
+
+.filled.color-secondary-light {
+  background: var(--neo-color-secondary-light);
+  color: var(--neo-color-secondary-dark);
+}
+
+.filled.color-secondary-dark {
+  background: var(--neo-color-secondary-dark);
+  color: var(--neo-color-on-secondary);
+}
+
+.filled.color-tertiary {
+  background: var(--neo-color-tertiary);
+  color: var(--neo-color-on-tertiary);
+}
+
+.filled.color-tertiary-light {
+  background: var(--neo-color-tertiary-light);
+  color: var(--neo-color-tertiary-dark);
+}
+
+.filled.color-tertiary-dark {
+  background: var(--neo-color-tertiary-dark);
+  color: white;
+}
+
+.filled.color-success {
+  background: var(--neo-color-success);
+  color: white;
+}
+
+.filled.color-warning {
+  background: var(--neo-color-warning);
+  color: var(--neo-color-on-tertiary);
+}
+
+.filled.color-error {
+  background: var(--neo-color-error);
+  color: white;
+}
+
+.filled.color-info {
+  background: var(--neo-color-info);
+  color: white;
+}
+
+/* Custom color - styles applied via inline style */
+.customColor {
+  /* Base styles for custom colors */
+}
+
+/* Filled variant shadows - softer to complement background */
+.filled.convex {
+  box-shadow:
+    -2px -2px 4px rgba(255, 255, 255, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.filled.concave {
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.1);
 }
 
 /* Icon */
