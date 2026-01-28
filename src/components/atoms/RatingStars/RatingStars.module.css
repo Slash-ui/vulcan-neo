@@ -56,36 +56,102 @@
   height: 100%;
 }
 
-/* Filled star */
-.filled {
-  color: var(--neo-accent-warning);
-}
+/* ===================
+   COLOR VARIANTS
+   =================== */
 
-/* Color variants */
-.color-default.filled {
+/* Default */
+.color-default.filled,
+.color-default.half {
   color: var(--neo-text);
 }
 
+/* Primary */
+.color-primary.filled,
+.color-primary.half {
+  color: var(--neo-color-primary);
+}
+
+/* Primary Light */
+.color-primary-light.filled,
+.color-primary-light.half {
+  color: var(--neo-color-primary-light);
+}
+
+/* Primary Dark */
+.color-primary-dark.filled,
+.color-primary-dark.half {
+  color: var(--neo-color-primary-dark);
+}
+
+/* Secondary */
+.color-secondary.filled,
+.color-secondary.half {
+  color: var(--neo-color-secondary);
+}
+
+/* Secondary Light */
+.color-secondary-light.filled,
+.color-secondary-light.half {
+  color: var(--neo-color-secondary-light);
+}
+
+/* Secondary Dark */
+.color-secondary-dark.filled,
+.color-secondary-dark.half {
+  color: var(--neo-color-secondary-dark);
+}
+
+/* Tertiary */
+.color-tertiary.filled,
+.color-tertiary.half {
+  color: var(--neo-color-tertiary);
+}
+
+/* Tertiary Light */
+.color-tertiary-light.filled,
+.color-tertiary-light.half {
+  color: var(--neo-color-tertiary-light);
+}
+
+/* Tertiary Dark */
+.color-tertiary-dark.filled,
+.color-tertiary-dark.half {
+  color: var(--neo-color-tertiary-dark);
+}
+
+/* Success */
+.color-success.filled,
+.color-success.half {
+  color: var(--neo-accent-success);
+}
+
+/* Warning */
 .color-warning.filled,
 .color-warning.half {
   color: var(--neo-accent-warning);
 }
 
-.color-primary.filled,
-.color-primary.half {
-  color: var(--neo-accent-primary);
+/* Error */
+.color-error.filled,
+.color-error.half {
+  color: var(--neo-accent-error);
 }
 
-/* Half star */
-.half {
-  color: var(--neo-accent-warning);
+/* Info */
+.color-info.filled,
+.color-info.half {
+  color: var(--neo-accent-info);
+}
+
+/* Custom color - uses inline style */
+.color-custom.filled,
+.color-custom.half {
+  /* Color applied via inline style */
 }
 
 /* Value text */
 .value {
-  font-family: var(--neo-font-family);
-  font-size: var(--neo-font-size-sm);
-  font-weight: var(--neo-font-weight-medium);
   color: var(--neo-text-secondary);
 }
 

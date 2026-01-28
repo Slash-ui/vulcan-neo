@@ -47,6 +47,10 @@ const meta: Meta<typeof ProgressBar> = {
         'info',
       ],
     },
+    customColor: {
+      control: 'color',
+      description: 'Custom hex color that overrides the color prop',
+    },
     showLabel: {
       control: 'boolean',
     },
@@ -207,4 +211,35 @@ export const DarkThemeColors: Story = {
       </Surface>
     ),
   ],
+};
+
+export const CustomColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Coral</span>
+        <ProgressBar value={70} customColor="#FF6B6B" aria-label="Coral" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Teal</span>
+        <ProgressBar value={65} customColor="#4ECDC4" aria-label="Teal" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Sky Blue</span>
+        <ProgressBar value={80} customColor="#45B7D1" aria-label="Sky Blue" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Sage</span>
+        <ProgressBar value={55} customColor="#96CEB4" aria-label="Sage" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Plum</span>
+        <ProgressBar value={90} customColor="#9B59B6" aria-label="Plum" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Gold</span>
+        <ProgressBar value={75} customColor="#F39C12" aria-label="Gold" />
+      </div>
+    </div>
+  ),
 };

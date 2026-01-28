@@ -24,7 +24,26 @@ const meta: Meta<typeof RatingStars> = {
     },
     color: {
       control: 'select',
-      options: ['default', 'warning', 'primary'],
+      options: [
+        'default',
+        'primary',
+        'primary-light',
+        'primary-dark',
+        'secondary',
+        'secondary-light',
+        'secondary-dark',
+        'tertiary',
+        'tertiary-light',
+        'tertiary-dark',
+        'success',
+        'warning',
+        'error',
+        'info',
+      ],
+    },
+    customColor: {
+      control: 'color',
+      description: 'Custom hex color that overrides the color prop',
     },
     readOnly: {
       control: 'boolean',
@@ -79,9 +98,62 @@ export const Sizes: Story = {
 export const Colors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <RatingStars color="default" defaultValue={4} />
-      <RatingStars color="warning" defaultValue={4} />
-      <RatingStars color="primary" defaultValue={4} />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Default</span>
+        <RatingStars color="default" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Primary</span>
+        <RatingStars color="primary" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Primary Light</span>
+        <RatingStars color="primary-light" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Primary Dark</span>
+        <RatingStars color="primary-dark" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Secondary</span>
+        <RatingStars color="secondary" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Secondary Light</span>
+        <RatingStars color="secondary-light" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Secondary Dark</span>
+        <RatingStars color="secondary-dark" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Tertiary</span>
+        <RatingStars color="tertiary" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Tertiary Light</span>
+        <RatingStars color="tertiary-light" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Tertiary Dark</span>
+        <RatingStars color="tertiary-dark" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Success</span>
+        <RatingStars color="success" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Warning</span>
+        <RatingStars color="warning" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Error</span>
+        <RatingStars color="error" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '120px', fontSize: '12px' }}>Info</span>
+        <RatingStars color="info" defaultValue={4} />
+      </div>
     </div>
   ),
 };
@@ -159,4 +231,56 @@ export const DarkTheme: Story = {
       </Surface>
     ),
   ],
+};
+
+export const DarkThemeColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <RatingStars color="primary" defaultValue={4} />
+      <RatingStars color="secondary" defaultValue={4} />
+      <RatingStars color="tertiary" defaultValue={4} />
+      <RatingStars color="success" defaultValue={4} />
+      <RatingStars color="warning" defaultValue={4} />
+      <RatingStars color="error" defaultValue={4} />
+      <RatingStars color="info" defaultValue={4} />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '3rem' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+export const CustomColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Coral</span>
+        <RatingStars customColor="#FF6B6B" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Teal</span>
+        <RatingStars customColor="#4ECDC4" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Sky Blue</span>
+        <RatingStars customColor="#45B7D1" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Plum</span>
+        <RatingStars customColor="#9B59B6" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Gold</span>
+        <RatingStars customColor="#F39C12" defaultValue={4} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Hot Pink</span>
+        <RatingStars customColor="#E91E63" defaultValue={4} />
+      </div>
+    </div>
+  ),
 };

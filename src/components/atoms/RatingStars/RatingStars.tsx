@@ -1,7 +1,23 @@
 import React, { forwardRef, useState, useCallback } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './RatingStars.module.css';
 
 export type RatingStarsSize = 'sm' | 'md' | 'lg';
+export type RatingStarsColor =
+  | 'default'
+  | 'primary'
+  | 'primary-light'
+  | 'primary-dark'
+  | 'secondary'
+  | 'secondary-light'
+  | 'secondary-dark'
+  | 'tertiary'
+  | 'tertiary-light'
+  | 'tertiary-dark'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info';
 
 export interface RatingStarsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
@@ -46,7 +62,12 @@ export interface RatingStarsProps extends Omit<React.HTMLAttributes<HTMLDivEleme
    * Color of the filled stars
    * @default 'warning'
    */
-  color?: 'default' | 'warning' | 'primary';
+  color?: RatingStarsColor;
+  /**
+   * Custom color (hex value). Overrides the color prop.
+   * @example "#FF5733" or "#F53"
+   */
+  customColor?: string;
   /**
    * Disabled state
    * @default false
@@ -71,6 +92,7 @@ export const RatingStars = forwardRef<HTMLDivElement, RatingStarsProps>(
       allowHalf = false,
       showValue = false,
       color = 'warning',
+      customColor,
       disabled = false,
       className,
       ...props
@@ -137,6 +159,8 @@ export const RatingStars = forwardRef<HTMLDivElement, RatingStarsProps>(
       styles[size],
     ].join(' ');
 
+    const colorClass = customColor ? 'color-custom' : `color-${color}`;
+
     return (
       <div ref={ref} className={containerClasses} {...props}>
         <div
@@ -150,16 +174,21 @@ export const RatingStars = forwardRef<HTMLDivElement, RatingStarsProps>(
             const isFilled = displayValue >= starValue;
             const isHalfFilled = allowHalf && displayValue >= starValue - 0.5 && displayValue < starValue;
 
+            const starStyle = customColor && (isFilled || isHalfFilled)
+              ? { color: customColor } as React.CSSProperties
+              : undefined;
+
             return (
               <button
                 key={index}
                 type="button"
                 className={[
                   styles.star,
-                  styles[`color-${color}`],
+                  styles[colorClass],
                   isFilled ? styles.filled : '',
                   isHalfFilled ? styles.half : '',
                 ].filter(Boolean).join(' ')}
+                style={starStyle}
                 onClick={() => handleClick(starValue)}
                 onMouseEnter={() => handleMouseEnter(starValue)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
@@ -198,9 +227,9 @@ export const RatingStars = forwardRef<HTMLDivElement, RatingStarsProps>(
           })}
         </div>
         {showValue && (
-          <span className={styles.value}>
+          <Typography variant="caption" className={styles.value}>
             {currentValue.toFixed(allowHalf ? 1 : 0)} / {max}
-          </span>
+          </Typography>
         )}
       </div>
     );

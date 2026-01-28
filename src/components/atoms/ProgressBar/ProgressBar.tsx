@@ -20,6 +20,55 @@ export type ProgressBarColor =
   | 'error'
   | 'info';
 
+/**
+ * Convert hex color to RGB values
+ */
+const hexToRgb = (hex: string): { r: number; g: number; b: number } | null => {
+  const cleanHex = hex.replace('#', '');
+  const fullHex = cleanHex.length === 3
+    ? cleanHex.split('').map(c => c + c).join('')
+    : cleanHex;
+
+  const result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(fullHex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
+};
+
+/**
+ * Lighten a color by a percentage
+ */
+const lightenColor = (hex: string, percent: number): string => {
+  const rgb = hexToRgb(hex);
+  if (!rgb) return hex;
+
+  const { r, g, b } = rgb;
+  const newR = Math.min(255, Math.round(r + (255 - r) * percent));
+  const newG = Math.min(255, Math.round(g + (255 - g) * percent));
+  const newB = Math.min(255, Math.round(b + (255 - b) * percent));
+
+  return `rgb(${newR}, ${newG}, ${newB})`;
+};
+
+/**
+ * Darken a color by a percentage
+ */
+const darkenColor = (hex: string, percent: number): string => {
+  const rgb = hexToRgb(hex);
+  if (!rgb) return hex;
+
+  const { r, g, b } = rgb;
+  const newR = Math.max(0, Math.round(r * (1 - percent)));
+  const newG = Math.max(0, Math.round(g * (1 - percent)));
+  const newB = Math.max(0, Math.round(b * (1 - percent)));
+
+  return `rgb(${newR}, ${newG}, ${newB})`;
+};
+
 export interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The current progress value (0-100)
@@ -50,6 +99,11 @@ export interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   color?: ProgressBarColor;
   /**
+   * Custom color (hex value). Overrides the color prop.
+   * @example "#FF5733" or "#F53"
+   */
+  customColor?: string;
+  /**
    * Whether to show the percentage label
    * @default false
    */
@@ -78,6 +132,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       size = 'sm',
       variant = 'glow',
       color = 'primary',
+      customColor,
       showLabel = false,
       formatLabel,
       className,
@@ -100,12 +155,38 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       styles[size],
     ].join(' ');
 
-    const colorClass = `color-${color}`;
+    const colorClass = customColor ? 'color-custom' : `color-${color}`;
     const fillClasses = [
       styles.fill,
       styles[variant],
       styles[colorClass],
     ].join(' ');
+
+    // Generate custom style for customColor
+    let fillStyle: React.CSSProperties = { width: `${percentage}%` };
+
+    if (customColor) {
+      const rgb = hexToRgb(customColor);
+      const lightColor = lightenColor(customColor, 0.3);
+      const darkColor10 = darkenColor(customColor, 0.1);
+      const darkColor20 = darkenColor(customColor, 0.2);
+
+      fillStyle = {
+        ...fillStyle,
+        background: `linear-gradient(180deg, ${lightColor} 0%, ${customColor} 30%, ${darkColor10} 70%, ${darkColor20} 100%)`,
+      };
+
+      if (variant === 'glow' && rgb) {
+        fillStyle.boxShadow = `
+          0 4px 8px rgba(0, 0, 0, 0.25),
+          0 2px 4px rgba(0, 0, 0, 0.15),
+          0 0 16px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.5),
+          0 0 32px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.3),
+          inset 0 2px 4px rgba(255, 255, 255, 0.4),
+          inset 0 -2px 4px rgba(0, 0, 0, 0.15)
+        `;
+      }
+    }
 
     const defaultFormatLabel = (v: number, m: number) =>
       `${Math.round((v / m) * 100)}%`;
@@ -126,7 +207,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         >
           <div
             className={fillClasses}
-            style={{ width: `${percentage}%` }}
+            style={fillStyle}
           />
         </div>
         {showLabel && (
