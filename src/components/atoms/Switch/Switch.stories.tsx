@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Sun, Moon, Volume2, VolumeX, Wifi, WifiOff, Eye, EyeOff } from 'lucide-react';
 import { Switch } from './Switch';
 import { Surface } from '../../foundation/Surface';
+import { iconMapSm, createIconArgType, Sun, Moon, Volume2, VolumeX, Wifi, WifiOff, Eye, EyeOff } from '../../../../.storybook/icons';
 
 const colorOptions = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'info'];
 
@@ -34,6 +34,8 @@ const meta: Meta<typeof Switch> = {
     showIcons: {
       control: 'boolean',
     },
+    checkedIcon: createIconArgType(iconMapSm, 'Icon for checked state'),
+    uncheckedIcon: createIconArgType(iconMapSm, 'Icon for unchecked state'),
     checkedColor: {
       control: 'select',
       options: colorOptions,
@@ -126,10 +128,10 @@ export const AllStates: Story = {
   ),
 };
 
-export const WithoutIcons: Story = {
+export const WithIcons: Story = {
   args: {
-    label: 'No icons',
-    showIcons: false,
+    label: 'With icons',
+    showIcons: true,
   },
 };
 
@@ -140,22 +142,26 @@ export const CustomIcons: Story = {
         label="Dark mode"
         checkedIcon={<Moon size={16} strokeWidth={3} />}
         uncheckedIcon={<Sun size={16} strokeWidth={3} />}
+        showIcons
       />
       <Switch
         label="Sound"
         checkedIcon={<Volume2 size={16} strokeWidth={3} />}
         uncheckedIcon={<VolumeX size={16} strokeWidth={3} />}
+        showIcons
         defaultChecked
       />
       <Switch
         label="WiFi"
         checkedIcon={<Wifi size={16} strokeWidth={3} />}
         uncheckedIcon={<WifiOff size={16} strokeWidth={3} />}
+        showIcons
       />
       <Switch
         label="Visibility"
         checkedIcon={<Eye size={16} strokeWidth={3} />}
         uncheckedIcon={<EyeOff size={16} strokeWidth={3} />}
+        showIcons
         defaultChecked
       />
     </div>
@@ -165,12 +171,13 @@ export const CustomIcons: Story = {
 export const IconVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <Switch label="With icons (default)" />
-      <Switch label="Without icons" showIcons={false} />
+      <Switch label="Without icons (default)" />
+      <Switch label="With default icons" showIcons />
       <Switch
         label="Custom icons"
         checkedIcon={<Moon size={16} strokeWidth={3} />}
         uncheckedIcon={<Sun size={16} strokeWidth={3} />}
+        showIcons
       />
     </div>
   ),
@@ -270,6 +277,7 @@ export const CustomColorsWithIcons: Story = {
         customUncheckedColor="#F59E0B"
         checkedIcon={<Moon size={16} strokeWidth={3} />}
         uncheckedIcon={<Sun size={16} strokeWidth={3} />}
+        showIcons
         defaultChecked
       />
       <Switch
@@ -278,6 +286,7 @@ export const CustomColorsWithIcons: Story = {
         customUncheckedColor="#94A3B8"
         checkedIcon={<Wifi size={16} strokeWidth={3} />}
         uncheckedIcon={<WifiOff size={16} strokeWidth={3} />}
+        showIcons
       />
       <Switch
         label="Sound"
@@ -285,6 +294,7 @@ export const CustomColorsWithIcons: Story = {
         customUncheckedColor="#EF4444"
         checkedIcon={<Volume2 size={16} strokeWidth={3} />}
         uncheckedIcon={<VolumeX size={16} strokeWidth={3} />}
+        showIcons
         defaultChecked
       />
     </div>

@@ -21,7 +21,7 @@ export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputEle
   label?: string;
   /**
    * The size of the switch
-   * @default 'md'
+   * @default 'sm'
    */
   size?: SwitchSize;
   /**
@@ -31,7 +31,7 @@ export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputEle
   labelPosition?: 'left' | 'right';
   /**
    * Whether to show icons inside the switch
-   * @default true
+   * @default false
    */
   showIcons?: boolean;
   /**
@@ -49,7 +49,7 @@ export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputEle
   checkedColor?: SwitchColor;
   /**
    * Color for the unchecked/off state
-   * @default 'error'
+   * @default 'info'
    */
   uncheckedColor?: SwitchColor;
   /**
@@ -90,13 +90,13 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (
     {
       label,
-      size = 'md',
+      size = 'sm',
       labelPosition = 'right',
-      showIcons = true,
+      showIcons = false,
       checkedIcon,
       uncheckedIcon,
       checkedColor = 'success',
-      uncheckedColor = 'error',
+      uncheckedColor = 'info',
       customCheckedColor,
       customUncheckedColor,
       className,
