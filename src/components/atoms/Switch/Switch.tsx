@@ -134,20 +134,18 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const defaultCheckedIcon = <Check size={iconSize} strokeWidth={3} />;
     const defaultUncheckedIcon = <X size={iconSize} strokeWidth={3} />;
 
-    // Build custom style object for custom colors
-    const customStyles: React.CSSProperties = { ...style };
-
-    if (customCheckedColor) {
-      const { gradient, iconColor } = generateGradientStyle(customCheckedColor);
-      customStyles['--switch-checked-gradient' as string] = gradient;
-      customStyles['--switch-checked-icon-color' as string] = iconColor;
-    }
-
-    if (customUncheckedColor) {
-      const { gradient, iconColor } = generateGradientStyle(customUncheckedColor);
-      customStyles['--switch-unchecked-gradient' as string] = gradient;
-      customStyles['--switch-unchecked-icon-color' as string] = iconColor;
-    }
+    // Build custom style object for custom colors (with CSS custom properties)
+    const customStyles = {
+      ...style,
+      ...(customCheckedColor && {
+        '--switch-checked-gradient': generateGradientStyle(customCheckedColor).gradient,
+        '--switch-checked-icon-color': generateGradientStyle(customCheckedColor).iconColor,
+      }),
+      ...(customUncheckedColor && {
+        '--switch-unchecked-gradient': generateGradientStyle(customUncheckedColor).gradient,
+        '--switch-unchecked-icon-color': generateGradientStyle(customUncheckedColor).iconColor,
+      }),
+    } as React.CSSProperties;
 
     const useCustomColors = customCheckedColor || customUncheckedColor;
 
