@@ -15,14 +15,22 @@
 }
 
 .label {
-  font-family: var(--neo-font-family);
-  font-size: var(--neo-font-size-md);
   color: var(--neo-text);
 }
 
 .switch {
   position: relative;
   display: inline-flex;
+  border-radius: var(--neo-radius-full);
+  padding: 3px;
+  background: var(--neo-bg);
+
+  /* Outer convex rim */
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .input {
@@ -32,98 +40,206 @@
   height: 0;
 }
 
-/* Track - Concave (sunken) appearance */
+/* Track - Inset colored background */
 .track {
+  position: relative;
   display: flex;
   align-items: center;
-  background: var(--neo-bg);
+  justify-content: space-between;
   border-radius: var(--neo-radius-full);
-  transition: background-color var(--neo-transition-normal);
+  overflow: hidden;
 
-  /* Inset shadow for sunken track */
+  /* Default unchecked background - uses CSS variable */
+  background: var(--switch-unchecked-gradient,
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--neo-accent-error) 80%, white) 0%,
+      var(--neo-accent-error) 50%,
+      color-mix(in srgb, var(--neo-accent-error) 85%, black) 100%
+    )
+  );
+
+  /* Inset shadow for depth */
   box-shadow:
-    inset 4px 4px 8px var(--neo-shadow-dark),
-    inset -4px -4px 8px var(--neo-shadow-light);
+    inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.1);
 }
 
-/* Thumb - Convex (elevated) appearance */
+/* Checked sliding background overlay */
+.track::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--switch-checked-gradient,
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--neo-accent-success) 80%, white) 0%,
+      var(--neo-accent-success) 50%,
+      color-mix(in srgb, var(--neo-accent-success) 85%, black) 100%
+    )
+  );
+  transform: translateX(-100%);
+  transition: transform var(--neo-transition-normal);
+  z-index: 0;
+}
+
+/* Icons */
+.iconCheck,
+.iconX {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition:
+    transform var(--neo-transition-normal),
+    opacity var(--neo-transition-normal);
+}
+
+.iconCheck {
+  color: var(--switch-checked-icon-color, color-mix(in srgb, var(--neo-accent-success) 70%, black));
+  transform: translateX(-150%);
+  opacity: 0;
+}
+
+.iconX {
+  color: var(--switch-unchecked-icon-color, color-mix(in srgb, var(--neo-accent-error) 60%, black));
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Thumb - Convex (elevated) white button */
 .thumb {
+  position: absolute;
   border-radius: 50%;
-  background: var(--neo-bg);
-  transition: transform var(--neo-transition-normal),
-              box-shadow var(--neo-transition-normal);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #e8e8e8 100%);
+  transition:
+    transform var(--neo-transition-normal),
+    box-shadow var(--neo-transition-normal);
 
-  /* Elevated shadow */
+  /* Convex shadow */
   box-shadow:
-    -2px -2px 4px var(--neo-shadow-light),
-    2px 2px 4px var(--neo-shadow-dark);
+    -2px -2px 4px rgba(255, 255, 255, 0.8),
+    2px 2px 4px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Sizes */
+/* ===================
+   SIZES
+   =================== */
+
+/* Small */
 .sm .track {
-  width: 36px;
-  height: 20px;
-  padding: 2px;
+  width: 44px;
+  height: 24px;
+  padding: 0 6px;
 }
 
 .sm .thumb {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+  top: 3px;
+  left: 3px;
 }
 
+.sm:has(.input:checked) .thumb {
+  transform: translateX(32px);
+}
+
+/* Medium */
 .md .track {
-  width: 48px;
-  height: 26px;
-  padding: 3px;
+  width: 56px;
+  height: 30px;
+  padding: 0 8px;
 }
 
 .md .thumb {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  top: 3px;
+  left: 3px;
 }
 
+.md:has(.input:checked) .thumb {
+  transform: translateX(42px);
+}
+
+/* Large */
 .lg .track {
-  width: 60px;
-  height: 32px;
-  padding: 4px;
+  width: 68px;
+  height: 36px;
+  padding: 0 10px;
 }
 
 .lg .thumb {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
+  top: 3px;
+  left: 3px;
 }
 
-/* Checked state - thumb moves right */
-.input:checked + .track .thumb {
-  transform: translateX(100%);
-  background: var(--neo-accent-primary);
-  box-shadow:
-    -2px -2px 4px rgba(108, 92, 231, 0.3),
-    2px 2px 4px rgba(108, 92, 231, 0.5),
-    0 0 8px rgba(108, 92, 231, 0.4);
+.lg:has(.input:checked) .thumb {
+  transform: translateX(52px);
 }
 
-/* Focus state */
-.input:focus-visible + .track {
+/* ===================
+   CHECKED STATE
+   =================== */
+
+/* Slide green background in */
+.switch:has(.input:checked) .track::before {
+  transform: translateX(0);
+}
+
+/* Slide check icon in from left */
+.switch:has(.input:checked) .iconCheck {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Slide X icon out to right */
+.switch:has(.input:checked) .iconX {
+  transform: translateX(150%);
+  opacity: 0;
+}
+
+/* ===================
+   FOCUS STATE
+   =================== */
+
+.switch:has(.input:focus-visible) .track {
   outline: 2px solid var(--neo-accent-primary);
-  outline-offset: 2px;
+  outline-offset: 4px;
 }
 
-/* Hover state */
-.container:hover:not(.disabled) .thumb {
-  box-shadow:
-    -3px -3px 6px var(--neo-shadow-light),
-    3px 3px 6px var(--neo-shadow-dark);
-}
+/* ===================
+   ACTIVE/PRESSED STATE
+   =================== */
 
-/* Active/pressed state */
 .container:active:not(.disabled) .thumb {
   box-shadow:
-    -1px -1px 2px var(--neo-shadow-light),
-    1px 1px 2px var(--neo-shadow-dark);
+    -1px -1px 2px rgba(255, 255, 255, 0.6),
+    1px 1px 2px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.08);
+  transform: scale(0.95);
 }
 
-/* Disabled state */
+.container:active:not(.disabled) .sm:has(.input:checked) .thumb {
+  transform: translateX(32px) scale(0.95);
+}
+
+.container:active:not(.disabled) .md:has(.input:checked) .thumb {
+  transform: translateX(42px) scale(0.95);
+}
+
+.container:active:not(.disabled) .lg:has(.input:checked) .thumb {
+  transform: translateX(52px) scale(0.95);
+}
+
+/* ===================
+   DISABLED STATE
+   =================== */
+
 .disabled {
   cursor: not-allowed;
   opacity: 0.6;
@@ -131,4 +247,222 @@
 
 .disabled .label {
   color: var(--neo-text-disabled);
+}
+
+.disabled .track {
+  background: var(--neo-text-disabled);
+}
+
+.disabled .track::before {
+  background: var(--neo-text-disabled);
+}
+
+/* ===================
+   UNCHECKED COLOR VARIANTS
+   =================== */
+
+.unchecked-primary .track {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-color-primary) 80%, white) 0%,
+    var(--neo-color-primary) 50%,
+    color-mix(in srgb, var(--neo-color-primary) 85%, black) 100%
+  );
+}
+
+.unchecked-primary .iconX {
+  color: color-mix(in srgb, var(--neo-color-primary) 60%, black);
+}
+
+.unchecked-secondary .track {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-color-secondary) 80%, white) 0%,
+    var(--neo-color-secondary) 50%,
+    color-mix(in srgb, var(--neo-color-secondary) 85%, black) 100%
+  );
+}
+
+.unchecked-secondary .iconX {
+  color: color-mix(in srgb, var(--neo-color-secondary) 60%, black);
+}
+
+.unchecked-tertiary .track {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-color-tertiary) 80%, white) 0%,
+    var(--neo-color-tertiary) 50%,
+    color-mix(in srgb, var(--neo-color-tertiary) 85%, black) 100%
+  );
+}
+
+.unchecked-tertiary .iconX {
+  color: color-mix(in srgb, var(--neo-color-tertiary) 60%, black);
+}
+
+.unchecked-success .track {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-accent-success) 80%, white) 0%,
+    var(--neo-accent-success) 50%,
+    color-mix(in srgb, var(--neo-accent-success) 85%, black) 100%
+  );
+}
+
+.unchecked-success .iconX {
+  color: color-mix(in srgb, var(--neo-accent-success) 60%, black);
+}
+
+.unchecked-warning .track {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-accent-warning) 80%, white) 0%,
+    var(--neo-accent-warning) 50%,
+    color-mix(in srgb, var(--neo-accent-warning) 85%, black) 100%
+  );
+}
+
+.unchecked-warning .iconX {
+  color: color-mix(in srgb, var(--neo-accent-warning) 60%, black);
+}
+
+.unchecked-error .track {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-accent-error) 80%, white) 0%,
+    var(--neo-accent-error) 50%,
+    color-mix(in srgb, var(--neo-accent-error) 85%, black) 100%
+  );
+}
+
+.unchecked-error .iconX {
+  color: color-mix(in srgb, var(--neo-accent-error) 60%, black);
+}
+
+.unchecked-info .track {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-accent-info) 80%, white) 0%,
+    var(--neo-accent-info) 50%,
+    color-mix(in srgb, var(--neo-accent-info) 85%, black) 100%
+  );
+}
+
+.unchecked-info .iconX {
+  color: color-mix(in srgb, var(--neo-accent-info) 60%, black);
+}
+
+/* ===================
+   CHECKED COLOR VARIANTS
+   =================== */
+
+.checked-primary .track::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-color-primary) 80%, white) 0%,
+    var(--neo-color-primary) 50%,
+    color-mix(in srgb, var(--neo-color-primary) 85%, black) 100%
+  );
+}
+
+.checked-primary .iconCheck {
+  color: color-mix(in srgb, var(--neo-color-primary) 70%, black);
+}
+
+.checked-secondary .track::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-color-secondary) 80%, white) 0%,
+    var(--neo-color-secondary) 50%,
+    color-mix(in srgb, var(--neo-color-secondary) 85%, black) 100%
+  );
+}
+
+.checked-secondary .iconCheck {
+  color: color-mix(in srgb, var(--neo-color-secondary) 70%, black);
+}
+
+.checked-tertiary .track::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-color-tertiary) 80%, white) 0%,
+    var(--neo-color-tertiary) 50%,
+    color-mix(in srgb, var(--neo-color-tertiary) 85%, black) 100%
+  );
+}
+
+.checked-tertiary .iconCheck {
+  color: color-mix(in srgb, var(--neo-color-tertiary) 70%, black);
+}
+
+.checked-success .track::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-accent-success) 80%, white) 0%,
+    var(--neo-accent-success) 50%,
+    color-mix(in srgb, var(--neo-accent-success) 85%, black) 100%
+  );
+}
+
+.checked-success .iconCheck {
+  color: color-mix(in srgb, var(--neo-accent-success) 70%, black);
+}
+
+.checked-warning .track::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-accent-warning) 80%, white) 0%,
+    var(--neo-accent-warning) 50%,
+    color-mix(in srgb, var(--neo-accent-warning) 85%, black) 100%
+  );
+}
+
+.checked-warning .iconCheck {
+  color: color-mix(in srgb, var(--neo-accent-warning) 70%, black);
+}
+
+.checked-error .track::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-accent-error) 80%, white) 0%,
+    var(--neo-accent-error) 50%,
+    color-mix(in srgb, var(--neo-accent-error) 85%, black) 100%
+  );
+}
+
+.checked-error .iconCheck {
+  color: color-mix(in srgb, var(--neo-accent-error) 70%, black);
+}
+
+.checked-info .track::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--neo-accent-info) 80%, white) 0%,
+    var(--neo-accent-info) 50%,
+    color-mix(in srgb, var(--neo-accent-info) 85%, black) 100%
+  );
+}
+
+.checked-info .iconCheck {
+  color: color-mix(in srgb, var(--neo-accent-info) 70%, black);
+}
+
+/* ===================
+   CUSTOM COLORS
+   =================== */
+
+.customColors .track {
+  background: var(--switch-unchecked-gradient);
+}
+
+.customColors .track::before {
+  background: var(--switch-checked-gradient);
+}
+
+.customColors .iconCheck {
+  color: var(--switch-checked-icon-color);
+}
+
+.customColors .iconX {
+  color: var(--switch-unchecked-icon-color);
 }
