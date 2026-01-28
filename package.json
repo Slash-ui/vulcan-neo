@@ -1,6 +1,6 @@
 {
   "name": "@slashui/vulcan-neo",
-  "version": "0.1.0",
+  "version": "1.0.2",
   "description": "A Neomorphism component library for React",
   "type": "module",
   "main": "./dist/index.cjs",
