@@ -78,8 +78,10 @@ export const SlideoutMenu = forwardRef<HTMLDivElement, SlideoutMenuProps>(
       className,
       ...props
     },
-    _ref
+    ref
   ) => {
+    // Forward ref is captured but we use internal slideoutRef for focus management
+    void ref;
     const slideoutRef = useRef<HTMLDivElement>(null);
     const previousActiveElement = useRef<Element | null>(null);
 

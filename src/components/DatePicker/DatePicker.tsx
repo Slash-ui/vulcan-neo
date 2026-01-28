@@ -172,7 +172,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              !disabled && setIsOpen(!isOpen);
+              if (!disabled) {
+                setIsOpen(!isOpen);
+              }
             }
           }}
           {...props}

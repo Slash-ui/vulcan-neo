@@ -71,8 +71,10 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       className,
       ...props
     },
-    _ref
+    ref
   ) => {
+    // Forward ref is captured but we use internal modalRef for focus management
+    void ref;
     const modalRef = useRef<HTMLDivElement>(null);
     const previousActiveElement = useRef<Element | null>(null);
 

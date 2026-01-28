@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useRef, useEffect } from 'react';
+import React, { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
 import styles from './Dropdown.module.css';
 
 export type DropdownPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
@@ -70,12 +70,12 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const handleOpenChange = (newOpen: boolean) => {
+    const handleOpenChange = useCallback((newOpen: boolean) => {
       if (controlledOpen === undefined) {
         setInternalOpen(newOpen);
       }
       onOpenChange?.(newOpen);
-    };
+    }, [controlledOpen, onOpenChange]);
 
     const handleSelect = (itemId: string) => {
       onSelect?.(itemId);
@@ -92,7 +92,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 
       document.addEventListener('mousedown', handleClickOutside);
       return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
+    }, [handleOpenChange]);
 
     // Close on escape
     useEffect(() => {
@@ -106,7 +106,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         document.addEventListener('keydown', handleEscape);
         return () => document.removeEventListener('keydown', handleEscape);
       }
-    }, [isOpen]);
+    }, [isOpen, handleOpenChange]);
 
     const containerClasses = [
       styles.container,

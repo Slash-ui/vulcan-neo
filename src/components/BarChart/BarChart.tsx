@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
 import styles from './BarChart.module.css';
 
@@ -80,7 +80,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
     ref
   ) => {
     const svgRef = useRef<SVGSVGElement>(null);
-    const margin = { top: 20, right: 30, bottom: 50, left: horizontal ? 100 : 60 };
+    const margin = useMemo(() => ({ top: 20, right: 30, bottom: 50, left: horizontal ? 100 : 60 }), [horizontal]);
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 

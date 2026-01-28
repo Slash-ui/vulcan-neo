@@ -119,16 +119,24 @@ export const FeaturedVariant: Story = {
 export const MinimalInfo: Story = {
   args: {
     title: 'The Team',
-    members: teamMembers.map(({ bio, ...m }) => m).slice(0, 4),
+    members: teamMembers.slice(0, 4).map((m) => ({
+      name: m.name,
+      role: m.role,
+      image: m.image,
+      social: m.social,
+    })),
   },
 };
 
 export const WithoutSocial: Story = {
   args: {
     title: 'Our People',
-    members: teamMembers
-      .map(({ social, ...m }) => m)
-      .slice(0, 4),
+    members: teamMembers.slice(0, 4).map((m) => ({
+      name: m.name,
+      role: m.role,
+      image: m.image,
+      bio: m.bio,
+    })),
   },
 };
 

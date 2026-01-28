@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Notification.module.css';
 
@@ -101,6 +101,14 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
     const [isVisible, setIsVisible] = useState(open);
     const [isLeaving, setIsLeaving] = useState(false);
 
+    const handleClose = useCallback(() => {
+      setIsLeaving(true);
+      setTimeout(() => {
+        setIsVisible(false);
+        onClose?.();
+      }, 200);
+    }, [onClose]);
+
     useEffect(() => {
       setIsVisible(open);
       setIsLeaving(false);
@@ -114,15 +122,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
       }, duration);
 
       return () => clearTimeout(timer);
-    }, [isVisible, duration]);
-
-    const handleClose = () => {
-      setIsLeaving(true);
-      setTimeout(() => {
-        setIsVisible(false);
-        onClose?.();
-      }, 200);
-    };
+    }, [isVisible, duration, handleClose]);
 
     if (!isVisible) return null;
 

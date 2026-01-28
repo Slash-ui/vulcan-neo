@@ -125,7 +125,14 @@ export const FeaturedLayout: Story = {
 export const MinimalPosts: Story = {
   args: {
     title: 'Updates',
-    posts: blogPosts.map(({ author, excerpt, ...post }) => post),
+    posts: blogPosts.map((post) => ({
+      title: post.title,
+      image: post.image,
+      category: post.category,
+      date: post.date,
+      readTime: post.readTime,
+      href: post.href,
+    })),
   },
 };
 

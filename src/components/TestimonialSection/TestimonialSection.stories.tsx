@@ -121,9 +121,13 @@ export const MasonryVariant: Story = {
 export const WithoutRatings: Story = {
   args: {
     title: 'Trusted by innovators',
-    testimonials: testimonials
-      .slice(0, 3)
-      .map(({ rating, ...t }) => t),
+    testimonials: testimonials.slice(0, 3).map((t) => ({
+      quote: t.quote,
+      author: t.author,
+      role: t.role,
+      company: t.company,
+      avatar: t.avatar,
+    })),
   },
 };
 

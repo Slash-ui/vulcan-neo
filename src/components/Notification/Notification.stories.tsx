@@ -118,7 +118,7 @@ export const Positions: Story = {
           <Notification
             open={true}
             onClose={() => setPosition(null)}
-            position={position as any}
+            position={position as 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center'}
             title="Position Test"
           >
             This notification appears at {position}.

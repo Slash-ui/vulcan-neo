@@ -221,7 +221,7 @@ export const Messaging = forwardRef<HTMLDivElement, MessagingProps>(
   (
     {
       messages,
-      currentUserId,
+      // currentUserId can be used for future message positioning logic
       className,
       ...props
     },

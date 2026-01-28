@@ -40,20 +40,22 @@ export function adjustBrightness(hex: string, percent: number): string {
 /**
  * Generates light shadow color from background
  * @param bgColor - Background hex color
- * @param intensity - Shadow intensity (0-1)
+ * @param intensity - Shadow intensity (0-1), affects brightness adjustment
  */
-export function getLightShadow(bgColor: string, _intensity = 0.8): string {
-  const lightColor = adjustBrightness(bgColor, 15);
+export function getLightShadow(bgColor: string, intensity = 0.8): string {
+  const adjustment = Math.round(15 * intensity);
+  const lightColor = adjustBrightness(bgColor, adjustment);
   return `${lightColor}`;
 }
 
 /**
  * Generates dark shadow color from background
  * @param bgColor - Background hex color
- * @param intensity - Shadow intensity (0-1)
+ * @param intensity - Shadow intensity (0-1), affects darkness adjustment
  */
-export function getDarkShadow(bgColor: string, _intensity = 0.6): string {
-  const darkColor = adjustBrightness(bgColor, -15);
+export function getDarkShadow(bgColor: string, intensity = 0.6): string {
+  const adjustment = Math.round(-15 * intensity);
+  const darkColor = adjustBrightness(bgColor, adjustment);
   return `${darkColor}`;
 }
 

@@ -136,8 +136,6 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
       }
     }, [open]);
 
-    if (!open) return null;
-
     const handleSelect = (item: CommandItem) => {
       if (item.disabled) return;
       item.onSelect?.();
@@ -166,9 +164,10 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
 
     // Scroll selected item into view
     useEffect(() => {
+      if (!open) return;
       const selectedElement = listRef.current?.querySelector(`[data-index="${selectedIndex}"]`);
       selectedElement?.scrollIntoView({ block: 'nearest' });
-    }, [selectedIndex]);
+    }, [selectedIndex, open]);
 
     const handleOverlayClick = (event: React.MouseEvent) => {
       if (event.target === event.currentTarget) {
@@ -182,6 +181,8 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
         <line x1="21" y1="21" x2="16.65" y2="16.65" />
       </svg>
     );
+
+    if (!open) return null;
 
     let itemIndex = 0;
 
