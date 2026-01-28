@@ -16,8 +16,8 @@ describe('Avatar', () => {
 
   it('renders fallback on image error', () => {
     render(<Avatar src="invalid.jpg" fallback="JD" data-testid="avatar" />);
-    const img = screen.getByRole('img');
-    fireEvent.error(img);
+    const img = screen.getByTestId('avatar').querySelector('img');
+    fireEvent.error(img!);
     expect(screen.getByText('JD')).toBeInTheDocument();
   });
 
