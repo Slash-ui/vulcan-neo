@@ -5,7 +5,7 @@ const theme = create({
   base: 'light',
   brandTitle: 'Slash UI - Neomorphic Design System',
   brandUrl: '/',
-  brandImage: './logo.svg',
+  brandImage: 'https://www.slashui.com/logo/logo-slashui-full-light.svg',
   brandTarget: '_self',
 
   // UI colors
