@@ -1,8 +1,24 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './ProgressBar.module.css';
 
 export type ProgressBarSize = 'sm' | 'md' | 'lg';
 export type ProgressBarVariant = 'default' | 'gradient' | 'glow';
+export type ProgressBarColor =
+  | 'default'
+  | 'primary'
+  | 'primary-light'
+  | 'primary-dark'
+  | 'secondary'
+  | 'secondary-light'
+  | 'secondary-dark'
+  | 'tertiary'
+  | 'tertiary-light'
+  | 'tertiary-dark'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info';
 
 export interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -17,7 +33,7 @@ export interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
   max?: number;
   /**
    * The size of the progress bar
-   * @default 'md'
+   * @default 'sm'
    */
   size?: ProgressBarSize;
   /**
@@ -25,9 +41,14 @@ export interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * - default: Simple elevated indicator
    * - gradient: Gradient fill
    * - glow: Glowing indicator
-   * @default 'default'
+   * @default 'glow'
    */
   variant?: ProgressBarVariant;
+  /**
+   * The color of the progress fill
+   * @default 'primary'
+   */
+  color?: ProgressBarColor;
   /**
    * Whether to show the percentage label
    * @default false
@@ -54,8 +75,9 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     {
       value = 0,
       max = 100,
-      size = 'md',
-      variant = 'default',
+      size = 'sm',
+      variant = 'glow',
+      color = 'primary',
       showLabel = false,
       formatLabel,
       className,
@@ -78,9 +100,11 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       styles[size],
     ].join(' ');
 
+    const colorClass = `color-${color}`;
     const fillClasses = [
       styles.fill,
       styles[variant],
+      styles[colorClass],
     ].join(' ');
 
     const defaultFormatLabel = (v: number, m: number) =>
@@ -106,7 +130,9 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
           />
         </div>
         {showLabel && (
-          <span className={styles.label}>{label}</span>
+          <Typography variant="caption" className={styles.label}>
+            {label}
+          </Typography>
         )}
       </div>
     );

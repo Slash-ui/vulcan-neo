@@ -28,6 +28,25 @@ const meta: Meta<typeof ProgressBar> = {
       control: 'select',
       options: ['default', 'gradient', 'glow'],
     },
+    color: {
+      control: 'select',
+      options: [
+        'default',
+        'primary',
+        'primary-light',
+        'primary-dark',
+        'secondary',
+        'secondary-light',
+        'secondary-dark',
+        'tertiary',
+        'tertiary-light',
+        'tertiary-dark',
+        'success',
+        'warning',
+        'error',
+        'info',
+      ],
+    },
     showLabel: {
       control: 'boolean',
     },
@@ -72,6 +91,62 @@ export const Variants: Story = {
   ),
 };
 
+export const Colors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <ProgressBar value={70} color="default" aria-label="Default" />
+      <ProgressBar value={70} color="primary" aria-label="Primary" />
+      <ProgressBar value={70} color="primary-light" aria-label="Primary Light" />
+      <ProgressBar value={70} color="primary-dark" aria-label="Primary Dark" />
+      <ProgressBar value={70} color="secondary" aria-label="Secondary" />
+      <ProgressBar value={70} color="secondary-light" aria-label="Secondary Light" />
+      <ProgressBar value={70} color="secondary-dark" aria-label="Secondary Dark" />
+      <ProgressBar value={70} color="tertiary" aria-label="Tertiary" />
+      <ProgressBar value={70} color="tertiary-light" aria-label="Tertiary Light" />
+      <ProgressBar value={70} color="tertiary-dark" aria-label="Tertiary Dark" />
+      <ProgressBar value={70} color="success" aria-label="Success" />
+      <ProgressBar value={70} color="warning" aria-label="Warning" />
+      <ProgressBar value={70} color="error" aria-label="Error" />
+      <ProgressBar value={70} color="info" aria-label="Info" />
+    </div>
+  ),
+};
+
+export const ColorsWithLabels: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Primary</span>
+        <ProgressBar value={65} color="primary" showLabel aria-label="Primary" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Secondary</span>
+        <ProgressBar value={45} color="secondary" showLabel aria-label="Secondary" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Tertiary</span>
+        <ProgressBar value={80} color="tertiary" showLabel aria-label="Tertiary" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Success</span>
+        <ProgressBar value={100} color="success" showLabel aria-label="Success" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Warning</span>
+        <ProgressBar value={55} color="warning" showLabel aria-label="Warning" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Error</span>
+        <ProgressBar value={25} color="error" showLabel aria-label="Error" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Info</span>
+        <ProgressBar value={90} color="info" showLabel aria-label="Info" />
+      </div>
+    </div>
+  ),
+};
+
 export const CustomLabel: Story = {
   args: {
     value: 3,
@@ -94,7 +169,7 @@ export const Complete: Story = {
   args: {
     value: 100,
     showLabel: true,
-    variant: 'glow',
+    color: 'success',
     'aria-label': 'Complete',
   },
 };
@@ -102,7 +177,6 @@ export const Complete: Story = {
 export const DarkTheme: Story = {
   args: {
     value: 70,
-    variant: 'gradient',
     showLabel: true,
   },
   decorators: [
@@ -112,9 +186,25 @@ export const DarkTheme: Story = {
       </Surface>
     ),
   ],
-  globals: {
-    backgrounds: {
-      value: "neomorphic-dark"
-    }
-  },
+};
+
+export const DarkThemeColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <ProgressBar value={70} color="primary" aria-label="Primary" />
+      <ProgressBar value={70} color="secondary" aria-label="Secondary" />
+      <ProgressBar value={70} color="tertiary" aria-label="Tertiary" />
+      <ProgressBar value={70} color="success" aria-label="Success" />
+      <ProgressBar value={70} color="warning" aria-label="Warning" />
+      <ProgressBar value={70} color="error" aria-label="Error" />
+      <ProgressBar value={70} color="info" aria-label="Info" />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '3rem', maxWidth: '400px' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
 };
