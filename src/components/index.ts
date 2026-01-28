@@ -4,6 +4,14 @@
 export { Surface } from './foundation/Surface';
 export type { SurfaceProps } from './foundation/Surface';
 
+export { Typography } from './foundation/Typography';
+export type {
+  TypographyProps,
+  TypographyVariant,
+  TypographyColor,
+  TypographyAlign,
+} from './foundation/Typography';
+
 // ============================================================================
 // ATOMS
 // ============================================================================

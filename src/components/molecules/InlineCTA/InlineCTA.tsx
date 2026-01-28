@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './InlineCTA.module.css';
 
 export type InlineCTAVariant = 'default' | 'highlight' | 'gradient';
@@ -87,8 +88,14 @@ export const InlineCTA = forwardRef<HTMLDivElement, InlineCTAProps>(
         {icon && <div className={styles.icon}>{icon}</div>}
 
         <div className={styles.content}>
-          <h3 className={styles.title}>{title}</h3>
-          {description && <p className={styles.description}>{description}</p>}
+          <Typography variant="h6" className={styles.title} component="h3">
+            {title}
+          </Typography>
+          {description && (
+            <Typography variant="body2" color="secondary" className={styles.description}>
+              {description}
+            </Typography>
+          )}
         </div>
 
         {(primaryAction || secondaryAction) && (

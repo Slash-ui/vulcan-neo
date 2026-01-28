@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './EmptyState.module.css';
 
 export type EmptyStateSize = 'sm' | 'md' | 'lg';
@@ -74,8 +75,16 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
         {icon && <div className={styles.icon}>{icon}</div>}
 
         <div className={styles.content}>
-          {title && <h3 className={styles.title}>{title}</h3>}
-          {description && <p className={styles.description}>{description}</p>}
+          {title && (
+            <Typography variant="h5" className={styles.title}>
+              {title}
+            </Typography>
+          )}
+          {description && (
+            <Typography variant="body2" color="secondary" className={styles.description}>
+              {description}
+            </Typography>
+          )}
           {children && <div className={styles.customContent}>{children}</div>}
         </div>
 

@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Alert.module.css';
 
 export type AlertVariant = 'info' | 'success' | 'warning' | 'error';
@@ -100,8 +101,16 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         <span className={styles.icon}>{icon || defaultIcons[variant]}</span>
 
         <div className={styles.content}>
-          {title && <div className={styles.title}>{title}</div>}
-          {children && <div className={styles.message}>{children}</div>}
+          {title && (
+            <Typography variant="subtitle1" className={styles.title} component="div">
+              {title}
+            </Typography>
+          )}
+          {children && (
+            <Typography variant="body2" color="inherit" className={styles.message} component="div">
+              {children}
+            </Typography>
+          )}
         </div>
 
         {action && <div className={styles.action}>{action}</div>}
