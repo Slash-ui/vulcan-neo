@@ -480,6 +480,7 @@ The full library is ~80KB gzipped. With tree-shaking, you only pay for what you 
 
 ## Links
 
+- [Website](https://www.slashui.com/)
 - [Documentation (Storybook)](https://slash-ui.github.io/vulcan-neo)
 - [npm Package](https://www.npmjs.com/package/@slashui/vulcan-neo)
 - [GitHub Repository](https://github.com/Slash-ui/vulcan-neo)
@@ -490,14 +491,15 @@ The full library is ~80KB gzipped. With tree-shaking, you only pay for what you 
 
 ## License
 
-MIT © [Slash UI](https://github.com/Slash-ui)
+MIT © [Slash UI](https://www.slashui.com/)
 
 ---
 
 <p align="center">
-  Made with ❤️ by the Slash UI team
+  Made with ❤️ by the <a href="https://www.slashui.com/">Slash UI</a> team
 </p>
 
 <p align="center">
+  <a href="https://www.slashui.com/">Website</a> •
   <a href="https://github.com/Slash-ui/vulcan-neo/stargazers">⭐ Star us on GitHub</a>
 </p>

@@ -35,6 +35,17 @@ jobs:
           cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Set version from tag
+        id: version
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION="${GITHUB_REF_NAME#v}"
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
+          npm version "$VERSION" --no-git-tag-version
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
@@ -62,3 +73,12 @@ jobs:
         with:
           tag_name: ${{ github.event.inputs.version && format('v{0}', github.event.inputs.version) || github.ref_name }}
           generate_release_notes: true
+
+      - name: Commit version update
+        run: |
+          git config user.name "Amin Shariati"
+          git config user.email "amin.shariati@gmail.com"
+          git add package.json
+          git diff --cached --quiet && echo "No version change to commit" && exit 0
+          git commit -m "build: Update version to ${{ steps.version.outputs.VERSION }}"
+          git push origin HEAD:main
