@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SocialButton } from './SocialButton';
 import { Surface } from '../../foundation/Surface';
+import { iconMapLg, createIconArgType } from '../../../../.storybook/icons';
 
 const meta: Meta<typeof SocialButton> = {
   title: 'Atoms/SocialButton',
@@ -14,6 +15,7 @@ const meta: Meta<typeof SocialButton> = {
     ),
   ],
   argTypes: {
+    icon: createIconArgType(iconMapLg, 'Icon to display'),
     variant: {
       control: 'select',
       options: ['convex', 'flat'],
@@ -38,7 +40,7 @@ const meta: Meta<typeof SocialButton> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Sample icons (consumer would provide their own)
+// Sample brand icons for social providers
 const GoogleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24">
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -68,8 +70,8 @@ const TwitterIcon = () => (
 
 export const Default: Story = {
   args: {
-    icon: <GoogleIcon />,
-    children: 'Continue with Google',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Continue with Account',
     variant: 'convex',
     size: 'md',
     elevation: 'mid',
@@ -108,8 +110,8 @@ export const Variants: Story = {
 
 export const FullWidth: Story = {
   args: {
-    icon: <GoogleIcon />,
-    children: 'Continue with Google',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Continue with Account',
     fullWidth: true,
   },
   decorators: [
@@ -123,20 +125,38 @@ export const FullWidth: Story = {
 
 export const Disabled: Story = {
   args: {
-    icon: <GoogleIcon />,
-    children: 'Continue with Google',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Continue with Account',
     disabled: true,
   },
 };
 
 export const DarkTheme: Story = {
   args: {
-    icon: <GoogleIcon />,
-    children: 'Continue with Google',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Continue with Account',
   },
   decorators: [
     (Story) => (
       <Surface theme="dark" style={{ padding: '3rem', display: 'flex', gap: '1rem' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+export const DarkThemeSocialProviders: Story = {
+  render: () => (
+    <>
+      <SocialButton icon={<GoogleIcon />}>Continue with Google</SocialButton>
+      <SocialButton icon={<AppleIcon />}>Continue with Apple</SocialButton>
+      <SocialButton icon={<FacebookIcon />}>Continue with Facebook</SocialButton>
+      <SocialButton icon={<TwitterIcon />}>Continue with X</SocialButton>
+    </>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '3rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         <Story />
       </Surface>
     ),

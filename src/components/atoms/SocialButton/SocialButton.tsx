@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './SocialButton.module.css';
 
 export type SocialButtonVariant = 'convex' | 'flat';
@@ -76,7 +77,9 @@ export const SocialButton = forwardRef<HTMLButtonElement, SocialButtonProps>(
         {...props}
       >
         <span className={styles.icon}>{icon}</span>
-        <span className={styles.label}>{children}</span>
+        <Typography variant="button" component="span" color="inherit" className={styles.label}>
+          {children}
+        </Typography>
       </button>
     );
   }
