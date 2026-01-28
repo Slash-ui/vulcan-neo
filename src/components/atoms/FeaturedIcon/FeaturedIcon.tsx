@@ -5,7 +5,7 @@ export type FeaturedIconVariant = 'convex' | 'concave' | 'flat';
 export type FeaturedIconSize = 'sm' | 'md' | 'lg' | 'xl';
 export type FeaturedIconElevation = 'low' | 'mid' | 'high';
 export type FeaturedIconColor = 'default' | 'primary' | 'success' | 'warning' | 'error';
-export type FeaturedIconShape = 'circle' | 'square';
+export type FeaturedIconShape = 'circle' | 'square' | 'rounded';
 
 export interface FeaturedIconProps extends React.HTMLAttributes<HTMLDivElement> {
   /**

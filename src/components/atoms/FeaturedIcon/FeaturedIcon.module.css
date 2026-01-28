@@ -14,7 +14,11 @@
 }
 
 .square {
-  border-radius: var(--neo-radius-sm);
+  border-radius: 0;
+}
+
+.rounded {
+  border-radius: var(--neo-radius-md);
 }
 
 /* Sizes */
