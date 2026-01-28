@@ -19,6 +19,37 @@ const meta: Meta<typeof Slider> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
+    variant: {
+      control: 'select',
+      options: ['default', 'gradient', 'glow'],
+    },
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+    },
+    color: {
+      control: 'select',
+      options: [
+        'default',
+        'primary',
+        'primary-light',
+        'primary-dark',
+        'secondary',
+        'secondary-light',
+        'secondary-dark',
+        'tertiary',
+        'tertiary-light',
+        'tertiary-dark',
+        'success',
+        'warning',
+        'error',
+        'info',
+      ],
+    },
+    customColor: {
+      control: 'color',
+      description: 'Custom hex color that overrides the color prop',
+    },
     min: {
       control: 'number',
     },
@@ -79,6 +110,182 @@ export const Sizes: Story = {
       <Slider label="Large" size="lg" defaultValue={70} showValue />
     </div>
   ),
+};
+
+export const Variants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <Slider label="Default" variant="default" defaultValue={60} showValue />
+      <Slider label="Gradient" variant="gradient" defaultValue={60} showValue />
+      <Slider label="Glow" variant="glow" defaultValue={60} showValue />
+    </div>
+  ),
+};
+
+export const Colors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <Slider color="default" defaultValue={70} />
+      <Slider color="primary" defaultValue={70} />
+      <Slider color="primary-light" defaultValue={70} />
+      <Slider color="primary-dark" defaultValue={70} />
+      <Slider color="secondary" defaultValue={70} />
+      <Slider color="secondary-light" defaultValue={70} />
+      <Slider color="secondary-dark" defaultValue={70} />
+      <Slider color="tertiary" defaultValue={70} />
+      <Slider color="tertiary-light" defaultValue={70} />
+      <Slider color="tertiary-dark" defaultValue={70} />
+      <Slider color="success" defaultValue={70} />
+      <Slider color="warning" defaultValue={70} />
+      <Slider color="error" defaultValue={70} />
+      <Slider color="info" defaultValue={70} />
+    </div>
+  ),
+};
+
+export const ColorsWithLabels: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Primary</span>
+        <Slider color="primary" defaultValue={65} showValue style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Secondary</span>
+        <Slider color="secondary" defaultValue={45} showValue style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Tertiary</span>
+        <Slider color="tertiary" defaultValue={80} showValue style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Success</span>
+        <Slider color="success" defaultValue={100} showValue style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Warning</span>
+        <Slider color="warning" defaultValue={55} showValue style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Error</span>
+        <Slider color="error" defaultValue={25} showValue style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '100px', fontSize: '12px' }}>Info</span>
+        <Slider color="info" defaultValue={90} showValue style={{ flex: 1 }} />
+      </div>
+    </div>
+  ),
+};
+
+export const CustomColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Coral</span>
+        <Slider customColor="#FF6B6B" defaultValue={70} style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Teal</span>
+        <Slider customColor="#4ECDC4" defaultValue={65} style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Sky Blue</span>
+        <Slider customColor="#45B7D1" defaultValue={80} style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Sage</span>
+        <Slider customColor="#96CEB4" defaultValue={55} style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Plum</span>
+        <Slider customColor="#9B59B6" defaultValue={90} style={{ flex: 1 }} />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ width: '80px', fontSize: '12px' }}>Gold</span>
+        <Slider customColor="#F39C12" defaultValue={75} style={{ flex: 1 }} />
+      </div>
+    </div>
+  ),
+};
+
+export const Vertical: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-end', height: '250px' }}>
+      <Slider orientation="vertical" defaultValue={70} color="primary" />
+      <Slider orientation="vertical" defaultValue={50} color="secondary" />
+      <Slider orientation="vertical" defaultValue={85} color="tertiary" />
+      <Slider orientation="vertical" defaultValue={30} color="success" />
+      <Slider orientation="vertical" defaultValue={60} color="warning" />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="light" style={{ padding: '3rem', width: 'auto' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+export const VerticalSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-end', height: '200px' }}>
+      <Slider orientation="vertical" size="sm" defaultValue={60} />
+      <Slider orientation="vertical" size="md" defaultValue={60} />
+      <Slider orientation="vertical" size="lg" defaultValue={60} />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="light" style={{ padding: '3rem', width: 'auto' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+export const VerticalColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-end', height: '200px' }}>
+      <Slider orientation="vertical" defaultValue={80} color="primary" />
+      <Slider orientation="vertical" defaultValue={65} color="primary-light" />
+      <Slider orientation="vertical" defaultValue={70} color="primary-dark" />
+      <Slider orientation="vertical" defaultValue={55} color="secondary" />
+      <Slider orientation="vertical" defaultValue={75} color="tertiary" />
+      <Slider orientation="vertical" defaultValue={90} color="success" />
+      <Slider orientation="vertical" defaultValue={45} color="warning" />
+      <Slider orientation="vertical" defaultValue={60} color="error" />
+      <Slider orientation="vertical" defaultValue={85} color="info" />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="light" style={{ padding: '3rem', width: 'auto' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+export const VerticalCustomColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-end', height: '200px' }}>
+      <Slider orientation="vertical" customColor="#FF6B6B" defaultValue={80} />
+      <Slider orientation="vertical" customColor="#4ECDC4" defaultValue={65} />
+      <Slider orientation="vertical" customColor="#45B7D1" defaultValue={70} />
+      <Slider orientation="vertical" customColor="#9B59B6" defaultValue={55} />
+      <Slider orientation="vertical" customColor="#F39C12" defaultValue={75} />
+      <Slider orientation="vertical" customColor="#E91E63" defaultValue={90} />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="light" style={{ padding: '3rem', width: 'auto' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
 };
 
 export const CustomRange: Story = {
@@ -146,6 +353,7 @@ export const MultipleSliders: Story = {
           value={rgb.r}
           onChange={(r) => setRgb({ ...rgb, r })}
           showValue
+          customColor="#FF4444"
         />
         <Slider
           label="Green"
@@ -154,6 +362,7 @@ export const MultipleSliders: Story = {
           value={rgb.g}
           onChange={(g) => setRgb({ ...rgb, g })}
           showValue
+          customColor="#44FF44"
         />
         <Slider
           label="Blue"
@@ -162,6 +371,7 @@ export const MultipleSliders: Story = {
           value={rgb.b}
           onChange={(b) => setRgb({ ...rgb, b })}
           showValue
+          customColor="#4444FF"
         />
         <div
           style={{
@@ -186,6 +396,48 @@ export const DarkTheme: Story = {
   decorators: [
     (Story) => (
       <Surface theme="dark" style={{ padding: '3rem', width: '400px' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+export const DarkThemeColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <Slider color="primary" defaultValue={70} />
+      <Slider color="secondary" defaultValue={70} />
+      <Slider color="tertiary" defaultValue={70} />
+      <Slider color="success" defaultValue={70} />
+      <Slider color="warning" defaultValue={70} />
+      <Slider color="error" defaultValue={70} />
+      <Slider color="info" defaultValue={70} />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '3rem', width: '400px' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+export const DarkThemeVertical: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-end', height: '200px' }}>
+      <Slider orientation="vertical" defaultValue={80} color="primary" />
+      <Slider orientation="vertical" defaultValue={65} color="secondary" />
+      <Slider orientation="vertical" defaultValue={70} color="tertiary" />
+      <Slider orientation="vertical" defaultValue={55} color="success" />
+      <Slider orientation="vertical" defaultValue={75} color="warning" />
+      <Slider orientation="vertical" defaultValue={90} color="error" />
+      <Slider orientation="vertical" defaultValue={60} color="info" />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '3rem', width: 'auto' }}>
         <Story />
       </Surface>
     ),

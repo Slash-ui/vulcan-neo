@@ -1,8 +1,21 @@
+/* ===================
+   SLIDER CONTAINER
+   =================== */
+
 .container {
   display: flex;
   flex-direction: column;
   gap: var(--neo-space-sm);
+}
+
+.container.horizontal {
   width: 100%;
+}
+
+.container.vertical {
+  height: 200px;
+  width: auto;
+  align-items: center;
 }
 
 .header {
@@ -12,88 +25,780 @@
 }
 
 .label {
-  font-family: var(--neo-font-family);
-  font-size: var(--neo-font-size-sm);
-  font-weight: var(--neo-font-weight-medium);
   color: var(--neo-text);
 }
 
 .value {
-  font-family: var(--neo-font-family);
-  font-size: var(--neo-font-size-sm);
-  font-weight: var(--neo-font-weight-semibold);
   color: var(--neo-accent-primary);
 }
 
+/* ===================
+   SLIDER TRACK AREA
+   =================== */
+
 .slider {
   position: relative;
-  width: 100%;
   cursor: pointer;
   touch-action: none;
 }
 
-/* Track - Concave appearance */
-.track {
+.slider.horizontal {
   width: 100%;
+}
+
+.slider.vertical {
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===================
+   TRACK - Concave (carved groove)
+   =================== */
+
+.track {
   background: var(--neo-bg);
   border-radius: var(--neo-radius-full);
   overflow: hidden;
+  position: relative;
 
-  /* Inset shadow */
+  /* Deep concave inset - carved into surface */
   box-shadow:
-    inset 3px 3px 6px var(--neo-shadow-dark),
-    inset -3px -3px 6px var(--neo-shadow-light);
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -2px -2px 6px var(--neo-shadow-light),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Sizes */
-.sm .track {
-  height: 6px;
-}
-
-.md .track {
+/* Horizontal track sizes */
+.horizontal.sm .track {
   height: 8px;
+  width: 100%;
 }
 
-.lg .track {
-  height: 12px;
+.horizontal.md .track {
+  height: 10px;
+  width: 100%;
 }
 
-/* Fill (progress) */
-.fill {
+.horizontal.lg .track {
+  height: 14px;
+  width: 100%;
+}
+
+/* Vertical track sizes */
+.vertical.sm .track {
+  width: 8px;
   height: 100%;
-  background: linear-gradient(135deg, var(--neo-accent-primary), var(--neo-accent-secondary));
-  border-radius: var(--neo-radius-full);
-  transition: width 0.05s ease-out;
 }
 
-/* Thumb - Convex appearance */
+.vertical.md .track {
+  width: 10px;
+  height: 100%;
+}
+
+.vertical.lg .track {
+  width: 14px;
+  height: 100%;
+}
+
+/* ===================
+   FILL - Convex (bulged/raised)
+   =================== */
+
+.fill {
+  position: absolute;
+  border-radius: var(--neo-radius-full);
+  transition: width 0.05s ease-out, height 0.05s ease-out;
+}
+
+/* Horizontal fill */
+.horizontal .fill {
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+/* Vertical fill */
+.vertical .fill {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+/* ===================
+   FILL VARIANTS
+   =================== */
+
+/* Default variant - simple elevated look */
+.fill.default {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient variant - gradient fill with depth */
+.fill.gradient {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 1px 3px rgba(0, 0, 0, 0.15),
+    inset 0 2px 3px rgba(255, 255, 255, 0.35),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Glow variant - glowing effect */
+.fill.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================
+   FILL COLORS - Horizontal
+   =================== */
+
+/* Default */
+.horizontal .color-default {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-text) 70%, white) 0%,
+    var(--neo-text) 30%,
+    color-mix(in srgb, var(--neo-text) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-text) 80%, black) 100%
+  );
+}
+
+/* Primary */
+.horizontal .color-primary {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-primary) 70%, white) 0%,
+    var(--neo-color-primary) 30%,
+    color-mix(in srgb, var(--neo-color-primary) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-primary) 80%, black) 100%
+  );
+}
+
+.horizontal .color-primary.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-primary) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-primary) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Primary Light */
+.horizontal .color-primary-light {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-primary-light) 70%, white) 0%,
+    var(--neo-color-primary-light) 30%,
+    color-mix(in srgb, var(--neo-color-primary-light) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-primary-light) 80%, black) 100%
+  );
+}
+
+.horizontal .color-primary-light.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-primary-light) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-primary-light) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Primary Dark */
+.horizontal .color-primary-dark {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-primary-dark) 70%, white) 0%,
+    var(--neo-color-primary-dark) 30%,
+    color-mix(in srgb, var(--neo-color-primary-dark) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-primary-dark) 80%, black) 100%
+  );
+}
+
+.horizontal .color-primary-dark.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-primary-dark) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-primary-dark) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary */
+.horizontal .color-secondary {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-secondary) 70%, white) 0%,
+    var(--neo-color-secondary) 30%,
+    color-mix(in srgb, var(--neo-color-secondary) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-secondary) 80%, black) 100%
+  );
+}
+
+.horizontal .color-secondary.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-secondary) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-secondary) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary Light */
+.horizontal .color-secondary-light {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-secondary-light) 70%, white) 0%,
+    var(--neo-color-secondary-light) 30%,
+    color-mix(in srgb, var(--neo-color-secondary-light) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-secondary-light) 80%, black) 100%
+  );
+}
+
+.horizontal .color-secondary-light.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-secondary-light) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-secondary-light) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary Dark */
+.horizontal .color-secondary-dark {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-secondary-dark) 70%, white) 0%,
+    var(--neo-color-secondary-dark) 30%,
+    color-mix(in srgb, var(--neo-color-secondary-dark) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-secondary-dark) 80%, black) 100%
+  );
+}
+
+.horizontal .color-secondary-dark.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-secondary-dark) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-secondary-dark) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Tertiary */
+.horizontal .color-tertiary {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-tertiary) 70%, white) 0%,
+    var(--neo-color-tertiary) 30%,
+    color-mix(in srgb, var(--neo-color-tertiary) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-tertiary) 80%, black) 100%
+  );
+}
+
+.horizontal .color-tertiary.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-tertiary) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-tertiary) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Tertiary Light */
+.horizontal .color-tertiary-light {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-tertiary-light) 70%, white) 0%,
+    var(--neo-color-tertiary-light) 30%,
+    color-mix(in srgb, var(--neo-color-tertiary-light) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-tertiary-light) 80%, black) 100%
+  );
+}
+
+.horizontal .color-tertiary-light.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-tertiary-light) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-tertiary-light) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Tertiary Dark */
+.horizontal .color-tertiary-dark {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-color-tertiary-dark) 70%, white) 0%,
+    var(--neo-color-tertiary-dark) 30%,
+    color-mix(in srgb, var(--neo-color-tertiary-dark) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-tertiary-dark) 80%, black) 100%
+  );
+}
+
+.horizontal .color-tertiary-dark.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-tertiary-dark) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-tertiary-dark) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Success */
+.horizontal .color-success {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-accent-success) 70%, white) 0%,
+    var(--neo-accent-success) 30%,
+    color-mix(in srgb, var(--neo-accent-success) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-accent-success) 80%, black) 100%
+  );
+}
+
+.horizontal .color-success.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-accent-success) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-accent-success) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Warning */
+.horizontal .color-warning {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-accent-warning) 70%, white) 0%,
+    var(--neo-accent-warning) 30%,
+    color-mix(in srgb, var(--neo-accent-warning) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-accent-warning) 80%, black) 100%
+  );
+}
+
+.horizontal .color-warning.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-accent-warning) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-accent-warning) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Error */
+.horizontal .color-error {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-accent-error) 70%, white) 0%,
+    var(--neo-accent-error) 30%,
+    color-mix(in srgb, var(--neo-accent-error) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-accent-error) 80%, black) 100%
+  );
+}
+
+.horizontal .color-error.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-accent-error) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-accent-error) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Info */
+.horizontal .color-info {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--neo-accent-info) 70%, white) 0%,
+    var(--neo-accent-info) 30%,
+    color-mix(in srgb, var(--neo-accent-info) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-accent-info) 80%, black) 100%
+  );
+}
+
+.horizontal .color-info.glow {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-accent-info) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-accent-info) 30%, transparent),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================
+   FILL COLORS - Vertical (gradient rotated 90deg)
+   =================== */
+
+/* Default */
+.vertical .color-default {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-text) 70%, white) 0%,
+    var(--neo-text) 30%,
+    color-mix(in srgb, var(--neo-text) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-text) 80%, black) 100%
+  );
+}
+
+/* Primary */
+.vertical .color-primary {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-primary) 70%, white) 0%,
+    var(--neo-color-primary) 30%,
+    color-mix(in srgb, var(--neo-color-primary) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-primary) 80%, black) 100%
+  );
+}
+
+.vertical .color-primary.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-primary) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-primary) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Primary Light */
+.vertical .color-primary-light {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-primary-light) 70%, white) 0%,
+    var(--neo-color-primary-light) 30%,
+    color-mix(in srgb, var(--neo-color-primary-light) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-primary-light) 80%, black) 100%
+  );
+}
+
+.vertical .color-primary-light.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-primary-light) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-primary-light) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Primary Dark */
+.vertical .color-primary-dark {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-primary-dark) 70%, white) 0%,
+    var(--neo-color-primary-dark) 30%,
+    color-mix(in srgb, var(--neo-color-primary-dark) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-primary-dark) 80%, black) 100%
+  );
+}
+
+.vertical .color-primary-dark.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-primary-dark) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-primary-dark) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary */
+.vertical .color-secondary {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-secondary) 70%, white) 0%,
+    var(--neo-color-secondary) 30%,
+    color-mix(in srgb, var(--neo-color-secondary) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-secondary) 80%, black) 100%
+  );
+}
+
+.vertical .color-secondary.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-secondary) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-secondary) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary Light */
+.vertical .color-secondary-light {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-secondary-light) 70%, white) 0%,
+    var(--neo-color-secondary-light) 30%,
+    color-mix(in srgb, var(--neo-color-secondary-light) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-secondary-light) 80%, black) 100%
+  );
+}
+
+.vertical .color-secondary-light.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-secondary-light) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-secondary-light) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary Dark */
+.vertical .color-secondary-dark {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-secondary-dark) 70%, white) 0%,
+    var(--neo-color-secondary-dark) 30%,
+    color-mix(in srgb, var(--neo-color-secondary-dark) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-secondary-dark) 80%, black) 100%
+  );
+}
+
+.vertical .color-secondary-dark.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-secondary-dark) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-secondary-dark) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Tertiary */
+.vertical .color-tertiary {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-tertiary) 70%, white) 0%,
+    var(--neo-color-tertiary) 30%,
+    color-mix(in srgb, var(--neo-color-tertiary) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-tertiary) 80%, black) 100%
+  );
+}
+
+.vertical .color-tertiary.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-tertiary) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-tertiary) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Tertiary Light */
+.vertical .color-tertiary-light {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-tertiary-light) 70%, white) 0%,
+    var(--neo-color-tertiary-light) 30%,
+    color-mix(in srgb, var(--neo-color-tertiary-light) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-tertiary-light) 80%, black) 100%
+  );
+}
+
+.vertical .color-tertiary-light.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-tertiary-light) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-tertiary-light) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Tertiary Dark */
+.vertical .color-tertiary-dark {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-color-tertiary-dark) 70%, white) 0%,
+    var(--neo-color-tertiary-dark) 30%,
+    color-mix(in srgb, var(--neo-color-tertiary-dark) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-color-tertiary-dark) 80%, black) 100%
+  );
+}
+
+.vertical .color-tertiary-dark.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-color-tertiary-dark) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-color-tertiary-dark) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Success */
+.vertical .color-success {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-accent-success) 70%, white) 0%,
+    var(--neo-accent-success) 30%,
+    color-mix(in srgb, var(--neo-accent-success) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-accent-success) 80%, black) 100%
+  );
+}
+
+.vertical .color-success.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-accent-success) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-accent-success) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Warning */
+.vertical .color-warning {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-accent-warning) 70%, white) 0%,
+    var(--neo-accent-warning) 30%,
+    color-mix(in srgb, var(--neo-accent-warning) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-accent-warning) 80%, black) 100%
+  );
+}
+
+.vertical .color-warning.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-accent-warning) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-accent-warning) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Error */
+.vertical .color-error {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-accent-error) 70%, white) 0%,
+    var(--neo-accent-error) 30%,
+    color-mix(in srgb, var(--neo-accent-error) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-accent-error) 80%, black) 100%
+  );
+}
+
+.vertical .color-error.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-accent-error) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-accent-error) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Info */
+.vertical .color-info {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--neo-accent-info) 70%, white) 0%,
+    var(--neo-accent-info) 30%,
+    color-mix(in srgb, var(--neo-accent-info) 90%, black) 70%,
+    color-mix(in srgb, var(--neo-accent-info) 80%, black) 100%
+  );
+}
+
+.vertical .color-info.glow {
+  box-shadow:
+    4px 0 8px rgba(0, 0, 0, 0.25),
+    2px 0 4px rgba(0, 0, 0, 0.15),
+    0 0 16px color-mix(in srgb, var(--neo-accent-info) 50%, transparent),
+    0 0 32px color-mix(in srgb, var(--neo-accent-info) 30%, transparent),
+    inset 2px 0 4px rgba(255, 255, 255, 0.4),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom color - uses inline style */
+.color-custom {
+  /* Color applied via inline style */
+}
+
+/* ===================
+   THUMB - Convex (raised knob)
+   =================== */
+
 .thumb {
   position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
   background: var(--neo-bg);
   border-radius: 50%;
   transition: box-shadow var(--neo-transition-fast),
               transform var(--neo-transition-fast);
   outline: none;
+  z-index: 1;
 
-  /* Convex shadow */
+  /* Convex shadow - raised button appearance */
   box-shadow:
-    -4px -4px 8px var(--neo-shadow-light),
-    4px 4px 8px var(--neo-shadow-dark);
+    -4px -4px 10px var(--neo-shadow-light),
+    4px 4px 10px var(--neo-shadow-dark),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.05),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
 
-.sm .thumb {
-  width: 16px;
-  height: 16px;
+/* Horizontal thumb positioning */
+.horizontal .thumb {
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.md .thumb {
-  width: 20px;
-  height: 20px;
+/* Vertical thumb positioning */
+.vertical .thumb {
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
 
-.lg .thumb {
+/* Thumb sizes - horizontal */
+.horizontal.sm .thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.horizontal.md .thumb {
+  width: 22px;
+  height: 22px;
+}
+
+.horizontal.lg .thumb {
+  width: 28px;
+  height: 28px;
+}
+
+/* Thumb sizes - vertical */
+.vertical.sm .thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.vertical.md .thumb {
+  width: 22px;
+  height: 22px;
+}
+
+.vertical.lg .thumb {
   width: 28px;
   height: 28px;
 }
@@ -101,18 +806,38 @@
 /* Thumb hover */
 .slider:hover .thumb {
   box-shadow:
-    -5px -5px 10px var(--neo-shadow-light),
-    5px 5px 10px var(--neo-shadow-dark);
-  transform: translate(-50%, -50%) scale(1.05);
+    -5px -5px 12px var(--neo-shadow-light),
+    5px 5px 12px var(--neo-shadow-dark),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.05),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.horizontal .slider:hover .thumb {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.vertical .slider:hover .thumb {
+  transform: translate(-50%, 50%) scale(1.08);
 }
 
 /* Thumb active/dragging */
 .dragging .thumb,
 .thumb:active {
   box-shadow:
-    -3px -3px 6px var(--neo-shadow-light),
-    3px 3px 6px var(--neo-shadow-dark);
+    -2px -2px 6px var(--neo-shadow-light),
+    2px 2px 6px var(--neo-shadow-dark),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.08),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.6);
+}
+
+.horizontal .dragging .thumb,
+.horizontal .thumb:active {
   transform: translate(-50%, -50%) scale(0.95);
+}
+
+.vertical .dragging .thumb,
+.vertical .thumb:active {
+  transform: translate(-50%, 50%) scale(0.95);
 }
 
 /* Focus visible */
@@ -121,7 +846,10 @@
   outline-offset: 2px;
 }
 
-/* Disabled state */
+/* ===================
+   DISABLED STATE
+   =================== */
+
 .disabled {
   opacity: 0.6;
 }
@@ -135,5 +863,6 @@
 }
 
 .disabled .fill {
-  background: var(--neo-text-disabled);
+  background: var(--neo-text-disabled) !important;
+  box-shadow: none !important;
 }
