@@ -5,7 +5,6 @@
   justify-content: center;
   background: var(--neo-bg);
   border-radius: var(--neo-radius-full);
-  overflow: hidden;
   transition: box-shadow var(--neo-transition-normal);
 }
 
@@ -50,8 +49,20 @@
 /* Concave variant */
 .concave {
   box-shadow:
-    inset 6px 6px 12px var(--neo-shadow-dark),
-    inset -6px -6px 12px var(--neo-shadow-light);
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Concave overlay to show inset shadow on top of image */
+.concave::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+  pointer-events: none;
 }
 
 /* Flat variant */
@@ -64,6 +75,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: var(--neo-radius-full);
 }
 
 /* Fallback (initials) */
@@ -72,6 +84,7 @@
   font-weight: var(--neo-font-weight-semibold);
   color: var(--neo-text-secondary);
   text-transform: uppercase;
+  border-radius: var(--neo-radius-full);
 }
 
 /* Status indicator */
