@@ -1,9 +1,13 @@
 import React, { forwardRef, useId } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './InsetField.module.css';
 
 export type InsetFieldSize = 'sm' | 'md' | 'lg';
 
-export interface InsetFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface InsetFieldProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'size'
+> {
   /**
    * The label for the input field
    */
@@ -18,7 +22,7 @@ export interface InsetFieldProps extends Omit<React.InputHTMLAttributes<HTMLInpu
   error?: string;
   /**
    * The size of the input
-   * @default 'md'
+   * @default 'sm'
    */
   size?: InsetFieldSize;
   /**
@@ -48,7 +52,7 @@ export const InsetField = forwardRef<HTMLInputElement, InsetFieldProps>(
       label,
       helperText,
       error,
-      size = 'md',
+      size = 'sm',
       leftIcon,
       rightIcon,
       fullWidth = false,
@@ -83,8 +87,14 @@ export const InsetField = forwardRef<HTMLInputElement, InsetFieldProps>(
     return (
       <div className={containerClasses}>
         {label && (
-          <label htmlFor={id} className={styles.label}>
-            {label}
+          <label htmlFor={id}>
+            <Typography
+              variant="caption"
+              component="label"
+              className={styles.label}
+            >
+              {label}
+            </Typography>
           </label>
         )}
         <div className={wrapperClasses}>
@@ -101,12 +111,14 @@ export const InsetField = forwardRef<HTMLInputElement, InsetFieldProps>(
           {rightIcon && <span className={styles.icon}>{rightIcon}</span>}
         </div>
         {(helperText || error) && (
-          <span
+          <Typography
+            variant="caption"
+            component="span"
             id={helperId}
             className={`${styles.helperText} ${error ? styles.errorText : ''}`}
           >
             {error || helperText}
-          </span>
+          </Typography>
         )}
       </div>
     );

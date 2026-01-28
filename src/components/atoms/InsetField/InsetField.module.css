@@ -71,6 +71,7 @@
 
 .input::placeholder {
   color: var(--neo-text-secondary);
+  opacity: 0.35;
 }
 
 /* Focus state - deeper inset */
