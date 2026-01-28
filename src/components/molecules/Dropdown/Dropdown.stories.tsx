@@ -67,7 +67,7 @@ const defaultItems = [
 
 export const Default: Story = {
   args: {
-    trigger: <Button>Open Menu</Button>,
+    trigger: <Button label="Open Menu" />,
     items: defaultItems,
     onSelect: (id) => console.log('Selected:', id),
   },
@@ -85,12 +85,12 @@ export const Placements: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'space-between', padding: '4rem 0' }}>
       <Dropdown
-        trigger={<Button>Bottom Start</Button>}
+        trigger={<Button label="Bottom Start" />}
         items={defaultItems}
         placement="bottom-start"
       />
       <Dropdown
-        trigger={<Button>Bottom End</Button>}
+        trigger={<Button label="Bottom End" />}
         items={defaultItems}
         placement="bottom-end"
       />
@@ -100,7 +100,7 @@ export const Placements: Story = {
 
 export const WithDisabledItems: Story = {
   args: {
-    trigger: <Button>Actions</Button>,
+    trigger: <Button label="Actions" />,
     items: [
       { id: 'view', label: 'View' },
       { id: 'edit', label: 'Edit' },
@@ -113,7 +113,7 @@ export const WithDisabledItems: Story = {
 
 export const SimpleMenu: Story = {
   args: {
-    trigger: <Button>Select Option</Button>,
+    trigger: <Button label="Select Option" />,
     items: [
       { id: 'option1', label: 'Option 1' },
       { id: 'option2', label: 'Option 2' },
@@ -124,7 +124,7 @@ export const SimpleMenu: Story = {
 
 export const Disabled: Story = {
   args: {
-    trigger: <Button>Disabled Menu</Button>,
+    trigger: <Button label="Disabled Menu" />,
     items: defaultItems,
     disabled: true,
   },
@@ -132,7 +132,7 @@ export const Disabled: Story = {
 
 export const DarkTheme: Story = {
   args: {
-    trigger: <Button>Open Menu</Button>,
+    trigger: <Button label="Open Menu" />,
     items: defaultItems,
   },
   decorators: [

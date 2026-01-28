@@ -196,9 +196,8 @@ export const PricingSection = forwardRef<HTMLElement, PricingSectionProps>(
                     size="md"
                     onClick={plan.onCtaClick}
                     style={{ width: '100%' }}
-                  >
-                    {plan.ctaText}
-                  </Button>
+                    label={plan.ctaText}
+                  />
                 )}
               </div>
             ))}

@@ -37,7 +37,7 @@ export const Default: Story = {
   args: {
     title: 'Upgrade to Pro',
     description: 'Get access to all premium features and unlimited storage.',
-    primaryAction: <Button variant="convex">Upgrade Now</Button>,
+    primaryAction: <Button variant="convex" label="Upgrade Now" />,
   },
 };
 
@@ -48,19 +48,19 @@ export const Variants: Story = {
         variant="default"
         title="Default Variant"
         description="Standard neomorphic styling."
-        primaryAction={<Button variant="convex" size="sm">Action</Button>}
+        primaryAction={<Button variant="convex" size="sm" label="Action" />}
       />
       <InlineCTA
         variant="highlight"
         title="Highlight Variant"
         description="Eye-catching accent color background."
-        primaryAction={<Button variant="flat" size="sm">Action</Button>}
+        primaryAction={<Button variant="flat" size="sm" label="Action" />}
       />
       <InlineCTA
         variant="gradient"
         title="Gradient Variant"
         description="Beautiful gradient background."
-        primaryAction={<Button variant="flat" size="sm">Action</Button>}
+        primaryAction={<Button variant="flat" size="sm" label="Action" />}
       />
     </div>
   ),
@@ -73,19 +73,19 @@ export const Sizes: Story = {
         size="sm"
         title="Small CTA"
         description="Compact size for inline usage."
-        primaryAction={<Button variant="convex" size="sm">Action</Button>}
+        primaryAction={<Button variant="convex" size="sm" label="Action" />}
       />
       <InlineCTA
         size="md"
         title="Medium CTA"
         description="Default size for most use cases."
-        primaryAction={<Button variant="convex" size="md">Action</Button>}
+        primaryAction={<Button variant="convex" size="md" label="Action" />}
       />
       <InlineCTA
         size="lg"
         title="Large CTA"
         description="Prominent size for important calls to action."
-        primaryAction={<Button variant="convex" size="lg">Action</Button>}
+        primaryAction={<Button variant="convex" size="lg" label="Action" />}
       />
     </div>
   ),
@@ -107,8 +107,8 @@ export const WithIcon: Story = {
         icon={<RocketIcon />}
         title="Launch Your Project"
         description="Get your project off the ground with our starter templates."
-        primaryAction={<Button variant="convex">Get Started</Button>}
-        secondaryAction={<Button variant="flat">Learn More</Button>}
+        primaryAction={<Button variant="convex" label="Get Started" />}
+        secondaryAction={<Button variant="flat" label="Learn More" />}
       />
     );
   },
@@ -119,8 +119,8 @@ export const WithMultipleActions: Story = {
     <InlineCTA
       title="Ready to get started?"
       description="Join thousands of teams already using our platform."
-      primaryAction={<Button variant="convex">Start Free Trial</Button>}
-      secondaryAction={<Button variant="flat">Book a Demo</Button>}
+      primaryAction={<Button variant="convex" label="Start Free Trial" />}
+      secondaryAction={<Button variant="flat" label="Book a Demo" />}
     />
   ),
 };
@@ -131,9 +131,7 @@ export const Dismissible: Story = {
 
     if (!visible) {
       return (
-        <Button variant="convex" onClick={() => setVisible(true)}>
-          Show CTA Again
-        </Button>
+        <Button variant="convex" onClick={() => setVisible(true)} label="Show CTA Again" />
       );
     }
 
@@ -141,7 +139,7 @@ export const Dismissible: Story = {
       <InlineCTA
         title="New feature available!"
         description="Check out the new dashboard analytics feature."
-        primaryAction={<Button variant="convex" size="sm">Try it now</Button>}
+        primaryAction={<Button variant="convex" size="sm" label="Try it now" />}
         dismissible
         onDismiss={() => setVisible(false)}
       />
@@ -164,7 +162,7 @@ export const NewsletterCTA: Story = {
         icon={<MailIcon />}
         title="Subscribe to our newsletter"
         description="Get the latest updates and news delivered to your inbox."
-        primaryAction={<Button variant="flat">Subscribe</Button>}
+        primaryAction={<Button variant="flat" label="Subscribe" />}
       />
     );
   },
@@ -184,8 +182,8 @@ export const UpgradeCTA: Story = {
         icon={<CrownIcon />}
         title="Upgrade to Premium"
         description="Unlock all features and remove limits on your account."
-        primaryAction={<Button variant="flat">Upgrade for $9/mo</Button>}
-        secondaryAction={<Button variant="flat">Compare Plans</Button>}
+        primaryAction={<Button variant="flat" label="Upgrade for $9/mo" />}
+        secondaryAction={<Button variant="flat" label="Compare Plans" />}
       />
     );
   },
@@ -197,13 +195,13 @@ export const DarkTheme: Story = {
       <InlineCTA
         title="Get Started Today"
         description="Join our platform and start building amazing projects."
-        primaryAction={<Button variant="convex">Sign Up</Button>}
+        primaryAction={<Button variant="convex" label="Sign Up" />}
       />
       <InlineCTA
         variant="highlight"
         title="Special Offer"
         description="50% off your first month with code WELCOME50."
-        primaryAction={<Button variant="flat">Apply Code</Button>}
+        primaryAction={<Button variant="flat" label="Apply Code" />}
       />
     </div>
   ),

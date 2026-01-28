@@ -39,7 +39,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     left: 'Last updated 2 hours ago',
-    right: <Button size="sm">Save</Button>,
+    right: <Button size="sm" label="Save" />,
   },
 };
 
@@ -48,8 +48,8 @@ export const WithMultipleActions: Story = {
     left: 'Changes will be saved automatically',
     right: (
       <>
-        <Button variant="flat" size="sm">Cancel</Button>
-        <Button size="sm">Save Changes</Button>
+        <Button variant="flat" size="sm" label="Cancel" />
+        <Button size="sm" label="Save Changes" />
       </>
     ),
   },
@@ -60,8 +60,8 @@ export const ActionsOnly: Story = {
     align: 'end',
     right: (
       <>
-        <Button variant="flat" size="sm">Cancel</Button>
-        <Button size="sm">Confirm</Button>
+        <Button variant="flat" size="sm" label="Cancel" />
+        <Button size="sm" label="Confirm" />
       </>
     ),
   },
@@ -72,9 +72,9 @@ export const Centered: Story = {
     align: 'center',
     children: (
       <>
-        <Button variant="flat" size="sm">Previous</Button>
+        <Button variant="flat" size="sm" label="Previous" />
         <span style={{ color: 'var(--neo-text-secondary)', fontSize: '14px' }}>Page 1 of 10</span>
-        <Button variant="flat" size="sm">Next</Button>
+        <Button variant="flat" size="sm" label="Next" />
       </>
     ),
   },
@@ -83,14 +83,14 @@ export const Centered: Story = {
 export const NoBorder: Story = {
   args: {
     bordered: false,
-    right: <Button size="sm">Continue</Button>,
+    right: <Button size="sm" label="Continue" />,
   },
 };
 
 export const DarkTheme: Story = {
   args: {
     left: 'Auto-saving enabled',
-    right: <Button size="sm">Publish</Button>,
+    right: <Button size="sm" label="Publish" />,
   },
   decorators: [
     (Story) => (

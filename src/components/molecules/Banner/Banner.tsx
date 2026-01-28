@@ -113,9 +113,8 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(
           size="sm"
           onClick={onCtaClick}
           className={styles.ctaButton}
-        >
-          {ctaText}
-        </Button>
+          label={ctaText}
+        />
       );
     };
 

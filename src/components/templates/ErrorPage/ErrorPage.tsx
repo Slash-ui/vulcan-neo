@@ -175,9 +175,7 @@ export const ErrorPage = forwardRef<HTMLDivElement, ErrorPageProps>(
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <Button type="submit" variant="convex" size={size === 'lg' ? 'lg' : 'md'}>
-              Search
-            </Button>
+            <Button type="submit" variant="convex" size={size === 'lg' ? 'lg' : 'md'} label="Search" />
           </form>
         )}
 
@@ -187,27 +185,27 @@ export const ErrorPage = forwardRef<HTMLDivElement, ErrorPageProps>(
               variant="flat"
               size={size === 'lg' ? 'lg' : 'md'}
               onClick={handleSecondaryClick}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-              {secondaryActionText}
-            </Button>
+              leftIcon={
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+              }
+              label={secondaryActionText}
+            />
           )}
           <Button
             variant="convex"
             size={size === 'lg' ? 'lg' : 'md'}
             onClick={handlePrimaryClick}
-          >
-            {primaryActionText}
-          </Button>
+            label={primaryActionText}
+          />
         </div>
 
         {quickLinks && quickLinks.length > 0 && (

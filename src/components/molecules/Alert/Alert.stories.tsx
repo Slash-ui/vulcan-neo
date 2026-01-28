@@ -69,9 +69,7 @@ export const Dismissible: Story = {
         Your profile has been updated successfully.
       </Alert>
     ) : (
-      <Button variant="convex" onClick={() => setVisible(true)}>
-        Show Alert
-      </Button>
+      <Button variant="convex" onClick={() => setVisible(true)} label="Show Alert" />
     );
   },
 };
@@ -81,7 +79,7 @@ export const WithAction: Story = {
     <Alert
       variant="info"
       title="New version available"
-      action={<Button size="sm" variant="convex">Update</Button>}
+      action={<Button size="sm" variant="convex" label="Update" />}
     >
       A new version of the application is available.
     </Alert>

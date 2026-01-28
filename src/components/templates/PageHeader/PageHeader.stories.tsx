@@ -46,8 +46,8 @@ export const WithActions: Story = {
     description: 'Manage your team members and their account permissions.',
     actions: (
       <>
-        <Button variant="flat">Export</Button>
-        <Button>Add Member</Button>
+        <Button variant="flat" label="Export" />
+        <Button label="Add Member" />
       </>
     ),
   },
@@ -62,7 +62,7 @@ export const WithIcon: Story = {
         <SettingsIcon />
       </FeaturedIcon>
     ),
-    actions: <Button>Save Changes</Button>,
+    actions: <Button label="Save Changes" />,
   },
 };
 
@@ -77,7 +77,7 @@ export const WithBreadcrumb: Story = {
         <BreadcrumbItem>Settings</BreadcrumbItem>
       </Breadcrumbs>
     ),
-    actions: <Button>Save</Button>,
+    actions: <Button label="Save" />,
   },
 };
 
@@ -93,7 +93,7 @@ export const DarkTheme: Story = {
   args: {
     title: 'Dashboard',
     description: 'Welcome back! Here\'s an overview of your account.',
-    actions: <Button>New Project</Button>,
+    actions: <Button label="New Project" />,
   },
   decorators: [
     (Story) => (

@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Button.module.css';
 
 export type ButtonVariant = 'convex' | 'flat' | 'fab';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonElevation = 'low' | 'mid' | 'high';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
   /**
    * The visual variant of the button
    * - convex: Default "popped out" state
@@ -43,9 +44,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    */
   rightIcon?: React.ReactNode;
   /**
-   * Children elements
+   * Button label text
    */
-  children?: React.ReactNode;
+  label?: string;
 }
 
 /**
@@ -64,7 +65,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       loading = false,
       leftIcon,
       rightIcon,
-      children,
+      label,
       className,
       disabled,
       ...props
@@ -93,7 +94,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading && <span className={styles.spinner} aria-hidden="true" />}
         {!loading && leftIcon && <span className={styles.icon}>{leftIcon}</span>}
-        {children && <span className={styles.label}>{children}</span>}
+        {label && (
+          <Typography variant="button" component="span" color="inherit" className={styles.label}>
+            {label}
+          </Typography>
+        )}
         {!loading && rightIcon && <span className={styles.icon}>{rightIcon}</span>}
       </button>
     );

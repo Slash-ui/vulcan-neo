@@ -110,19 +110,20 @@ export const CareersSection = forwardRef<HTMLElement, CareersSectionProps>(
             variant="flat"
             size="sm"
             onClick={() => window.open(position.href, '_blank')}
-          >
-            Apply
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M4 12L12 4M12 4H6M12 4V10" />
-            </svg>
-          </Button>
+            label="Apply"
+            rightIcon={
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M4 12L12 4M12 4H6M12 4V10" />
+              </svg>
+            }
+          />
         )}
       </div>
     );

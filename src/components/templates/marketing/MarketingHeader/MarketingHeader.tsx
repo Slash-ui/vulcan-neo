@@ -181,18 +181,16 @@ export const MarketingHeader = forwardRef<HTMLElement, MarketingHeaderProps>(
                   size="sm"
                   onClick={onSecondaryCtaClick}
                   className={styles.secondaryCta}
-                >
-                  {secondaryCtaText}
-                </Button>
+                  label={secondaryCtaText}
+                />
               )}
               {ctaText && (
                 <Button
                   variant="convex"
                   size="sm"
                   onClick={onCtaClick}
-                >
-                  {ctaText}
-                </Button>
+                  label={ctaText}
+                />
               )}
             </div>
 
@@ -288,9 +286,8 @@ export const MarketingHeader = forwardRef<HTMLElement, MarketingHeaderProps>(
                     size="md"
                     onClick={onSecondaryCtaClick}
                     style={{ width: '100%' }}
-                  >
-                    {secondaryCtaText}
-                  </Button>
+                    label={secondaryCtaText}
+                  />
                 )}
                 {ctaText && (
                   <Button
@@ -298,9 +295,8 @@ export const MarketingHeader = forwardRef<HTMLElement, MarketingHeaderProps>(
                     size="md"
                     onClick={onCtaClick}
                     style={{ width: '100%' }}
-                  >
-                    {ctaText}
-                  </Button>
+                    label={ctaText}
+                  />
                 )}
               </div>
             </div>

@@ -35,6 +35,9 @@ const meta: Meta<typeof Button> = {
     disabled: {
       control: 'boolean',
     },
+    label: {
+      control: 'text',
+    },
   },
 };
 
@@ -43,7 +46,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Button',
+    label: 'Button',
     variant: 'convex',
     size: 'md',
     elevation: 'mid',
@@ -53,9 +56,9 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
+      <Button size="sm" label="Small" />
+      <Button size="md" label="Medium" />
+      <Button size="lg" label="Large" />
     </>
   ),
 };
@@ -63,16 +66,16 @@ export const Sizes: Story = {
 export const Elevations: Story = {
   render: () => (
     <>
-      <Button elevation="low">Low</Button>
-      <Button elevation="mid">Medium</Button>
-      <Button elevation="high">High</Button>
+      <Button elevation="low" label="Low" />
+      <Button elevation="mid" label="Medium" />
+      <Button elevation="high" label="High" />
     </>
   ),
 };
 
 export const Flat: Story = {
   args: {
-    children: 'Flat Button',
+    label: 'Flat Button',
     variant: 'flat',
   },
 };
@@ -80,9 +83,9 @@ export const Flat: Story = {
 export const FAB: Story = {
   render: () => (
     <>
-      <Button variant="fab" size="sm">+</Button>
-      <Button variant="fab">+</Button>
-      <Button variant="fab" size="lg">+</Button>
+      <Button variant="fab" size="sm" leftIcon={<span>+</span>} />
+      <Button variant="fab" leftIcon={<span>+</span>} />
+      <Button variant="fab" size="lg" leftIcon={<span>+</span>} />
     </>
   ),
 };
@@ -90,32 +93,30 @@ export const FAB: Story = {
 export const WithIcons: Story = {
   render: () => (
     <>
-      <Button leftIcon={<span>←</span>}>Back</Button>
-      <Button rightIcon={<span>→</span>}>Next</Button>
-      <Button leftIcon={<span>🛒</span>} rightIcon={<span>→</span>}>
-        Add to Cart
-      </Button>
+      <Button leftIcon={<span>←</span>} label="Back" />
+      <Button rightIcon={<span>→</span>} label="Next" />
+      <Button leftIcon={<span>🛒</span>} rightIcon={<span>→</span>} label="Add to Cart" />
     </>
   ),
 };
 
 export const Loading: Story = {
   args: {
-    children: 'Loading...',
+    label: 'Loading...',
     loading: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    children: 'Disabled',
+    label: 'Disabled',
     disabled: true,
   },
 };
 
 export const FullWidth: Story = {
   args: {
-    children: 'Full Width Button',
+    label: 'Full Width Button',
     fullWidth: true,
   },
   decorators: [
@@ -129,7 +130,7 @@ export const FullWidth: Story = {
 
 export const DarkTheme: Story = {
   args: {
-    children: 'Dark Theme',
+    label: 'Dark Theme',
   },
   decorators: [
     (Story) => (

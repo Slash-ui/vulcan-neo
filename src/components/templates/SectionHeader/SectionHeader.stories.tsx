@@ -39,8 +39,8 @@ export const WithActions: Story = {
     description: 'Manage your team and their permissions.',
     actions: (
       <>
-        <Button variant="flat" size="sm">Export</Button>
-        <Button size="sm">Add Member</Button>
+        <Button variant="flat" size="sm" label="Export" />
+        <Button size="sm" label="Add Member" />
       </>
     ),
   },
@@ -74,7 +74,7 @@ export const DarkTheme: Story = {
   args: {
     title: 'Section Title',
     description: 'This is a brief description of what this section contains.',
-    actions: <Button size="sm">Action</Button>,
+    actions: <Button size="sm" label="Action" />,
   },
   decorators: [
     (Story) => (

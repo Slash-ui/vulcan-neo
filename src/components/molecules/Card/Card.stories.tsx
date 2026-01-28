@@ -114,8 +114,8 @@ export const WithSubComponents: Story = {
       </CardBody>
       <CardFooter>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>
-          <Button variant="flat" size="sm">Cancel</Button>
-          <Button size="sm">Confirm</Button>
+          <Button variant="flat" size="sm" label="Cancel" />
+          <Button size="sm" label="Confirm" />
         </div>
       </CardFooter>
     </Card>
@@ -139,7 +139,7 @@ export const ProductCard: Story = {
       </p>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontSize: '20px', fontWeight: 'bold' }}>$299</span>
-        <Button size="sm">Add to Cart</Button>
+        <Button size="sm" label="Add to Cart" />
       </div>
     </Card>
   ),

@@ -118,9 +118,8 @@ export const NewsletterSection = forwardRef<HTMLElement, NewsletterSectionProps>
                 type="submit"
                 variant={isPrimaryBg ? 'flat' : 'convex'}
                 size="md"
-              >
-                {buttonText}
-              </Button>
+                label={buttonText}
+              />
             </form>
             {privacyText && (
               <p className={styles.privacyText}>{privacyText}</p>

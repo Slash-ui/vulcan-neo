@@ -10,8 +10,9 @@
   color: var(--neo-text);
   background: var(--neo-bg);
   border-radius: var(--neo-radius-sm);
-  transition: box-shadow var(--neo-transition-normal),
-              transform var(--neo-transition-fast);
+  transition:
+    box-shadow var(--neo-transition-normal),
+    transform var(--neo-transition-fast);
   user-select: none;
   outline: none;
   position: relative;
@@ -44,6 +45,12 @@
     4px 4px 8px var(--neo-shadow-dark);
 }
 
+.elevation-low.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
 .elevation-low.convex:active:not(.disabled),
 .elevation-low.convex.active {
   box-shadow:
@@ -58,6 +65,12 @@
     8px 8px 16px var(--neo-shadow-dark);
 }
 
+.elevation-mid.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
 .elevation-mid.convex:active:not(.disabled),
 .elevation-mid.convex.active {
   box-shadow:
@@ -70,6 +83,12 @@
   box-shadow:
     -16px -16px 32px var(--neo-shadow-light),
     16px 16px 32px var(--neo-shadow-dark);
+}
+
+.elevation-high.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
 }
 
 .elevation-high.convex:active:not(.disabled),
@@ -121,15 +140,17 @@
   min-height: 72px;
 }
 
+.fab:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+  transform: translateY(1px);
+}
+
 .fab:active:not(.disabled) {
   box-shadow:
     inset 8px 8px 16px var(--neo-shadow-dark),
     inset -8px -8px 16px var(--neo-shadow-light);
-}
-
-/* Hover effect */
-.convex:hover:not(.disabled):not(:active) {
-  transform: translateY(-1px);
 }
 
 /* Focus visible */

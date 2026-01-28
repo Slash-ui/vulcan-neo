@@ -117,18 +117,16 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
                     variant="convex"
                     size={size === 'lg' ? 'lg' : 'md'}
                     onClick={onPrimaryCtaClick}
-                  >
-                    {primaryCtaText}
-                  </Button>
+                    label={primaryCtaText}
+                  />
                 )}
                 {secondaryCtaText && (
                   <Button
                     variant="flat"
                     size={size === 'lg' ? 'lg' : 'md'}
                     onClick={onSecondaryCtaClick}
-                  >
-                    {secondaryCtaText}
-                  </Button>
+                    label={secondaryCtaText}
+                  />
                 )}
               </div>
             )}

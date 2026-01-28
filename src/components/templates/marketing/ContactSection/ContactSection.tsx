@@ -231,9 +231,7 @@ export const ContactSection = forwardRef<HTMLElement, ContactSectionProps>(
                       required
                     />
                   </div>
-                  <Button type="submit" variant="convex" size="lg">
-                    Send Message
-                  </Button>
+                  <Button type="submit" variant="convex" size="lg" label="Send Message" />
                 </form>
               </div>
             )}

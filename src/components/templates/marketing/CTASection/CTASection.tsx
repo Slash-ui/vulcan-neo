@@ -97,18 +97,16 @@ export const CTASection = forwardRef<HTMLElement, CTASectionProps>(
                 variant={isPrimaryBg ? 'flat' : 'convex'}
                 size="lg"
                 onClick={onPrimaryCtaClick}
-              >
-                {primaryCtaText}
-              </Button>
+                label={primaryCtaText}
+              />
               {secondaryCtaText && (
                 <Button
                   variant="flat"
                   size="lg"
                   onClick={onSecondaryCtaClick}
                   className={isPrimaryBg ? styles.secondaryBtnLight : ''}
-                >
-                  {secondaryCtaText}
-                </Button>
+                  label={secondaryCtaText}
+                />
               )}
             </div>
           </div>

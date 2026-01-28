@@ -43,7 +43,7 @@ const InfoIcon = () => (
 export const Default: Story = {
   args: {
     content: 'This is a tooltip',
-    children: <Button>Hover me</Button>,
+    children: <Button label="Hover me" />,
   },
 };
 
@@ -51,16 +51,16 @@ export const Placements: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
       <Tooltip content="Top tooltip" placement="top">
-        <Button>Top</Button>
+        <Button label="Top" />
       </Tooltip>
       <Tooltip content="Bottom tooltip" placement="bottom">
-        <Button>Bottom</Button>
+        <Button label="Bottom" />
       </Tooltip>
       <Tooltip content="Left tooltip" placement="left">
-        <Button>Left</Button>
+        <Button label="Left" />
       </Tooltip>
       <Tooltip content="Right tooltip" placement="right">
-        <Button>Right</Button>
+        <Button label="Right" />
       </Tooltip>
     </div>
   ),
@@ -77,7 +77,7 @@ export const WithIconButton: Story = {
 export const LongContent: Story = {
   args: {
     content: 'This is a longer tooltip with more detailed information that might span multiple lines.',
-    children: <Button>Hover for details</Button>,
+    children: <Button label="Hover for details" />,
   },
 };
 
@@ -85,13 +85,13 @@ export const CustomDelay: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem' }}>
       <Tooltip content="Instant (0ms)" delay={0}>
-        <Button>Instant</Button>
+        <Button label="Instant" />
       </Tooltip>
       <Tooltip content="Normal (200ms)" delay={200}>
-        <Button>Normal</Button>
+        <Button label="Normal" />
       </Tooltip>
       <Tooltip content="Slow (500ms)" delay={500}>
-        <Button>Slow</Button>
+        <Button label="Slow" />
       </Tooltip>
     </div>
   ),
@@ -101,7 +101,7 @@ export const Disabled: Story = {
   args: {
     content: 'You should not see this',
     disabled: true,
-    children: <Button>Disabled tooltip</Button>,
+    children: <Button label="Disabled tooltip" />,
   },
 };
 
@@ -113,14 +113,14 @@ export const WithRichContent: Story = {
         <span style={{ opacity: 0.8 }}>Ctrl + S</span>
       </div>
     ),
-    children: <Button>Save</Button>,
+    children: <Button label="Save" />,
   },
 };
 
 export const DarkTheme: Story = {
   args: {
     content: 'Dark theme tooltip',
-    children: <Button>Hover me</Button>,
+    children: <Button label="Hover me" />,
   },
   decorators: [
     (Story) => (

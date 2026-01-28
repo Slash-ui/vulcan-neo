@@ -37,7 +37,7 @@ export const WithAction: Story = {
     <EmptyState
       title="No projects yet"
       description="Get started by creating your first project."
-      action={<Button variant="convex">Create Project</Button>}
+      action={<Button variant="convex" label="Create Project" />}
     />
   ),
 };
@@ -47,8 +47,8 @@ export const WithMultipleActions: Story = {
     <EmptyState
       title="No notifications"
       description="You're all caught up! Check back later for updates."
-      action={<Button variant="convex">Refresh</Button>}
-      secondaryAction={<Button variant="flat">Settings</Button>}
+      action={<Button variant="convex" label="Refresh" />}
+      secondaryAction={<Button variant="flat" label="Settings" />}
     />
   ),
 };
@@ -105,7 +105,7 @@ export const CustomIcons: Story = {
           icon={<SearchIcon />}
           title="No search results"
           description="Try adjusting your search or filters to find what you're looking for."
-          action={<Button variant="convex">Clear Filters</Button>}
+          action={<Button variant="convex" label="Clear Filters" />}
         />
         <EmptyState
           icon={<InboxIcon />}
@@ -116,7 +116,7 @@ export const CustomIcons: Story = {
           icon={<CartIcon />}
           title="Your cart is empty"
           description="Looks like you haven't added anything to your cart yet."
-          action={<Button variant="convex">Browse Products</Button>}
+          action={<Button variant="convex" label="Browse Products" />}
         />
       </div>
     );
@@ -138,8 +138,8 @@ export const ErrorState: Story = {
         icon={<ErrorIcon />}
         title="Something went wrong"
         description="We encountered an error while loading your data. Please try again."
-        action={<Button variant="convex">Retry</Button>}
-        secondaryAction={<Button variant="flat">Contact Support</Button>}
+        action={<Button variant="convex" label="Retry" />}
+        secondaryAction={<Button variant="flat" label="Contact Support" />}
       />
     );
   },
@@ -181,8 +181,8 @@ export const Illustration: Story = {
       }
       title="Create your first design"
       description="Start from scratch or choose from our templates to get started quickly."
-      action={<Button variant="convex">Create New</Button>}
-      secondaryAction={<Button variant="flat">Browse Templates</Button>}
+      action={<Button variant="convex" label="Create New" />}
+      secondaryAction={<Button variant="flat" label="Browse Templates" />}
     />
   ),
 };
@@ -192,7 +192,7 @@ export const DarkTheme: Story = {
     <EmptyState
       title="No data available"
       description="There's nothing to show here at the moment."
-      action={<Button variant="convex">Refresh</Button>}
+      action={<Button variant="convex" label="Refresh" />}
     />
   ),
   decorators: [
