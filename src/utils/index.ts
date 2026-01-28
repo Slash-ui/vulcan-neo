@@ -12,6 +12,8 @@ export {
   hexToRgb,
   getLuminance,
   isLightColor,
+  lightenColor,
+  darkenColor,
 } from './color';
 
 export type { Elevation, DepthState } from './shadow';

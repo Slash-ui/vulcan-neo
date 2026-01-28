@@ -59,3 +59,43 @@ export const getLuminance = (hexColor: string): number => {
 export const isLightColor = (hexColor: string): boolean => {
   return getLuminance(hexColor) > 0.5;
 };
+
+/**
+ * Lightens a hex color by a percentage.
+ *
+ * @param hexColor - A hex color string (e.g., "#FF5733" or "#F53")
+ * @param percent - Amount to lighten (0-1, where 0.3 = 30% lighter)
+ * @returns RGB color string (e.g., "rgb(255, 200, 150)")
+ *
+ * @example
+ * ```tsx
+ * const lighter = lightenColor('#6C5CE7', 0.3); // Returns lighter shade
+ * ```
+ */
+export const lightenColor = (hexColor: string, percent: number): string => {
+  const { r, g, b } = hexToRgb(hexColor);
+  const newR = Math.min(255, Math.round(r + (255 - r) * percent));
+  const newG = Math.min(255, Math.round(g + (255 - g) * percent));
+  const newB = Math.min(255, Math.round(b + (255 - b) * percent));
+  return `rgb(${newR}, ${newG}, ${newB})`;
+};
+
+/**
+ * Darkens a hex color by a percentage.
+ *
+ * @param hexColor - A hex color string (e.g., "#FF5733" or "#F53")
+ * @param percent - Amount to darken (0-1, where 0.2 = 20% darker)
+ * @returns RGB color string (e.g., "rgb(100, 80, 70)")
+ *
+ * @example
+ * ```tsx
+ * const darker = darkenColor('#6C5CE7', 0.2); // Returns darker shade
+ * ```
+ */
+export const darkenColor = (hexColor: string, percent: number): string => {
+  const { r, g, b } = hexToRgb(hexColor);
+  const newR = Math.max(0, Math.round(r * (1 - percent)));
+  const newG = Math.max(0, Math.round(g * (1 - percent)));
+  const newB = Math.max(0, Math.round(b * (1 - percent)));
+  return `rgb(${newR}, ${newG}, ${newB})`;
+};
