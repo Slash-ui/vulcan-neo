@@ -1,0 +1,167 @@
+.datePicker {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: var(--neo-font-family);
+}
+
+/* Sizes */
+.sm {
+  --input-height: 36px;
+  --input-font: var(--neo-font-size-sm);
+  --icon-size: 16px;
+}
+
+.md {
+  --input-height: 44px;
+  --input-font: var(--neo-font-size-md);
+  --icon-size: 18px;
+}
+
+.lg {
+  --input-height: 52px;
+  --input-font: var(--neo-font-size-lg);
+  --icon-size: 20px;
+}
+
+/* Label */
+.label {
+  display: block;
+  margin-bottom: var(--neo-space-xs);
+  font-size: var(--neo-font-size-sm);
+  font-weight: var(--neo-font-weight-medium);
+  color: var(--neo-text);
+}
+
+/* Input wrapper */
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-sm);
+  height: var(--input-height);
+  padding: 0 var(--neo-space-md);
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+
+  /* Concave appearance */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+.inputWrapper:hover:not(.disabled .inputWrapper) {
+  box-shadow:
+    inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -3px -3px 6px var(--neo-shadow-light);
+}
+
+.inputWrapper:focus {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Open state */
+.open .inputWrapper {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--neo-text-secondary);
+}
+
+.icon svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+/* Value */
+.value {
+  flex: 1;
+  font-size: var(--input-font);
+  color: var(--neo-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.value.placeholder {
+  color: var(--neo-text-disabled);
+}
+
+/* Clear button */
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--neo-text-secondary);
+  cursor: pointer;
+  transition: all var(--neo-transition-fast);
+}
+
+.clearButton:hover {
+  color: var(--neo-text);
+  background: var(--neo-shadow-dark);
+}
+
+.clearButton svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Error state */
+.error .inputWrapper {
+  outline: 2px solid var(--neo-error, #ef4444);
+  outline-offset: 2px;
+}
+
+.errorMessage {
+  margin-top: var(--neo-space-xs);
+  font-size: var(--neo-font-size-sm);
+  color: var(--neo-error, #ef4444);
+}
+
+/* Disabled state */
+.disabled .inputWrapper {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.disabled .value {
+  color: var(--neo-text-disabled);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  margin-top: var(--neo-space-xs);
+  animation: slideDown var(--neo-transition-fast) ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,228 @@
+.features {
+  background: var(--neo-bg);
+  font-family: var(--neo-font-family);
+  padding: calc(var(--neo-space-xl) * 2) var(--neo-space-lg);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--neo-space-xl);
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--neo-primary);
+  font-size: var(--neo-font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--neo-space-sm);
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--neo-text);
+  margin: 0 0 var(--neo-space-md);
+  line-height: 1.2;
+}
+
+.description {
+  font-size: var(--neo-font-size-lg);
+  color: var(--neo-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--neo-space-lg);
+}
+
+.featureCard {
+  background: var(--neo-bg);
+  padding: var(--neo-space-lg);
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+.featureIcon {
+  margin: 0 auto var(--neo-space-md);
+}
+
+.featureTitle {
+  font-size: var(--neo-font-size-lg);
+  font-weight: 600;
+  color: var(--neo-text);
+  margin: 0 0 var(--neo-space-sm);
+}
+
+.featureDescription {
+  font-size: var(--neo-font-size-md);
+  color: var(--neo-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* List Layout */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-xl);
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--neo-space-xl);
+  align-items: center;
+  background: var(--neo-bg);
+  padding: var(--neo-space-xl);
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.listContent {
+  display: flex;
+  gap: var(--neo-space-md);
+  align-items: flex-start;
+}
+
+.listContent .featureTitle {
+  text-align: left;
+}
+
+.listContent .featureDescription {
+  text-align: left;
+}
+
+.listImage img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--neo-radius-md);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+/* Alternating Layout */
+.alternating {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--neo-space-xl) * 2);
+}
+
+.alternatingItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--neo-space-xl);
+  align-items: center;
+}
+
+.alternatingItem.reverse {
+  direction: rtl;
+}
+
+.alternatingItem.reverse > * {
+  direction: ltr;
+}
+
+.alternatingContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-md);
+}
+
+.alternatingContent .featureIcon {
+  margin: 0;
+}
+
+.alternatingTitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--neo-text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.alternatingDescription {
+  font-size: var(--neo-font-size-lg);
+  color: var(--neo-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.alternatingImage img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--neo-radius-lg);
+  box-shadow:
+    -8px -8px 16px var(--neo-shadow-light),
+    8px 8px 16px var(--neo-shadow-dark);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .listItem {
+    grid-template-columns: 1fr;
+  }
+
+  .listContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .listContent .featureIcon {
+    margin: 0 auto;
+  }
+
+  .listContent .featureTitle,
+  .listContent .featureDescription {
+    text-align: center;
+  }
+
+  .alternatingItem {
+    grid-template-columns: 1fr;
+  }
+
+  .alternatingItem.reverse {
+    direction: ltr;
+  }
+
+  .alternatingContent {
+    text-align: center;
+    align-items: center;
+  }
+}
