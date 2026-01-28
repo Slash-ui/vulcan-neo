@@ -124,12 +124,42 @@ const FontWeightDemo: React.FC = () => (
     }}
   >
     {[
-      { name: 'Regular', var: '--neo-font-weight-regular', value: '400', use: 'Body text' },
-      { name: 'Medium', var: '--neo-font-weight-medium', value: '500', use: 'Labels, titles' },
-      { name: 'Semibold', var: '--neo-font-weight-semibold', value: '600', use: 'Headlines' },
-      { name: 'Bold', var: '--neo-font-weight-bold', value: '700', use: 'Display text' },
-      { name: 'Extrabold', var: '--neo-font-weight-extrabold', value: '800', use: 'Hero headlines' },
-      { name: 'Black', var: '--neo-font-weight-black', value: '900', use: 'Maximum emphasis' },
+      {
+        name: 'Regular',
+        var: '--neo-font-weight-regular',
+        value: '400',
+        use: 'Body text',
+      },
+      {
+        name: 'Medium',
+        var: '--neo-font-weight-medium',
+        value: '500',
+        use: 'Labels, titles',
+      },
+      {
+        name: 'Semibold',
+        var: '--neo-font-weight-semibold',
+        value: '600',
+        use: 'Headlines',
+      },
+      {
+        name: 'Bold',
+        var: '--neo-font-weight-bold',
+        value: '700',
+        use: 'Display text',
+      },
+      {
+        name: 'Extrabold',
+        var: '--neo-font-weight-extrabold',
+        value: '800',
+        use: 'Hero headlines',
+      },
+      {
+        name: 'Black',
+        var: '--neo-font-weight-black',
+        value: '900',
+        use: 'Maximum emphasis',
+      },
     ].map((weight) => (
       <div
         key={weight.name}
@@ -201,20 +231,24 @@ const FontFamilyDemo: React.FC = () => (
         {
           name: 'Inter (Primary)',
           var: '--neo-font-family',
-          sample: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789',
-          description: 'Tall x-height, open apertures, excellent legibility at all sizes',
+          sample:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789',
+          description:
+            'Tall x-height, open apertures, excellent legibility at all sizes',
         },
         {
           name: 'Poppins (Display)',
           var: '--neo-font-family-display',
           sample: 'Headlines & Hero Text',
-          description: 'Geometric with friendly personality, high contrast for headlines',
+          description:
+            'Geometric with friendly personality, high contrast for headlines',
         },
         {
           name: 'JetBrains Mono',
           var: '--neo-font-family-mono',
           sample: 'const code = "example"; // 0123456789 iIlL1 oO0',
-          description: 'Clear distinction between similar characters (i, l, 1, 0, O)',
+          description:
+            'Clear distinction between similar characters (i, l, 1, 0, O)',
         },
       ].map((font) => (
         <div
@@ -227,7 +261,14 @@ const FontFamilyDemo: React.FC = () => (
               '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              marginBottom: '12px',
+            }}
+          >
             <div>
               <div
                 style={{
@@ -294,14 +335,16 @@ const TypeScaleVisual: React.FC = () => (
         lineHeight: 1.6,
       }}
     >
-      Our scale uses a 1.25x ratio (Major Third) for clear visual hierarchy. Base size is 16px.
+      Our scale uses a 1.25x ratio (Major Third) for clear visual hierarchy.
+      Base size is 16px.
     </p>
     <div
       style={{
         padding: '24px',
         background: 'var(--neo-bg)',
         borderRadius: 'var(--neo-radius-sm)',
-        boxShadow: 'inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light)',
+        boxShadow:
+          'inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light)',
       }}
     >
       {[
@@ -324,7 +367,10 @@ const TypeScaleVisual: React.FC = () => (
             alignItems: 'center',
             gap: '16px',
             padding: '8px 0',
-            borderBottom: index < 10 ? '1px solid var(--neo-color-outline-variant)' : 'none',
+            borderBottom:
+              index < 10
+                ? '1px solid var(--neo-color-outline-variant)'
+                : 'none',
           }}
         >
           <div
@@ -340,7 +386,12 @@ const TypeScaleVisual: React.FC = () => (
           <div
             style={{
               fontSize: item.size,
-              fontWeight: parseInt(item.size) >= 31 ? 700 : parseInt(item.size) >= 20 ? 600 : 400,
+              fontWeight:
+                parseInt(item.size) >= 31
+                  ? 700
+                  : parseInt(item.size) >= 20
+                    ? 600
+                    : 400,
               color: 'var(--neo-text)',
               lineHeight: 1.2,
             }}
@@ -385,7 +436,8 @@ const AccessibilityGuidelines: React.FC = () => (
           padding: '24px',
           background: 'var(--neo-bg)',
           borderRadius: 'var(--neo-radius-sm)',
-          boxShadow: '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
+          boxShadow:
+            '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
         }}
       >
         <div
@@ -411,7 +463,13 @@ const AccessibilityGuidelines: React.FC = () => (
           >
             ✓
           </div>
-          <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--neo-text)' }}>
+          <div
+            style={{
+              fontWeight: 600,
+              fontSize: '14px',
+              color: 'var(--neo-text)',
+            }}
+          >
             Contrast Ratios
           </div>
         </div>
@@ -424,10 +482,18 @@ const AccessibilityGuidelines: React.FC = () => (
             paddingLeft: '16px',
           }}
         >
-          <li>Primary text: <strong>8.2:1</strong> (WCAG AAA)</li>
-          <li>Secondary text: <strong>4.8:1</strong> (WCAG AA)</li>
-          <li>Minimum body text: <strong>16px</strong></li>
-          <li>Line height: <strong>1.5x - 1.75x</strong> font size</li>
+          <li>
+            Primary text: <strong>8.2:1</strong> (WCAG AAA)
+          </li>
+          <li>
+            Secondary text: <strong>4.8:1</strong> (WCAG AA)
+          </li>
+          <li>
+            Minimum body text: <strong>16px</strong>
+          </li>
+          <li>
+            Line height: <strong>1.5x - 1.75x</strong> font size
+          </li>
         </ul>
       </div>
 
@@ -436,7 +502,8 @@ const AccessibilityGuidelines: React.FC = () => (
           padding: '24px',
           background: 'var(--neo-bg)',
           borderRadius: 'var(--neo-radius-sm)',
-          boxShadow: '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
+          boxShadow:
+            '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
         }}
       >
         <div
@@ -462,7 +529,13 @@ const AccessibilityGuidelines: React.FC = () => (
           >
             ✕
           </div>
-          <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--neo-text)' }}>
+          <div
+            style={{
+              fontWeight: 600,
+              fontSize: '14px',
+              color: 'var(--neo-text)',
+            }}
+          >
             Avoid
           </div>
         </div>
@@ -487,36 +560,95 @@ const AccessibilityGuidelines: React.FC = () => (
           padding: '24px',
           background: 'var(--neo-bg)',
           borderRadius: 'var(--neo-radius-sm)',
-          boxShadow: '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
+          boxShadow:
+            '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
           gridColumn: 'span 2',
         }}
       >
-        <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--neo-text)', marginBottom: '16px' }}>
+        <div
+          style={{
+            fontWeight: 600,
+            fontSize: '14px',
+            color: 'var(--neo-text)',
+            marginBottom: '16px',
+          }}
+        >
           Font Selection Rationale
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '24px',
+          }}
+        >
           <div>
-            <div style={{ fontWeight: 500, fontSize: '13px', color: 'var(--neo-text)', marginBottom: '8px' }}>
+            <div
+              style={{
+                fontWeight: 500,
+                fontSize: '13px',
+                color: 'var(--neo-text)',
+                marginBottom: '8px',
+              }}
+            >
               Tall x-height
             </div>
-            <p style={{ fontSize: '12px', color: 'var(--neo-text-secondary)', margin: 0, lineHeight: 1.6 }}>
-              Inter and Poppins have tall x-heights, making lowercase letters more visible against soft neomorphic backgrounds.
+            <p
+              style={{
+                fontSize: '12px',
+                color: 'var(--neo-text-secondary)',
+                margin: 0,
+                lineHeight: 1.6,
+              }}
+            >
+              Inter and Poppins have tall x-heights, making lowercase letters
+              more visible against soft neomorphic backgrounds.
             </p>
           </div>
           <div>
-            <div style={{ fontWeight: 500, fontSize: '13px', color: 'var(--neo-text)', marginBottom: '8px' }}>
+            <div
+              style={{
+                fontWeight: 500,
+                fontSize: '13px',
+                color: 'var(--neo-text)',
+                marginBottom: '8px',
+              }}
+            >
               Open Apertures
             </div>
-            <p style={{ fontSize: '12px', color: 'var(--neo-text-secondary)', margin: 0, lineHeight: 1.6 }}>
-              Letters like 'c', 'e', and 's' have open counters, improving character recognition at small sizes.
+            <p
+              style={{
+                fontSize: '12px',
+                color: 'var(--neo-text-secondary)',
+                margin: 0,
+                lineHeight: 1.6,
+              }}
+            >
+              Letters like 'c', 'e', and 's' have open counters, improving
+              character recognition at small sizes.
             </p>
           </div>
           <div>
-            <div style={{ fontWeight: 500, fontSize: '13px', color: 'var(--neo-text)', marginBottom: '8px' }}>
+            <div
+              style={{
+                fontWeight: 500,
+                fontSize: '13px',
+                color: 'var(--neo-text)',
+                marginBottom: '8px',
+              }}
+            >
               Geometric Construction
             </div>
-            <p style={{ fontSize: '12px', color: 'var(--neo-text-secondary)', margin: 0, lineHeight: 1.6 }}>
-              Clean geometric lines complement the minimalist neomorphic aesthetic without visual noise.
+            <p
+              style={{
+                fontSize: '12px',
+                color: 'var(--neo-text-secondary)',
+                margin: 0,
+                lineHeight: 1.6,
+              }}
+            >
+              Clean geometric lines complement the minimalist neomorphic
+              aesthetic without visual noise.
             </p>
           </div>
         </div>
@@ -564,15 +696,32 @@ const FontPairings: React.FC = () => (
             padding: '24px',
             background: 'var(--neo-bg)',
             borderRadius: 'var(--neo-radius-sm)',
-            boxShadow: '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
+            boxShadow:
+              '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '16px',
+            }}
+          >
             <div>
-              <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--neo-text)', marginBottom: '4px' }}>
+              <div
+                style={{
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  color: 'var(--neo-text)',
+                  marginBottom: '4px',
+                }}
+              >
                 {pairing.name}
               </div>
-              <div style={{ fontSize: '12px', color: 'var(--neo-text-secondary)' }}>
+              <div
+                style={{ fontSize: '12px', color: 'var(--neo-text-secondary)' }}
+              >
                 {pairing.description}
               </div>
             </div>
@@ -620,8 +769,17 @@ const FontPairings: React.FC = () => (
             >
               Welcome to Our Platform
             </div>
-            <p style={{ fontSize: '16px', color: 'var(--neo-text-secondary)', margin: 0, lineHeight: 1.625 }}>
-              This is body text demonstrating the pairing. Good typography creates visual hierarchy and improves readability across all screen sizes.
+            <p
+              style={{
+                fontSize: '16px',
+                color: 'var(--neo-text-secondary)',
+                margin: 0,
+                lineHeight: 1.625,
+              }}
+            >
+              This is body text demonstrating the pairing. Good typography
+              creates visual hierarchy and improves readability across all
+              screen sizes.
             </p>
           </div>
         </div>
@@ -653,9 +811,10 @@ const TypographyPage: React.FC = () => (
         maxWidth: '700px',
       }}
     >
-      In neomorphic design, typography must do the heavy lifting for usability since the UI
-      relies on shadows rather than borders. Our type system uses Humanist/Geometric sans-serifs
-      with tall x-heights and open apertures for maximum legibility against soft backgrounds.
+      In neomorphic design, typography must do the heavy lifting for usability
+      since the UI relies on shadows rather than borders. Our type system uses
+      Humanist/Geometric sans-serifs with tall x-heights and open apertures for
+      maximum legibility against soft backgrounds.
     </p>
 
     <FontFamilyDemo />
@@ -680,8 +839,8 @@ const TypographyPage: React.FC = () => (
         lineHeight: 1.6,
       }}
     >
-      Use bold weights (700-900) for headlines to anchor text against soft UI elements.
-      Regular weight (400) is reserved for body text.
+      Use bold weights (700-900) for headlines to anchor text against soft UI
+      elements. Regular weight (400) is reserved for body text.
     </p>
     <FontWeightDemo />
 
@@ -911,7 +1070,7 @@ const TypographyPage: React.FC = () => (
 );
 
 const meta: Meta = {
-  title: 'Foundations/Typography',
+  title: 'foundation/Typography',
   parameters: {
     layout: 'fullscreen',
   },

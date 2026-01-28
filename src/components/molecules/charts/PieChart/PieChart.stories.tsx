@@ -3,7 +3,7 @@ import { PieChart, PieChartDataPoint } from './PieChart';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof PieChart> = {
-  title: 'Charts/PieChart',
+  title: 'Molecules/Charts/PieChart',
   component: PieChart,
   tags: ['autodocs'],
   decorators: [

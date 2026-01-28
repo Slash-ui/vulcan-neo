@@ -3,7 +3,7 @@ import { Footer } from './Footer';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof Footer> = {
-  title: 'Marketing/Footer',
+  title: 'Templates/Marketing/Footer',
   component: Footer,
   tags: ['autodocs'],
   decorators: [

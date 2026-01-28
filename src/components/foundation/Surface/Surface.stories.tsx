@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Surface } from './Surface';
 
 const meta: Meta<typeof Surface> = {
-  title: 'Atoms/Surface',
+  title: 'Foundation/Surface',
   component: Surface,
   parameters: {
     layout: 'fullscreen',
@@ -18,6 +18,9 @@ const meta: Meta<typeof Surface> = {
     },
     fullHeight: {
       control: 'boolean',
+    },
+    children: {
+      control: false,
     },
   },
 };

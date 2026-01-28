@@ -138,8 +138,9 @@ const ColorsPage: React.FC = () => (
         maxWidth: '700px',
       }}
     >
-      The Vulcan Neo color system is designed for neomorphic interfaces. Colors are carefully
-      chosen to work with soft shadows and provide excellent contrast for accessibility.
+      The Vulcan Neo color system is designed for neomorphic interfaces. Colors
+      are carefully chosen to work with soft shadows and provide excellent
+      contrast for accessibility.
     </p>
 
     <ColorGroup
@@ -147,11 +148,32 @@ const ColorsPage: React.FC = () => (
       description="Primary colors express brand identity and are used for key actions and components."
       colors={[
         { name: 'Primary', variable: '--neo-color-primary', hex: '#6C5CE7' },
-        { name: 'Primary Light', variable: '--neo-color-primary-light', hex: '#A29BFE' },
-        { name: 'Primary Dark', variable: '--neo-color-primary-dark', hex: '#5849BE' },
-        { name: 'On Primary', variable: '--neo-color-on-primary', hex: '#FFFFFF', description: 'Text on primary' },
-        { name: 'Primary Container', variable: '--neo-color-primary-container', hex: '#E8E5FF' },
-        { name: 'On Primary Container', variable: '--neo-color-on-primary-container', hex: '#1D1148' },
+        {
+          name: 'Primary Light',
+          variable: '--neo-color-primary-light',
+          hex: '#A29BFE',
+        },
+        {
+          name: 'Primary Dark',
+          variable: '--neo-color-primary-dark',
+          hex: '#5849BE',
+        },
+        {
+          name: 'On Primary',
+          variable: '--neo-color-on-primary',
+          hex: '#FFFFFF',
+          description: 'Text on primary',
+        },
+        {
+          name: 'Primary Container',
+          variable: '--neo-color-primary-container',
+          hex: '#E8E5FF',
+        },
+        {
+          name: 'On Primary Container',
+          variable: '--neo-color-on-primary-container',
+          hex: '#1D1148',
+        },
       ]}
     />
 
@@ -159,12 +181,36 @@ const ColorsPage: React.FC = () => (
       title="Secondary Colors"
       description="Secondary colors complement primary colors and are used for less prominent components."
       colors={[
-        { name: 'Secondary', variable: '--neo-color-secondary', hex: '#00CEC9' },
-        { name: 'Secondary Light', variable: '--neo-color-secondary-light', hex: '#55EFC4' },
-        { name: 'Secondary Dark', variable: '--neo-color-secondary-dark', hex: '#00A8A3' },
-        { name: 'On Secondary', variable: '--neo-color-on-secondary', hex: '#FFFFFF' },
-        { name: 'Secondary Container', variable: '--neo-color-secondary-container', hex: '#D4FFFE' },
-        { name: 'On Secondary Container', variable: '--neo-color-on-secondary-container', hex: '#00403E' },
+        {
+          name: 'Secondary',
+          variable: '--neo-color-secondary',
+          hex: '#00CEC9',
+        },
+        {
+          name: 'Secondary Light',
+          variable: '--neo-color-secondary-light',
+          hex: '#55EFC4',
+        },
+        {
+          name: 'Secondary Dark',
+          variable: '--neo-color-secondary-dark',
+          hex: '#00A8A3',
+        },
+        {
+          name: 'On Secondary',
+          variable: '--neo-color-on-secondary',
+          hex: '#FFFFFF',
+        },
+        {
+          name: 'Secondary Container',
+          variable: '--neo-color-secondary-container',
+          hex: '#D4FFFE',
+        },
+        {
+          name: 'On Secondary Container',
+          variable: '--neo-color-on-secondary-container',
+          hex: '#00403E',
+        },
       ]}
     />
 
@@ -173,11 +219,31 @@ const ColorsPage: React.FC = () => (
       description="Tertiary colors provide additional accent options for contrast and visual interest."
       colors={[
         { name: 'Tertiary', variable: '--neo-color-tertiary', hex: '#FDCB6E' },
-        { name: 'Tertiary Light', variable: '--neo-color-tertiary-light', hex: '#FFEAA7' },
-        { name: 'Tertiary Dark', variable: '--neo-color-tertiary-dark', hex: '#E4B556' },
-        { name: 'On Tertiary', variable: '--neo-color-on-tertiary', hex: '#2D3436' },
-        { name: 'Tertiary Container', variable: '--neo-color-tertiary-container', hex: '#FFF8E1' },
-        { name: 'On Tertiary Container', variable: '--neo-color-on-tertiary-container', hex: '#3E2D00' },
+        {
+          name: 'Tertiary Light',
+          variable: '--neo-color-tertiary-light',
+          hex: '#FFEAA7',
+        },
+        {
+          name: 'Tertiary Dark',
+          variable: '--neo-color-tertiary-dark',
+          hex: '#E4B556',
+        },
+        {
+          name: 'On Tertiary',
+          variable: '--neo-color-on-tertiary',
+          hex: '#2D3436',
+        },
+        {
+          name: 'Tertiary Container',
+          variable: '--neo-color-tertiary-container',
+          hex: '#FFF8E1',
+        },
+        {
+          name: 'On Tertiary Container',
+          variable: '--neo-color-on-tertiary-container',
+          hex: '#3E2D00',
+        },
       ]}
     />
 
@@ -185,14 +251,50 @@ const ColorsPage: React.FC = () => (
       title="Semantic Colors"
       description="Semantic colors communicate status and feedback to users."
       colors={[
-        { name: 'Success', variable: '--neo-color-success', hex: '#00B894', description: 'Positive actions' },
-        { name: 'Success Container', variable: '--neo-color-success-container', hex: '#D4F9EF' },
-        { name: 'Warning', variable: '--neo-color-warning', hex: '#FDCB6E', description: 'Caution states' },
-        { name: 'Warning Container', variable: '--neo-color-warning-container', hex: '#FFF8E1' },
-        { name: 'Error', variable: '--neo-color-error', hex: '#E17055', description: 'Error states' },
-        { name: 'Error Container', variable: '--neo-color-error-container', hex: '#FFDDD6' },
-        { name: 'Info', variable: '--neo-color-info', hex: '#74B9FF', description: 'Informational' },
-        { name: 'Info Container', variable: '--neo-color-info-container', hex: '#E3F2FD' },
+        {
+          name: 'Success',
+          variable: '--neo-color-success',
+          hex: '#00B894',
+          description: 'Positive actions',
+        },
+        {
+          name: 'Success Container',
+          variable: '--neo-color-success-container',
+          hex: '#D4F9EF',
+        },
+        {
+          name: 'Warning',
+          variable: '--neo-color-warning',
+          hex: '#FDCB6E',
+          description: 'Caution states',
+        },
+        {
+          name: 'Warning Container',
+          variable: '--neo-color-warning-container',
+          hex: '#FFF8E1',
+        },
+        {
+          name: 'Error',
+          variable: '--neo-color-error',
+          hex: '#E17055',
+          description: 'Error states',
+        },
+        {
+          name: 'Error Container',
+          variable: '--neo-color-error-container',
+          hex: '#FFDDD6',
+        },
+        {
+          name: 'Info',
+          variable: '--neo-color-info',
+          hex: '#74B9FF',
+          description: 'Informational',
+        },
+        {
+          name: 'Info Container',
+          variable: '--neo-color-info-container',
+          hex: '#E3F2FD',
+        },
       ]}
     />
 
@@ -200,14 +302,47 @@ const ColorsPage: React.FC = () => (
       title="Surface Colors"
       description="Surface colors create the layered depth essential to neomorphic design."
       colors={[
-        { name: 'Surface', variable: '--neo-color-surface', hex: '#E0E5EC', description: 'Base surface' },
-        { name: 'Surface Dim', variable: '--neo-color-surface-dim', hex: '#D4D9E0' },
-        { name: 'Surface Bright', variable: '--neo-color-surface-bright', hex: '#F0F3F8' },
-        { name: 'Surface Container Lowest', variable: '--neo-color-surface-container-lowest', hex: '#FFFFFF' },
-        { name: 'Surface Container Low', variable: '--neo-color-surface-container-low', hex: '#EEF1F6' },
-        { name: 'Surface Container', variable: '--neo-color-surface-container', hex: '#E8ECEF' },
-        { name: 'Surface Container High', variable: '--neo-color-surface-container-high', hex: '#E2E6EA' },
-        { name: 'Surface Container Highest', variable: '--neo-color-surface-container-highest', hex: '#DCE0E5' },
+        {
+          name: 'Surface',
+          variable: '--neo-color-surface',
+          hex: '#E0E5EC',
+          description: 'Base surface',
+        },
+        {
+          name: 'Surface Dim',
+          variable: '--neo-color-surface-dim',
+          hex: '#D4D9E0',
+        },
+        {
+          name: 'Surface Bright',
+          variable: '--neo-color-surface-bright',
+          hex: '#F0F3F8',
+        },
+        {
+          name: 'Surface Container Lowest',
+          variable: '--neo-color-surface-container-lowest',
+          hex: '#FFFFFF',
+        },
+        {
+          name: 'Surface Container Low',
+          variable: '--neo-color-surface-container-low',
+          hex: '#EEF1F6',
+        },
+        {
+          name: 'Surface Container',
+          variable: '--neo-color-surface-container',
+          hex: '#E8ECEF',
+        },
+        {
+          name: 'Surface Container High',
+          variable: '--neo-color-surface-container-high',
+          hex: '#E2E6EA',
+        },
+        {
+          name: 'Surface Container Highest',
+          variable: '--neo-color-surface-container-highest',
+          hex: '#DCE0E5',
+        },
       ]}
     />
 
@@ -215,11 +350,34 @@ const ColorsPage: React.FC = () => (
       title="Text Colors"
       description="Text colors ensure readability and meet WCAG 4.5:1 contrast requirements."
       colors={[
-        { name: 'Text Primary', variable: '--neo-text-primary', hex: '#2D3436', description: 'Primary text' },
-        { name: 'Text Secondary', variable: '--neo-text-secondary', hex: '#636E72', description: 'Secondary text' },
-        { name: 'Text Disabled', variable: '--neo-text-disabled', hex: '#A0A8AD', description: 'Disabled text' },
-        { name: 'On Surface', variable: '--neo-color-on-surface', description: 'Text on surface' },
-        { name: 'On Surface Variant', variable: '--neo-color-on-surface-variant', description: 'Secondary text on surface' },
+        {
+          name: 'Text Primary',
+          variable: '--neo-text-primary',
+          hex: '#2D3436',
+          description: 'Primary text',
+        },
+        {
+          name: 'Text Secondary',
+          variable: '--neo-text-secondary',
+          hex: '#636E72',
+          description: 'Secondary text',
+        },
+        {
+          name: 'Text Disabled',
+          variable: '--neo-text-disabled',
+          hex: '#A0A8AD',
+          description: 'Disabled text',
+        },
+        {
+          name: 'On Surface',
+          variable: '--neo-color-on-surface',
+          description: 'Text on surface',
+        },
+        {
+          name: 'On Surface Variant',
+          variable: '--neo-color-on-surface-variant',
+          description: 'Secondary text on surface',
+        },
       ]}
     />
 
@@ -227,8 +385,18 @@ const ColorsPage: React.FC = () => (
       title="Outline Colors"
       description="Outline colors define boundaries and separators."
       colors={[
-        { name: 'Outline', variable: '--neo-color-outline', hex: '#8D9CA8', description: 'Primary outline' },
-        { name: 'Outline Variant', variable: '--neo-color-outline-variant', hex: '#C4CBD0', description: 'Subtle outline' },
+        {
+          name: 'Outline',
+          variable: '--neo-color-outline',
+          hex: '#8D9CA8',
+          description: 'Primary outline',
+        },
+        {
+          name: 'Outline Variant',
+          variable: '--neo-color-outline-variant',
+          hex: '#C4CBD0',
+          description: 'Subtle outline',
+        },
       ]}
     />
 
@@ -236,15 +404,23 @@ const ColorsPage: React.FC = () => (
       title="Shadow Colors"
       description="Shadow colors create the signature neomorphic depth effect."
       colors={[
-        { name: 'Shadow Light', variable: '--neo-shadow-light', description: 'Light shadow (top-left)' },
-        { name: 'Shadow Dark', variable: '--neo-shadow-dark', description: 'Dark shadow (bottom-right)' },
+        {
+          name: 'Shadow Light',
+          variable: '--neo-shadow-light',
+          description: 'Light shadow (top-left)',
+        },
+        {
+          name: 'Shadow Dark',
+          variable: '--neo-shadow-dark',
+          description: 'Dark shadow (bottom-right)',
+        },
       ]}
     />
   </div>
 );
 
 const meta: Meta = {
-  title: 'Foundations/Colors',
+  title: 'foundation/Colors',
   parameters: {
     layout: 'fullscreen',
   },

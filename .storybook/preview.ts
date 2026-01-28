@@ -22,6 +22,20 @@ const preview: Preview = {
         }
       }
     },
+    options: {
+      storySort: {
+        order: [
+          'foundation',
+          'Foundation',
+          'Atoms',
+          'Molecules',
+          ['*', 'Charts'],
+          'Organisms',
+          'Templates',
+          ['*', 'Marketing'],
+        ],
+      },
+    },
   },
 
   initialGlobals: {

@@ -4,7 +4,7 @@ import { Surface } from '../../foundation/Surface';
 import { Button } from '../../atoms/Button';
 
 const meta: Meta<typeof Card> = {
-  title: 'Atoms/Card',
+  title: 'Molecules/Card',
   component: Card,
   tags: ['autodocs'],
   decorators: [

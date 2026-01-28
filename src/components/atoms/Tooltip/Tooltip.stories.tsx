@@ -5,7 +5,7 @@ import { IconButton } from '../IconButton';
 import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof Tooltip> = {
-  title: 'Molecules/Tooltip',
+  title: 'Atoms/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
   decorators: [

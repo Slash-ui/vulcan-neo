@@ -6,7 +6,7 @@ import { Breadcrumbs, BreadcrumbItem } from '../../molecules/Breadcrumbs';
 import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof PageHeader> = {
-  title: 'Organisms/PageHeader',
+  title: 'Templates/PageHeader',
   component: PageHeader,
   tags: ['autodocs'],
   decorators: [

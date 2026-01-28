@@ -379,7 +379,7 @@ vulcan-neo/
 │   │   │   └── index.ts
 │   │   └── ...
 │   ├── stories/          # Storybook documentation
-│   │   └── foundations/  # Design system docs
+│   │   └── foundation/  # Design system docs
 │   ├── styles/
 │   │   └── tokens.css    # Design tokens
 │   └── index.ts          # Main exports

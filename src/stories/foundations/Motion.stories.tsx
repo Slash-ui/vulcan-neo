@@ -28,7 +28,14 @@ const EasingDemo: React.FC<{
         marginBottom: '16px',
       }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginBottom: '16px',
+        }}
+      >
         <div>
           <div
             style={{
@@ -79,7 +86,8 @@ const EasingDemo: React.FC<{
             height: '24px',
             borderRadius: '50%',
             background: 'var(--neo-color-primary)',
-            boxShadow: '-2px -2px 4px var(--neo-shadow-light), 2px 2px 4px var(--neo-shadow-dark)',
+            boxShadow:
+              '-2px -2px 4px var(--neo-shadow-light), 2px 2px 4px var(--neo-shadow-dark)',
             transition: `left 1s var(${variable})`,
           }}
         />
@@ -107,7 +115,14 @@ const DurationDemo: React.FC<{
         marginBottom: '16px',
       }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '16px',
+        }}
+      >
         <div>
           <div
             style={{
@@ -149,7 +164,8 @@ const DurationDemo: React.FC<{
             fontSize: '12px',
             fontWeight: 500,
             cursor: 'pointer',
-            boxShadow: '-2px -2px 4px var(--neo-shadow-light), 2px 2px 4px var(--neo-shadow-dark)',
+            boxShadow:
+              '-2px -2px 4px var(--neo-shadow-light), 2px 2px 4px var(--neo-shadow-dark)',
           }}
         >
           Trigger
@@ -168,7 +184,8 @@ const DurationDemo: React.FC<{
             height: '48px',
             borderRadius: 'var(--neo-radius-sm)',
             background: 'var(--neo-color-primary)',
-            boxShadow: '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
+            boxShadow:
+              '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
             transition: `width var(${variable}) var(--neo-easing-standard)`,
           }}
         />
@@ -181,19 +198,57 @@ const TransitionPresetDemo: React.FC = () => {
   const [hover, setHover] = useState<string | null>(null);
 
   const presets = [
-    { name: 'Instant', var: '--neo-transition-instant', use: 'Micro-interactions' },
-    { name: 'Fast', var: '--neo-transition-fast', use: 'Hover states, small changes' },
-    { name: 'Normal', var: '--neo-transition-normal', use: 'Most UI transitions' },
-    { name: 'Slow', var: '--neo-transition-slow', use: 'Larger element changes' },
+    {
+      name: 'Instant',
+      var: '--neo-transition-instant',
+      use: 'Micro-interactions',
+    },
+    {
+      name: 'Fast',
+      var: '--neo-transition-fast',
+      use: 'Hover states, small changes',
+    },
+    {
+      name: 'Normal',
+      var: '--neo-transition-normal',
+      use: 'Most UI transitions',
+    },
+    {
+      name: 'Slow',
+      var: '--neo-transition-slow',
+      use: 'Larger element changes',
+    },
     { name: 'Slower', var: '--neo-transition-slower', use: 'Page transitions' },
-    { name: 'Enter', var: '--neo-transition-enter', use: 'Elements entering view' },
-    { name: 'Exit', var: '--neo-transition-exit', use: 'Elements leaving view' },
-    { name: 'Spring', var: '--neo-transition-spring', use: 'Playful interactions' },
-    { name: 'Bounce', var: '--neo-transition-bounce', use: 'Attention-grabbing' },
+    {
+      name: 'Enter',
+      var: '--neo-transition-enter',
+      use: 'Elements entering view',
+    },
+    {
+      name: 'Exit',
+      var: '--neo-transition-exit',
+      use: 'Elements leaving view',
+    },
+    {
+      name: 'Spring',
+      var: '--neo-transition-spring',
+      use: 'Playful interactions',
+    },
+    {
+      name: 'Bounce',
+      var: '--neo-transition-bounce',
+      use: 'Attention-grabbing',
+    },
   ];
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '16px',
+      }}
+    >
       {presets.map((preset) => (
         <div
           key={preset.name}
@@ -203,10 +258,12 @@ const TransitionPresetDemo: React.FC = () => {
             padding: '24px',
             background: 'var(--neo-bg)',
             borderRadius: 'var(--neo-radius-sm)',
-            boxShadow: hover === preset.name
-              ? '-8px -8px 16px var(--neo-shadow-light), 8px 8px 16px var(--neo-shadow-dark)'
-              : '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
-            transform: hover === preset.name ? 'translateY(-4px)' : 'translateY(0)',
+            boxShadow:
+              hover === preset.name
+                ? '-8px -8px 16px var(--neo-shadow-light), 8px 8px 16px var(--neo-shadow-dark)'
+                : '-4px -4px 8px var(--neo-shadow-light), 4px 4px 8px var(--neo-shadow-dark)',
+            transform:
+              hover === preset.name ? 'translateY(-4px)' : 'translateY(0)',
             transition: `all var(${preset.var})`,
             cursor: 'pointer',
           }}
@@ -252,11 +309,25 @@ const AnimationExample: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <div>
-        <h4 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px', color: 'var(--neo-text)' }}>
+        <h4
+          style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            marginBottom: '16px',
+            color: 'var(--neo-text)',
+          }}
+        >
           Button Press Animation
         </h4>
-        <p style={{ fontSize: '14px', color: 'var(--neo-text-secondary)', marginBottom: '16px' }}>
-          Neomorphic buttons transition from convex to concave on press, creating a physical feedback sensation.
+        <p
+          style={{
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+            marginBottom: '16px',
+          }}
+        >
+          Neomorphic buttons transition from convex to concave on press,
+          creating a physical feedback sensation.
         </p>
         <Button
           variant={isPressed ? 'concave' : 'convex'}
@@ -269,11 +340,25 @@ const AnimationExample: React.FC = () => {
       </div>
 
       <div>
-        <h4 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px', color: 'var(--neo-text)' }}>
+        <h4
+          style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            marginBottom: '16px',
+            color: 'var(--neo-text)',
+          }}
+        >
           Expand/Collapse Animation
         </h4>
-        <p style={{ fontSize: '14px', color: 'var(--neo-text-secondary)', marginBottom: '16px' }}>
-          Content reveals use emphasized decelerate easing for entering and emphasized accelerate for exiting.
+        <p
+          style={{
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+            marginBottom: '16px',
+          }}
+        >
+          Content reveals use emphasized decelerate easing for entering and
+          emphasized accelerate for exiting.
         </p>
         <Button variant="convex" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? 'Collapse' : 'Expand'}
@@ -294,10 +379,12 @@ const AnimationExample: React.FC = () => {
               padding: '24px',
               background: 'var(--neo-bg)',
               borderRadius: 'var(--neo-radius-sm)',
-              boxShadow: 'inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light)',
+              boxShadow:
+                'inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light)',
             }}
           >
-            This content expands with emphasized decelerate easing and collapses with emphasized accelerate easing.
+            This content expands with emphasized decelerate easing and collapses
+            with emphasized accelerate easing.
           </div>
         </div>
       </div>
@@ -327,9 +414,9 @@ const MotionPage: React.FC = () => (
         maxWidth: '700px',
       }}
     >
-      Motion in Vulcan Neo creates a sense of physicality and depth. Animations reinforce the
-      neomorphic aesthetic by simulating light and shadow changes that occur when objects move
-      in 3D space.
+      Motion in Vulcan Neo creates a sense of physicality and depth. Animations
+      reinforce the neomorphic aesthetic by simulating light and shadow changes
+      that occur when objects move in 3D space.
     </p>
 
     <div style={{ marginBottom: '56px' }}>
@@ -351,8 +438,9 @@ const MotionPage: React.FC = () => (
           maxWidth: '600px',
         }}
       >
-        Duration determines how long an animation takes. Shorter durations feel snappy and responsive,
-        while longer durations feel more deliberate and smooth.
+        Duration determines how long an animation takes. Shorter durations feel
+        snappy and responsive, while longer durations feel more deliberate and
+        smooth.
       </p>
       <DurationDemo
         name="Instant"
@@ -411,8 +499,8 @@ const MotionPage: React.FC = () => (
           maxWidth: '600px',
         }}
       >
-        Easing determines the rate of change during an animation. Different curves create
-        different feelings of motion.
+        Easing determines the rate of change during an animation. Different
+        curves create different feelings of motion.
       </p>
       <EasingDemo
         name="Standard"
@@ -465,8 +553,8 @@ const MotionPage: React.FC = () => (
           maxWidth: '600px',
         }}
       >
-        Pre-composed transitions combining duration and easing for common use cases.
-        Hover over each card to see the transition in action.
+        Pre-composed transitions combining duration and easing for common use
+        cases. Hover over each card to see the transition in action.
       </p>
       <TransitionPresetDemo />
     </div>
@@ -490,7 +578,8 @@ const MotionPage: React.FC = () => (
           maxWidth: '600px',
         }}
       >
-        Interactive examples demonstrating how motion tokens work together in real components.
+        Interactive examples demonstrating how motion tokens work together in
+        real components.
       </p>
       <AnimationExample />
     </div>
@@ -500,7 +589,8 @@ const MotionPage: React.FC = () => (
         padding: '24px',
         background: 'var(--neo-bg)',
         borderRadius: 'var(--neo-radius-md)',
-        boxShadow: 'inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light)',
+        boxShadow:
+          'inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light)',
       }}
     >
       <h3
@@ -522,11 +612,26 @@ const MotionPage: React.FC = () => (
           paddingLeft: '20px',
         }}
       >
-        <li>Use <strong>fast</strong> transitions (100-200ms) for hover states and small changes</li>
-        <li>Use <strong>normal</strong> transitions (200-300ms) for most UI interactions</li>
-        <li>Use <strong>slow</strong> transitions (300-400ms) for larger state changes like modals</li>
-        <li>Use <strong>emphasized decelerate</strong> for elements entering the view</li>
-        <li>Use <strong>emphasized accelerate</strong> for elements leaving the view</li>
+        <li>
+          Use <strong>fast</strong> transitions (100-200ms) for hover states and
+          small changes
+        </li>
+        <li>
+          Use <strong>normal</strong> transitions (200-300ms) for most UI
+          interactions
+        </li>
+        <li>
+          Use <strong>slow</strong> transitions (300-400ms) for larger state
+          changes like modals
+        </li>
+        <li>
+          Use <strong>emphasized decelerate</strong> for elements entering the
+          view
+        </li>
+        <li>
+          Use <strong>emphasized accelerate</strong> for elements leaving the
+          view
+        </li>
         <li>Maintain consistent timing within related animations</li>
         <li>Avoid animations longer than 500ms for interactive elements</li>
       </ul>
@@ -535,7 +640,7 @@ const MotionPage: React.FC = () => (
 );
 
 const meta: Meta = {
-  title: 'Foundations/Motion',
+  title: 'foundation/Motion',
   parameters: {
     layout: 'fullscreen',
   },

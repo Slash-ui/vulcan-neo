@@ -3,7 +3,7 @@ import { ContentDivider } from './ContentDivider';
 import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof ContentDivider> = {
-  title: 'Atoms/ContentDivider',
+  title: 'Templates/ContentDivider',
   component: ContentDivider,
   tags: ['autodocs'],
   decorators: [

@@ -5,7 +5,7 @@ import { Badge } from '../../atoms/Badge';
 import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof SectionHeader> = {
-  title: 'Molecules/SectionHeader',
+  title: 'Templates/SectionHeader',
   component: SectionHeader,
   tags: ['autodocs'],
   decorators: [

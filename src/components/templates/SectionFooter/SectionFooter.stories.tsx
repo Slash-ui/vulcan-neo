@@ -5,7 +5,7 @@ import { Button } from '../../atoms/Button';
 import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof SectionFooter> = {
-  title: 'Molecules/SectionFooter',
+  title: 'Templates/SectionFooter',
   component: SectionFooter,
   tags: ['autodocs'],
   decorators: [

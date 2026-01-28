@@ -3,7 +3,7 @@ import { TeamSection } from './TeamSection';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof TeamSection> = {
-  title: 'Marketing/TeamSection',
+  title: 'Templates/Marketing/TeamSection',
   component: TeamSection,
   tags: ['autodocs'],
   decorators: [

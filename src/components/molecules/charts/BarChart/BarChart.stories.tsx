@@ -3,7 +3,7 @@ import { BarChart, BarChartDataPoint } from './BarChart';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof BarChart> = {
-  title: 'Charts/BarChart',
+  title: 'Molecules/Charts/BarChart',
   component: BarChart,
   tags: ['autodocs'],
   decorators: [

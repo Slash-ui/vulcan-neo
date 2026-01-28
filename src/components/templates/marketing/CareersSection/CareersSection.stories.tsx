@@ -3,7 +3,7 @@ import { CareersSection } from './CareersSection';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof CareersSection> = {
-  title: 'Marketing/CareersSection',
+  title: 'Templates/Marketing/CareersSection',
   component: CareersSection,
   tags: ['autodocs'],
   decorators: [

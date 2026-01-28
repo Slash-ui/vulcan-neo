@@ -3,7 +3,7 @@ import { LineChart, LineChartSeries } from './LineChart';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof LineChart> = {
-  title: 'Charts/LineChart',
+  title: 'Molecules/Charts/LineChart',
   component: LineChart,
   tags: ['autodocs'],
   decorators: [

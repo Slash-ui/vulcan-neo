@@ -3,7 +3,7 @@ import { BlogSection } from './BlogSection';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof BlogSection> = {
-  title: 'Marketing/BlogSection',
+  title: 'Templates/Marketing/BlogSection',
   component: BlogSection,
   tags: ['autodocs'],
   decorators: [

@@ -3,7 +3,7 @@ import { Banner } from './Banner';
 import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof Banner> = {
-  title: 'Marketing/Banner',
+  title: 'Molecules/Banner',
   component: Banner,
   tags: ['autodocs'],
   decorators: [

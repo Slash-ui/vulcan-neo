@@ -4,7 +4,7 @@ import { Surface } from '../../../foundation/Surface';
 import { Badge } from '../../../atoms/Badge';
 
 const meta: Meta<typeof HeroSection> = {
-  title: 'Marketing/HeroSection',
+  title: 'Templates/Marketing/HeroSection',
   component: HeroSection,
   tags: ['autodocs'],
   decorators: [

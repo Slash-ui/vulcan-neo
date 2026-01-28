@@ -3,7 +3,7 @@ import { LoadingIndicator, Skeleton } from './LoadingIndicator';
 import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof LoadingIndicator> = {
-  title: 'Atoms/LoadingIndicator',
+  title: 'Molecules/LoadingIndicator',
   component: LoadingIndicator,
   tags: ['autodocs'],
   decorators: [

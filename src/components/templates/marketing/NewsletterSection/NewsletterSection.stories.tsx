@@ -3,7 +3,7 @@ import { NewsletterSection } from './NewsletterSection';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof NewsletterSection> = {
-  title: 'Marketing/NewsletterSection',
+  title: 'Templates/Marketing/NewsletterSection',
   component: NewsletterSection,
   tags: ['autodocs'],
   decorators: [

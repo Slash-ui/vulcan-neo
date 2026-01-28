@@ -3,7 +3,7 @@ import { MarketingHeader } from './MarketingHeader';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof MarketingHeader> = {
-  title: 'Marketing/MarketingHeader',
+  title: 'Templates/Marketing/MarketingHeader',
   component: MarketingHeader,
   tags: ['autodocs'],
   decorators: [

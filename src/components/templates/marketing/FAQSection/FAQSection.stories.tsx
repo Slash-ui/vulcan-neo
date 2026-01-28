@@ -3,7 +3,7 @@ import { FAQSection } from './FAQSection';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof FAQSection> = {
-  title: 'Marketing/FAQSection',
+  title: 'Templates/Marketing/FAQSection',
   component: FAQSection,
   tags: ['autodocs'],
   decorators: [
@@ -27,7 +27,7 @@ const faqItems = [
   {
     question: 'Can I cancel my subscription at any time?',
     answer:
-      "Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Your access will continue until the end of your billing period.",
+      'Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Your access will continue until the end of your billing period.',
   },
   {
     question: 'Is my data secure?',

@@ -3,7 +3,7 @@ import { LogoCloudSection } from './LogoCloudSection';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof LogoCloudSection> = {
-  title: 'Marketing/LogoCloudSection',
+  title: 'Templates/Marketing/LogoCloudSection',
   component: LogoCloudSection,
   tags: ['autodocs'],
   decorators: [

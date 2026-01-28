@@ -4,7 +4,7 @@ import { Surface } from '../../../foundation/Surface';
 import { Card, CardBody } from '../../../molecules/Card';
 
 const meta: Meta<typeof ContentSection> = {
-  title: 'Marketing/ContentSection',
+  title: 'Templates/Marketing/ContentSection',
   component: ContentSection,
   tags: ['autodocs'],
   decorators: [

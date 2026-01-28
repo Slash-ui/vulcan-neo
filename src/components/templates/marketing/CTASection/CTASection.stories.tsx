@@ -3,7 +3,7 @@ import { CTASection } from './CTASection';
 import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof CTASection> = {
-  title: 'Marketing/CTASection',
+  title: 'Templates/Marketing/CTASection',
   component: CTASection,
   tags: ['autodocs'],
   decorators: [
