@@ -6,8 +6,9 @@
   cursor: pointer;
   background: var(--neo-bg);
   color: var(--neo-text);
-  transition: box-shadow var(--neo-transition-normal),
-              transform var(--neo-transition-fast);
+  transition:
+    box-shadow var(--neo-transition-normal),
+    transform var(--neo-transition-fast);
   user-select: none;
   outline: none;
 }
@@ -104,7 +105,10 @@
 
 /* Hover effect */
 .convex:hover:not(.disabled):not(:active) {
-  transform: translateY(-1px);
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+  transform: translateY(1px);
 }
 
 /* Focus visible */
