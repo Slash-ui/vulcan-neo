@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Pagination } from './Pagination';
-import { Surface } from '../Surface';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Molecules/Pagination',

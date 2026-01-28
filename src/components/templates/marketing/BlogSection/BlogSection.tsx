@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import { Badge } from '../Badge';
-import { Avatar } from '../Avatar';
+import { Badge } from '../../atoms/Badge';
+import { Avatar } from '../../atoms/Avatar';
 import styles from './BlogSection.module.css';
 
 export interface BlogPost {

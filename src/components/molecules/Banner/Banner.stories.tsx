@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Banner } from './Banner';
-import { Surface } from '../Surface';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof Banner> = {
   title: 'Marketing/Banner',

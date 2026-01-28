@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LogoCloudSection } from './LogoCloudSection';
-import { Surface } from '../Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof LogoCloudSection> = {
   title: 'Marketing/LogoCloudSection',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LoadingIndicator, Skeleton } from './LoadingIndicator';
-import { Surface } from '../Surface';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof LoadingIndicator> = {
   title: 'Atoms/LoadingIndicator',

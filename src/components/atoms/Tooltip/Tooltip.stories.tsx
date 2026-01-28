@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Tooltip } from './Tooltip';
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
-import { Surface } from '../Surface';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Molecules/Tooltip',

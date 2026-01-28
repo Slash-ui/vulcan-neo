@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
-import { Button } from '../Button';
-import { InsetField } from '../InsetField';
+import { Button } from '../../atoms/Button';
+import { InsetField } from '../../atoms/InsetField';
 import styles from './NewsletterSection.module.css';
 
 export type NewsletterSectionVariant = 'simple' | 'card' | 'split';

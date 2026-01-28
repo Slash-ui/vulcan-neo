@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Table, Column } from './Table';
-import { Surface } from '../Surface';
-import { Badge } from '../Badge';
-import { Avatar } from '../Avatar';
+import { Surface } from '../foundation/Surface';
+import { Badge } from '../atoms/Badge';
+import { Avatar } from '../atoms/Avatar';
 
 interface User {
   id: number;

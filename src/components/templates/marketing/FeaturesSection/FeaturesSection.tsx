@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { FeaturedIcon } from '../FeaturedIcon';
+import { FeaturedIcon } from '../../atoms/FeaturedIcon';
 import styles from './FeaturesSection.module.css';
 
 export type FeaturesSectionLayout = 'grid' | 'list' | 'alternating';

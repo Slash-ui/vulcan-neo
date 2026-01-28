@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CTASection } from './CTASection';
-import { Surface } from '../Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof CTASection> = {
   title: 'Marketing/CTASection',

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PageHeader } from './PageHeader';
-import { Button } from '../Button';
-import { FeaturedIcon } from '../FeaturedIcon';
-import { Breadcrumbs, BreadcrumbItem } from '../Breadcrumbs';
-import { Surface } from '../Surface';
+import { Button } from '../atoms/Button';
+import { FeaturedIcon } from '../atoms/FeaturedIcon';
+import { Breadcrumbs, BreadcrumbItem } from '../molecules/Breadcrumbs';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof PageHeader> = {
   title: 'Organisms/PageHeader',

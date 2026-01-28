@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Breadcrumbs, BreadcrumbItem } from './Breadcrumbs';
-import { Surface } from '../Surface';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Molecules/Breadcrumbs',

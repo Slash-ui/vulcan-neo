@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { HeroSection } from './HeroSection';
-import { Surface } from '../Surface';
-import { Badge } from '../Badge';
+import { Surface } from '../../foundation/Surface';
+import { Badge } from '../../atoms/Badge';
 
 const meta: Meta<typeof HeroSection> = {
   title: 'Marketing/HeroSection',

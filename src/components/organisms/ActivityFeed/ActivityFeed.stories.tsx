@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ActivityFeed, ActivityItem } from './ActivityFeed';
-import { Surface } from '../Surface';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof ActivityFeed> = {
   title: 'Organisms/ActivityFeed',

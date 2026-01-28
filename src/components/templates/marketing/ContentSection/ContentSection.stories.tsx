@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ContentSection } from './ContentSection';
-import { Surface } from '../Surface';
-import { Card, CardBody } from '../Card';
+import { Surface } from '../../foundation/Surface';
+import { Card, CardBody } from '../../molecules/Card';
 
 const meta: Meta<typeof ContentSection> = {
   title: 'Marketing/ContentSection',

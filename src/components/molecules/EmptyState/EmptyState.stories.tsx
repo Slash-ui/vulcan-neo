@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { EmptyState } from './EmptyState';
-import { Surface } from '../Surface';
-import { Button } from '../Button';
+import { Surface } from '../foundation/Surface';
+import { Button } from '../atoms/Button';
 
 const meta: Meta<typeof EmptyState> = {
   title: 'Molecules/EmptyState',

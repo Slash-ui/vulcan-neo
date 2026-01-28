@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { AppStoreButton } from './AppStoreButton';
-import { Surface } from '../Surface';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof AppStoreButton> = {
   title: 'Atoms/AppStoreButton',

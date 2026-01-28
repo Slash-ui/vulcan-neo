@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
-import { Avatar } from '../Avatar';
-import { IconButton } from '../IconButton';
+import { Avatar } from '../../atoms/Avatar';
+import { IconButton } from '../../atoms/IconButton';
 import styles from './TestimonialSection.module.css';
 
 export interface Testimonial {

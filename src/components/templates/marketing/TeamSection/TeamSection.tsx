@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Avatar } from '../Avatar';
+import { Avatar } from '../../atoms/Avatar';
 import styles from './TeamSection.module.css';
 
 export interface TeamMember {

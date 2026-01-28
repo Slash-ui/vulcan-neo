@@ -1,8 +1,8 @@
 import React, { forwardRef, useState } from 'react';
-import { Button } from '../Button';
-import { InsetField } from '../InsetField';
-import { Textarea } from '../Textarea';
-import { FeaturedIcon } from '../FeaturedIcon';
+import { Button } from '../../atoms/Button';
+import { InsetField } from '../../atoms/InsetField';
+import { Textarea } from '../../atoms/Textarea';
+import { FeaturedIcon } from '../../atoms/FeaturedIcon';
 import styles from './ContactSection.module.css';
 
 export interface ContactInfo {

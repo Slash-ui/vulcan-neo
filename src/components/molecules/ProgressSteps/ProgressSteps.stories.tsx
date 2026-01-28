@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { ProgressSteps, Step } from './ProgressSteps';
-import { Surface } from '../Surface';
-import { Button } from '../Button';
+import { Surface } from '../foundation/Surface';
+import { Button } from '../atoms/Button';
 
 const meta: Meta<typeof ProgressSteps> = {
   title: 'Molecules/ProgressSteps',

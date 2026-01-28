@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { SidebarNavigation, SidebarNavGroup, SidebarNavItem } from './SidebarNavigation';
-import { Surface } from '../Surface';
-import { Badge } from '../Badge';
+import { Surface } from '../foundation/Surface';
+import { Badge } from '../atoms/Badge';
 
 const meta: Meta<typeof SidebarNavigation> = {
   title: 'Organisms/SidebarNavigation',

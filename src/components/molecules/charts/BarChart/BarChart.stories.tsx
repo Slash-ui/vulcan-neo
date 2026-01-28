@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BarChart, BarChartDataPoint } from './BarChart';
-import { Surface } from '../Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof BarChart> = {
   title: 'Charts/BarChart',

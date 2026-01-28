@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { HeaderNavigation, HeaderNavItem, HeaderNavGroup } from './HeaderNavigation';
-import { Surface } from '../Surface';
-import { Button } from '../Button';
-import { Avatar } from '../Avatar';
+import { Surface } from '../foundation/Surface';
+import { Button } from '../atoms/Button';
+import { Avatar } from '../atoms/Avatar';
 
 const meta: Meta<typeof HeaderNavigation> = {
   title: 'Organisms/HeaderNavigation',

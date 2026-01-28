@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
-import { Button } from '../Button';
-import { IconButton } from '../IconButton';
+import { Button } from '../../atoms/Button';
+import { IconButton } from '../../atoms/IconButton';
 import styles from './MarketingHeader.module.css';
 
 export interface MarketingNavItem {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { NewsletterSection } from './NewsletterSection';
-import { Surface } from '../Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof NewsletterSection> = {
   title: 'Marketing/NewsletterSection',

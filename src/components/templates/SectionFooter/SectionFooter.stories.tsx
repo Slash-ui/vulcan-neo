@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SectionFooter } from './SectionFooter';
-import { Card, CardBody } from '../Card';
-import { Button } from '../Button';
-import { Surface } from '../Surface';
+import { Card, CardBody } from '../molecules/Card';
+import { Button } from '../atoms/Button';
+import { Surface } from '../foundation/Surface';
 
 const meta: Meta<typeof SectionFooter> = {
   title: 'Molecules/SectionFooter',
