@@ -8,8 +8,9 @@
   color: var(--neo-text);
   background: var(--neo-bg);
   border-radius: var(--neo-radius-sm);
-  transition: box-shadow var(--neo-transition-normal),
-              transform var(--neo-transition-fast);
+  transition:
+    box-shadow var(--neo-transition-normal),
+    transform var(--neo-transition-fast);
   user-select: none;
   outline: none;
   text-align: left;
@@ -127,7 +128,9 @@
 
 /* Hover effect */
 .convex:hover:not(.disabled):not(:active) {
-  transform: translateY(-1px);
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
 }
 
 /* Focus visible */

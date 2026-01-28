@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './AppStoreButton.module.css';
 
 export type AppStoreButtonVariant = 'convex' | 'flat';
@@ -27,9 +28,20 @@ export interface AppStoreButtonProps extends React.ButtonHTMLAttributes<HTMLButt
    */
   elevation?: AppStoreButtonElevation;
   /**
-   * Icon element to display (consumer provides the icon)
+   * Custom icon element to display. Accepts any React node including
+   * icon library components (Lucide, FontAwesome, React Icons, etc.)
+   *
+   * @example
+   * // With Lucide icons
+   * <AppStoreButton store="apple" icon={<Apple />} />
+   *
+   * // With FontAwesome
+   * <AppStoreButton store="google" icon={<FontAwesomeIcon icon={faGooglePlay} />} />
+   *
+   * // With custom SVG
+   * <AppStoreButton store="apple" icon={<CustomAppleIcon />} />
    */
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 /**
@@ -72,10 +84,14 @@ export const AppStoreButton = forwardRef<HTMLButtonElement, AppStoreButtonProps>
         disabled={disabled}
         {...props}
       >
-        <span className={styles.icon}>{icon}</span>
+        {icon && <span className={styles.icon}>{icon}</span>}
         <span className={styles.textContainer}>
-          <span className={styles.subtext}>{storeText}</span>
-          <span className={styles.storeName}>{storeLabel}</span>
+          <Typography variant="caption" component="span" color="inherit" className={styles.subtext}>
+            {storeText}
+          </Typography>
+          <Typography variant="subtitle2" component="span" color="inherit" className={styles.storeName}>
+            {storeLabel}
+          </Typography>
         </span>
       </button>
     );

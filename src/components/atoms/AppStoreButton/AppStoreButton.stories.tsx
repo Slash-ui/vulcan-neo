@@ -33,6 +33,9 @@ const meta: Meta<typeof AppStoreButton> = {
     disabled: {
       control: 'boolean',
     },
+    icon: {
+      control: false,
+    },
   },
 };
 
