@@ -1,9 +1,25 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
+import { getContrastColor } from '../../../utils';
 import styles from './Tag.module.css';
 
-export type TagVariant = 'convex' | 'concave' | 'flat';
+export type TagVariant = 'convex' | 'concave' | 'extrude' | 'flat';
 export type TagSize = 'sm' | 'md' | 'lg';
-export type TagColor = 'default' | 'primary' | 'success' | 'warning' | 'error';
+export type TagColor =
+  | 'default'
+  | 'primary'
+  | 'primary-light'
+  | 'primary-dark'
+  | 'secondary'
+  | 'secondary-light'
+  | 'secondary-dark'
+  | 'tertiary'
+  | 'tertiary-light'
+  | 'tertiary-dark'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info';
 
 export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
@@ -21,6 +37,16 @@ export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
    * @default 'default'
    */
   color?: TagColor;
+  /**
+   * Whether to use filled background color instead of text color
+   * @default false
+   */
+  filled?: boolean;
+  /**
+   * Custom background color (hex value). Overrides the color prop when filled is true.
+   * @example "#FF5733" or "#F53"
+   */
+  customColor?: string;
   /**
    * Icon to display before the content
    */
@@ -55,25 +81,40 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       variant = 'convex',
       size = 'md',
       color = 'default',
+      filled = false,
+      customColor,
       leftIcon,
       rightIcon,
       removable = false,
       onRemove,
       children,
       className,
+      style,
       ...props
     },
     ref
   ) => {
+    const hasCustomColor = customColor && filled;
+
     const classNames = [
       styles.tag,
       styles[variant],
       styles[size],
-      styles[`color-${color}`],
+      !hasCustomColor && styles[`color-${color}`],
+      filled && styles.filled,
+      hasCustomColor && styles.customColor,
       className || '',
     ]
       .filter(Boolean)
       .join(' ');
+
+    const customStyle = hasCustomColor
+      ? {
+          ...style,
+          backgroundColor: customColor,
+          color: getContrastColor(customColor),
+        }
+      : style;
 
     const handleRemove = (e: React.MouseEvent) => {
       e.stopPropagation();
@@ -81,9 +122,11 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
     };
 
     return (
-      <span ref={ref} className={classNames} {...props}>
+      <span ref={ref} className={classNames} style={customStyle} {...props}>
         {leftIcon && <span className={styles.icon}>{leftIcon}</span>}
-        <span className={styles.content}>{children}</span>
+        <Typography variant="caption" component="span" color="inherit" className={styles.content}>
+          {children}
+        </Typography>
         {rightIcon && !removable && <span className={styles.icon}>{rightIcon}</span>}
         {removable && (
           <button

@@ -3,6 +3,23 @@ import { useState } from 'react';
 import { Tag } from './Tag';
 import { Surface } from '../../foundation/Surface';
 
+const colorOptions = [
+  'default',
+  'primary',
+  'primary-light',
+  'primary-dark',
+  'secondary',
+  'secondary-light',
+  'secondary-dark',
+  'tertiary',
+  'tertiary-light',
+  'tertiary-dark',
+  'success',
+  'warning',
+  'error',
+  'info',
+];
+
 const meta: Meta<typeof Tag> = {
   title: 'Atoms/Tag',
   component: Tag,
@@ -17,7 +34,7 @@ const meta: Meta<typeof Tag> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['convex', 'concave', 'flat'],
+      options: ['convex', 'concave', 'extrude', 'flat'],
     },
     size: {
       control: 'select',
@@ -25,7 +42,13 @@ const meta: Meta<typeof Tag> = {
     },
     color: {
       control: 'select',
-      options: ['default', 'primary', 'success', 'warning', 'error'],
+      options: colorOptions,
+    },
+    filled: {
+      control: 'boolean',
+    },
+    customColor: {
+      control: 'color',
     },
     removable: {
       control: 'boolean',
@@ -58,6 +81,7 @@ export const Variants: Story = {
     <>
       <Tag variant="convex">Convex</Tag>
       <Tag variant="concave">Concave</Tag>
+      <Tag variant="extrude">Extrude</Tag>
       <Tag variant="flat">Flat</Tag>
     </>
   ),
@@ -78,9 +102,83 @@ export const Colors: Story = {
     <>
       <Tag color="default">Default</Tag>
       <Tag color="primary">Primary</Tag>
+      <Tag color="secondary">Secondary</Tag>
+      <Tag color="tertiary">Tertiary</Tag>
       <Tag color="success">Success</Tag>
       <Tag color="warning">Warning</Tag>
       <Tag color="error">Error</Tag>
+      <Tag color="info">Info</Tag>
+    </>
+  ),
+};
+
+export const AllColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Tag color="default">Default</Tag>
+        <Tag color="primary">Primary</Tag>
+        <Tag color="primary-light">Primary Light</Tag>
+        <Tag color="primary-dark">Primary Dark</Tag>
+      </div>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Tag color="secondary">Secondary</Tag>
+        <Tag color="secondary-light">Secondary Light</Tag>
+        <Tag color="secondary-dark">Secondary Dark</Tag>
+      </div>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Tag color="tertiary">Tertiary</Tag>
+        <Tag color="tertiary-light">Tertiary Light</Tag>
+        <Tag color="tertiary-dark">Tertiary Dark</Tag>
+      </div>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Tag color="success">Success</Tag>
+        <Tag color="warning">Warning</Tag>
+        <Tag color="error">Error</Tag>
+        <Tag color="info">Info</Tag>
+      </div>
+    </div>
+  ),
+};
+
+export const FilledColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Tag color="default" filled>Default</Tag>
+        <Tag color="primary" filled>Primary</Tag>
+        <Tag color="primary-light" filled>Primary Light</Tag>
+        <Tag color="primary-dark" filled>Primary Dark</Tag>
+      </div>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Tag color="secondary" filled>Secondary</Tag>
+        <Tag color="secondary-light" filled>Secondary Light</Tag>
+        <Tag color="secondary-dark" filled>Secondary Dark</Tag>
+      </div>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Tag color="tertiary" filled>Tertiary</Tag>
+        <Tag color="tertiary-light" filled>Tertiary Light</Tag>
+        <Tag color="tertiary-dark" filled>Tertiary Dark</Tag>
+      </div>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Tag color="success" filled>Success</Tag>
+        <Tag color="warning" filled>Warning</Tag>
+        <Tag color="error" filled>Error</Tag>
+        <Tag color="info" filled>Info</Tag>
+      </div>
+    </div>
+  ),
+};
+
+export const CustomColors: Story = {
+  render: () => (
+    <>
+      <Tag filled customColor="#8B5CF6">Purple</Tag>
+      <Tag filled customColor="#EC4899">Pink</Tag>
+      <Tag filled customColor="#14B8A6">Teal</Tag>
+      <Tag filled customColor="#F97316">Orange</Tag>
+      <Tag filled customColor="#6366F1">Indigo</Tag>
+      <Tag filled customColor="#10B981">Emerald</Tag>
     </>
   ),
 };
@@ -134,14 +232,14 @@ export const RemovableInteractive: Story = {
 export const TagCloud: Story = {
   render: () => (
     <>
-      <Tag color="primary" variant="flat">JavaScript</Tag>
-      <Tag color="success" variant="flat">Python</Tag>
-      <Tag color="warning" variant="flat">Go</Tag>
+      <Tag color="primary" variant="convex">JavaScript</Tag>
+      <Tag color="success" variant="concave">Python</Tag>
+      <Tag color="warning" variant="extrude">Go</Tag>
       <Tag color="error" variant="flat">Rust</Tag>
-      <Tag color="default" variant="flat">TypeScript</Tag>
-      <Tag color="primary" variant="flat">React</Tag>
-      <Tag color="success" variant="flat">Vue</Tag>
-      <Tag color="warning" variant="flat">Angular</Tag>
+      <Tag color="secondary" variant="convex">TypeScript</Tag>
+      <Tag color="tertiary" variant="concave">React</Tag>
+      <Tag color="info" variant="extrude">Vue</Tag>
+      <Tag color="primary-dark" variant="flat">Angular</Tag>
     </>
   ),
 };

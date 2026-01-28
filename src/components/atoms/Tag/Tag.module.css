@@ -30,24 +30,36 @@
   min-height: 40px;
 }
 
-/* Convex variant */
+/* Convex variant - raised/elevated */
 .convex {
   box-shadow:
     -4px -4px 8px var(--neo-shadow-light),
-    4px 4px 8px var(--neo-shadow-dark);
+    4px 4px 8px var(--neo-shadow-dark),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* Concave variant */
+/* Concave variant - pressed in/inset */
 .concave {
   box-shadow:
-    inset 4px 4px 8px var(--neo-shadow-dark),
-    inset -4px -4px 8px var(--neo-shadow-light);
+    inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -3px -3px 6px var(--neo-shadow-light);
 }
 
-/* Flat variant */
+/* Extrude variant - raised frame/border effect */
+.extrude {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark),
+    inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -3px -3px 6px var(--neo-shadow-light);
+}
+
+/* Flat variant - minimal/subtle */
 .flat {
-  box-shadow: none;
-  background: rgba(0, 0, 0, 0.05);
+  box-shadow:
+    1px 1px 2px var(--neo-shadow-dark),
+    -1px -1px 2px var(--neo-shadow-light);
 }
 
 /* Color variants */
@@ -56,7 +68,39 @@
 }
 
 .color-primary {
-  color: var(--neo-accent-primary);
+  color: var(--neo-color-primary);
+}
+
+.color-primary-light {
+  color: var(--neo-color-primary-light);
+}
+
+.color-primary-dark {
+  color: var(--neo-color-primary-dark);
+}
+
+.color-secondary {
+  color: var(--neo-color-secondary);
+}
+
+.color-secondary-light {
+  color: var(--neo-color-secondary-light);
+}
+
+.color-secondary-dark {
+  color: var(--neo-color-secondary-dark);
+}
+
+.color-tertiary {
+  color: var(--neo-color-tertiary);
+}
+
+.color-tertiary-light {
+  color: var(--neo-color-tertiary-light);
+}
+
+.color-tertiary-dark {
+  color: var(--neo-color-tertiary-dark);
 }
 
 .color-success {
@@ -69,6 +113,86 @@
 
 .color-error {
   color: var(--neo-accent-error);
+}
+
+.color-info {
+  color: var(--neo-accent-info);
+}
+
+/* Filled variants */
+.filled.color-default {
+  background: var(--neo-text);
+  color: var(--neo-bg);
+}
+
+.filled.color-primary {
+  background: var(--neo-color-primary);
+  color: white;
+}
+
+.filled.color-primary-light {
+  background: var(--neo-color-primary-light);
+  color: white;
+}
+
+.filled.color-primary-dark {
+  background: var(--neo-color-primary-dark);
+  color: white;
+}
+
+.filled.color-secondary {
+  background: var(--neo-color-secondary);
+  color: white;
+}
+
+.filled.color-secondary-light {
+  background: var(--neo-color-secondary-light);
+  color: white;
+}
+
+.filled.color-secondary-dark {
+  background: var(--neo-color-secondary-dark);
+  color: white;
+}
+
+.filled.color-tertiary {
+  background: var(--neo-color-tertiary);
+  color: white;
+}
+
+.filled.color-tertiary-light {
+  background: var(--neo-color-tertiary-light);
+  color: white;
+}
+
+.filled.color-tertiary-dark {
+  background: var(--neo-color-tertiary-dark);
+  color: white;
+}
+
+.filled.color-success {
+  background: var(--neo-accent-success);
+  color: white;
+}
+
+.filled.color-warning {
+  background: var(--neo-accent-warning);
+  color: white;
+}
+
+.filled.color-error {
+  background: var(--neo-accent-error);
+  color: white;
+}
+
+.filled.color-info {
+  background: var(--neo-accent-info);
+  color: white;
+}
+
+/* Custom color */
+.customColor {
+  /* Background and color set via inline style */
 }
 
 /* Icon */
