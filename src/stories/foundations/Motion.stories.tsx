@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState, useEffect } from 'react';
-import { Surface } from '../../components/Surface';
-import { Button } from '../../components/Button';
+import { Surface } from '../../components/foundation/Surface';
+import { Button } from '../../components/atoms/Button';
 
 const EasingDemo: React.FC<{
   name: string;

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FeaturedIcon } from './FeaturedIcon';
-import { Surface } from '../foundation/Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof FeaturedIcon> = {
   title: 'Atoms/FeaturedIcon',

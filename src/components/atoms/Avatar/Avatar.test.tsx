@@ -4,9 +4,9 @@ import { Avatar } from './Avatar';
 
 describe('Avatar', () => {
   it('renders image when src is provided', () => {
-    render(<Avatar src="https://example.com/avatar.jpg" alt="User" />);
+    render(<Avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="User" />);
     expect(screen.getByRole('img')).toBeInTheDocument();
-    expect(screen.getByRole('img')).toHaveAttribute('src', 'https://example.com/avatar.jpg');
+    expect(screen.getByRole('img')).toHaveAttribute('src', 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop');
   });
 
   it('renders fallback when no src is provided', () => {

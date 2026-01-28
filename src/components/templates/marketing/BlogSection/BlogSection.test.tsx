@@ -78,7 +78,7 @@ describe('BlogSection', () => {
     const posts = [
       {
         title: 'Post',
-        author: { name: 'John Doe', avatar: 'https://example.com/avatar.jpg' },
+        author: { name: 'John Doe', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop' },
       },
     ];
     render(<BlogSection title="Title" posts={posts} />);

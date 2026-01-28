@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { InlineCTA } from './InlineCTA';
-import { Surface } from '../foundation/Surface';
-import { Button } from '../atoms/Button';
+import { Surface } from '../../foundation/Surface';
+import { Button } from '../../atoms/Button';
 
 const meta: Meta<typeof InlineCTA> = {
   title: 'Molecules/InlineCTA',

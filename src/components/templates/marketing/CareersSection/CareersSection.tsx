@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import { Badge } from '../../atoms/Badge';
-import { Button } from '../../atoms/Button';
+import { Badge } from '../../../atoms/Badge';
+import { Button } from '../../../atoms/Button';
 import styles from './CareersSection.module.css';
 
 export interface JobPosition {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Switch } from './Switch';
-import { Surface } from '../foundation/Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof Switch> = {
   title: 'Atoms/Switch',

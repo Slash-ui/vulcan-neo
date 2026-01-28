@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Button } from '../../atoms/Button';
+import { Button } from '../../../atoms/Button';
 import styles from './HeroSection.module.css';
 
 export type HeroSectionVariant = 'centered' | 'split' | 'image-background';

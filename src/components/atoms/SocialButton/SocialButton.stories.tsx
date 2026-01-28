@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SocialButton } from './SocialButton';
-import { Surface } from '../foundation/Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof SocialButton> = {
   title: 'Atoms/SocialButton',

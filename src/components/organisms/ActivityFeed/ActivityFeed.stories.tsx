@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ActivityFeed, ActivityItem } from './ActivityFeed';
-import { Surface } from '../foundation/Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof ActivityFeed> = {
   title: 'Organisms/ActivityFeed',
@@ -30,26 +30,26 @@ type Story = StoryObj<typeof meta>;
 const sampleActivities: ActivityItem[] = [
   {
     id: 1,
-    user: { name: 'John Doe', avatar: 'https://placehold.net/40x40?text=JD' },
+    user: { name: 'John Doe', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop' },
     content: <><strong>John Doe</strong> commented on <a href="#">Project Alpha</a></>,
     timestamp: '2 minutes ago',
   },
   {
     id: 2,
-    user: { name: 'Jane Smith', avatar: 'https://placehold.net/40x40?text=JS' },
+    user: { name: 'Jane Smith', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop' },
     content: <><strong>Jane Smith</strong> uploaded 3 new files</>,
     timestamp: '1 hour ago',
     meta: 'Design files',
   },
   {
     id: 3,
-    user: { name: 'Bob Johnson', avatar: 'https://placehold.net/40x40?text=BJ' },
+    user: { name: 'Bob Johnson', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop' },
     content: <><strong>Bob Johnson</strong> completed task <a href="#">Update documentation</a></>,
     timestamp: '3 hours ago',
   },
   {
     id: 4,
-    user: { name: 'Alice Brown', avatar: 'https://placehold.net/40x40?text=AB' },
+    user: { name: 'Alice Brown', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop' },
     content: <><strong>Alice Brown</strong> started a new discussion</>,
     timestamp: 'Yesterday',
     meta: '5 replies',

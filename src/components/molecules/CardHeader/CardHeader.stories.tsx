@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CardHeader } from './CardHeader';
 import { Card, CardBody } from '../Card';
-import { IconButton } from '../atoms/IconButton';
-import { Avatar } from '../atoms/Avatar';
-import { Badge } from '../atoms/Badge';
-import { Surface } from '../foundation/Surface';
+import { IconButton } from '../../atoms/IconButton';
+import { Avatar } from '../../atoms/Avatar';
+import { Badge } from '../../atoms/Badge';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof CardHeader> = {
   title: 'Molecules/CardHeader',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Tag } from './Tag';
-import { Surface } from '../foundation/Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof Tag> = {
   title: 'Atoms/Tag',

@@ -75,11 +75,11 @@ describe('MessageBubble', () => {
       <MessageBubble
         content="Test"
         position="left"
-        sender={{ name: 'John', avatar: 'https://example.com/avatar.jpg' }}
+        sender={{ name: 'John', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop' }}
       />
     );
     const img = screen.getByRole('img');
-    expect(img).toHaveAttribute('src', 'https://example.com/avatar.jpg');
+    expect(img).toHaveAttribute('src', 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop');
     expect(img).toHaveAttribute('alt', 'John');
   });
 

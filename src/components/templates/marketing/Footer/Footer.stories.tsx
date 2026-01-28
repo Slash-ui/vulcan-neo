@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Footer } from './Footer';
-import { Surface } from '../../foundation/Surface';
+import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof Footer> = {
   title: 'Marketing/Footer',

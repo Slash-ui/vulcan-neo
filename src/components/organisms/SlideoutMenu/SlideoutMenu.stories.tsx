@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { SlideoutMenu } from './SlideoutMenu';
-import { Surface } from '../foundation/Surface';
-import { Button } from '../atoms/Button';
-import { InsetField } from '../atoms/InsetField';
-import { Checkbox } from '../atoms/Checkbox';
+import { Surface } from '../../foundation/Surface';
+import { Button } from '../../atoms/Button';
+import { InsetField } from '../../atoms/InsetField';
+import { Checkbox } from '../../atoms/Checkbox';
 
 const meta: Meta<typeof SlideoutMenu> = {
   title: 'Organisms/SlideoutMenu',

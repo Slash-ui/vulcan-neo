@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SectionHeader } from './SectionHeader';
-import { Button } from '../atoms/Button';
-import { Badge } from '../atoms/Badge';
-import { Surface } from '../foundation/Surface';
+import { Button } from '../../atoms/Button';
+import { Badge } from '../../atoms/Badge';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof SectionHeader> = {
   title: 'Molecules/SectionHeader',

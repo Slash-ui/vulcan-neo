@@ -36,12 +36,12 @@ describe('ActivityFeed', () => {
         id: 1,
         content: 'User action',
         timestamp: 'now',
-        user: { name: 'John', avatar: 'https://example.com/avatar.jpg' },
+        user: { name: 'John', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop' },
       },
     ];
     render(<ActivityFeed items={items} />);
     const img = screen.getByRole('img');
-    expect(img).toHaveAttribute('src', 'https://example.com/avatar.jpg');
+    expect(img).toHaveAttribute('src', 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop');
     expect(img).toHaveAttribute('alt', 'John');
   });
 

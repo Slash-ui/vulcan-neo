@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import { Button } from '../atoms/Button';
-import { Badge } from '../atoms/Badge';
+import { Button } from '../../atoms/Button';
+import { Badge } from '../../atoms/Badge';
 import styles from './ErrorPage.module.css';
 
 export type ErrorPageVariant = 'simple' | 'split' | 'illustration' | 'minimal';

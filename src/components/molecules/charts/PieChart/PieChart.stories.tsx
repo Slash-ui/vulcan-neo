@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PieChart, PieChartDataPoint } from './PieChart';
-import { Surface } from '../../foundation/Surface';
+import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof PieChart> = {
   title: 'Charts/PieChart',

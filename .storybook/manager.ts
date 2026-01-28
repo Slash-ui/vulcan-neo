@@ -36,8 +36,21 @@ const theme = create({
   inputBorder: 'rgba(163, 177, 198, 0.4)',
   inputTextColor: '#2D3436',
   inputBorderRadius: 8,
+
+  // Panel background (storybook-panel-root)
+  appPreviewBg: '#FFFFFF',
 });
 
 addons.setConfig({
   theme,
 });
+
+// Custom CSS for panel root
+const style = document.createElement('style');
+style.textContent = `
+  .sb-show-main #storybook-panel-root,
+  #storybook-panel-root {
+    background-color: #FFFFFF !important;
+  }
+`;
+document.head.appendChild(style);

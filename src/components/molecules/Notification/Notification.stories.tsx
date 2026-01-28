@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Notification } from './Notification';
-import { Surface } from '../foundation/Surface';
-import { Button } from '../atoms/Button';
+import { Surface } from '../../foundation/Surface';
+import { Button } from '../../atoms/Button';
 
 const meta: Meta<typeof Notification> = {
   title: 'Molecules/Notification',

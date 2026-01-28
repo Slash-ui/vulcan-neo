@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BlogSection } from './BlogSection';
-import { Surface } from '../../foundation/Surface';
+import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof BlogSection> = {
   title: 'Marketing/BlogSection',
@@ -27,7 +27,7 @@ const blogPosts = [
     category: 'Design',
     author: {
       name: 'Sarah Johnson',
-      avatar: 'https://placehold.net/100x100?text=SJ',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop',
     },
     date: 'Jan 15, 2026',
     readTime: '5 min read',
@@ -41,7 +41,7 @@ const blogPosts = [
     category: 'Development',
     author: {
       name: 'Michael Chen',
-      avatar: 'https://placehold.net/100x100?text=MC',
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
     },
     date: 'Jan 12, 2026',
     readTime: '8 min read',
@@ -55,7 +55,7 @@ const blogPosts = [
     category: 'Trends',
     author: {
       name: 'Emily Davis',
-      avatar: 'https://placehold.net/100x100?text=ED',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
     },
     date: 'Jan 10, 2026',
     readTime: '6 min read',
@@ -69,7 +69,7 @@ const blogPosts = [
     category: 'Development',
     author: {
       name: 'James Wilson',
-      avatar: 'https://placehold.net/100x100?text=JW',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
     },
     date: 'Jan 8, 2026',
     readTime: '10 min read',

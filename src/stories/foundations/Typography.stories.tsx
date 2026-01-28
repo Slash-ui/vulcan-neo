@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
-import { Surface } from '../../components/Surface';
+import { Surface } from '../../components/foundation/Surface';
 
 interface TypeScaleProps {
   name: string;

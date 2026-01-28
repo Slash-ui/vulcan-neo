@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Button } from '../../atoms/Button';
+import { Button } from '../../../atoms/Button';
 import styles from './CTASection.module.css';
 
 export type CTASectionVariant = 'simple' | 'split' | 'card' | 'full-width';

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BadgeGroup } from './BadgeGroup';
-import { Avatar } from '../atoms/Avatar';
-import { Badge } from '../atoms/Badge';
-import { Surface } from '../foundation/Surface';
+import { Avatar } from '../../atoms/Avatar';
+import { Badge } from '../../atoms/Badge';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof BadgeGroup> = {
   title: 'Molecules/BadgeGroup',

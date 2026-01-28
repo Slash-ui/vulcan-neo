@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
-import { Button } from '../../atoms/Button';
-import { Badge } from '../../atoms/Badge';
+import { Button } from '../../../atoms/Button';
+import { Badge } from '../../../atoms/Badge';
 import styles from './PricingSection.module.css';
 
 export interface PricingFeature {

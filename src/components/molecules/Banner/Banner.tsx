@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
-import { Button } from '../atoms/Button';
-import { IconButton } from '../atoms/IconButton';
+import { Button } from '../../atoms/Button';
+import { IconButton } from '../../atoms/IconButton';
 import styles from './Banner.module.css';
 
 export type BannerVariant = 'info' | 'success' | 'warning' | 'error' | 'primary' | 'gradient';

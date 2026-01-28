@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { TestimonialSection } from './TestimonialSection';
-import { Surface } from '../../foundation/Surface';
+import { Surface } from '../../../foundation/Surface';
 
 const meta: Meta<typeof TestimonialSection> = {
   title: 'Marketing/TestimonialSection',
@@ -25,7 +25,7 @@ const testimonials = [
     author: 'Sarah Johnson',
     role: 'CTO',
     company: 'TechCorp',
-    avatar: 'https://placehold.net/100x100?text=SJ',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop',
     rating: 5,
   },
   {
@@ -34,7 +34,7 @@ const testimonials = [
     author: 'Michael Chen',
     role: 'CEO',
     company: 'StartupXYZ',
-    avatar: 'https://placehold.net/100x100?text=MC',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
     rating: 5,
   },
   {
@@ -43,7 +43,7 @@ const testimonials = [
     author: 'Emily Davis',
     role: 'Product Manager',
     company: 'InnovateCo',
-    avatar: 'https://placehold.net/100x100?text=ED',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
     rating: 5,
   },
   {
@@ -52,7 +52,7 @@ const testimonials = [
     author: 'James Wilson',
     role: 'Engineering Lead',
     company: 'DevTeam Inc',
-    avatar: 'https://placehold.net/100x100?text=JW',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
     rating: 4,
   },
   {
@@ -61,7 +61,7 @@ const testimonials = [
     author: 'Lisa Thompson',
     role: 'Designer',
     company: 'CreativeStudio',
-    avatar: 'https://placehold.net/100x100?text=LT',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
     rating: 5,
   },
   {
@@ -70,7 +70,7 @@ const testimonials = [
     author: 'David Martinez',
     role: 'Operations Director',
     company: 'ScaleFast',
-    avatar: 'https://placehold.net/100x100?text=DM',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop',
     rating: 5,
   },
 ];

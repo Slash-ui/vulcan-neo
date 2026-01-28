@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Messaging, MessageBubble, MessageInput, Message } from './Messaging';
-import { Surface } from '../foundation/Surface';
+import { Surface } from '../../foundation/Surface';
 
 const meta: Meta<typeof Messaging> = {
   title: 'Organisms/Messaging',
@@ -24,7 +24,7 @@ const sampleMessages: Message[] = [
     id: 1,
     content: 'Hey! How are you doing?',
     timestamp: '10:30 AM',
-    sender: { name: 'John Doe', avatar: 'https://placehold.net/40x40?text=JD' },
+    sender: { name: 'John Doe', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop' },
     position: 'left',
   },
   {
@@ -38,7 +38,7 @@ const sampleMessages: Message[] = [
     id: 3,
     content: "Pretty good! Just finished working on the new design system. It's looking awesome!",
     timestamp: '10:32 AM',
-    sender: { name: 'John Doe', avatar: 'https://placehold.net/40x40?text=JD' },
+    sender: { name: 'John Doe', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop' },
     position: 'left',
   },
   {
@@ -127,14 +127,14 @@ export const GroupChat: Story = {
         id: 1,
         content: 'Welcome to the group! 👋',
         timestamp: '9:00 AM',
-        sender: { name: 'Alice', avatar: 'https://placehold.net/40x40?text=A' },
+        sender: { name: 'Alice', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=40&h=40&fit=crop' },
         position: 'left',
       },
       {
         id: 2,
         content: 'Thanks for having me!',
         timestamp: '9:01 AM',
-        sender: { name: 'Bob', avatar: 'https://placehold.net/40x40?text=B' },
+        sender: { name: 'Bob', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop' },
         position: 'left',
       },
       {
@@ -148,14 +148,14 @@ export const GroupChat: Story = {
         id: 4,
         content: "I've shared the design files in the shared folder",
         timestamp: '9:05 AM',
-        sender: { name: 'Alice', avatar: 'https://placehold.net/40x40?text=A' },
+        sender: { name: 'Alice', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=40&h=40&fit=crop' },
         position: 'left',
       },
       {
         id: 5,
         content: 'Perfect, checking them now',
         timestamp: '9:06 AM',
-        sender: { name: 'Bob', avatar: 'https://placehold.net/40x40?text=B' },
+        sender: { name: 'Bob', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop' },
         position: 'left',
       },
     ];
