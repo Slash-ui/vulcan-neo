@@ -1,5 +1,5 @@
 {
-  "name": "@slash-ui/vulcan-neo",
+  "name": "@slashui/vulcan-neo",
   "version": "0.1.0",
   "description": "A Neomorphism component library for React",
   "type": "module",
@@ -29,7 +29,11 @@
   "bugs": {
     "url": "https://github.com/Slash-ui/vulcan-neo/issues"
   },
-  "homepage": "https://github.com/Slash-ui/vulcan-neo#readme",
+  "homepage": "https://slash-ui.github.io/vulcan-neo",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "react",
     "neomorphism",

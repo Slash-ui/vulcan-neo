@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@slash-ui/vulcan-neo">
-    <img src="https://img.shields.io/npm/v/@slash-ui/vulcan-neo?color=6C5CE7&label=npm" alt="npm version" />
+  <a href="https://www.npmjs.com/package/@slashui/vulcan-neo">
+    <img src="https://img.shields.io/npm/v/@slashui/vulcan-neo?color=6C5CE7&label=npm" alt="npm version" />
   </a>
   <a href="https://github.com/Slash-ui/vulcan-neo/actions/workflows/ci.yml">
     <img src="https://github.com/Slash-ui/vulcan-neo/actions/workflows/ci.yml/badge.svg" alt="CI Status" />
@@ -19,13 +19,13 @@
     <img src="https://codecov.io/gh/Slash-ui/vulcan-neo/branch/main/graph/badge.svg" alt="Coverage" />
   </a>
   <a href="https://github.com/Slash-ui/vulcan-neo/blob/main/LICENSE">
-    <img src="https://img.shields.io/npm/l/@slash-ui/vulcan-neo?color=00CEC9" alt="License" />
+    <img src="https://img.shields.io/npm/l/@slashui/vulcan-neo?color=00CEC9" alt="License" />
   </a>
   <a href="https://slash-ui.github.io/vulcan-neo">
     <img src="https://img.shields.io/badge/docs-storybook-FF4785" alt="Storybook" />
   </a>
-  <a href="https://bundlephobia.com/package/@slash-ui/vulcan-neo">
-    <img src="https://img.shields.io/bundlephobia/minzip/@slash-ui/vulcan-neo?color=00B894&label=size" alt="Bundle Size" />
+  <a href="https://bundlephobia.com/package/@slashui/vulcan-neo">
+    <img src="https://img.shields.io/bundlephobia/minzip/@slashui/vulcan-neo?color=00B894&label=size" alt="Bundle Size" />
   </a>
 </p>
 
@@ -67,20 +67,20 @@ Vulcan Neo is a **Neomorphism (Soft UI) design system** for React applications. 
 
 ```bash
 # npm
-npm install @slash-ui/vulcan-neo
+npm install @slashui/vulcan-neo
 
 # yarn
-yarn add @slash-ui/vulcan-neo
+yarn add @slashui/vulcan-neo
 
 # pnpm
-pnpm add @slash-ui/vulcan-neo
+pnpm add @slashui/vulcan-neo
 ```
 
 #### Basic Usage
 
 ```tsx
-import { Surface, Button, Card } from '@slash-ui/vulcan-neo';
-import '@slash-ui/vulcan-neo/styles';
+import { Surface, Button, Card } from '@slashui/vulcan-neo';
+import '@slashui/vulcan-neo/styles';
 
 function App() {
   return (
@@ -115,7 +115,7 @@ npx create-react-app my-app
 cd my-app
 
 # Install Vulcan Neo
-npm install @slash-ui/vulcan-neo
+npm install @slashui/vulcan-neo
 ```
 
 #### Step 3: Start Building
@@ -123,8 +123,8 @@ npm install @slash-ui/vulcan-neo
 Open the project in your code editor (we recommend [VS Code](https://code.visualstudio.com)) and edit `src/App.js`:
 
 ```jsx
-import { Surface, Button } from '@slash-ui/vulcan-neo';
-import '@slash-ui/vulcan-neo/styles';
+import { Surface, Button } from '@slashui/vulcan-neo';
+import '@slashui/vulcan-neo/styles';
 
 function App() {
   return (
@@ -290,7 +290,7 @@ All components meet **WCAG AA** standards:
 Wrap your app with `Surface` to apply a theme:
 
 ```tsx
-import { Surface } from '@slash-ui/vulcan-neo';
+import { Surface } from '@slashui/vulcan-neo';
 
 // Light theme (default)
 <Surface theme="light">
@@ -450,7 +450,7 @@ Yes! Vulcan Neo works with Next.js. For App Router, use `'use client'` directive
 
 ```tsx
 'use client';
-import { Surface, Button } from '@slash-ui/vulcan-neo';
+import { Surface, Button } from '@slashui/vulcan-neo';
 ```
 
 </details>
@@ -487,7 +487,7 @@ The full library is ~80KB gzipped. With tree-shaking, you only pay for what you 
 ## Links
 
 - [Documentation (Storybook)](https://slash-ui.github.io/vulcan-neo)
-- [npm Package](https://www.npmjs.com/package/@slash-ui/vulcan-neo)
+- [npm Package](https://www.npmjs.com/package/@slashui/vulcan-neo)
 - [GitHub Repository](https://github.com/Slash-ui/vulcan-neo)
 - [Issue Tracker](https://github.com/Slash-ui/vulcan-neo/issues)
 - [Changelog](./CHANGELOG.md)

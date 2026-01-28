@@ -36,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History
 
-### [0.1.0] - 2024-XX-XX
+### [0.1.0] - 2026-01-27
 
 - Initial beta release
 
@@ -46,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### From 0.x to 1.0
 
-*To be documented when 1.0 is released.*
+_To be documented when 1.0 is released._
 
 ---
 
