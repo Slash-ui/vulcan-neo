@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import '../src/styles/tokens.css';
 
 const preview: Preview = {
@@ -10,19 +10,25 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'neomorphic-light',
-      values: [
-        {
+      options: {
+        "neomorphic-light": {
           name: 'neomorphic-light',
           value: '#E0E5EC',
         },
-        {
+
+        "neomorphic-dark": {
           name: 'neomorphic-dark',
           value: '#292D32',
-        },
-      ],
+        }
+      }
     },
   },
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'neomorphic-light'
+    }
+  }
 };
 
 export default preview;

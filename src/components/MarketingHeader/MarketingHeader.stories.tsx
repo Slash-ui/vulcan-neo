@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MarketingHeader } from './MarketingHeader';
 import { Surface } from '../Surface';
 import { Badge } from '../Badge';

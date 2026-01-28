@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Surface } from './Surface';
 
 const meta: Meta<typeof Surface> = {
@@ -47,8 +47,10 @@ export const Dark: Story = {
       </div>
     ),
   },
-  parameters: {
-    backgrounds: { default: 'neomorphic-dark' },
+  globals: {
+    backgrounds: {
+      value: "neomorphic-dark"
+    }
   },
 };
 

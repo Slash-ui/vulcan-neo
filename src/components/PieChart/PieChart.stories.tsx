@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PieChart, PieChartDataPoint } from './PieChart';
 import { Surface } from '../Surface';
 

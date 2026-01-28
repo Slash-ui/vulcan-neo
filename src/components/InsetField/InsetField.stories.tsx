@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { InsetField } from './InsetField';
 import { Surface } from '../Surface';
 
@@ -123,7 +123,9 @@ export const DarkTheme: Story = {
       </Surface>
     ),
   ],
-  parameters: {
-    backgrounds: { default: 'neomorphic-dark' },
+  globals: {
+    backgrounds: {
+      value: "neomorphic-dark"
+    }
   },
 };

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Metrics, MetricCard, MetricItem } from './Metrics';
 import { Surface } from '../Surface';
 

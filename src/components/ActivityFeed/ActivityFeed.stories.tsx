@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ActivityFeed, ActivityItem } from './ActivityFeed';
 import { Surface } from '../Surface';
 

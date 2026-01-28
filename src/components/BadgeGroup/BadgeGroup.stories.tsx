@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BadgeGroup } from './BadgeGroup';
 import { Avatar } from '../Avatar';
 import { Badge } from '../Badge';

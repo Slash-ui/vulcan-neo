@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Card, CardHeader, CardBody, CardFooter } from './Card';
 import { Surface } from '../Surface';
 import { Button } from '../Button';
@@ -163,7 +163,9 @@ export const DarkTheme: Story = {
       </Surface>
     ),
   ],
-  parameters: {
-    backgrounds: { default: 'neomorphic-dark' },
+  globals: {
+    backgrounds: {
+      value: "neomorphic-dark"
+    }
   },
 };
