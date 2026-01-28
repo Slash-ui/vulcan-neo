@@ -9,17 +9,17 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@slashui/vulcan-neo"><img src="https://img.shields.io/npm/v/@slashui/vulcan-neo?color=6C5CE7&label=npm" alt="npm version" />
+  <a href="https://www.npmjs.com/package/@slashui/vulcan-neo"><img src="https://img.shields.io/npm/v/%40slashui%2Fvulcan-neo?color=6C5CE7&label=npm" alt="npm version" />
   </a>
   <a href="https://github.com/Slash-ui/vulcan-neo/actions/workflows/ci.yml"><img src="https://github.com/Slash-ui/vulcan-neo/actions/workflows/ci.yml/badge.svg" alt="CI Status" />
   </a>
   <a href="https://codecov.io/gh/Slash-ui/vulcan-neo"><img src="https://codecov.io/gh/Slash-ui/vulcan-neo/branch/main/graph/badge.svg" alt="Coverage" />
   </a>
-  <a href="https://github.com/Slash-ui/vulcan-neo/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@slashui/vulcan-neo?color=00CEC9" alt="License" />
+  <a href="https://github.com/Slash-ui/vulcan-neo/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-00CEC9" alt="License" />
   </a>
   <a href="https://slash-ui.github.io/vulcan-neo"><img src="https://img.shields.io/badge/docs-storybook-FF4785" alt="Storybook" />
   </a>
-  <a href="https://bundlephobia.com/package/@slashui/vulcan-neo"><img src="https://img.shields.io/bundlephobia/minzip/@slashui/vulcan-neo?color=00B894&label=size" alt="Bundle Size" />
+  <a href="https://bundlephobia.com/package/@slashui/vulcan-neo"><img src="https://img.shields.io/bundlephobia/minzip/%40slashui%2Fvulcan-neo?color=00B894&label=size" alt="Bundle Size" />
   </a>
 </p>
 
