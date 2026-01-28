@@ -264,3 +264,7 @@ export type { FooterProps, FooterLink, FooterLinkGroup, FooterSocialLink } from 
 
 export { Banner } from './Banner';
 export type { BannerProps, BannerVariant, BannerPosition } from './Banner';
+
+// Templates
+export { ErrorPage } from './ErrorPage';
+export type { ErrorPageProps, ErrorPageVariant, ErrorPageSize } from './ErrorPage';

@@ -7,6 +7,10 @@
  */
 
 :root {
+  /* ==========================================
+   * COLOR TOKENS
+   * ========================================== */
+
   /* Background Colors */
   --neo-bg-light: #E0E5EC;
   --neo-bg-dark: #292D32;
@@ -19,56 +23,253 @@
   --neo-shadow-dark-light: rgba(60, 65, 72, 0.8);
   --neo-shadow-dark-dark: rgba(20, 22, 25, 0.8);
 
-  /* Elevation Distances */
-  --neo-elevation-low: 4px;
-  --neo-elevation-mid: 8px;
-  --neo-elevation-high: 16px;
+  /* Primary Colors */
+  --neo-color-primary: #6C5CE7;
+  --neo-color-primary-light: #A29BFE;
+  --neo-color-primary-dark: #5849BE;
+  --neo-color-on-primary: #FFFFFF;
+  --neo-color-primary-container: #E8E5FF;
+  --neo-color-on-primary-container: #1D1148;
 
-  /* Border Radius */
-  --neo-radius-sm: 12px;
-  --neo-radius-md: 20px;
-  --neo-radius-lg: 32px;
-  --neo-radius-full: 9999px;
+  /* Secondary Colors */
+  --neo-color-secondary: #00CEC9;
+  --neo-color-secondary-light: #55EFC4;
+  --neo-color-secondary-dark: #00A8A3;
+  --neo-color-on-secondary: #FFFFFF;
+  --neo-color-secondary-container: #D4FFFE;
+  --neo-color-on-secondary-container: #00403E;
 
-  /* Spacing */
-  --neo-space-xs: 4px;
-  --neo-space-sm: 8px;
-  --neo-space-md: 16px;
-  --neo-space-lg: 24px;
-  --neo-space-xl: 32px;
-  --neo-space-2xl: 48px;
+  /* Tertiary Colors */
+  --neo-color-tertiary: #FDCB6E;
+  --neo-color-tertiary-light: #FFEAA7;
+  --neo-color-tertiary-dark: #E4B556;
+  --neo-color-on-tertiary: #2D3436;
+  --neo-color-tertiary-container: #FFF8E1;
+  --neo-color-on-tertiary-container: #3E2D00;
 
-  /* Typography */
-  --neo-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --neo-font-size-xs: 12px;
-  --neo-font-size-sm: 14px;
-  --neo-font-size-md: 16px;
-  --neo-font-size-lg: 18px;
-  --neo-font-size-xl: 24px;
-  --neo-font-weight-normal: 400;
-  --neo-font-weight-medium: 500;
-  --neo-font-weight-semibold: 600;
-  --neo-font-weight-bold: 700;
+  /* Semantic Colors */
+  --neo-color-success: #00B894;
+  --neo-color-success-light: #55EFC4;
+  --neo-color-success-dark: #009473;
+  --neo-color-on-success: #FFFFFF;
+  --neo-color-success-container: #D4F9EF;
+  --neo-color-on-success-container: #00382D;
 
-  /* Text Colors - WCAG 4.5:1 compliant */
-  --neo-text-primary: #2D3436;
-  --neo-text-secondary: #636E72;
-  --neo-text-disabled: #A0A8AD;
+  --neo-color-warning: #FDCB6E;
+  --neo-color-warning-light: #FFEAA7;
+  --neo-color-warning-dark: #E4B556;
+  --neo-color-on-warning: #2D3436;
+  --neo-color-warning-container: #FFF8E1;
+  --neo-color-on-warning-container: #3E2D00;
 
-  /* Accent Colors */
+  --neo-color-error: #E17055;
+  --neo-color-error-light: #FF8A65;
+  --neo-color-error-dark: #C14A34;
+  --neo-color-on-error: #FFFFFF;
+  --neo-color-error-container: #FFDDD6;
+  --neo-color-on-error-container: #4A1A0F;
+
+  --neo-color-info: #74B9FF;
+  --neo-color-info-light: #A8D8FF;
+  --neo-color-info-dark: #5A9AD9;
+  --neo-color-on-info: #2D3436;
+  --neo-color-info-container: #E3F2FD;
+  --neo-color-on-info-container: #0D47A1;
+
+  /* Surface Colors */
+  --neo-color-surface: var(--neo-bg-light);
+  --neo-color-surface-dim: #D4D9E0;
+  --neo-color-surface-bright: #F0F3F8;
+  --neo-color-surface-container-lowest: #FFFFFF;
+  --neo-color-surface-container-low: #EEF1F6;
+  --neo-color-surface-container: #E8ECEF;
+  --neo-color-surface-container-high: #E2E6EA;
+  --neo-color-surface-container-highest: #DCE0E5;
+
+  /* Accent Colors (Legacy) */
   --neo-accent-primary: #6C5CE7;
   --neo-accent-secondary: #00CEC9;
   --neo-accent-success: #00B894;
   --neo-accent-warning: #FDCB6E;
   --neo-accent-error: #E17055;
 
-  /* Transition */
-  --neo-transition-fast: 150ms ease;
-  --neo-transition-normal: 250ms ease;
-  --neo-transition-slow: 350ms ease;
+  /* Text Colors - WCAG 4.5:1 compliant */
+  --neo-text-primary: #2D3436;
+  --neo-text-secondary: #636E72;
+  --neo-text-disabled: #A0A8AD;
+  --neo-color-on-surface: var(--neo-text-primary);
+  --neo-color-on-surface-variant: var(--neo-text-secondary);
+
+  /* Outline Colors */
+  --neo-color-outline: #8D9CA8;
+  --neo-color-outline-variant: #C4CBD0;
+
+  /* ==========================================
+   * TYPOGRAPHY TOKENS
+   * ========================================== */
+
+  /* Font Families */
+  --neo-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --neo-font-family-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --neo-font-family-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+
+  /* Display Scales */
+  --neo-font-display-xl: 72px;
+  --neo-font-display-lg: 57px;
+  --neo-font-display-md: 45px;
+  --neo-font-display-sm: 36px;
+
+  --neo-line-height-display-xl: 1.1;
+  --neo-line-height-display-lg: 1.12;
+  --neo-line-height-display-md: 1.16;
+  --neo-line-height-display-sm: 1.22;
+
+  --neo-letter-spacing-display: -0.025em;
+
+  /* Headline Scales */
+  --neo-font-headline-lg: 32px;
+  --neo-font-headline-md: 28px;
+  --neo-font-headline-sm: 24px;
+
+  --neo-line-height-headline-lg: 1.25;
+  --neo-line-height-headline-md: 1.29;
+  --neo-line-height-headline-sm: 1.33;
+
+  --neo-letter-spacing-headline: -0.02em;
+
+  /* Title Scales */
+  --neo-font-title-lg: 22px;
+  --neo-font-title-md: 16px;
+  --neo-font-title-sm: 14px;
+
+  --neo-line-height-title-lg: 1.27;
+  --neo-line-height-title-md: 1.5;
+  --neo-line-height-title-sm: 1.43;
+
+  --neo-letter-spacing-title: 0;
+
+  /* Body Scales */
+  --neo-font-body-lg: 18px;
+  --neo-font-body-md: 16px;
+  --neo-font-body-sm: 14px;
+
+  --neo-line-height-body-lg: 1.56;
+  --neo-line-height-body-md: 1.5;
+  --neo-line-height-body-sm: 1.43;
+
+  --neo-letter-spacing-body: 0.01em;
+
+  /* Label Scales */
+  --neo-font-label-lg: 14px;
+  --neo-font-label-md: 12px;
+  --neo-font-label-sm: 11px;
+
+  --neo-line-height-label-lg: 1.43;
+  --neo-line-height-label-md: 1.33;
+  --neo-line-height-label-sm: 1.45;
+
+  --neo-letter-spacing-label: 0.02em;
+
+  /* Legacy Typography (kept for compatibility) */
+  --neo-font-size-xs: 12px;
+  --neo-font-size-sm: 14px;
+  --neo-font-size-md: 16px;
+  --neo-font-size-lg: 18px;
+  --neo-font-size-xl: 24px;
+
+  /* Font Weights */
+  --neo-font-weight-regular: 400;
+  --neo-font-weight-medium: 500;
+  --neo-font-weight-semibold: 600;
+  --neo-font-weight-bold: 700;
+
+  /* Legacy weights */
+  --neo-font-weight-normal: 400;
+
+  /* ==========================================
+   * SPACING TOKENS
+   * ========================================== */
+
+  --neo-space-xs: 4px;
+  --neo-space-sm: 8px;
+  --neo-space-md: 16px;
+  --neo-space-lg: 24px;
+  --neo-space-xl: 32px;
+  --neo-space-2xl: 48px;
+  --neo-space-3xl: 64px;
+  --neo-space-4xl: 96px;
+
+  /* ==========================================
+   * ELEVATION TOKENS
+   * ========================================== */
+
+  --neo-elevation-low: 4px;
+  --neo-elevation-mid: 8px;
+  --neo-elevation-high: 16px;
 
   /* Shadow Blur Multiplier */
   --neo-blur-multiplier: 2;
+
+  /* ==========================================
+   * BORDER RADIUS TOKENS
+   * ========================================== */
+
+  --neo-radius-none: 0;
+  --neo-radius-xs: 4px;
+  --neo-radius-sm: 12px;
+  --neo-radius-md: 20px;
+  --neo-radius-lg: 32px;
+  --neo-radius-xl: 48px;
+  --neo-radius-full: 9999px;
+
+  /* ==========================================
+   * MOTION TOKENS
+   * ========================================== */
+
+  /* Duration */
+  --neo-duration-instant: 50ms;
+  --neo-duration-fast: 100ms;
+  --neo-duration-normal: 200ms;
+  --neo-duration-slow: 300ms;
+  --neo-duration-slower: 400ms;
+  --neo-duration-slowest: 500ms;
+
+  /* Easing - Standard */
+  --neo-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --neo-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --neo-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+
+  /* Easing - Emphasized */
+  --neo-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --neo-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --neo-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  /* Easing - Legacy */
+  --neo-easing-ease: ease;
+  --neo-easing-ease-in: ease-in;
+  --neo-easing-ease-out: ease-out;
+  --neo-easing-ease-in-out: ease-in-out;
+  --neo-easing-linear: linear;
+
+  /* Transition Presets */
+  --neo-transition-instant: var(--neo-duration-instant) var(--neo-easing-standard);
+  --neo-transition-fast: var(--neo-duration-fast) var(--neo-easing-standard);
+  --neo-transition-normal: var(--neo-duration-normal) var(--neo-easing-standard);
+  --neo-transition-slow: var(--neo-duration-slow) var(--neo-easing-standard);
+  --neo-transition-slower: var(--neo-duration-slower) var(--neo-easing-standard);
+
+  /* Enter/Exit Transitions */
+  --neo-transition-enter: var(--neo-duration-normal) var(--neo-easing-emphasized-decelerate);
+  --neo-transition-exit: var(--neo-duration-fast) var(--neo-easing-emphasized-accelerate);
+
+  /* Spring-like Transitions */
+  --neo-transition-spring: var(--neo-duration-slow) cubic-bezier(0.34, 1.56, 0.64, 1);
+  --neo-transition-bounce: var(--neo-duration-slower) cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Legacy Transitions */
+  --neo-transition-fast-legacy: 150ms ease;
+  --neo-transition-normal-legacy: 250ms ease;
+  --neo-transition-slow-legacy: 350ms ease;
 }
 
 /* Light Theme (default) */
@@ -87,6 +288,24 @@
   --neo-shadow-dark: var(--neo-shadow-dark-dark);
   --neo-text: #E0E5EC;
   --neo-text-secondary: #A0A8AD;
+
+  /* Dark theme surface colors */
+  --neo-color-surface: var(--neo-bg-dark);
+  --neo-color-surface-dim: #1E2124;
+  --neo-color-surface-bright: #3A3F44;
+  --neo-color-surface-container-lowest: #141618;
+  --neo-color-surface-container-low: #1E2124;
+  --neo-color-surface-container: #252A2E;
+  --neo-color-surface-container-high: #2F3438;
+  --neo-color-surface-container-highest: #3A3F44;
+
+  /* Dark theme text colors */
+  --neo-color-on-surface: #E0E5EC;
+  --neo-color-on-surface-variant: #A0A8AD;
+
+  /* Dark theme outline colors */
+  --neo-color-outline: #636E72;
+  --neo-color-outline-variant: #424B50;
 }
 
 /* Base Styles */
