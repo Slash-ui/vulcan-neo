@@ -405,7 +405,7 @@ export const iconNames = Object.keys(iconMapLg);
 
 // Helper to create argTypes for icon props
 export const createIconArgType = (iconMap: Record<string, React.ReactNode>, description?: string) => ({
-  control: 'select',
+  control: 'select' as const,
   options: Object.keys(iconMap),
   mapping: iconMap,
   description: description || 'Select an icon from Lucide icons',
