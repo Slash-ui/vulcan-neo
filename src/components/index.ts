@@ -1,30 +1,25 @@
-// Atoms
-export { Surface } from './Surface';
-export type { SurfaceProps } from './Surface';
+// ============================================================================
+// FOUNDATION
+// ============================================================================
+export { Surface } from './foundation/Surface';
+export type { SurfaceProps } from './foundation/Surface';
 
-export { Button } from './Button';
-export type { ButtonProps, ButtonVariant, ButtonSize, ButtonElevation } from './Button';
+// ============================================================================
+// ATOMS
+// ============================================================================
+export { Button } from './atoms/Button';
+export type { ButtonProps, ButtonVariant, ButtonSize, ButtonElevation } from './atoms/Button';
 
-export { InsetField } from './InsetField';
-export type { InsetFieldProps, InsetFieldSize } from './InsetField';
+export { InsetField } from './atoms/InsetField';
+export type { InsetFieldProps, InsetFieldSize } from './atoms/InsetField';
 
-export { Switch } from './Switch';
-export type { SwitchProps, SwitchSize } from './Switch';
+export { Switch } from './atoms/Switch';
+export type { SwitchProps, SwitchSize } from './atoms/Switch';
 
-export { ProgressBar } from './ProgressBar';
-export type { ProgressBarProps, ProgressBarSize, ProgressBarVariant } from './ProgressBar';
+export { ProgressBar } from './atoms/ProgressBar';
+export type { ProgressBarProps, ProgressBarSize, ProgressBarVariant } from './atoms/ProgressBar';
 
-export { Card, CardHeader, CardBody, CardFooter } from './Card';
-export type {
-  CardProps,
-  CardElevation,
-  CardVariant,
-  CardHeaderProps,
-  CardBodyProps,
-  CardFooterProps,
-} from './Card';
-
-export { FeaturedIcon } from './FeaturedIcon';
+export { FeaturedIcon } from './atoms/FeaturedIcon';
 export type {
   FeaturedIconProps,
   FeaturedIconVariant,
@@ -32,41 +27,75 @@ export type {
   FeaturedIconElevation,
   FeaturedIconColor,
   FeaturedIconShape,
-} from './FeaturedIcon';
+} from './atoms/FeaturedIcon';
 
-export { IconButton } from './IconButton';
+export { IconButton } from './atoms/IconButton';
 export type {
   IconButtonProps,
   IconButtonVariant,
   IconButtonSize,
   IconButtonElevation,
   IconButtonShape,
-} from './IconButton';
+} from './atoms/IconButton';
 
-export { Badge } from './Badge';
-export type { BadgeProps, BadgeVariant, BadgeSize, BadgeColor } from './Badge';
+export { Badge } from './atoms/Badge';
+export type { BadgeProps, BadgeVariant, BadgeSize, BadgeColor } from './atoms/Badge';
 
-export { Avatar } from './Avatar';
-export type { AvatarProps, AvatarVariant, AvatarSize, AvatarStatus } from './Avatar';
+export { Avatar } from './atoms/Avatar';
+export type { AvatarProps, AvatarVariant, AvatarSize, AvatarStatus } from './atoms/Avatar';
 
-export { SocialButton } from './SocialButton';
+export { SocialButton } from './atoms/SocialButton';
 export type {
   SocialButtonProps,
   SocialButtonVariant,
   SocialButtonSize,
   SocialButtonElevation,
-} from './SocialButton';
+} from './atoms/SocialButton';
 
-export { AppStoreButton } from './AppStoreButton';
+export { AppStoreButton } from './atoms/AppStoreButton';
 export type {
   AppStoreButtonProps,
   AppStoreButtonVariant,
   AppStoreButtonSize,
   AppStoreButtonElevation,
   AppStoreButtonStore,
-} from './AppStoreButton';
+} from './atoms/AppStoreButton';
 
-export { ButtonGroup, ButtonGroupItem } from './ButtonGroup';
+export { Textarea } from './atoms/Textarea';
+export type { TextareaProps, TextareaSize } from './atoms/Textarea';
+
+export { Checkbox } from './atoms/Checkbox';
+export type { CheckboxProps, CheckboxSize } from './atoms/Checkbox';
+
+export { Radio } from './atoms/Radio';
+export type { RadioProps, RadioSize } from './atoms/Radio';
+
+export { Slider } from './atoms/Slider';
+export type { SliderProps, SliderSize } from './atoms/Slider';
+
+export { Tag } from './atoms/Tag';
+export type { TagProps, TagVariant, TagSize, TagColor } from './atoms/Tag';
+
+export { Tooltip } from './atoms/Tooltip';
+export type { TooltipProps, TooltipPlacement } from './atoms/Tooltip';
+
+export { RatingStars } from './atoms/RatingStars';
+export type { RatingStarsProps, RatingStarsSize } from './atoms/RatingStars';
+
+// ============================================================================
+// MOLECULES
+// ============================================================================
+export { Card, CardHeader, CardBody, CardFooter } from './molecules/Card';
+export type {
+  CardProps,
+  CardElevation,
+  CardVariant,
+  CardHeaderProps,
+  CardBodyProps,
+  CardFooterProps,
+} from './molecules/Card';
+
+export { ButtonGroup, ButtonGroupItem } from './molecules/ButtonGroup';
 export type {
   ButtonGroupProps,
   ButtonGroupItemProps,
@@ -74,197 +103,183 @@ export type {
   ButtonGroupSize,
   ButtonGroupElevation,
   ButtonGroupOrientation,
-} from './ButtonGroup';
+} from './molecules/ButtonGroup';
 
-export { Textarea } from './Textarea';
-export type { TextareaProps, TextareaSize } from './Textarea';
-
-export { Checkbox } from './Checkbox';
-export type { CheckboxProps, CheckboxSize } from './Checkbox';
-
-export { Radio } from './Radio';
-export type { RadioProps, RadioSize } from './Radio';
-
-export { RadioGroup, RadioGroupItem } from './RadioGroup';
+export { RadioGroup, RadioGroupItem } from './molecules/RadioGroup';
 export type {
   RadioGroupProps,
   RadioGroupItemProps,
   RadioGroupSize,
   RadioGroupOrientation,
-} from './RadioGroup';
+} from './molecules/RadioGroup';
 
-export { VerificationCodeInput } from './VerificationCodeInput';
-export type { VerificationCodeInputProps, VerificationCodeInputSize } from './VerificationCodeInput';
+export { VerificationCodeInput } from './molecules/VerificationCodeInput';
+export type { VerificationCodeInputProps, VerificationCodeInputSize } from './molecules/VerificationCodeInput';
 
-export { Slider } from './Slider';
-export type { SliderProps, SliderSize } from './Slider';
+export { Select } from './molecules/Select';
+export type { SelectProps, SelectOption, SelectSize } from './molecules/Select';
 
-export { Select } from './Select';
-export type { SelectProps, SelectOption, SelectSize } from './Select';
+export { Dropdown } from './molecules/Dropdown';
+export type { DropdownProps, DropdownItem, DropdownPlacement } from './molecules/Dropdown';
 
-export { Dropdown } from './Dropdown';
-export type { DropdownProps, DropdownItem, DropdownPlacement } from './Dropdown';
+export { BadgeGroup } from './molecules/BadgeGroup';
+export type { BadgeGroupProps, BadgeGroupSize } from './molecules/BadgeGroup';
 
-export { Tag } from './Tag';
-export type { TagProps, TagVariant, TagSize, TagColor } from './Tag';
+export { Breadcrumbs, BreadcrumbItem } from './molecules/Breadcrumbs';
+export type { BreadcrumbsProps, BreadcrumbItemProps } from './molecules/Breadcrumbs';
 
-export { BadgeGroup } from './BadgeGroup';
-export type { BadgeGroupProps, BadgeGroupSize } from './BadgeGroup';
+export { Tabs, TabList, Tab, TabPanel } from './molecules/Tabs';
+export type { TabsProps, TabListProps, TabProps, TabPanelProps, TabsVariant, TabsSize } from './molecules/Tabs';
 
-export { Tooltip } from './Tooltip';
-export type { TooltipProps, TooltipPlacement } from './Tooltip';
+export { Pagination } from './molecules/Pagination';
+export type { PaginationProps, PaginationSize } from './molecules/Pagination';
 
-export { RatingStars } from './RatingStars';
-export type { RatingStarsProps, RatingStarsSize } from './RatingStars';
+export { Alert } from './molecules/Alert';
+export type { AlertProps, AlertVariant } from './molecules/Alert';
 
-// Navigation Components
-export { Breadcrumbs, BreadcrumbItem } from './Breadcrumbs';
-export type { BreadcrumbsProps, BreadcrumbItemProps } from './Breadcrumbs';
+export { Notification } from './molecules/Notification';
+export type { NotificationProps, NotificationVariant, NotificationPosition } from './molecules/Notification';
 
-export { Tabs, TabList, Tab, TabPanel } from './Tabs';
-export type { TabsProps, TabListProps, TabProps, TabPanelProps, TabsVariant, TabsSize } from './Tabs';
+export { LoadingIndicator, Skeleton } from './molecules/LoadingIndicator';
+export type { LoadingIndicatorProps, LoadingSize, LoadingVariant, SkeletonProps } from './molecules/LoadingIndicator';
 
-export { Pagination } from './Pagination';
-export type { PaginationProps, PaginationSize } from './Pagination';
+export { EmptyState } from './molecules/EmptyState';
+export type { EmptyStateProps, EmptyStateSize } from './molecules/EmptyState';
 
-export { SidebarNavigation, SidebarNavGroup, SidebarNavItem } from './SidebarNavigation';
+export { ProgressSteps } from './molecules/ProgressSteps';
+export type { ProgressStepsProps, ProgressStepsSize, ProgressStepsOrientation, Step } from './molecules/ProgressSteps';
+
+export { Calendar } from './molecules/Calendar';
+export type { CalendarProps } from './molecules/Calendar';
+
+export { DatePicker } from './molecules/DatePicker';
+export type { DatePickerProps, DatePickerSize } from './molecules/DatePicker';
+
+export { FileUploader } from './molecules/FileUploader';
+export type { FileUploaderProps, UploadedFile } from './molecules/FileUploader';
+
+export { CodeSnippet } from './molecules/CodeSnippet';
+export type { CodeSnippetProps, CodeSnippetSize } from './molecules/CodeSnippet';
+
+export { InlineCTA } from './molecules/InlineCTA';
+export type { InlineCTAProps, InlineCTAVariant } from './molecules/InlineCTA';
+
+export { Banner } from './molecules/Banner';
+export type { BannerProps, BannerVariant, BannerPosition } from './molecules/Banner';
+
+// --- CHARTS ---
+export { LineChart } from './molecules/charts/LineChart';
+export type { LineChartProps, LineChartDataPoint, LineChartSeries } from './molecules/charts/LineChart';
+
+export { BarChart } from './molecules/charts/BarChart';
+export type { BarChartProps, BarChartDataPoint } from './molecules/charts/BarChart';
+
+export { PieChart } from './molecules/charts/PieChart';
+export type { PieChartProps, PieChartDataPoint } from './molecules/charts/PieChart';
+
+// ============================================================================
+// ORGANISMS
+// ============================================================================
+export { Table } from './organisms/Table';
+export type { TableProps, TableVariant, TableSize, Column } from './organisms/Table';
+
+export { Metrics, MetricCard } from './organisms/Metrics';
+export type { MetricsProps, MetricCardProps, MetricItem, MetricsSize, MetricsTrend } from './organisms/Metrics';
+
+export { ActivityFeed } from './organisms/ActivityFeed';
+export type { ActivityFeedProps, ActivityFeedSize, ActivityItem } from './organisms/ActivityFeed';
+
+export { SidebarNavigation, SidebarNavGroup, SidebarNavItem } from './organisms/SidebarNavigation';
 export type {
   SidebarNavigationProps,
   SidebarNavGroupProps,
   SidebarNavItemProps,
   SidebarSize,
-} from './SidebarNavigation';
+} from './organisms/SidebarNavigation';
 
-export { HeaderNavigation, HeaderNavItem, HeaderNavGroup } from './HeaderNavigation';
-export type { HeaderNavigationProps, HeaderNavItemProps, HeaderNavGroupProps, HeaderSize } from './HeaderNavigation';
+export { HeaderNavigation, HeaderNavItem, HeaderNavGroup } from './organisms/HeaderNavigation';
+export type { HeaderNavigationProps, HeaderNavItemProps, HeaderNavGroupProps, HeaderSize } from './organisms/HeaderNavigation';
 
-// Overlay Components
-export { Modal } from './Modal';
-export type { ModalProps, ModalSize } from './Modal';
+export { Modal } from './organisms/Modal';
+export type { ModalProps, ModalSize } from './organisms/Modal';
 
-export { SlideoutMenu } from './SlideoutMenu';
-export type { SlideoutMenuProps, SlideoutPosition, SlideoutSize } from './SlideoutMenu';
+export { SlideoutMenu } from './organisms/SlideoutMenu';
+export type { SlideoutMenuProps, SlideoutPosition, SlideoutSize } from './organisms/SlideoutMenu';
 
-export { CommandMenu } from './CommandMenu';
-export type { CommandMenuProps, CommandItem } from './CommandMenu';
+export { CommandMenu } from './organisms/CommandMenu';
+export type { CommandMenuProps, CommandItem } from './organisms/CommandMenu';
 
-// Feedback Components
-export { Alert } from './Alert';
-export type { AlertProps, AlertVariant } from './Alert';
+export { Carousel } from './organisms/Carousel';
+export type { CarouselProps, CarouselSize } from './organisms/Carousel';
 
-export { Notification } from './Notification';
-export type { NotificationProps, NotificationVariant, NotificationPosition } from './Notification';
-
-export { LoadingIndicator, Skeleton } from './LoadingIndicator';
-export type { LoadingIndicatorProps, LoadingSize, LoadingVariant, SkeletonProps } from './LoadingIndicator';
-
-export { EmptyState } from './EmptyState';
-export type { EmptyStateProps, EmptyStateSize } from './EmptyState';
-
-export { ProgressSteps } from './ProgressSteps';
-export type { ProgressStepsProps, ProgressStepsSize, ProgressStepsOrientation, Step } from './ProgressSteps';
-
-// Data Display Components
-export { Table } from './Table';
-export type { TableProps, TableVariant, TableSize, Column } from './Table';
-
-export { Metrics, MetricCard } from './Metrics';
-export type { MetricsProps, MetricCardProps, MetricItem, MetricsSize, MetricsTrend } from './Metrics';
-
-export { ActivityFeed } from './ActivityFeed';
-export type { ActivityFeedProps, ActivityFeedSize, ActivityItem } from './ActivityFeed';
-
-export { CodeSnippet } from './CodeSnippet';
-export type { CodeSnippetProps, CodeSnippetSize } from './CodeSnippet';
-
-// Input Components
-export { Calendar } from './Calendar';
-export type { CalendarProps } from './Calendar';
-
-export { DatePicker } from './DatePicker';
-export type { DatePickerProps, DatePickerSize } from './DatePicker';
-
-export { FileUploader } from './FileUploader';
-export type { FileUploaderProps, UploadedFile } from './FileUploader';
-
-// Interactive Components
-export { Carousel } from './Carousel';
-export type { CarouselProps, CarouselSize } from './Carousel';
-
-export { InlineCTA } from './InlineCTA';
-export type { InlineCTAProps, InlineCTAVariant } from './InlineCTA';
-
-export { Messaging, MessageBubble, MessageInput } from './Messaging';
+export { Messaging, MessageBubble, MessageInput } from './organisms/Messaging';
 export type {
   MessagingProps,
   MessageBubbleProps,
   MessageInputProps,
   Message,
   MessagePosition,
-} from './Messaging';
+} from './organisms/Messaging';
 
-// Chart Components
-export { LineChart } from './LineChart';
-export type { LineChartProps, LineChartDataPoint, LineChartSeries } from './LineChart';
+// ============================================================================
+// TEMPLATES
+// ============================================================================
+export { ErrorPage } from './templates/ErrorPage';
+export type { ErrorPageProps, ErrorPageVariant, ErrorPageSize } from './templates/ErrorPage';
 
-export { BarChart } from './BarChart';
-export type { BarChartProps, BarChartDataPoint } from './BarChart';
+export { PageHeader } from './templates/PageHeader';
 
-export { PieChart } from './PieChart';
-export type { PieChartProps, PieChartDataPoint } from './PieChart';
+export { SectionHeader } from './templates/SectionHeader';
 
-// Marketing Components
-export { MarketingHeader } from './MarketingHeader';
-export type { MarketingHeaderProps, MarketingNavItem } from './MarketingHeader';
+export { SectionFooter } from './templates/SectionFooter';
 
-export { HeroSection } from './HeroSection';
-export type { HeroSectionProps, HeroSectionVariant, HeroSectionSize } from './HeroSection';
+export { ContentDivider } from './templates/ContentDivider';
 
-export { FeaturesSection } from './FeaturesSection';
-export type { FeaturesSectionProps, FeaturesSectionLayout, FeatureItem } from './FeaturesSection';
+// --- MARKETING ---
+export { MarketingHeader } from './templates/marketing/MarketingHeader';
+export type { MarketingHeaderProps, MarketingNavItem } from './templates/marketing/MarketingHeader';
 
-export { PricingSection } from './PricingSection';
-export type { PricingSectionProps, PricingPlan, PricingFeature } from './PricingSection';
+export { HeroSection } from './templates/marketing/HeroSection';
+export type { HeroSectionProps, HeroSectionVariant, HeroSectionSize } from './templates/marketing/HeroSection';
 
-export { CTASection } from './CTASection';
-export type { CTASectionProps, CTASectionVariant } from './CTASection';
+export { FeaturesSection } from './templates/marketing/FeaturesSection';
+export type { FeaturesSectionProps, FeaturesSectionLayout, FeatureItem } from './templates/marketing/FeaturesSection';
 
-export { StatsSection } from './StatsSection';
-export type { StatsSectionProps, StatItem } from './StatsSection';
+export { PricingSection } from './templates/marketing/PricingSection';
+export type { PricingSectionProps, PricingPlan, PricingFeature } from './templates/marketing/PricingSection';
 
-export { NewsletterSection } from './NewsletterSection';
-export type { NewsletterSectionProps, NewsletterSectionVariant } from './NewsletterSection';
+export { CTASection } from './templates/marketing/CTASection';
+export type { CTASectionProps, CTASectionVariant } from './templates/marketing/CTASection';
 
-export { TestimonialSection } from './TestimonialSection';
-export type { TestimonialSectionProps, Testimonial } from './TestimonialSection';
+export { StatsSection } from './templates/marketing/StatsSection';
+export type { StatsSectionProps, StatItem } from './templates/marketing/StatsSection';
 
-export { LogoCloudSection } from './LogoCloudSection';
-export type { LogoCloudSectionProps, LogoItem } from './LogoCloudSection';
+export { NewsletterSection } from './templates/marketing/NewsletterSection';
+export type { NewsletterSectionProps, NewsletterSectionVariant } from './templates/marketing/NewsletterSection';
 
-export { BlogSection } from './BlogSection';
-export type { BlogSectionProps, BlogPost } from './BlogSection';
+export { TestimonialSection } from './templates/marketing/TestimonialSection';
+export type { TestimonialSectionProps, Testimonial } from './templates/marketing/TestimonialSection';
 
-export { ContactSection } from './ContactSection';
-export type { ContactSectionProps, ContactInfo } from './ContactSection';
+export { LogoCloudSection } from './templates/marketing/LogoCloudSection';
+export type { LogoCloudSectionProps, LogoItem } from './templates/marketing/LogoCloudSection';
 
-export { TeamSection } from './TeamSection';
-export type { TeamSectionProps, TeamMember } from './TeamSection';
+export { BlogSection } from './templates/marketing/BlogSection';
+export type { BlogSectionProps, BlogPost } from './templates/marketing/BlogSection';
 
-export { CareersSection } from './CareersSection';
-export type { CareersSectionProps, JobPosition } from './CareersSection';
+export { ContactSection } from './templates/marketing/ContactSection';
+export type { ContactSectionProps, ContactInfo } from './templates/marketing/ContactSection';
 
-export { FAQSection } from './FAQSection';
-export type { FAQSectionProps, FAQItem } from './FAQSection';
+export { TeamSection } from './templates/marketing/TeamSection';
+export type { TeamSectionProps, TeamMember } from './templates/marketing/TeamSection';
 
-export { ContentSection } from './ContentSection';
-export type { ContentSectionProps } from './ContentSection';
+export { CareersSection } from './templates/marketing/CareersSection';
+export type { CareersSectionProps, JobPosition } from './templates/marketing/CareersSection';
 
-export { Footer } from './Footer';
-export type { FooterProps, FooterLink, FooterLinkGroup, FooterSocialLink } from './Footer';
+export { FAQSection } from './templates/marketing/FAQSection';
+export type { FAQSectionProps, FAQItem } from './templates/marketing/FAQSection';
 
-export { Banner } from './Banner';
-export type { BannerProps, BannerVariant, BannerPosition } from './Banner';
+export { ContentSection } from './templates/marketing/ContentSection';
+export type { ContentSectionProps } from './templates/marketing/ContentSection';
 
-// Templates
-export { ErrorPage } from './ErrorPage';
-export type { ErrorPageProps, ErrorPageVariant, ErrorPageSize } from './ErrorPage';
+export { Footer } from './templates/marketing/Footer';
+export type { FooterProps, FooterLink, FooterLinkGroup, FooterSocialLink } from './templates/marketing/Footer';
