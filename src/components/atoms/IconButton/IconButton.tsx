@@ -4,7 +4,7 @@ import styles from './IconButton.module.css';
 export type IconButtonVariant = 'convex' | 'flat';
 export type IconButtonSize = 'sm' | 'md' | 'lg';
 export type IconButtonElevation = 'low' | 'mid' | 'high';
-export type IconButtonShape = 'circle' | 'square';
+export type IconButtonShape = 'circle' | 'square' | 'rounded';
 
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
