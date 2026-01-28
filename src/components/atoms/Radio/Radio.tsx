@@ -1,4 +1,5 @@
 import React, { forwardRef, useId } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Radio.module.css';
 
 export type RadioSize = 'sm' | 'md' | 'lg';
@@ -55,7 +56,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     return (
       <label htmlFor={id} className={containerClasses}>
         {label && labelPosition === 'left' && (
-          <span className={styles.label}>{label}</span>
+          <Typography variant="body2" className={styles.label}>
+            {label}
+          </Typography>
         )}
         <div className={radioClasses}>
           <input
@@ -71,7 +74,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           </span>
         </div>
         {label && labelPosition === 'right' && (
-          <span className={styles.label}>{label}</span>
+          <Typography variant="body2" className={styles.label}>
+            {label}
+          </Typography>
         )}
       </label>
     );
