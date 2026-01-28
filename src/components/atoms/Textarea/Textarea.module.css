@@ -5,19 +5,16 @@
 }
 
 .label {
-  font-family: var(--neo-font-family);
-  font-size: var(--neo-font-size-sm);
-  font-weight: var(--neo-font-weight-medium);
   color: var(--neo-text);
+  margin-bottom: var(--neo-space-xs);
 }
 
-.textarea {
-  font-family: var(--neo-font-family);
-  color: var(--neo-text);
+/* Textarea wrapper with animated border */
+.textareaWrapper {
+  position: relative;
+  display: flex;
   background: var(--neo-bg);
-  border: none;
   border-radius: var(--neo-radius-sm);
-  outline: none;
   transition: box-shadow var(--neo-transition-normal);
 
   /* Concave (inset) appearance */
@@ -26,25 +23,111 @@
     inset -4px -4px 8px var(--neo-shadow-light);
 }
 
+/* Animated border on hover/focus */
+.textareaWrapper::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    var(--neo-color-primary),
+    var(--neo-color-secondary),
+    var(--neo-color-tertiary),
+    var(--neo-color-primary)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--neo-transition-normal);
+  pointer-events: none;
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateBorder {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Show animated border on hover */
+.textareaWrapper:hover:not(.wrapperDisabled):not(.error)::before {
+  opacity: 1;
+  animation: rotateBorder 2s linear infinite;
+}
+
+/* Hover state - slightly deeper inset */
+.textareaWrapper:hover:not(.wrapperDisabled):not(.error) {
+  box-shadow:
+    inset 5px 5px 10px var(--neo-shadow-dark),
+    inset -5px -5px 10px var(--neo-shadow-light);
+}
+
+/* Keep animated border on focus */
+.textareaWrapper:focus-within:not(.error)::before {
+  opacity: 1;
+  animation: rotateBorder 2s linear infinite;
+}
+
+/* Active/pressed state - deepest inset */
+.textareaWrapper:active:not(.wrapperDisabled):not(.error) {
+  box-shadow:
+    inset 7px 7px 14px var(--neo-shadow-dark),
+    inset -7px -7px 14px var(--neo-shadow-light);
+}
+
+.textarea {
+  flex: 1;
+  font-family: var(--neo-font-family);
+  color: var(--neo-text);
+  background: transparent;
+  border: none;
+  border-radius: inherit;
+  outline: none;
+  min-width: 0;
+}
+
 .textarea::placeholder {
-  color: var(--neo-text-disabled);
+  color: var(--neo-text-secondary);
+  opacity: 0.5;
 }
 
 /* Sizes */
 .sm {
   padding: var(--neo-space-sm);
+}
+
+.sm .textarea {
   font-size: var(--neo-font-size-sm);
   min-height: 80px;
 }
 
 .md {
   padding: var(--neo-space-md);
+}
+
+.md .textarea {
   font-size: var(--neo-font-size-md);
   min-height: 120px;
 }
 
 .lg {
-  padding: var(--neo-space-md);
+  padding: var(--neo-space-md) var(--neo-space-lg);
+}
+
+.lg .textarea {
   font-size: var(--neo-font-size-lg);
   min-height: 160px;
 }
@@ -66,32 +149,29 @@
   resize: both;
 }
 
-/* Focus state */
-.textarea:focus {
+/* Focus state - deeper inset */
+.textareaWrapper:focus-within {
   box-shadow:
-    inset 4px 4px 8px var(--neo-shadow-dark),
-    inset -4px -4px 8px var(--neo-shadow-light),
-    0 0 0 2px var(--neo-accent-primary);
+    inset 6px 6px 12px var(--neo-shadow-dark),
+    inset -6px -6px 12px var(--neo-shadow-light);
 }
 
 /* Helper text */
 .helperText {
-  font-family: var(--neo-font-family);
-  font-size: var(--neo-font-size-xs);
   color: var(--neo-text-secondary);
 }
 
 /* Error state */
-.error .textarea {
-  box-shadow:
-    inset 4px 4px 8px var(--neo-shadow-dark),
-    inset -4px -4px 8px var(--neo-shadow-light),
-    0 0 0 2px var(--neo-accent-error);
+.error {
+  outline: 2px solid var(--neo-accent-error);
+  outline-offset: 0;
+}
+
+.error:focus-within {
+  outline-color: var(--neo-accent-error);
 }
 
 .errorText {
-  font-family: var(--neo-font-family);
-  font-size: var(--neo-font-size-xs);
   color: var(--neo-accent-error);
 }
 
@@ -104,7 +184,11 @@
   color: var(--neo-text-disabled);
 }
 
-.disabled .textarea {
+.wrapperDisabled {
+  cursor: not-allowed;
+}
+
+.wrapperDisabled .textarea {
   cursor: not-allowed;
   color: var(--neo-text-disabled);
 }

@@ -1,9 +1,13 @@
 import React, { forwardRef, useId } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Textarea.module.css';
 
 export type TextareaSize = 'sm' | 'md' | 'lg';
 
-export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
+export interface TextareaProps extends Omit<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  'size'
+> {
   /**
    * Label for the textarea
    */
@@ -32,6 +36,7 @@ export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTex
  * Textarea - Neomorphic multi-line text input with concave inset styling
  *
  * Features a sunken (concave) appearance to indicate an input area.
+ * Includes animated border effect on hover and focus.
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
@@ -56,43 +61,69 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const containerClasses = [
       styles.container,
       disabled ? styles.disabled : '',
-      error ? styles.error : '',
       className || '',
     ]
       .filter(Boolean)
       .join(' ');
 
-    const textareaClasses = [
-      styles.textarea,
+    const wrapperClasses = [
+      styles.textareaWrapper,
       styles[size],
-      styles[`resize-${resize}`],
-    ].join(' ');
+      error ? styles.error : '',
+      disabled ? styles.wrapperDisabled : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    const textareaClasses = [styles.textarea, styles[`resize-${resize}`]].join(
+      ' '
+    );
 
     return (
       <div className={containerClasses}>
         {label && (
-          <label htmlFor={id} className={styles.label}>
-            {label}
+          <label htmlFor={id}>
+            <Typography
+              variant="body2"
+              component="label"
+              className={styles.label}
+            >
+              {label}
+            </Typography>
           </label>
         )}
-        <textarea
-          ref={ref}
-          id={id}
-          className={textareaClasses}
-          disabled={disabled}
-          aria-describedby={error ? errorId : helperText ? helperId : undefined}
-          aria-invalid={error ? true : undefined}
-          {...props}
-        />
+        <div className={wrapperClasses}>
+          <textarea
+            ref={ref}
+            id={id}
+            className={textareaClasses}
+            disabled={disabled}
+            aria-describedby={
+              error ? errorId : helperText ? helperId : undefined
+            }
+            aria-invalid={error ? true : undefined}
+            {...props}
+          />
+        </div>
         {error && (
-          <span id={errorId} className={styles.errorText}>
+          <Typography
+            variant="caption"
+            component="span"
+            id={errorId}
+            className={styles.errorText}
+          >
             {error}
-          </span>
+          </Typography>
         )}
         {!error && helperText && (
-          <span id={helperId} className={styles.helperText}>
+          <Typography
+            variant="caption"
+            component="span"
+            id={helperId}
+            className={styles.helperText}
+          >
             {helperText}
-          </span>
+          </Typography>
         )}
       </div>
     );
