@@ -1,0 +1,374 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-xs);
+}
+
+.label {
+  color: var(--neo-text);
+  margin-bottom: var(--neo-space-xs);
+}
+
+/* Editor wrapper with animated border */
+.editorWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-md);
+  transition: box-shadow var(--neo-transition-normal);
+  overflow: hidden;
+
+  /* Concave (inset) appearance */
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+/* Animated border on hover/focus */
+.editorWrapper::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    var(--neo-color-primary),
+    var(--neo-color-secondary),
+    var(--neo-color-tertiary),
+    var(--neo-color-primary)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--neo-transition-normal);
+  pointer-events: none;
+  z-index: 10;
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateBorder {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Show animated border on hover */
+.editorWrapper:hover:not(.wrapperDisabled):not(.error)::before {
+  opacity: 1;
+  animation: rotateBorder 2s linear infinite;
+}
+
+/* Hover state - slightly deeper inset */
+.editorWrapper:hover:not(.wrapperDisabled):not(.error) {
+  box-shadow:
+    inset 5px 5px 10px var(--neo-shadow-dark),
+    inset -5px -5px 10px var(--neo-shadow-light);
+}
+
+/* Keep animated border on focus */
+.editorWrapper:focus-within:not(.error)::before {
+  opacity: 1;
+  animation: rotateBorder 2s linear infinite;
+}
+
+/* Focus state - deeper inset */
+.editorWrapper:focus-within {
+  box-shadow:
+    inset 6px 6px 12px var(--neo-shadow-dark),
+    inset -6px -6px 12px var(--neo-shadow-light);
+}
+
+/* Active/pressed state */
+.editorWrapper:active:not(.wrapperDisabled):not(.error) {
+  box-shadow:
+    inset 7px 7px 14px var(--neo-shadow-dark),
+    inset -7px -7px 14px var(--neo-shadow-light);
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--neo-space-xs);
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  background: var(--neo-bg);
+  border-bottom: 1px solid var(--neo-shadow-dark);
+
+  /* Convex toolbar */
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+.toolbarGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: var(--neo-shadow-dark);
+  margin: 0 var(--neo-space-xs);
+}
+
+.toolbarButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--neo-radius-sm);
+  background: var(--neo-bg);
+  color: var(--neo-text);
+  cursor: pointer;
+  transition:
+    box-shadow var(--neo-transition-fast),
+    color var(--neo-transition-fast),
+    transform var(--neo-transition-fast);
+  font-size: var(--neo-font-size-xs);
+  font-weight: var(--neo-font-weight-bold);
+
+  /* Subtle convex */
+  box-shadow:
+    -2px -2px 4px var(--neo-shadow-light),
+    2px 2px 4px var(--neo-shadow-dark);
+}
+
+.toolbarButton:hover:not(:disabled) {
+  color: var(--neo-color-primary);
+  box-shadow:
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+.toolbarButton:active:not(:disabled) {
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+  transform: scale(0.95);
+}
+
+.toolbarButton.active {
+  color: var(--neo-color-primary);
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.toolbarButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Editor content area */
+.editorContent {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.editorContent :global(.tiptap) {
+  padding: var(--neo-space-md);
+  outline: none;
+  min-height: 100%;
+  font-family: var(--neo-font-family);
+  color: var(--neo-text);
+  line-height: 1.6;
+}
+
+.editorContent :global(.tiptap p.is-editor-empty:first-child::before) {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--neo-text-secondary);
+  opacity: 0.5;
+  pointer-events: none;
+  height: 0;
+}
+
+/* Typography styles */
+.editorContent :global(.tiptap h1) {
+  font-size: var(--neo-font-size-2xl);
+  font-weight: var(--neo-font-weight-bold);
+  margin: var(--neo-space-md) 0 var(--neo-space-sm);
+  color: var(--neo-text);
+}
+
+.editorContent :global(.tiptap h2) {
+  font-size: var(--neo-font-size-xl);
+  font-weight: var(--neo-font-weight-bold);
+  margin: var(--neo-space-md) 0 var(--neo-space-sm);
+  color: var(--neo-text);
+}
+
+.editorContent :global(.tiptap h3) {
+  font-size: var(--neo-font-size-lg);
+  font-weight: var(--neo-font-weight-semibold);
+  margin: var(--neo-space-sm) 0;
+  color: var(--neo-text);
+}
+
+.editorContent :global(.tiptap p) {
+  margin: var(--neo-space-sm) 0;
+}
+
+.editorContent :global(.tiptap ul),
+.editorContent :global(.tiptap ol) {
+  padding-left: var(--neo-space-lg);
+  margin: var(--neo-space-sm) 0;
+}
+
+.editorContent :global(.tiptap li) {
+  margin: var(--neo-space-xs) 0;
+}
+
+.editorContent :global(.tiptap blockquote) {
+  border-left: 4px solid var(--neo-color-primary);
+  padding-left: var(--neo-space-md);
+  margin: var(--neo-space-md) 0;
+  color: var(--neo-text-secondary);
+  font-style: italic;
+}
+
+.editorContent :global(.tiptap pre) {
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius-sm);
+  padding: var(--neo-space-md);
+  margin: var(--neo-space-md) 0;
+  overflow-x: auto;
+  box-shadow:
+    inset 2px 2px 4px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+}
+
+.editorContent :global(.tiptap code) {
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+  color: var(--neo-color-primary);
+}
+
+.editorContent :global(.tiptap pre code) {
+  color: var(--neo-text);
+  background: none;
+  padding: 0;
+}
+
+.editorContent :global(.tiptap a) {
+  color: var(--neo-color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.editorContent :global(.tiptap a:hover) {
+  color: var(--neo-color-primary-dark);
+}
+
+.editorContent :global(.tiptap hr) {
+  border: none;
+  height: 2px;
+  background: var(--neo-shadow-dark);
+  margin: var(--neo-space-lg) 0;
+  border-radius: 1px;
+}
+
+/* Sizes */
+.sm {
+  min-height: 150px;
+}
+
+.sm .editorContent :global(.tiptap) {
+  font-size: var(--neo-font-size-sm);
+  padding: var(--neo-space-sm);
+}
+
+.sm .toolbar {
+  padding: var(--neo-space-xs) var(--neo-space-sm);
+}
+
+.sm .toolbarButton {
+  width: 28px;
+  height: 28px;
+}
+
+.md {
+  min-height: 250px;
+}
+
+.md .editorContent :global(.tiptap) {
+  font-size: var(--neo-font-size-md);
+}
+
+.lg {
+  min-height: 400px;
+}
+
+.lg .editorContent :global(.tiptap) {
+  font-size: var(--neo-font-size-md);
+  padding: var(--neo-space-lg);
+}
+
+.lg .toolbar {
+  padding: var(--neo-space-md);
+}
+
+.lg .toolbarButton {
+  width: 36px;
+  height: 36px;
+}
+
+/* Helper text */
+.helperText {
+  color: var(--neo-text-secondary);
+}
+
+/* Error state */
+.error {
+  outline: 2px solid var(--neo-accent-error);
+  outline-offset: 0;
+}
+
+.error:focus-within {
+  outline-color: var(--neo-accent-error);
+}
+
+.errorText {
+  color: var(--neo-accent-error);
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.6;
+}
+
+.disabled .label {
+  color: var(--neo-text-disabled);
+}
+
+.wrapperDisabled {
+  cursor: not-allowed;
+}
+
+.wrapperDisabled .editorContent :global(.tiptap) {
+  cursor: not-allowed;
+  color: var(--neo-text-disabled);
+}
+
+.wrapperDisabled .toolbar {
+  pointer-events: none;
+}
