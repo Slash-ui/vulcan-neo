@@ -26,6 +26,15 @@ const meta: Meta<typeof Tooltip> = {
     disabled: {
       control: 'boolean',
     },
+    children: {
+      control: false,
+      table: {
+        type: { summary: 'ReactElement' },
+      },
+    },
+    content: {
+      control: 'text',
+    },
   },
 };
 

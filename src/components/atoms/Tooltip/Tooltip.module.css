@@ -6,14 +6,16 @@
   display: inline-flex;
 }
 
-/* Tooltip - Convex appearance */
+/* Tooltip - Convex appearance - Rendered via portal at body level */
 .tooltip {
   position: fixed;
-  z-index: 1000;
+  z-index: 9999;
   pointer-events: none;
   opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transform: scale(0.8);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 
 .tooltip.visible {
@@ -28,8 +30,9 @@
   color: var(--neo-text);
   background: var(--neo-bg);
   border-radius: var(--neo-radius-sm);
-  white-space: nowrap;
-  max-width: 300px;
+  white-space: normal;
+  max-width: 280px;
+  word-wrap: break-word;
 
   /* Convex shadow */
   box-shadow:
@@ -37,7 +40,7 @@
     6px 6px 12px var(--neo-shadow-dark);
 }
 
-/* Arrow */
+/* Arrow base styles */
 .arrow {
   position: absolute;
   width: 12px;
@@ -51,32 +54,20 @@
   bottom: -6px;
   left: 50%;
   margin-left: -6px;
-  box-shadow:
-    3px 3px 6px var(--neo-shadow-dark);
 }
 
 .bottom .arrow {
   top: -6px;
   left: 50%;
   margin-left: -6px;
-  box-shadow:
-    -3px -3px 6px var(--neo-shadow-light);
 }
 
 .left .arrow {
   right: -6px;
   top: 50%;
-  margin-top: -6px;
-  box-shadow:
-    3px -3px 6px var(--neo-shadow-dark),
-    3px 3px 6px var(--neo-shadow-dark);
 }
 
 .right .arrow {
   left: -6px;
   top: 50%;
-  margin-top: -6px;
-  box-shadow:
-    -3px -3px 6px var(--neo-shadow-light),
-    -3px 3px 6px var(--neo-shadow-light);
 }
