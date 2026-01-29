@@ -175,6 +175,13 @@ export type { InlineCTAProps, InlineCTAVariant } from './molecules/InlineCTA';
 export { Banner } from './molecules/Banner';
 export type { BannerProps, BannerVariant, BannerPosition } from './molecules/Banner';
 
+export { RichTextEditor } from './molecules/RichTextEditor';
+export type {
+  RichTextEditorProps,
+  RichTextEditorSize,
+  RichTextEditorRef,
+} from './molecules/RichTextEditor';
+
 // --- CHARTS ---
 export { LineChart } from './molecules/charts/LineChart';
 export type { LineChartProps, LineChartDataPoint, LineChartSeries } from './molecules/charts/LineChart';
