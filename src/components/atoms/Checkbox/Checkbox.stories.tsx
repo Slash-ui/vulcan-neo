@@ -2,6 +2,29 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Checkbox } from './Checkbox';
 import { Surface } from '../../foundation/Surface';
 
+/**
+ * A form control that allows users to select one or more options from a set.
+ * Supports three visual states: unchecked, checked, and indeterminate.
+ *
+ * ## When to Use
+ *
+ * - **Multiple selections**: Allow users to select multiple options from a list
+ * - **Terms acceptance**: Confirm agreement to terms and conditions
+ * - **Settings toggles**: Enable or disable features in settings pages
+ * - **Bulk selection**: Select all or partial items in a list
+ *
+ * ## Key Features
+ *
+ * - **Neomorphic design**: Concave (pressed) appearance that pops when checked
+ * - **Three states**: Unchecked, checked, and indeterminate
+ * - **Flexible labels**: Position labels on left or right
+ * - **Accessible**: Full keyboard support and ARIA attributes
+ *
+ * ## Accessibility
+ *
+ * Always provide a `label` or `aria-label` for screen readers. Use the
+ * `indeterminate` state when a parent checkbox has mixed child selections.
+ */
 const meta: Meta<typeof Checkbox> = {
   title: 'Atoms/Checkbox',
   component: Checkbox,
@@ -14,19 +37,42 @@ const meta: Meta<typeof Checkbox> = {
     ),
   ],
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
+    // Content
+    label: {
+      control: 'text',
+      description: 'Text label displayed next to the checkbox',
+      table: { category: 'Content' },
     },
     labelPosition: {
       control: 'select',
       options: ['left', 'right'],
+      description: 'Position of the label relative to the checkbox',
+      table: { category: 'Content', defaultValue: { summary: 'right' } },
     },
+
+    // Appearance
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Checkbox size',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
+    },
+
+    // State
     disabled: {
       control: 'boolean',
+      description: 'Disable the checkbox',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
     },
     indeterminate: {
       control: 'boolean',
+      description: 'Show indeterminate state (mixed selection)',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
+    },
+    defaultChecked: {
+      control: 'boolean',
+      description: 'Initial checked state (uncontrolled)',
+      table: { category: 'State' },
     },
   },
 };
@@ -34,6 +80,13 @@ const meta: Meta<typeof Checkbox> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default checkbox with a label. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     label: 'Accept terms and conditions',
@@ -41,6 +94,13 @@ export const Default: Story = {
   },
 };
 
+// =============================================================================
+// STATES
+// =============================================================================
+
+/**
+ * Pre-checked checkbox using `defaultChecked` prop.
+ */
 export const Checked: Story = {
   args: {
     label: 'Checked',
@@ -48,6 +108,9 @@ export const Checked: Story = {
   },
 };
 
+/**
+ * Three sizes for different contexts and densities.
+ */
 export const Sizes: Story = {
   render: () => (
     <>
@@ -58,6 +121,9 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Labels can be positioned on either side of the checkbox.
+ */
 export const LabelPositions: Story = {
   render: () => (
     <>
@@ -67,6 +133,9 @@ export const LabelPositions: Story = {
   ),
 };
 
+/**
+ * Checkboxes without visible labels. Always provide `aria-label` for accessibility.
+ */
 export const WithoutLabel: Story = {
   render: () => (
     <>
@@ -77,6 +146,10 @@ export const WithoutLabel: Story = {
   ),
 };
 
+/**
+ * The indeterminate state indicates a partial selection, commonly used
+ * for "select all" checkboxes when only some children are selected.
+ */
 export const Indeterminate: Story = {
   args: {
     label: 'Select all',
@@ -84,6 +157,9 @@ export const Indeterminate: Story = {
   },
 };
 
+/**
+ * All three visual states: unchecked, checked, and indeterminate.
+ */
 export const States: Story = {
   render: () => (
     <>
@@ -94,6 +170,9 @@ export const States: Story = {
   ),
 };
 
+/**
+ * Disabled checkboxes prevent user interaction.
+ */
 export const Disabled: Story = {
   render: () => (
     <>
@@ -103,6 +182,13 @@ export const Disabled: Story = {
   ),
 };
 
+// =============================================================================
+// USE CASES
+// =============================================================================
+
+/**
+ * Example of a checkbox group for multiple selections.
+ */
 export const CheckboxGroup: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -121,6 +207,13 @@ export const CheckboxGroup: Story = {
   ],
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Checkboxes adapt to dark theme automatically.
+ */
 export const DarkTheme: Story = {
   args: {
     label: 'Dark theme checkbox',

@@ -24,6 +24,10 @@ import { Surface } from '../../foundation/Surface';
  *
  * Always provide meaningful `alt` text when using images. For decorative avatars,
  * use an empty string (`alt=""`).
+ *
+ * ## Anatomy
+ *
+ * ![Avatar Anatomy](/docs/images/avatar-anatomy.png)
  */
 const meta: Meta<typeof Avatar> = {
   title: 'Atoms/Avatar',

@@ -16,6 +16,31 @@ import {
   ArrowRight,
 } from '../../../../.storybook/icons';
 
+/**
+ * A text input field with a concave (inset) neomorphic appearance.
+ * The pressed-in look creates visual contrast with raised buttons.
+ *
+ * ## When to Use
+ *
+ * - **Forms**: User input for login, registration, and data entry
+ * - **Search**: Search bars and filter inputs
+ * - **Settings**: Configuration fields and preferences
+ * - **Inline editing**: Edit values directly in context
+ *
+ * ## Key Features
+ *
+ * - **Neomorphic design**: Concave (pressed) appearance
+ * - **Labels and helpers**: Built-in label and helper text support
+ * - **Error states**: Visual error indication with message
+ * - **Icons**: Left and right icon slots for context
+ *
+ * ## Best Practices
+ *
+ * - Always provide a label for accessibility (visible or `aria-label`)
+ * - Use helper text for format hints or requirements
+ * - Use left icons for input type indicators (email, phone)
+ * - Use right icons for actions (show password, clear)
+ */
 const meta: Meta<typeof InsetField> = {
   title: 'Atoms/InsetField',
   component: InsetField,
@@ -28,24 +53,76 @@ const meta: Meta<typeof InsetField> = {
     ),
   ],
   argTypes: {
+    // Content
+    label: {
+      control: 'text',
+      description: 'Label text displayed above the input',
+      table: { category: 'Content' },
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text shown when empty',
+      table: { category: 'Content' },
+    },
+    helperText: {
+      control: 'text',
+      description: 'Helper text displayed below the input',
+      table: { category: 'Content' },
+    },
+    leftIcon: {
+      ...createIconArgType(iconMapMd, 'Icon at the start of the input'),
+      table: { category: 'Content' },
+    },
+    rightIcon: {
+      ...createIconArgType(iconMapMd, 'Icon at the end of the input'),
+      table: { category: 'Content' },
+    },
+
+    // Appearance
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Input size',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
     fullWidth: {
       control: 'boolean',
+      description: 'Expand to fill container width',
+      table: { category: 'Appearance', defaultValue: { summary: 'false' } },
     },
+
+    // State
     disabled: {
       control: 'boolean',
+      description: 'Disable the input',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
     },
-    leftIcon: createIconArgType(iconMapMd, 'Icon to display at the start of the input'),
-    rightIcon: createIconArgType(iconMapMd, 'Icon to display at the end of the input'),
+    error: {
+      control: 'text',
+      description: 'Error message (also sets error styling)',
+      table: { category: 'State' },
+    },
+
+    // HTML Input
+    type: {
+      control: 'select',
+      options: ['text', 'email', 'password', 'number', 'tel', 'url'],
+      description: 'HTML input type',
+      table: { category: 'HTML Input', defaultValue: { summary: 'text' } },
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default input field. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     placeholder: 'Enter text...',
@@ -53,6 +130,13 @@ export const Default: Story = {
   },
 };
 
+// =============================================================================
+// WITH LABEL & HELPER
+// =============================================================================
+
+/**
+ * Input with a visible label above the field.
+ */
 export const WithLabel: Story = {
   args: {
     label: 'Email Address',
@@ -62,6 +146,9 @@ export const WithLabel: Story = {
   },
 };
 
+/**
+ * Helper text provides additional context or format hints.
+ */
 export const WithHelperText: Story = {
   args: {
     label: 'Password',
@@ -72,6 +159,9 @@ export const WithHelperText: Story = {
   },
 };
 
+/**
+ * Error state with validation message.
+ */
 export const WithError: Story = {
   args: {
     label: 'Email',
@@ -83,6 +173,13 @@ export const WithError: Story = {
   },
 };
 
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Three sizes for different contexts and densities.
+ */
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -93,6 +190,13 @@ export const Sizes: Story = {
   ),
 };
 
+// =============================================================================
+// WITH ICONS
+// =============================================================================
+
+/**
+ * Icons can be placed on the left, right, or both sides.
+ */
 export const WithIcons: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -118,6 +222,9 @@ export const WithIcons: Story = {
   ),
 };
 
+/**
+ * Common input patterns with icons for different data types.
+ */
 export const IconVariety: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -156,6 +263,13 @@ export const IconVariety: Story = {
   ),
 };
 
+// =============================================================================
+// STATES
+// =============================================================================
+
+/**
+ * Disabled state prevents interaction.
+ */
 export const Disabled: Story = {
   args: {
     label: 'Disabled Field',
@@ -165,6 +279,13 @@ export const Disabled: Story = {
   },
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Input fields adapt to dark theme automatically.
+ */
 export const DarkTheme: Story = {
   args: {
     label: 'Dark Theme Input',

@@ -2,6 +2,29 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ProgressBar } from './ProgressBar';
 import { Surface } from '../../foundation/Surface';
 
+/**
+ * A visual indicator that displays progress toward a goal or completion.
+ * The track has a concave (inset) appearance with a raised fill bar.
+ *
+ * ## When to Use
+ *
+ * - **Loading states**: Show progress during file uploads or downloads
+ * - **Multi-step processes**: Indicate progress through a wizard or form
+ * - **Task completion**: Display percentage complete for tasks or goals
+ * - **Skill levels**: Show proficiency or experience levels
+ *
+ * ## Key Features
+ *
+ * - **Neomorphic design**: Concave track with raised fill bar
+ * - **Three variants**: Default, gradient, and glow effects
+ * - **Color themes**: Brand colors + semantic status colors
+ * - **Custom labels**: Format labels as percentages, steps, or custom text
+ *
+ * ## Accessibility
+ *
+ * Always provide an `aria-label` describing what the progress represents.
+ * The component uses `role="progressbar"` with proper ARIA attributes.
+ */
 const meta: Meta<typeof ProgressBar> = {
   title: 'Atoms/ProgressBar',
   component: ProgressBar,
@@ -14,45 +37,61 @@ const meta: Meta<typeof ProgressBar> = {
     ),
   ],
   argTypes: {
+    // Value
     value: {
       control: { type: 'range', min: 0, max: 100, step: 1 },
+      description: 'Current progress value',
+      table: { category: 'Value' },
     },
     max: {
       control: { type: 'number' },
+      description: 'Maximum value (default 100)',
+      table: { category: 'Value', defaultValue: { summary: '100' } },
     },
+
+    // Appearance
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Bar height',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
     variant: {
       control: 'select',
       options: ['default', 'gradient', 'glow'],
+      description: 'Visual effect: **default**, **gradient**, or **glow**',
+      table: { category: 'Appearance', defaultValue: { summary: 'default' } },
     },
+
+    // Color
     color: {
       control: 'select',
       options: [
         'default',
-        'primary',
-        'primary-light',
-        'primary-dark',
-        'secondary',
-        'secondary-light',
-        'secondary-dark',
-        'tertiary',
-        'tertiary-light',
-        'tertiary-dark',
-        'success',
-        'warning',
-        'error',
-        'info',
+        'primary', 'primary-light', 'primary-dark',
+        'secondary', 'secondary-light', 'secondary-dark',
+        'tertiary', 'tertiary-light', 'tertiary-dark',
+        'success', 'warning', 'error', 'info',
       ],
+      description: 'Color theme',
+      table: { category: 'Color', defaultValue: { summary: 'default' } },
     },
     customColor: {
       control: 'color',
-      description: 'Custom hex color that overrides the color prop',
+      description: 'Custom hex color (overrides color prop)',
+      table: { category: 'Color' },
     },
+
+    // Label
     showLabel: {
       control: 'boolean',
+      description: 'Show percentage label',
+      table: { category: 'Label', defaultValue: { summary: 'false' } },
+    },
+    formatLabel: {
+      control: false,
+      description: 'Custom label formatter function: `(value, max) => string`',
+      table: { category: 'Label' },
     },
   },
 };
@@ -60,6 +99,13 @@ const meta: Meta<typeof ProgressBar> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default progress bar. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     value: 60,
@@ -67,6 +113,13 @@ export const Default: Story = {
   },
 };
 
+// =============================================================================
+// WITH LABEL
+// =============================================================================
+
+/**
+ * Shows percentage label next to the bar.
+ */
 export const WithLabel: Story = {
   args: {
     value: 75,
@@ -75,6 +128,13 @@ export const WithLabel: Story = {
   },
 };
 
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Three sizes for different contexts.
+ */
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -85,6 +145,15 @@ export const Sizes: Story = {
   ),
 };
 
+// =============================================================================
+// VARIANTS
+// =============================================================================
+
+/**
+ * - **Default**: Solid fill color
+ * - **Gradient**: Color gradient effect
+ * - **Glow**: Adds a glow around the fill
+ */
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -95,6 +164,13 @@ export const Variants: Story = {
   ),
 };
 
+// =============================================================================
+// COLORS
+// =============================================================================
+
+/**
+ * All available color themes.
+ */
 export const Colors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -116,6 +192,9 @@ export const Colors: Story = {
   ),
 };
 
+/**
+ * Semantic colors with labels for status indication.
+ */
 export const ColorsWithLabels: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -151,68 +230,9 @@ export const ColorsWithLabels: Story = {
   ),
 };
 
-export const CustomLabel: Story = {
-  args: {
-    value: 3,
-    max: 5,
-    showLabel: true,
-    formatLabel: (value, max) => `${value} of ${max} steps`,
-    'aria-label': 'Step progress',
-  },
-};
-
-export const Empty: Story = {
-  args: {
-    value: 0,
-    showLabel: true,
-    'aria-label': 'Empty progress',
-  },
-};
-
-export const Complete: Story = {
-  args: {
-    value: 100,
-    showLabel: true,
-    color: 'success',
-    'aria-label': 'Complete',
-  },
-};
-
-export const DarkTheme: Story = {
-  args: {
-    value: 70,
-    showLabel: true,
-  },
-  decorators: [
-    (Story) => (
-      <Surface theme="dark" style={{ padding: '3rem', maxWidth: '400px' }}>
-        <Story />
-      </Surface>
-    ),
-  ],
-};
-
-export const DarkThemeColors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <ProgressBar value={70} color="primary" aria-label="Primary" />
-      <ProgressBar value={70} color="secondary" aria-label="Secondary" />
-      <ProgressBar value={70} color="tertiary" aria-label="Tertiary" />
-      <ProgressBar value={70} color="success" aria-label="Success" />
-      <ProgressBar value={70} color="warning" aria-label="Warning" />
-      <ProgressBar value={70} color="error" aria-label="Error" />
-      <ProgressBar value={70} color="info" aria-label="Info" />
-    </div>
-  ),
-  decorators: [
-    (Story) => (
-      <Surface theme="dark" style={{ padding: '3rem', maxWidth: '400px' }}>
-        <Story />
-      </Surface>
-    ),
-  ],
-};
-
+/**
+ * Use any hex color with the `customColor` prop.
+ */
 export const CustomColors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -242,4 +262,93 @@ export const CustomColors: Story = {
       </div>
     </div>
   ),
+};
+
+// =============================================================================
+// CUSTOM LABELS
+// =============================================================================
+
+/**
+ * Use `formatLabel` to customize the label format.
+ */
+export const CustomLabel: Story = {
+  args: {
+    value: 3,
+    max: 5,
+    showLabel: true,
+    formatLabel: (value, max) => `${value} of ${max} steps`,
+    'aria-label': 'Step progress',
+  },
+};
+
+// =============================================================================
+// STATES
+// =============================================================================
+
+/**
+ * Empty state (0% progress).
+ */
+export const Empty: Story = {
+  args: {
+    value: 0,
+    showLabel: true,
+    'aria-label': 'Empty progress',
+  },
+};
+
+/**
+ * Complete state (100% progress) with success color.
+ */
+export const Complete: Story = {
+  args: {
+    value: 100,
+    showLabel: true,
+    color: 'success',
+    'aria-label': 'Complete',
+  },
+};
+
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Progress bars adapt to dark theme automatically.
+ */
+export const DarkTheme: Story = {
+  args: {
+    value: 70,
+    showLabel: true,
+  },
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '3rem', maxWidth: '400px' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+/**
+ * Color themes on dark background.
+ */
+export const DarkThemeColors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <ProgressBar value={70} color="primary" aria-label="Primary" />
+      <ProgressBar value={70} color="secondary" aria-label="Secondary" />
+      <ProgressBar value={70} color="tertiary" aria-label="Tertiary" />
+      <ProgressBar value={70} color="success" aria-label="Success" />
+      <ProgressBar value={70} color="warning" aria-label="Warning" />
+      <ProgressBar value={70} color="error" aria-label="Error" />
+      <ProgressBar value={70} color="info" aria-label="Info" />
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '3rem', maxWidth: '400px' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
 };

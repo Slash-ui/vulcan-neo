@@ -28,6 +28,29 @@ import {
   Filter,
 } from '../../../../.storybook/icons';
 
+/**
+ * A button that displays only an icon, used for compact actions and toolbars.
+ * Provides the same interactive feedback as regular buttons in a smaller footprint.
+ *
+ * ## When to Use
+ *
+ * - **Toolbars**: Compact action buttons in editor or app toolbars
+ * - **Close buttons**: Dismiss modals, panels, or notifications
+ * - **Navigation**: Menu toggles, back buttons, settings access
+ * - **Media controls**: Play, pause, skip, volume buttons
+ *
+ * ## Key Features
+ *
+ * - **Neomorphic design**: Supports `convex` and `flat` variants
+ * - **Multiple shapes**: Circle, square, or rounded buttons
+ * - **Three sizes**: Small, medium, and large
+ * - **Accessible**: Requires `aria-label` for screen readers
+ *
+ * ## Accessibility
+ *
+ * Always provide an `aria-label` that describes the action, not the icon.
+ * For example, use "Close dialog" instead of "X icon".
+ */
 const meta: Meta<typeof IconButton> = {
   title: 'Atoms/IconButton',
   component: IconButton,
@@ -40,32 +63,62 @@ const meta: Meta<typeof IconButton> = {
     ),
   ],
   argTypes: {
+    // Content
+    icon: {
+      ...createIconArgType(iconMapLg, 'Icon to display'),
+      table: { category: 'Content' },
+    },
+    'aria-label': {
+      control: 'text',
+      description: 'Accessible label (required for screen readers)',
+      table: { category: 'Content' },
+    },
+
+    // Appearance
     variant: {
       control: 'select',
       options: ['convex', 'flat'],
+      description: 'Visual style: **convex** (raised) or **flat** (minimal)',
+      table: { category: 'Appearance', defaultValue: { summary: 'convex' } },
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
-    },
-    elevation: {
-      control: 'select',
-      options: ['low', 'mid', 'high'],
+      description: 'Button size',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
     shape: {
       control: 'select',
       options: ['circle', 'square', 'rounded'],
+      description: 'Button shape',
+      table: { category: 'Appearance', defaultValue: { summary: 'circle' } },
     },
+    elevation: {
+      control: 'select',
+      options: ['low', 'mid', 'high'],
+      description: 'Shadow intensity',
+      table: { category: 'Appearance', defaultValue: { summary: 'mid' } },
+    },
+
+    // State
     disabled: {
       control: 'boolean',
+      description: 'Disable the button',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
     },
-    icon: createIconArgType(iconMapLg, 'Icon to display'),
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default icon button. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     icon: <X size={20} />,
@@ -76,6 +129,14 @@ export const Default: Story = {
   },
 };
 
+// =============================================================================
+// VARIANTS
+// =============================================================================
+
+/**
+ * - **Convex** (default): Raised appearance with shadows
+ * - **Flat**: No shadows, minimal style
+ */
 export const Variants: Story = {
   render: () => (
     <>
@@ -85,6 +146,13 @@ export const Variants: Story = {
   ),
 };
 
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Three sizes for different contexts. Match icon size to button size.
+ */
 export const Sizes: Story = {
   render: () => (
     <>
@@ -95,6 +163,13 @@ export const Sizes: Story = {
   ),
 };
 
+// =============================================================================
+// ELEVATIONS
+// =============================================================================
+
+/**
+ * Control shadow intensity for the convex variant.
+ */
 export const Elevations: Story = {
   render: () => (
     <>
@@ -105,6 +180,13 @@ export const Elevations: Story = {
   ),
 };
 
+// =============================================================================
+// SHAPES
+// =============================================================================
+
+/**
+ * Three shapes for different visual contexts.
+ */
 export const Shapes: Story = {
   render: () => (
     <>
@@ -115,6 +197,13 @@ export const Shapes: Story = {
   ),
 };
 
+// =============================================================================
+// USE CASES
+// =============================================================================
+
+/**
+ * Common icon button patterns organized by use case.
+ */
 export const IconShowcase: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -150,6 +239,13 @@ export const IconShowcase: Story = {
   ),
 };
 
+// =============================================================================
+// STATES
+// =============================================================================
+
+/**
+ * Disabled state prevents interaction and reduces opacity.
+ */
 export const Disabled: Story = {
   args: {
     icon: <X size={20} />,
@@ -158,6 +254,13 @@ export const Disabled: Story = {
   },
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Icon buttons adapt to dark theme automatically.
+ */
 export const DarkTheme: Story = {
   args: {
     icon: <X size={20} />,
