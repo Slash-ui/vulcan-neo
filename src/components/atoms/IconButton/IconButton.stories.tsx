@@ -59,7 +59,7 @@ const meta: Meta<typeof IconButton> = {
     disabled: {
       control: 'boolean',
     },
-    children: createIconArgType(iconMapLg, 'Icon to display'),
+    icon: createIconArgType(iconMapLg, 'Icon to display'),
   },
 };
 
@@ -68,7 +68,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: <X size={20} />,
+    icon: <X size={20} />,
     'aria-label': 'Close',
     variant: 'convex',
     size: 'md',
@@ -152,7 +152,7 @@ export const IconShowcase: Story = {
 
 export const Disabled: Story = {
   args: {
-    children: <X size={20} />,
+    icon: <X size={20} />,
     'aria-label': 'Close',
     disabled: true,
   },
@@ -160,7 +160,7 @@ export const Disabled: Story = {
 
 export const DarkTheme: Story = {
   args: {
-    children: <X size={20} />,
+    icon: <X size={20} />,
     'aria-label': 'Close',
   },
   decorators: [

@@ -6,7 +6,7 @@ export type IconButtonSize = 'sm' | 'md' | 'lg';
 export type IconButtonElevation = 'low' | 'mid' | 'high';
 export type IconButtonShape = 'circle' | 'square' | 'rounded';
 
-export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
   /**
    * The visual variant of the button
    * @default 'convex'
@@ -28,9 +28,9 @@ export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
    */
   shape?: IconButtonShape;
   /**
-   * Icon element to display
+   * Icon element to display (ReactNode)
    */
-  children: React.ReactNode;
+  icon: React.ReactNode;
   /**
    * Accessible label for the button
    */
@@ -49,7 +49,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       size = 'md',
       elevation = 'mid',
       shape = 'circle',
-      children,
+      icon,
       className,
       disabled,
       ...props
@@ -75,7 +75,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         disabled={disabled}
         {...props}
       >
-        {children}
+        {icon}
       </button>
     );
   }
