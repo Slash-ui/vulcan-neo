@@ -146,6 +146,30 @@ export const Variants: Story = {
   ),
 };
 
+/**
+ * Convex variant with raised appearance.
+ */
+export const VariantConvex: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <X size={20} />,
+    'aria-label': 'Close',
+    variant: 'convex',
+  },
+};
+
+/**
+ * Flat variant with minimal styling.
+ */
+export const VariantFlat: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <Menu size={20} />,
+    'aria-label': 'Menu',
+    variant: 'flat',
+  },
+};
+
 // =============================================================================
 // SIZES
 // =============================================================================
@@ -161,6 +185,42 @@ export const Sizes: Story = {
       <IconButton size="lg" aria-label="Close" icon={<X size={24} />} />
     </>
   ),
+};
+
+/**
+ * Small icon button for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <X size={16} />,
+    'aria-label': 'Close',
+    size: 'sm',
+  },
+};
+
+/**
+ * Medium icon button (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <X size={20} />,
+    'aria-label': 'Close',
+    size: 'md',
+  },
+};
+
+/**
+ * Large icon button for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <X size={24} />,
+    'aria-label': 'Close',
+    size: 'lg',
+  },
 };
 
 // =============================================================================
@@ -180,6 +240,42 @@ export const Elevations: Story = {
   ),
 };
 
+/**
+ * Low elevation with subtle shadows.
+ */
+export const ElevationLow: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <Settings size={20} />,
+    'aria-label': 'Settings',
+    elevation: 'low',
+  },
+};
+
+/**
+ * Medium elevation (default).
+ */
+export const ElevationMid: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <Settings size={20} />,
+    'aria-label': 'Settings',
+    elevation: 'mid',
+  },
+};
+
+/**
+ * High elevation with pronounced shadows.
+ */
+export const ElevationHigh: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <Settings size={20} />,
+    'aria-label': 'Settings',
+    elevation: 'high',
+  },
+};
+
 // =============================================================================
 // SHAPES
 // =============================================================================
@@ -195,6 +291,42 @@ export const Shapes: Story = {
       <IconButton shape="square" aria-label="Add" icon={<Plus size={20} />} />
     </>
   ),
+};
+
+/**
+ * Circle shape (default).
+ */
+export const ShapeCircle: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <Plus size={20} />,
+    'aria-label': 'Add',
+    shape: 'circle',
+  },
+};
+
+/**
+ * Rounded square shape.
+ */
+export const ShapeRounded: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <Plus size={20} />,
+    'aria-label': 'Add',
+    shape: 'rounded',
+  },
+};
+
+/**
+ * Square shape with sharp corners.
+ */
+export const ShapeSquare: Story = {
+  tags: ['!dev'],
+  args: {
+    icon: <Plus size={20} />,
+    'aria-label': 'Add',
+    shape: 'square',
+  },
 };
 
 // =============================================================================

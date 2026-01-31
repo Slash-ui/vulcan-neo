@@ -167,6 +167,42 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small social button for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Small',
+  },
+};
+
+/**
+ * Medium social button (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Medium',
+  },
+};
+
+/**
+ * Large social button for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Large',
+  },
+};
+
 // =============================================================================
 // VARIANTS
 // =============================================================================
@@ -182,6 +218,30 @@ export const Variants: Story = {
       <SocialButton variant="flat" icon={<GoogleIcon />}>Flat</SocialButton>
     </>
   ),
+};
+
+/**
+ * Convex variant with raised appearance.
+ */
+export const VariantConvex: Story = {
+  tags: ['!dev'],
+  args: {
+    variant: 'convex',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Continue with Account',
+  },
+};
+
+/**
+ * Flat variant with minimal styling.
+ */
+export const VariantFlat: Story = {
+  tags: ['!dev'],
+  args: {
+    variant: 'flat',
+    icon: 'User' as unknown as React.ReactNode,
+    children: 'Continue with Account',
+  },
 };
 
 // =============================================================================

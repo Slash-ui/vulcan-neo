@@ -151,6 +151,39 @@ export const Variants: Story = {
   ),
 };
 
+/**
+ * Convex badge with raised appearance.
+ */
+export const VariantConvex: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Convex',
+    variant: 'convex',
+  },
+};
+
+/**
+ * Concave badge with pressed appearance.
+ */
+export const VariantConcave: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Concave',
+    variant: 'concave',
+  },
+};
+
+/**
+ * Flat badge without shadow.
+ */
+export const VariantFlat: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Flat',
+    variant: 'flat',
+  },
+};
+
 // =============================================================================
 // SIZES
 // =============================================================================
@@ -166,6 +199,39 @@ export const Sizes: Story = {
       <Badge size="lg">Large</Badge>
     </>
   ),
+};
+
+/**
+ * Small badge for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Small',
+    size: 'sm',
+  },
+};
+
+/**
+ * Medium badge (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Medium',
+    size: 'md',
+  },
+};
+
+/**
+ * Large badge for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Large',
+    size: 'lg',
+  },
 };
 
 // =============================================================================
@@ -215,6 +281,42 @@ export const Filled: Story = {
       </div>
     </div>
   ),
+};
+
+/**
+ * Filled primary badge.
+ */
+export const FilledPrimary: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Primary',
+    filled: true,
+    color: 'primary',
+  },
+};
+
+/**
+ * Filled success badge for positive status.
+ */
+export const FilledSuccess: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Success',
+    filled: true,
+    color: 'success',
+  },
+};
+
+/**
+ * Filled error badge for alerts.
+ */
+export const FilledError: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Error',
+    filled: true,
+    color: 'error',
+  },
 };
 
 /**
@@ -293,6 +395,39 @@ export const Dots: Story = {
 };
 
 /**
+ * Simple dot indicator.
+ */
+export const Dot: Story = {
+  tags: ['!dev'],
+  args: {
+    dot: true,
+    color: 'primary',
+  },
+};
+
+/**
+ * Success dot for online status.
+ */
+export const DotSuccess: Story = {
+  tags: ['!dev'],
+  args: {
+    dot: true,
+    color: 'success',
+  },
+};
+
+/**
+ * Error dot for alerts.
+ */
+export const DotError: Story = {
+  tags: ['!dev'],
+  args: {
+    dot: true,
+    color: 'error',
+  },
+};
+
+/**
  * Dot badges scale with the size prop.
  */
 export const DotSizes: Story = {
@@ -303,6 +438,30 @@ export const DotSizes: Story = {
       <Badge dot size="lg" color="primary" />
     </>
   ),
+};
+
+/**
+ * Badge with left icon.
+ */
+export const WithLeftIcon: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Verified',
+    leftIcon: <Check size={12} />,
+    color: 'success',
+  },
+};
+
+/**
+ * Badge with right icon.
+ */
+export const WithRightIcon: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Featured',
+    rightIcon: <Star size={12} />,
+    color: 'warning',
+  },
 };
 
 // =============================================================================

@@ -122,6 +122,39 @@ export const Sizes: Story = {
 };
 
 /**
+ * Small radio button for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    label: 'Small option',
+  },
+};
+
+/**
+ * Medium radio button (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    label: 'Medium option',
+  },
+};
+
+/**
+ * Large radio button for touch interfaces.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    label: 'Large option',
+  },
+};
+
+/**
  * Labels can be positioned on either side of the radio button.
  */
 export const LabelPositions: Story = {
@@ -131,6 +164,17 @@ export const LabelPositions: Story = {
       <Radio labelPosition="right" label="Label on right" name="position" />
     </>
   ),
+};
+
+/**
+ * Label positioned on the left.
+ */
+export const LabelLeft: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Label on left',
+    labelPosition: 'left',
+  },
 };
 
 /**

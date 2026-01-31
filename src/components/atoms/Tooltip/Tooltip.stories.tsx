@@ -124,6 +124,54 @@ export const Placements: Story = {
   ),
 };
 
+/**
+ * Tooltip positioned at the top (default).
+ */
+export const PlacementTop: Story = {
+  tags: ['!dev'],
+  args: {
+    content: 'Top tooltip',
+    placement: 'top',
+    children: <Button label="Top" />,
+  },
+};
+
+/**
+ * Tooltip positioned at the bottom.
+ */
+export const PlacementBottom: Story = {
+  tags: ['!dev'],
+  args: {
+    content: 'Bottom tooltip',
+    placement: 'bottom',
+    children: <Button label="Bottom" />,
+  },
+};
+
+/**
+ * Tooltip positioned on the left.
+ */
+export const PlacementLeft: Story = {
+  tags: ['!dev'],
+  args: {
+    content: 'Left tooltip',
+    placement: 'left',
+    children: <Button label="Left" />,
+  },
+};
+
+/**
+ * Tooltip positioned on the right.
+ */
+export const PlacementRight: Story = {
+  tags: ['!dev'],
+  args: {
+    content: 'Right tooltip',
+    placement: 'right',
+    children: <Button label="Right" />,
+  },
+};
+
 // =============================================================================
 // USE CASES
 // =============================================================================

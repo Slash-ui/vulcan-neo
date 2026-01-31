@@ -140,6 +140,28 @@ export const BothStores: Story = {
   ),
 };
 
+/**
+ * Apple App Store button.
+ */
+export const StoreApple: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'apple',
+    icon: <AppleIcon />,
+  },
+};
+
+/**
+ * Google Play Store button.
+ */
+export const StoreGoogle: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'google',
+    icon: <PlayStoreIcon />,
+  },
+};
+
 // =============================================================================
 // VARIANTS
 // =============================================================================
@@ -155,6 +177,30 @@ export const Variants: Story = {
       <AppStoreButton store="apple" variant="flat" icon={<AppleIcon />} />
     </>
   ),
+};
+
+/**
+ * Convex variant with raised appearance.
+ */
+export const VariantConvex: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'apple',
+    variant: 'convex',
+    icon: <AppleIcon />,
+  },
+};
+
+/**
+ * Flat variant with minimal styling.
+ */
+export const VariantFlat: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'apple',
+    variant: 'flat',
+    icon: <AppleIcon />,
+  },
 };
 
 // =============================================================================
@@ -174,6 +220,42 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small app store button for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'apple',
+    size: 'sm',
+    icon: <AppleIcon />,
+  },
+};
+
+/**
+ * Medium app store button (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'apple',
+    size: 'md',
+    icon: <AppleIcon />,
+  },
+};
+
+/**
+ * Large app store button for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'apple',
+    size: 'lg',
+    icon: <AppleIcon />,
+  },
+};
+
 // =============================================================================
 // ELEVATIONS
 // =============================================================================
@@ -189,6 +271,42 @@ export const Elevations: Story = {
       <AppStoreButton store="google" elevation="high" icon={<PlayStoreIcon />} />
     </>
   ),
+};
+
+/**
+ * Low elevation with subtle shadows.
+ */
+export const ElevationLow: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'google',
+    elevation: 'low',
+    icon: <PlayStoreIcon />,
+  },
+};
+
+/**
+ * Medium elevation (default).
+ */
+export const ElevationMid: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'google',
+    elevation: 'mid',
+    icon: <PlayStoreIcon />,
+  },
+};
+
+/**
+ * High elevation with pronounced shadows.
+ */
+export const ElevationHigh: Story = {
+  tags: ['!dev'],
+  args: {
+    store: 'google',
+    elevation: 'high',
+    icon: <PlayStoreIcon />,
+  },
 };
 
 // =============================================================================

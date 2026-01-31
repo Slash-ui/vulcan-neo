@@ -149,6 +149,39 @@ export const Variants: Story = {
   ),
 };
 
+/**
+ * Convex variant with raised appearance.
+ */
+export const VariantConvex: Story = {
+  tags: ['!dev'],
+  args: {
+    fallback: 'CV',
+    variant: 'convex',
+  },
+};
+
+/**
+ * Concave variant with pressed appearance.
+ */
+export const VariantConcave: Story = {
+  tags: ['!dev'],
+  args: {
+    fallback: 'CC',
+    variant: 'concave',
+  },
+};
+
+/**
+ * Flat variant with minimal styling.
+ */
+export const VariantFlat: Story = {
+  tags: ['!dev'],
+  args: {
+    fallback: 'FL',
+    variant: 'flat',
+  },
+};
+
 // =============================================================================
 // SIZES
 // =============================================================================
@@ -166,6 +199,61 @@ export const Sizes: Story = {
       <Avatar size="xl" fallback="XL" />
     </>
   ),
+};
+
+/**
+ * Extra-small avatar for compact layouts.
+ */
+export const SizeExtraSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    fallback: 'XS',
+    size: 'xs',
+  },
+};
+
+/**
+ * Small avatar.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    fallback: 'SM',
+    size: 'sm',
+  },
+};
+
+/**
+ * Medium avatar (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    fallback: 'MD',
+    size: 'md',
+  },
+};
+
+/**
+ * Large avatar for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    fallback: 'LG',
+    size: 'lg',
+  },
+};
+
+/**
+ * Extra-large avatar for profile pages.
+ */
+export const SizeExtraLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    fallback: 'XL',
+    size: 'xl',
+  },
 };
 
 // =============================================================================
@@ -188,6 +276,54 @@ export const WithStatus: Story = {
       <Avatar src={sampleImage} status="offline" alt="Offline user" />
     </>
   ),
+};
+
+/**
+ * Avatar with online status indicator.
+ */
+export const StatusOnline: Story = {
+  tags: ['!dev'],
+  args: {
+    src: sampleImage,
+    status: 'online',
+    alt: 'Online user',
+  },
+};
+
+/**
+ * Avatar with away status indicator.
+ */
+export const StatusAway: Story = {
+  tags: ['!dev'],
+  args: {
+    src: sampleImage,
+    status: 'away',
+    alt: 'Away user',
+  },
+};
+
+/**
+ * Avatar with busy status indicator.
+ */
+export const StatusBusy: Story = {
+  tags: ['!dev'],
+  args: {
+    src: sampleImage,
+    status: 'busy',
+    alt: 'Busy user',
+  },
+};
+
+/**
+ * Avatar with offline status indicator.
+ */
+export const StatusOffline: Story = {
+  tags: ['!dev'],
+  args: {
+    src: sampleImage,
+    status: 'offline',
+    alt: 'Offline user',
+  },
 };
 
 /**

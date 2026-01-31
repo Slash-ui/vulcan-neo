@@ -169,6 +169,39 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small switch for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    label: 'Small switch',
+  },
+};
+
+/**
+ * Medium switch (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    label: 'Medium switch',
+  },
+};
+
+/**
+ * Large switch for touch interfaces.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    label: 'Large switch',
+  },
+};
+
 // =============================================================================
 // STATES
 // =============================================================================

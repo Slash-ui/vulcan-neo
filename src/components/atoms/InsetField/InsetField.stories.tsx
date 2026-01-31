@@ -190,6 +190,42 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small input for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    placeholder: 'Small input',
+    fullWidth: true,
+  },
+};
+
+/**
+ * Medium input (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    placeholder: 'Medium input',
+    fullWidth: true,
+  },
+};
+
+/**
+ * Large input for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    placeholder: 'Large input',
+    fullWidth: true,
+  },
+};
+
 // =============================================================================
 // WITH ICONS
 // =============================================================================
@@ -220,6 +256,32 @@ export const WithIcons: Story = {
       />
     </div>
   ),
+};
+
+/**
+ * Input with left icon.
+ */
+export const WithLeftIcon: Story = {
+  tags: ['!dev'],
+  args: {
+    placeholder: 'Search...',
+    leftIcon: <Search size={18} />,
+    fullWidth: true,
+  },
+};
+
+/**
+ * Input with both left and right icons.
+ */
+export const WithBothIcons: Story = {
+  tags: ['!dev'],
+  args: {
+    placeholder: 'Password',
+    type: 'password',
+    leftIcon: <Lock size={18} />,
+    rightIcon: <Eye size={18} />,
+    fullWidth: true,
+  },
 };
 
 /**

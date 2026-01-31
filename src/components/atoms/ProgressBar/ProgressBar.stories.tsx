@@ -145,6 +145,42 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small progress bar for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    value: 50,
+    size: 'sm',
+    'aria-label': 'Small progress',
+  },
+};
+
+/**
+ * Medium progress bar (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    value: 50,
+    size: 'md',
+    'aria-label': 'Medium progress',
+  },
+};
+
+/**
+ * Large progress bar for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    value: 50,
+    size: 'lg',
+    'aria-label': 'Large progress',
+  },
+};
+
 // =============================================================================
 // VARIANTS
 // =============================================================================
@@ -162,6 +198,32 @@ export const Variants: Story = {
       <ProgressBar value={60} variant="glow" showLabel aria-label="Glow" />
     </div>
   ),
+};
+
+/**
+ * Gradient variant with color transition.
+ */
+export const VariantGradient: Story = {
+  tags: ['!dev'],
+  args: {
+    value: 60,
+    variant: 'gradient',
+    showLabel: true,
+    'aria-label': 'Gradient progress',
+  },
+};
+
+/**
+ * Glow variant with luminous effect.
+ */
+export const VariantGlow: Story = {
+  tags: ['!dev'],
+  args: {
+    value: 60,
+    variant: 'glow',
+    showLabel: true,
+    'aria-label': 'Glow progress',
+  },
 };
 
 // =============================================================================
@@ -190,6 +252,45 @@ export const Colors: Story = {
       <ProgressBar value={70} color="info" aria-label="Info" />
     </div>
   ),
+};
+
+/**
+ * Primary color progress bar.
+ */
+export const ColorPrimary: Story = {
+  tags: ['!dev'],
+  args: {
+    value: 70,
+    color: 'primary',
+    showLabel: true,
+    'aria-label': 'Primary progress',
+  },
+};
+
+/**
+ * Success color progress bar for positive status.
+ */
+export const ColorSuccess: Story = {
+  tags: ['!dev'],
+  args: {
+    value: 100,
+    color: 'success',
+    showLabel: true,
+    'aria-label': 'Success progress',
+  },
+};
+
+/**
+ * Error color progress bar for alerts.
+ */
+export const ColorError: Story = {
+  tags: ['!dev'],
+  args: {
+    value: 25,
+    color: 'error',
+    showLabel: true,
+    'aria-label': 'Error progress',
+  },
 };
 
 /**

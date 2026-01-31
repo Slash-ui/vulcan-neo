@@ -122,6 +122,39 @@ export const Sizes: Story = {
 };
 
 /**
+ * Small checkbox for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    label: 'Small checkbox',
+  },
+};
+
+/**
+ * Medium checkbox (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    label: 'Medium checkbox',
+  },
+};
+
+/**
+ * Large checkbox for touch interfaces.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    label: 'Large checkbox',
+  },
+};
+
+/**
  * Labels can be positioned on either side of the checkbox.
  */
 export const LabelPositions: Story = {
@@ -131,6 +164,17 @@ export const LabelPositions: Story = {
       <Checkbox labelPosition="right" label="Label on right" />
     </>
   ),
+};
+
+/**
+ * Label positioned on the left.
+ */
+export const LabelLeft: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Label on left',
+    labelPosition: 'left',
+  },
 };
 
 /**
@@ -180,6 +224,29 @@ export const Disabled: Story = {
       <Checkbox label="Disabled checked" disabled defaultChecked />
     </>
   ),
+};
+
+/**
+ * Disabled unchecked checkbox.
+ */
+export const DisabledUnchecked: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Disabled option',
+    disabled: true,
+  },
+};
+
+/**
+ * Disabled checked checkbox.
+ */
+export const DisabledChecked: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Disabled selected',
+    disabled: true,
+    defaultChecked: true,
+  },
 };
 
 // =============================================================================

@@ -163,6 +163,39 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small rating stars for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    defaultValue: 4,
+  },
+};
+
+/**
+ * Medium rating stars (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    defaultValue: 4,
+  },
+};
+
+/**
+ * Large rating stars for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    defaultValue: 4,
+  },
+};
+
 // =============================================================================
 // COLORS
 // =============================================================================
@@ -207,6 +240,28 @@ export const Colors: Story = {
       </div>
     </div>
   ),
+};
+
+/**
+ * Primary color rating stars.
+ */
+export const ColorPrimary: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'primary',
+    defaultValue: 4,
+  },
+};
+
+/**
+ * Warning color rating stars (classic gold stars).
+ */
+export const ColorWarning: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'warning',
+    defaultValue: 4,
+  },
 };
 
 /**

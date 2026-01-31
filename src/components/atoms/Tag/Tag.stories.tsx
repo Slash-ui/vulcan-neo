@@ -142,6 +142,50 @@ export const Variants: Story = {
   ),
 };
 
+/**
+ * Convex variant with raised appearance.
+ */
+export const VariantConvex: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Convex',
+    variant: 'convex',
+  },
+};
+
+/**
+ * Concave variant with pressed appearance.
+ */
+export const VariantConcave: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Concave',
+    variant: 'concave',
+  },
+};
+
+/**
+ * Extrude variant with extruded appearance.
+ */
+export const VariantExtrude: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Extrude',
+    variant: 'extrude',
+  },
+};
+
+/**
+ * Flat variant with minimal styling.
+ */
+export const VariantFlat: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Flat',
+    variant: 'flat',
+  },
+};
+
 // =============================================================================
 // SIZES
 // =============================================================================
@@ -157,6 +201,39 @@ export const Sizes: Story = {
       <Tag size="lg">Large</Tag>
     </>
   ),
+};
+
+/**
+ * Small tag for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Small',
+    size: 'sm',
+  },
+};
+
+/**
+ * Medium tag (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Medium',
+    size: 'md',
+  },
+};
+
+/**
+ * Large tag for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Large',
+    size: 'lg',
+  },
 };
 
 // =============================================================================
@@ -179,6 +256,39 @@ export const Colors: Story = {
       <Tag color="info">Info</Tag>
     </>
   ),
+};
+
+/**
+ * Primary color tag.
+ */
+export const ColorPrimary: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Primary',
+    color: 'primary',
+  },
+};
+
+/**
+ * Success color tag for positive status.
+ */
+export const ColorSuccess: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Success',
+    color: 'success',
+  },
+};
+
+/**
+ * Error color tag for alerts.
+ */
+export const ColorError: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Error',
+    color: 'error',
+  },
 };
 
 /**
@@ -243,6 +353,42 @@ export const FilledColors: Story = {
       </div>
     </div>
   ),
+};
+
+/**
+ * Filled primary tag.
+ */
+export const FilledPrimary: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Primary',
+    color: 'primary',
+    filled: true,
+  },
+};
+
+/**
+ * Filled success tag for positive status.
+ */
+export const FilledSuccess: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Success',
+    color: 'success',
+    filled: true,
+  },
+};
+
+/**
+ * Filled error tag for alerts.
+ */
+export const FilledError: Story = {
+  tags: ['!dev'],
+  args: {
+    children: 'Error',
+    color: 'error',
+    filled: true,
+  },
 };
 
 /**

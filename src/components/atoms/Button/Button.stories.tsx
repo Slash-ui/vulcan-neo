@@ -218,6 +218,39 @@ export const Sizes: Story = {
 };
 
 /**
+ * Small button for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    label: 'Small',
+  },
+};
+
+/**
+ * Medium button (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    label: 'Medium',
+  },
+};
+
+/**
+ * Large button for prominent actions.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    label: 'Large',
+  },
+};
+
+/**
  * Control shadow intensity. Higher elevation = more prominent.
  */
 export const Elevations: Story = {
@@ -228,6 +261,39 @@ export const Elevations: Story = {
       <Button elevation="high" label="High" />
     </>
   ),
+};
+
+/**
+ * Low elevation with subtle shadow.
+ */
+export const ElevationLow: Story = {
+  tags: ['!dev'],
+  args: {
+    elevation: 'low',
+    label: 'Low Elevation',
+  },
+};
+
+/**
+ * Medium elevation (default).
+ */
+export const ElevationMid: Story = {
+  tags: ['!dev'],
+  args: {
+    elevation: 'mid',
+    label: 'Mid Elevation',
+  },
+};
+
+/**
+ * High elevation for prominent buttons.
+ */
+export const ElevationHigh: Story = {
+  tags: ['!dev'],
+  args: {
+    elevation: 'high',
+    label: 'High Elevation',
+  },
 };
 
 // =============================================================================
@@ -245,6 +311,28 @@ export const WithIcons: Story = {
       <Button leftIcon={<ShoppingCart size={20} />} rightIcon={<ArrowRight size={20} />} label="Add to Cart" />
     </>
   ),
+};
+
+/**
+ * Button with icon on the left.
+ */
+export const WithLeftIcon: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Back',
+    leftIcon: <ArrowLeft size={20} />,
+  },
+};
+
+/**
+ * Button with icon on the right.
+ */
+export const WithRightIcon: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Next',
+    rightIcon: <ArrowRight size={20} />,
+  },
 };
 
 /**
@@ -298,6 +386,50 @@ export const Colors: Story = {
       </div>
     </div>
   ),
+};
+
+/**
+ * Primary color button.
+ */
+export const ColorPrimary: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'primary',
+    label: 'Primary',
+  },
+};
+
+/**
+ * Secondary color button.
+ */
+export const ColorSecondary: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'secondary',
+    label: 'Secondary',
+  },
+};
+
+/**
+ * Success color for confirmations.
+ */
+export const ColorSuccess: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'success',
+    label: 'Success',
+  },
+};
+
+/**
+ * Error color for destructive actions.
+ */
+export const ColorError: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'error',
+    label: 'Delete',
+  },
 };
 
 /**

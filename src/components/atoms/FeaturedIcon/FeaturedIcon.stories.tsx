@@ -136,6 +136,39 @@ export const Variants: Story = {
   ),
 };
 
+/**
+ * Convex variant with raised appearance.
+ */
+export const VariantConvex: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    variant: 'convex',
+  },
+};
+
+/**
+ * Concave variant with pressed appearance.
+ */
+export const VariantConcave: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    variant: 'concave',
+  },
+};
+
+/**
+ * Flat variant with minimal styling.
+ */
+export const VariantFlat: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    variant: 'flat',
+  },
+};
+
 // =============================================================================
 // SIZES
 // =============================================================================
@@ -154,6 +187,50 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small featured icon.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={16} />,
+    size: 'sm',
+  },
+};
+
+/**
+ * Medium featured icon (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    size: 'md',
+  },
+};
+
+/**
+ * Large featured icon.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={32} />,
+    size: 'lg',
+  },
+};
+
+/**
+ * Extra-large featured icon.
+ */
+export const SizeExtraLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={40} />,
+    size: 'xl',
+  },
+};
+
 // =============================================================================
 // ELEVATIONS
 // =============================================================================
@@ -169,6 +246,39 @@ export const Elevations: Story = {
       <FeaturedIcon elevation="high"><Star size={24} /></FeaturedIcon>
     </>
   ),
+};
+
+/**
+ * Low elevation with subtle shadows.
+ */
+export const ElevationLow: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    elevation: 'low',
+  },
+};
+
+/**
+ * Medium elevation (default).
+ */
+export const ElevationMid: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    elevation: 'mid',
+  },
+};
+
+/**
+ * High elevation with pronounced shadows.
+ */
+export const ElevationHigh: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    elevation: 'high',
+  },
 };
 
 // =============================================================================
@@ -190,6 +300,39 @@ export const Colors: Story = {
   ),
 };
 
+/**
+ * Primary color featured icon.
+ */
+export const ColorPrimary: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Bell size={24} />,
+    color: 'primary',
+  },
+};
+
+/**
+ * Success color featured icon.
+ */
+export const ColorSuccess: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <CheckCircle size={24} />,
+    color: 'success',
+  },
+};
+
+/**
+ * Error color featured icon.
+ */
+export const ColorError: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <XCircle size={24} />,
+    color: 'error',
+  },
+};
+
 // =============================================================================
 // SHAPES
 // =============================================================================
@@ -205,6 +348,39 @@ export const Shapes: Story = {
       <FeaturedIcon shape="square"><Star size={24} /></FeaturedIcon>
     </>
   ),
+};
+
+/**
+ * Circle shape (default).
+ */
+export const ShapeCircle: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    shape: 'circle',
+  },
+};
+
+/**
+ * Rounded square shape.
+ */
+export const ShapeRounded: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    shape: 'rounded',
+  },
+};
+
+/**
+ * Square shape with sharp corners.
+ */
+export const ShapeSquare: Story = {
+  tags: ['!dev'],
+  args: {
+    children: <Star size={24} />,
+    shape: 'square',
+  },
 };
 
 // =============================================================================

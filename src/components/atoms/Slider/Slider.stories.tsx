@@ -203,6 +203,45 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small slider for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    label: 'Volume',
+    defaultValue: 50,
+    showValue: true,
+  },
+};
+
+/**
+ * Medium slider (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    label: 'Volume',
+    defaultValue: 50,
+    showValue: true,
+  },
+};
+
+/**
+ * Large slider for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    label: 'Volume',
+    defaultValue: 50,
+    showValue: true,
+  },
+};
+
 // =============================================================================
 // VARIANTS
 // =============================================================================
@@ -220,6 +259,32 @@ export const Variants: Story = {
       <Slider label="Glow" variant="glow" defaultValue={60} showValue />
     </div>
   ),
+};
+
+/**
+ * Gradient variant with color transition.
+ */
+export const VariantGradient: Story = {
+  tags: ['!dev'],
+  args: {
+    variant: 'gradient',
+    label: 'Brightness',
+    defaultValue: 60,
+    showValue: true,
+  },
+};
+
+/**
+ * Glow variant with luminous effect.
+ */
+export const VariantGlow: Story = {
+  tags: ['!dev'],
+  args: {
+    variant: 'glow',
+    label: 'Intensity',
+    defaultValue: 75,
+    showValue: true,
+  },
 };
 
 // =============================================================================
@@ -242,6 +307,32 @@ export const Colors: Story = {
       <Slider color="info" defaultValue={70} />
     </div>
   ),
+};
+
+/**
+ * Primary color slider.
+ */
+export const ColorPrimary: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'primary',
+    label: 'Volume',
+    defaultValue: 70,
+    showValue: true,
+  },
+};
+
+/**
+ * Success color slider for positive values.
+ */
+export const ColorSuccess: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'success',
+    label: 'Progress',
+    defaultValue: 80,
+    showValue: true,
+  },
 };
 
 /**
@@ -290,6 +381,25 @@ export const Vertical: Story = {
   decorators: [
     (Story) => (
       <Surface theme="light" style={{ padding: '3rem', width: 'auto' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+/**
+ * Vertical slider orientation.
+ */
+export const OrientationVertical: Story = {
+  tags: ['!dev'],
+  args: {
+    orientation: 'vertical',
+    defaultValue: 60,
+    color: 'primary',
+  },
+  decorators: [
+    (Story) => (
+      <Surface theme="light" style={{ padding: '3rem', height: '200px' }}>
         <Story />
       </Surface>
     ),

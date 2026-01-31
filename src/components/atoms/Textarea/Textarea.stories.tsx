@@ -162,6 +162,42 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Small textarea for compact layouts.
+ */
+export const SizeSmall: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'sm',
+    label: 'Small',
+    placeholder: 'Small textarea',
+  },
+};
+
+/**
+ * Medium textarea (default size).
+ */
+export const SizeMedium: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'md',
+    label: 'Medium',
+    placeholder: 'Medium textarea',
+  },
+};
+
+/**
+ * Large textarea for emphasis.
+ */
+export const SizeLarge: Story = {
+  tags: ['!dev'],
+  args: {
+    size: 'lg',
+    label: 'Large',
+    placeholder: 'Large textarea',
+  },
+};
+
 // =============================================================================
 // RESIZE OPTIONS
 // =============================================================================
@@ -177,6 +213,42 @@ export const ResizeOptions: Story = {
       <Textarea resize="both" placeholder="Both directions" label="Both" />
     </div>
   ),
+};
+
+/**
+ * Textarea with no resize capability.
+ */
+export const ResizeNone: Story = {
+  tags: ['!dev'],
+  args: {
+    resize: 'none',
+    label: 'No Resize',
+    placeholder: 'Cannot resize this textarea',
+  },
+};
+
+/**
+ * Textarea with vertical resize only.
+ */
+export const ResizeVertical: Story = {
+  tags: ['!dev'],
+  args: {
+    resize: 'vertical',
+    label: 'Vertical Resize',
+    placeholder: 'Can resize vertically',
+  },
+};
+
+/**
+ * Textarea with both directions resize.
+ */
+export const ResizeBoth: Story = {
+  tags: ['!dev'],
+  args: {
+    resize: 'both',
+    label: 'Both Directions',
+    placeholder: 'Can resize in both directions',
+  },
 };
 
 // =============================================================================
