@@ -1,6 +1,10 @@
 .badgeGroup {
   display: inline-flex;
   align-items: center;
+
+  /* Default spacing values (normal) */
+  --item-overlap: -8px;
+  --item-overlap-hover: -4px;
 }
 
 /* Stacking direction */
@@ -12,91 +16,111 @@
   flex-direction: row;
 }
 
+/* Size + Spacing combinations */
+/* Small size */
+.sm.spacing-compact {
+  --item-overlap: -10px;
+  --item-overlap-hover: -6px;
+}
+
+.sm.spacing-normal {
+  --item-overlap: -6px;
+  --item-overlap-hover: -2px;
+}
+
+.sm.spacing-loose {
+  --item-overlap: -2px;
+  --item-overlap-hover: 2px;
+}
+
+/* Medium size */
+.md.spacing-compact {
+  --item-overlap: -12px;
+  --item-overlap-hover: -8px;
+}
+
+.md.spacing-normal {
+  --item-overlap: -8px;
+  --item-overlap-hover: -4px;
+}
+
+.md.spacing-loose {
+  --item-overlap: -4px;
+  --item-overlap-hover: 2px;
+}
+
+/* Large size */
+.lg.spacing-compact {
+  --item-overlap: -16px;
+  --item-overlap-hover: -10px;
+}
+
+.lg.spacing-normal {
+  --item-overlap: -10px;
+  --item-overlap-hover: -5px;
+}
+
+.lg.spacing-loose {
+  --item-overlap: -4px;
+  --item-overlap-hover: 4px;
+}
+
 /* Item with overlap */
 .item {
   position: relative;
+  transition: margin 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .right .item:not(:first-child) {
-  margin-left: -8px;
+  margin-left: var(--item-overlap);
 }
 
 .left .item:not(:last-child) {
-  margin-right: -8px;
+  margin-right: var(--item-overlap);
 }
 
-/* Size-based overlap adjustments */
-.sm .item:not(:first-child) {
-  margin-left: -6px;
+/* Animation - expand on hover */
+.animate:hover .item:not(:first-child) {
+  margin-left: var(--item-overlap-hover);
 }
 
-.sm.left .item:not(:last-child) {
-  margin-right: -6px;
+.animate.left:hover .item:not(:first-child) {
+  margin-left: 0;
 }
 
-.lg .item:not(:first-child) {
-  margin-left: -10px;
+.animate.left:hover .item:not(:last-child) {
+  margin-right: var(--item-overlap-hover);
 }
 
-.lg.left .item:not(:last-child) {
-  margin-right: -10px;
-}
-
-/* Overflow indicator */
+/* Overflow indicator wrapper */
 .overflow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--neo-font-family);
-  font-weight: var(--neo-font-weight-medium);
-  color: var(--neo-text-secondary);
-  background: var(--neo-bg);
-  border-radius: var(--neo-radius-full);
   z-index: 0;
-
-  /* Convex shadow */
-  box-shadow:
-    -3px -3px 6px var(--neo-shadow-light),
-    3px 3px 6px var(--neo-shadow-dark);
+  transition: margin 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Size-based overflow sizing */
-.sm .overflow {
-  min-width: 24px;
-  height: 24px;
-  font-size: var(--neo-font-size-xs);
-  padding: 0 6px;
-  margin-left: -6px;
-}
-
-.md .overflow {
-  min-width: 32px;
-  height: 32px;
-  font-size: var(--neo-font-size-sm);
-  padding: 0 8px;
-  margin-left: -8px;
-}
-
-.lg .overflow {
-  min-width: 40px;
-  height: 40px;
-  font-size: var(--neo-font-size-md);
-  padding: 0 10px;
-  margin-left: -10px;
+.right .overflow {
+  margin-left: var(--item-overlap);
 }
 
 .left .overflow {
   margin-left: 0;
+  margin-right: var(--item-overlap);
 }
 
-.left.sm .overflow {
-  margin-right: -6px;
+/* Animation - expand overflow on hover */
+.animate:hover .overflow {
+  margin-left: var(--item-overlap-hover);
 }
 
-.left.md .overflow {
-  margin-right: -8px;
+.animate.left:hover .overflow {
+  margin-left: 0;
+  margin-right: var(--item-overlap-hover);
 }
 
-.left.lg .overflow {
-  margin-right: -10px;
+/* Overflow badge styling */
+.overflowBadge {
+  border-radius: var(--neo-radius-full);
 }

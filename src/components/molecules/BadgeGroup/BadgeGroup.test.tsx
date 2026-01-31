@@ -133,4 +133,84 @@ describe('BadgeGroup', () => {
     );
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
+
+  it('renders custom overflowIndicator as ReactNode', () => {
+    render(
+      <BadgeGroup max={2} overflowIndicator={<span data-testid="custom-overflow">Custom!</span>}>
+        <span>Badge 1</span>
+        <span>Badge 2</span>
+        <span>Badge 3</span>
+      </BadgeGroup>
+    );
+    expect(screen.getByTestId('custom-overflow')).toBeInTheDocument();
+    expect(screen.getByText('Custom!')).toBeInTheDocument();
+  });
+
+  it('renders custom overflowIndicator as render function with count', () => {
+    render(
+      <BadgeGroup max={2} overflowIndicator={(count) => <span data-testid="render-overflow">{count} more items</span>}>
+        <span>Badge 1</span>
+        <span>Badge 2</span>
+        <span>Badge 3</span>
+        <span>Badge 4</span>
+        <span>Badge 5</span>
+      </BadgeGroup>
+    );
+    expect(screen.getByTestId('render-overflow')).toBeInTheDocument();
+    expect(screen.getByText('3 more items')).toBeInTheDocument();
+  });
+
+  it('uses default Badge overflow when overflowIndicator is not provided', () => {
+    render(
+      <BadgeGroup max={2}>
+        <span>Badge 1</span>
+        <span>Badge 2</span>
+        <span>Badge 3</span>
+      </BadgeGroup>
+    );
+    expect(screen.getByText('+1')).toBeInTheDocument();
+  });
+
+  it('applies spacing classes correctly', () => {
+    const { rerender } = render(
+      <BadgeGroup spacing="compact" data-testid="group">
+        <span>Badge</span>
+      </BadgeGroup>
+    );
+    expect(screen.getByTestId('group').className).toContain('spacing-compact');
+
+    rerender(
+      <BadgeGroup spacing="normal" data-testid="group">
+        <span>Badge</span>
+      </BadgeGroup>
+    );
+    expect(screen.getByTestId('group').className).toContain('spacing-normal');
+
+    rerender(
+      <BadgeGroup spacing="loose" data-testid="group">
+        <span>Badge</span>
+      </BadgeGroup>
+    );
+    expect(screen.getByTestId('group').className).toContain('spacing-loose');
+  });
+
+  it('applies animate class when animate prop is true', () => {
+    render(
+      <BadgeGroup animate data-testid="group">
+        <span>Badge 1</span>
+        <span>Badge 2</span>
+      </BadgeGroup>
+    );
+    expect(screen.getByTestId('group').className).toContain('animate');
+  });
+
+  it('does not apply animate class when animate prop is false', () => {
+    render(
+      <BadgeGroup animate={false} data-testid="group">
+        <span>Badge 1</span>
+        <span>Badge 2</span>
+      </BadgeGroup>
+    );
+    expect(screen.getByTestId('group').className).not.toContain('animate');
+  });
 });
