@@ -5,34 +5,45 @@
   border-radius: var(--neo-radius-md);
   background: var(--neo-bg);
   font-family: var(--neo-font-family);
+}
 
-  /* Convex appearance */
+/* Elevation levels */
+.elevation-low {
+  box-shadow:
+    -4px -4px 8px var(--neo-shadow-light),
+    4px 4px 8px var(--neo-shadow-dark);
+}
+
+.elevation-mid {
   box-shadow:
     -8px -8px 16px var(--neo-shadow-light),
     8px 8px 16px var(--neo-shadow-dark);
 }
 
+.elevation-high {
+  box-shadow:
+    -12px -12px 24px var(--neo-shadow-light),
+    12px 12px 24px var(--neo-shadow-dark);
+}
+
 /* Sizes */
 .sm {
   --day-size: 32px;
-  --day-font: var(--neo-font-size-sm);
-  --header-font: var(--neo-font-size-md);
+  --nav-size: 28px;
   padding: var(--neo-space-sm);
   gap: var(--neo-space-xs);
 }
 
 .md {
   --day-size: 40px;
-  --day-font: var(--neo-font-size-md);
-  --header-font: var(--neo-font-size-lg);
+  --nav-size: 32px;
   padding: var(--neo-space-md);
   gap: var(--neo-space-sm);
 }
 
 .lg {
   --day-size: 48px;
-  --day-font: var(--neo-font-size-lg);
-  --header-font: var(--neo-font-size-xl);
+  --nav-size: 40px;
   padding: var(--neo-space-lg);
   gap: var(--neo-space-md);
 }
@@ -45,12 +56,13 @@
   margin-bottom: var(--neo-space-sm);
 }
 
+/* Navigation buttons - base styles */
 .navButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: var(--nav-size);
+  height: var(--nav-size);
   padding: 0;
   background: var(--neo-bg);
   border: none;
@@ -58,34 +70,52 @@
   color: var(--neo-text-secondary);
   cursor: pointer;
   transition: all var(--neo-transition-fast);
+}
 
+.navButton:hover {
+  color: var(--neo-text);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--neo-accent-primary);
+  outline-offset: 2px;
+}
+
+.navButton svg {
+  display: block;
+}
+
+/* Navigation button - convex variant */
+.nav-convex {
   box-shadow:
     -3px -3px 6px var(--neo-shadow-light),
     3px 3px 6px var(--neo-shadow-dark);
 }
 
-.navButton:hover {
-  color: var(--neo-text);
+.nav-convex:hover {
   box-shadow:
     -4px -4px 8px var(--neo-shadow-light),
     4px 4px 8px var(--neo-shadow-dark);
 }
 
-.navButton:active {
+.nav-convex:active {
   box-shadow:
     inset 2px 2px 4px var(--neo-shadow-dark),
     inset -2px -2px 4px var(--neo-shadow-light);
 }
 
-.navButton svg {
-  width: 16px;
-  height: 16px;
+/* Navigation button - flat variant */
+.nav-flat {
+  box-shadow: none;
+  background: transparent;
 }
 
-.monthYear {
-  font-size: var(--header-font);
-  font-weight: var(--neo-font-weight-semibold);
-  color: var(--neo-text);
+.nav-flat:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.nav-flat:active {
+  background: rgba(0, 0, 0, 0.08);
 }
 
 /* Weekdays */
@@ -101,9 +131,6 @@
   align-items: center;
   justify-content: center;
   height: var(--day-size);
-  font-size: var(--neo-font-size-xs);
-  font-weight: var(--neo-font-weight-semibold);
-  color: var(--neo-text-secondary);
   text-transform: uppercase;
 }
 
@@ -126,9 +153,6 @@
   width: var(--day-size);
   height: var(--day-size);
   padding: 0;
-  font-family: var(--neo-font-family);
-  font-size: var(--day-font);
-  font-weight: var(--neo-font-weight-medium);
   color: var(--neo-text);
   background: var(--neo-bg);
   border: none;
@@ -153,7 +177,19 @@
 /* Today */
 .day.today {
   color: var(--neo-accent-primary);
-  font-weight: var(--neo-font-weight-bold);
+}
+
+/* Weekend - only applies when highlightWeekends is enabled */
+.highlightWeekends .day.weekend {
+  color: var(--calendar-weekend-color, var(--neo-accent-secondary, #e91e63));
+}
+
+.highlightWeekends .day.weekend.today {
+  color: var(--neo-accent-primary);
+}
+
+.highlightWeekends .day.weekend.selected {
+  color: var(--calendar-weekend-color, var(--neo-accent-secondary, #e91e63));
 }
 
 /* Selected */

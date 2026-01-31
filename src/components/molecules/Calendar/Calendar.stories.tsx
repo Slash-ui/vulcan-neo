@@ -17,6 +17,9 @@ import { Surface } from '../../foundation/Surface';
  * ## Key Features
  *
  * - **Size variants**: Small, medium, and large for different contexts
+ * - **Elevation levels**: Low, mid, and high shadow depth
+ * - **Navigation styles**: Flat or convex navigation buttons
+ * - **Weekend highlighting**: Optionally highlight weekends with custom colors
  * - **Date constraints**: Min/max dates and specific disabled dates
  * - **Localization**: Customizable month and day names
  * - **Week start**: Option to start week on Sunday or Monday
@@ -47,6 +50,28 @@ const meta: Meta<typeof Calendar> = {
       options: ['sm', 'md', 'lg'],
       description: 'Size of the calendar',
       table: { category: 'Appearance', defaultValue: { summary: 'md' } },
+    },
+    elevation: {
+      control: 'select',
+      options: ['low', 'mid', 'high'],
+      description: 'Shadow depth level of the calendar',
+      table: { category: 'Appearance', defaultValue: { summary: 'mid' } },
+    },
+    navVariant: {
+      control: 'select',
+      options: ['flat', 'convex'],
+      description: 'Visual style of navigation buttons',
+      table: { category: 'Appearance', defaultValue: { summary: 'convex' } },
+    },
+    highlightWeekends: {
+      control: 'boolean',
+      description: 'Highlight weekend days (Saturday and Sunday) with a different color',
+      table: { category: 'Appearance', defaultValue: { summary: 'false' } },
+    },
+    weekendColor: {
+      control: 'color',
+      description: 'Custom color for weekend days (only applies when highlightWeekends is true)',
+      table: { category: 'Appearance' },
     },
 
     // State
@@ -111,12 +136,19 @@ type Story = StoryObj<typeof meta>;
  * Default calendar with date selection. Click a date to select it.
  */
 export const Default: Story = {
-  render: () => {
+  args: {
+    size: 'md',
+    elevation: 'mid',
+    navVariant: 'convex',
+    firstDayOfWeek: 0,
+    highlightWeekends: false,
+  },
+  render: (args) => {
     const [date, setDate] = useState<Date | null>(null);
 
     return (
       <div>
-        <Calendar value={date} onChange={setDate} />
+        <Calendar {...args} value={date} onChange={setDate} />
         {date && (
           <p style={{ marginTop: '1rem', color: 'var(--neo-text-secondary)' }}>
             Selected: {date.toDateString()}
@@ -135,10 +167,15 @@ export const Default: Story = {
  * Calendar with a pre-selected date (today).
  */
 export const WithSelectedDate: Story = {
-  render: () => {
+  args: {
+    size: 'md',
+    elevation: 'mid',
+    navVariant: 'convex',
+  },
+  render: (args) => {
     const [date, setDate] = useState<Date>(new Date());
 
-    return <Calendar value={date} onChange={setDate} />;
+    return <Calendar {...args} value={date} onChange={setDate} />;
   },
 };
 
@@ -194,6 +231,205 @@ export const Sizes: Story = {
           Large
         </p>
         <Calendar size="lg" />
+      </div>
+    </div>
+  ),
+};
+
+// =============================================================================
+// ELEVATIONS
+// =============================================================================
+
+/**
+ * Three elevation levels for different shadow depths.
+ */
+export const Elevations: Story = {
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '2rem',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+      }}
+    >
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          Low
+        </p>
+        <Calendar elevation="low" />
+      </div>
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          Mid (default)
+        </p>
+        <Calendar elevation="mid" />
+      </div>
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          High
+        </p>
+        <Calendar elevation="high" />
+      </div>
+    </div>
+  ),
+};
+
+// =============================================================================
+// NAVIGATION VARIANTS
+// =============================================================================
+
+/**
+ * Flat navigation buttons have no shadow, creating a minimal appearance.
+ */
+export const FlatNavigation: Story = {
+  args: {
+    navVariant: 'flat',
+  },
+};
+
+/**
+ * Comparison of navigation button styles.
+ */
+export const NavigationVariants: Story = {
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '2rem',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+      }}
+    >
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          Convex (default)
+        </p>
+        <Calendar navVariant="convex" />
+      </div>
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          Flat
+        </p>
+        <Calendar navVariant="flat" />
+      </div>
+    </div>
+  ),
+};
+
+// =============================================================================
+// WEEKEND HIGHLIGHTING
+// =============================================================================
+
+/**
+ * Highlight weekend days (Saturday and Sunday) with a distinct color.
+ */
+export const HighlightWeekends: Story = {
+  args: {
+    highlightWeekends: true,
+  },
+};
+
+/**
+ * Custom weekend color for brand-specific styling.
+ */
+export const CustomWeekendColor: Story = {
+  args: {
+    highlightWeekends: true,
+    weekendColor: '#e91e63',
+  },
+};
+
+/**
+ * Various weekend color options.
+ */
+export const WeekendColorOptions: Story = {
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '2rem',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+      }}
+    >
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          Default (secondary)
+        </p>
+        <Calendar highlightWeekends />
+      </div>
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          Pink
+        </p>
+        <Calendar highlightWeekends weekendColor="#e91e63" />
+      </div>
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          Orange
+        </p>
+        <Calendar highlightWeekends weekendColor="#ff9800" />
+      </div>
+      <div>
+        <p
+          style={{
+            margin: '0 0 0.5rem',
+            fontSize: '14px',
+            color: 'var(--neo-text-secondary)',
+          }}
+        >
+          Red
+        </p>
+        <Calendar highlightWeekends weekendColor="#f44336" />
       </div>
     </div>
   ),

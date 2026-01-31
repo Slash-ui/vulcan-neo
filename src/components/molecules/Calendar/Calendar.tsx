@@ -1,7 +1,11 @@
 import React, { forwardRef, useState, useMemo } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Calendar.module.css';
 
 export type CalendarSize = 'sm' | 'md' | 'lg';
+export type CalendarElevation = 'low' | 'mid' | 'high';
+export type CalendarNavVariant = 'flat' | 'convex';
 
 export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
@@ -17,6 +21,16 @@ export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>
    * @default 'md'
    */
   size?: CalendarSize;
+  /**
+   * Elevation level of the calendar shadow
+   * @default 'mid'
+   */
+  elevation?: CalendarElevation;
+  /**
+   * Visual style of navigation buttons
+   * @default 'convex'
+   */
+  navVariant?: CalendarNavVariant;
   /**
    * Minimum selectable date
    */
@@ -34,6 +48,18 @@ export interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>
    * @default 0
    */
   firstDayOfWeek?: 0 | 1;
+  /**
+   * Highlight weekend days with a different color
+   * @default false
+   */
+  highlightWeekends?: boolean;
+  /**
+   * Custom color for weekend days (hex value)
+   * Only applies when highlightWeekends is true
+   * @default uses theme secondary color
+   * @example "#FF5733" or "#F53"
+   */
+  weekendColor?: string;
   /**
    * Month names
    */
@@ -59,6 +85,18 @@ const isSameDay = (a: Date, b: Date): boolean => {
   );
 };
 
+const isWeekend = (date: Date): boolean => {
+  const day = date.getDay();
+  return day === 0 || day === 6; // Sunday = 0, Saturday = 6
+};
+
+// Icon sizes based on calendar size
+const iconSizes: Record<CalendarSize, number> = {
+  sm: 14,
+  md: 16,
+  lg: 20,
+};
+
 /**
  * Calendar - Neomorphic calendar component
  */
@@ -68,13 +106,18 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       value,
       onChange,
       size = 'md',
+      elevation = 'mid',
+      navVariant = 'convex',
       minDate,
       maxDate,
       disabledDates = [],
       firstDayOfWeek = 0,
+      highlightWeekends = false,
+      weekendColor,
       monthNames = defaultMonthNames,
       dayNames = defaultDayNames,
       className,
+      style,
       ...props
     },
     ref
@@ -141,50 +184,66 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     const classNames = [
       styles.calendar,
       styles[size],
+      styles[`elevation-${elevation}`],
+      highlightWeekends ? styles.highlightWeekends : '',
       className || '',
     ]
       .filter(Boolean)
       .join(' ');
 
-    const ChevronLeft = () => (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <polyline points="15 18 9 12 15 6" />
-      </svg>
-    );
+    const customStyle: React.CSSProperties = {
+      ...style,
+      ...(weekendColor && {
+        '--calendar-weekend-color': weekendColor,
+      } as React.CSSProperties),
+    };
 
-    const ChevronRight = () => (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <polyline points="9 18 15 12 9 6" />
-      </svg>
-    );
+    const navButtonClassNames = [
+      styles.navButton,
+      styles[`nav-${navVariant}`],
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    // Typography variants based on size
+    const headerVariant = size === 'lg' ? 'h5' : size === 'sm' ? 'body2' : 'h6';
+    const weekdayVariant = size === 'lg' ? 'caption' : 'overline';
+    const dayVariant = size === 'lg' ? 'body1' : size === 'sm' ? 'caption' : 'body2';
 
     return (
-      <div ref={ref} className={classNames} {...props}>
+      <div ref={ref} className={classNames} style={customStyle} {...props}>
         <div className={styles.header}>
           <button
-            className={styles.navButton}
+            className={navButtonClassNames}
             onClick={handlePrevMonth}
             aria-label="Previous month"
           >
-            <ChevronLeft />
+            <ChevronLeft size={iconSizes[size]} />
           </button>
-          <span className={styles.monthYear}>
+          <Typography variant={headerVariant} weight="semibold" component="span">
             {monthNames[month]} {year}
-          </span>
+          </Typography>
           <button
-            className={styles.navButton}
+            className={navButtonClassNames}
             onClick={handleNextMonth}
             aria-label="Next month"
           >
-            <ChevronRight />
+            <ChevronRight size={iconSizes[size]} />
           </button>
         </div>
 
         <div className={styles.weekdays}>
           {orderedDayNames.map((day) => (
-            <span key={day} className={styles.weekday}>
+            <Typography
+              key={day}
+              variant={weekdayVariant}
+              weight="semibold"
+              color="secondary"
+              component="span"
+              className={styles.weekday}
+            >
               {day}
-            </span>
+            </Typography>
           ))}
         </div>
 
@@ -197,6 +256,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
             const isSelected = value && isSameDay(date, value);
             const isToday = isSameDay(date, today);
             const disabled = isDateDisabled(date);
+            const isWeekendDay = isWeekend(date);
 
             return (
               <button
@@ -206,6 +266,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   isSelected ? styles.selected : '',
                   isToday ? styles.today : '',
                   disabled ? styles.disabled : '',
+                  isWeekendDay ? styles.weekend : '',
                 ]
                   .filter(Boolean)
                   .join(' ')}
@@ -214,7 +275,14 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 aria-selected={isSelected ?? undefined}
                 aria-label={date.toDateString()}
               >
-                {date.getDate()}
+                <Typography
+                  variant={dayVariant}
+                  weight={isToday ? 'bold' : 'medium'}
+                  color="inherit"
+                  component="span"
+                >
+                  {date.getDate()}
+                </Typography>
               </button>
             );
           })}
