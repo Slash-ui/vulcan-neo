@@ -3,6 +3,7 @@ import styles from './Card.module.css';
 
 export type CardElevation = 'low' | 'mid' | 'high';
 export type CardVariant = 'convex' | 'flat' | 'concave';
+export type CardRounded = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -19,15 +20,21 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   variant?: CardVariant;
   /**
+   * The border radius of the card
+   * - none: No rounded corners
+   * - sm: Small radius
+   * - md: Medium radius (default)
+   * - lg: Large radius
+   * - xl: Extra large radius
+   * - full: Pill-shaped (maximum radius)
+   * @default 'md'
+   */
+  rounded?: CardRounded;
+  /**
    * Whether the card has padding
    * @default true
    */
   padded?: boolean;
-  /**
-   * Whether the card is interactive (clickable)
-   * @default false
-   */
-  interactive?: boolean;
   /**
    * Children elements
    */
@@ -45,8 +52,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     {
       elevation = 'mid',
       variant = 'convex',
+      rounded = 'md',
       padded = true,
-      interactive = false,
       children,
       className,
       ...props
@@ -57,21 +64,15 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       styles.card,
       styles[variant],
       styles[`elevation-${elevation}`],
+      styles[`rounded-${rounded}`],
       padded ? styles.padded : '',
-      interactive ? styles.interactive : '',
       className || '',
     ]
       .filter(Boolean)
       .join(' ');
 
     return (
-      <div
-        ref={ref}
-        className={classNames}
-        tabIndex={interactive ? 0 : undefined}
-        role={interactive ? 'button' : undefined}
-        {...props}
-      >
+      <div ref={ref} className={classNames} {...props}>
         {children}
       </div>
     );
