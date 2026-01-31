@@ -1,178 +1,263 @@
 .banner {
   font-family: var(--neo-font-family);
-  padding: var(--neo-space-sm) var(--neo-space-lg);
+  background: var(--neo-bg);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-md);
+  box-sizing: border-box;
+  --banner-shadow-light: var(--neo-shadow-light);
+  --banner-shadow-dark: var(--neo-shadow-dark);
 }
 
-/* Variants */
-.info {
-  background: var(--neo-bg-secondary);
+/* Variant styles */
+.convex {
+  box-shadow:
+    0 4px 6px var(--banner-shadow-dark),
+    0 -2px 4px var(--banner-shadow-light);
+}
+
+.flat {
+  box-shadow: none;
+}
+
+.concave {
+  box-shadow:
+    inset 0 2px 4px var(--banner-shadow-dark),
+    inset 0 -2px 4px var(--banner-shadow-light);
+}
+
+/* Color variants */
+.color-default {
+  background: var(--neo-bg);
   color: var(--neo-text);
 }
 
-.success {
-  background: var(--neo-success);
-  color: white;
+.color-primary {
+  background: var(--neo-color-primary);
+  color: var(--neo-color-on-primary);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-primary) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-primary) 50%, black 50%);
 }
 
-.warning {
-  background: var(--neo-warning);
+.color-primary-light {
+  background: var(--neo-color-primary-light);
+  color: var(--neo-color-primary-dark);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-primary-light) 40%, white 60%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-primary-light) 60%, black 40%);
+}
+
+.color-primary-dark {
+  background: var(--neo-color-primary-dark);
+  color: var(--neo-color-on-primary);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-primary-dark) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-primary-dark) 50%, black 50%);
+}
+
+.color-secondary {
+  background: var(--neo-color-secondary);
+  color: var(--neo-color-on-secondary);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-secondary) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-secondary) 50%, black 50%);
+}
+
+.color-secondary-light {
+  background: var(--neo-color-secondary-light);
+  color: var(--neo-color-secondary-dark);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-secondary-light) 40%, white 60%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-secondary-light) 60%, black 40%);
+}
+
+.color-secondary-dark {
+  background: var(--neo-color-secondary-dark);
+  color: var(--neo-color-on-secondary);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-secondary-dark) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-secondary-dark) 50%, black 50%);
+}
+
+.color-tertiary {
+  background: var(--neo-color-tertiary);
+  color: var(--neo-color-on-tertiary);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-tertiary) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-tertiary) 50%, black 50%);
+}
+
+.color-tertiary-light {
+  background: var(--neo-color-tertiary-light);
+  color: var(--neo-color-tertiary-dark);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-tertiary-light) 40%, white 60%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-tertiary-light) 60%, black 40%);
+}
+
+.color-tertiary-dark {
+  background: var(--neo-color-tertiary-dark);
+  color: white;
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-tertiary-dark) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-tertiary-dark) 50%, black 50%);
+}
+
+.color-success {
+  background: var(--neo-color-success);
+  color: white;
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-success) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-success) 50%, black 50%);
+}
+
+.color-warning {
+  background: var(--neo-color-warning);
   color: var(--neo-text);
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-warning) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-warning) 50%, black 50%);
 }
 
-.error {
-  background: var(--neo-error);
+.color-error {
+  background: var(--neo-color-error);
   color: white;
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-error) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-error) 50%, black 50%);
 }
 
-.primary {
-  background: var(--neo-primary);
+.color-info {
+  background: var(--neo-color-info);
   color: white;
+  --banner-shadow-light: color-mix(in srgb, var(--neo-color-info) 30%, white 70%);
+  --banner-shadow-dark: color-mix(in srgb, var(--neo-color-info) 50%, black 50%);
 }
 
-.gradient {
-  background: linear-gradient(135deg, var(--neo-primary) 0%, #a855f7 100%);
-  color: white;
+/* Sizes */
+.sm {
+  padding: var(--neo-space-sm) var(--neo-space-md);
+  --title-font: var(--neo-font-size-md);
+  --desc-font: var(--neo-font-size-sm);
 }
 
-/* Position */
-.position-top {
+.md {
+  padding: var(--neo-space-md) var(--neo-space-lg);
+  --title-font: var(--neo-font-size-lg);
+  --desc-font: var(--neo-font-size-md);
+}
+
+.lg {
+  padding: var(--neo-space-lg) var(--neo-space-xl);
+  --title-font: var(--neo-font-size-xl);
+  --desc-font: var(--neo-font-size-md);
+}
+
+/* Sticky positioning */
+.sticky {
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+.position-top {
+  top: 0;
 }
 
 .position-bottom {
-  position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
 }
 
-.position-inline {
-  position: relative;
-}
-
-/* Container */
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--neo-space-md);
-}
-
-/* Content */
-.content {
-  display: flex;
-  align-items: center;
-  gap: var(--neo-space-sm);
-  flex: 1;
-  justify-content: center;
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.icon svg {
-  width: 20px;
-  height: 20px;
-}
-
-.message {
-  font-size: var(--neo-font-size-sm);
-  font-weight: 500;
-  margin: 0;
+/* Text alignment */
+.text-center .contentSection {
   text-align: center;
 }
 
-/* Actions */
-.actions {
+.text-left .contentSection {
+  text-align: left;
+}
+
+/* Icon container (FeaturedIcon) */
+.iconContainer {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+/* Content Section - Title, Description, Children */
+.contentSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--title-font);
+  font-weight: var(--neo-font-weight-semibold);
+  color: inherit;
+  line-height: 1.3;
+}
+
+.description {
+  margin: var(--neo-space-xs) 0 0;
+  font-size: var(--desc-font);
+  color: inherit;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.childrenContent {
+  font-size: var(--desc-font);
+  color: inherit;
+}
+
+/* Right Section - Actions & Dismiss */
+.rightSection {
   display: flex;
   align-items: center;
-  gap: var(--neo-space-sm);
+  gap: var(--neo-space-md);
   flex-shrink: 0;
 }
 
-.ctaLink {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--neo-space-xxs);
-  font-size: var(--neo-font-size-sm);
-  font-weight: 600;
-  color: inherit;
-  text-decoration: none;
-  transition: gap 0.2s;
-}
-
-.ctaLink:hover {
-  gap: var(--neo-space-xs);
-}
-
-.ctaButton {
-  white-space: nowrap;
-}
-
-/* Style CTA button based on variant */
-.info .ctaButton {
-  color: var(--neo-primary);
-}
-
-.success .ctaButton,
-.error .ctaButton,
-.primary .ctaButton,
-.gradient .ctaButton {
-  color: white;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.success .ctaButton:hover,
-.error .ctaButton:hover,
-.primary .ctaButton:hover,
-.gradient .ctaButton:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.warning .ctaButton {
-  color: var(--neo-text);
-}
-
-.closeButton {
+/* Dismiss button */
+.dismissButton {
   color: inherit;
   opacity: 0.7;
 }
 
-.closeButton:hover {
+.dismissButton:hover {
   opacity: 1;
 }
 
-.success .closeButton,
-.error .closeButton,
-.primary .closeButton,
-.gradient .closeButton {
-  color: white;
-  background: transparent;
+/* Colored variants dismiss button styling - use color-matched shadows */
+[class*="color-"]:not(.color-default) .dismissButton {
+  background: inherit;
+  box-shadow:
+    -2px -2px 4px var(--banner-shadow-light),
+    2px 2px 4px var(--banner-shadow-dark);
+}
+
+[class*="color-"]:not(.color-default) .dismissButton:hover {
+  box-shadow:
+    -3px -3px 6px var(--banner-shadow-light),
+    3px 3px 6px var(--banner-shadow-dark);
+}
+
+[class*="color-"]:not(.color-default) .dismissButton:active {
+  box-shadow:
+    inset 2px 2px 4px var(--banner-shadow-dark),
+    inset -2px -2px 4px var(--banner-shadow-light);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .container {
+  .banner {
     flex-wrap: wrap;
+    gap: var(--neo-space-sm);
   }
 
-  .content {
-    flex-basis: 100%;
+  .iconContainer {
     order: 1;
   }
 
-  .actions {
+  .contentSection {
+    flex: 1;
     order: 2;
+  }
+
+  .rightSection {
+    order: 3;
+    width: 100%;
+    justify-content: flex-end;
   }
 }

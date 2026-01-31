@@ -208,8 +208,9 @@
 
 /* Color variants */
 .colored {
-  --shadow-light: rgba(255, 255, 255, 0.25);
-  --shadow-dark: rgba(0, 0, 0, 0.25);
+  /* Use banner shadows if inside a banner, otherwise use generic semi-transparent shadows */
+  --shadow-light: var(--banner-shadow-light, rgba(255, 255, 255, 0.25));
+  --shadow-dark: var(--banner-shadow-dark, rgba(0, 0, 0, 0.25));
 }
 
 .color-primary {

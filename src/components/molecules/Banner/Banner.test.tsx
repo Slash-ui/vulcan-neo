@@ -8,6 +8,12 @@ describe('Banner', () => {
     expect(screen.getByText('Announcement message')).toBeInTheDocument();
   });
 
+  it('renders title and description', () => {
+    render(<Banner title="Test Title" description="Test description" />);
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    expect(screen.getByText('Test description')).toBeInTheDocument();
+  });
+
   it('renders with icon', () => {
     render(
       <Banner icon={<span data-testid="icon">🎉</span>}>Content</Banner>
@@ -15,25 +21,24 @@ describe('Banner', () => {
     expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
 
-  it('renders CTA button when ctaText provided', () => {
-    const handleClick = vi.fn();
+  it('renders primaryAction and secondaryAction when provided', () => {
     render(
-      <Banner ctaText="Learn More" onCtaClick={handleClick}>
+      <Banner
+        primaryAction={<button>Primary</button>}
+        secondaryAction={<button>Secondary</button>}
+      >
         Content
       </Banner>
     );
-    fireEvent.click(screen.getByText('Learn More'));
-    expect(handleClick).toHaveBeenCalled();
+    expect(screen.getByText('Primary')).toBeInTheDocument();
+    expect(screen.getByText('Secondary')).toBeInTheDocument();
   });
 
-  it('renders CTA as link when ctaHref provided', () => {
+  it('renders beforeActions when provided', () => {
     render(
-      <Banner ctaText="Learn More" ctaHref="https://example.com">
-        Content
-      </Banner>
+      <Banner beforeActions={<input data-testid="input" />}>Content</Banner>
     );
-    const link = screen.getByText('Learn More').closest('a');
-    expect(link).toHaveAttribute('href', 'https://example.com');
+    expect(screen.getByTestId('input')).toBeInTheDocument();
   });
 
   it('shows dismiss button when dismissible', () => {
@@ -58,35 +63,59 @@ describe('Banner', () => {
     expect(screen.queryByLabelText('Dismiss banner')).not.toBeInTheDocument();
   });
 
-  it('applies variant classes correctly', () => {
-    const { rerender } = render(<Banner variant="info">Content</Banner>);
-    expect(screen.getByRole('banner').className).toContain('info');
+  it('applies color classes correctly', () => {
+    const { rerender } = render(<Banner color="default">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('color-default');
 
-    rerender(<Banner variant="success">Content</Banner>);
-    expect(screen.getByRole('banner').className).toContain('success');
+    rerender(<Banner color="primary">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('color-primary');
 
-    rerender(<Banner variant="warning">Content</Banner>);
-    expect(screen.getByRole('banner').className).toContain('warning');
+    rerender(<Banner color="success">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('color-success');
 
-    rerender(<Banner variant="error">Content</Banner>);
-    expect(screen.getByRole('banner').className).toContain('error');
+    rerender(<Banner color="error">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('color-error');
 
-    rerender(<Banner variant="primary">Content</Banner>);
-    expect(screen.getByRole('banner').className).toContain('primary');
+    rerender(<Banner color="warning">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('color-warning');
 
-    rerender(<Banner variant="gradient">Content</Banner>);
-    expect(screen.getByRole('banner').className).toContain('gradient');
+    rerender(<Banner color="info">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('color-info');
   });
 
-  it('applies position classes correctly', () => {
-    const { rerender } = render(<Banner position="top">Content</Banner>);
+  it('applies size classes correctly', () => {
+    const { rerender } = render(<Banner size="sm">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('sm');
+
+    rerender(<Banner size="md">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('md');
+
+    rerender(<Banner size="lg">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('lg');
+  });
+
+  it('applies sticky and position classes when sticky', () => {
+    const { rerender } = render(<Banner sticky position="top">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('sticky');
     expect(screen.getByRole('banner').className).toContain('position-top');
 
-    rerender(<Banner position="bottom">Content</Banner>);
+    rerender(<Banner sticky position="bottom">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('sticky');
     expect(screen.getByRole('banner').className).toContain('position-bottom');
+  });
 
-    rerender(<Banner position="inline">Content</Banner>);
-    expect(screen.getByRole('banner').className).toContain('position-inline');
+  it('does not apply position class when not sticky', () => {
+    render(<Banner position="top">Content</Banner>);
+    expect(screen.getByRole('banner').className).not.toContain('position-top');
+    expect(screen.getByRole('banner').className).not.toContain('sticky');
+  });
+
+  it('applies text alignment classes correctly', () => {
+    const { rerender } = render(<Banner textAlign="center">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('text-center');
+
+    rerender(<Banner textAlign="left">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('text-left');
   });
 
   it('applies custom className', () => {
@@ -98,5 +127,25 @@ describe('Banner', () => {
     const ref = { current: null } as React.RefObject<HTMLDivElement>;
     render(<Banner ref={ref}>Content</Banner>);
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
+  });
+
+  it('uses default values for variant, color, size, and textAlign', () => {
+    render(<Banner>Content</Banner>);
+    const banner = screen.getByRole('banner');
+    expect(banner.className).toContain('convex');
+    expect(banner.className).toContain('color-default');
+    expect(banner.className).toContain('md');
+    expect(banner.className).toContain('text-center');
+  });
+
+  it('applies variant classes correctly', () => {
+    const { rerender } = render(<Banner variant="convex">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('convex');
+
+    rerender(<Banner variant="flat">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('flat');
+
+    rerender(<Banner variant="concave">Content</Banner>);
+    expect(screen.getByRole('banner').className).toContain('concave');
   });
 });

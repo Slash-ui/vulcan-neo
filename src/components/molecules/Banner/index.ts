@@ -1,2 +1,2 @@
-export { Banner } from './Banner';
-export type { BannerProps, BannerVariant, BannerPosition } from './Banner';
+export { Banner, useBannerColor } from './Banner';
+export type { BannerProps, BannerVariant, BannerColor, BannerSize, BannerPosition, BannerTextAlign } from './Banner';

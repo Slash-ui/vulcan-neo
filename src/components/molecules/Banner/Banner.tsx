@@ -1,38 +1,127 @@
-import React, { forwardRef, useState } from 'react';
-import { Button } from '../../atoms/Button';
+import React, { forwardRef, useState, createContext, useContext } from 'react';
+import { X } from 'lucide-react';
+import { Typography } from '../../foundation/Typography';
 import { IconButton } from '../../atoms/IconButton';
+import { FeaturedIcon, FeaturedIconShape, FeaturedIconElevation, FeaturedIconSize } from '../../atoms/FeaturedIcon';
 import styles from './Banner.module.css';
 
-export type BannerVariant = 'info' | 'success' | 'warning' | 'error' | 'primary' | 'gradient';
-export type BannerPosition = 'top' | 'bottom' | 'inline';
+export type BannerVariant = 'convex' | 'flat' | 'concave';
+export type BannerColor =
+  | 'default'
+  | 'primary'
+  | 'primary-light'
+  | 'primary-dark'
+  | 'secondary'
+  | 'secondary-light'
+  | 'secondary-dark'
+  | 'tertiary'
+  | 'tertiary-light'
+  | 'tertiary-dark'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info';
+
+export type BannerSize = 'sm' | 'md' | 'lg';
+export type BannerPosition = 'top' | 'bottom';
+export type BannerTextAlign = 'left' | 'center';
+
+// Context to provide banner color to child components
+interface BannerContextValue {
+  color: BannerColor;
+}
+
+const BannerContext = createContext<BannerContextValue | null>(null);
+
+/**
+ * Hook to access the current banner's color from child components.
+ * Returns the banner color if inside a Banner, or null if not.
+ */
+export const useBannerColor = (): BannerColor | null => {
+  const context = useContext(BannerContext);
+  return context?.color ?? null;
+};
 
 export interface BannerProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * Banner variant
-   * @default 'info'
+   * Banner title
+   */
+  title?: string;
+  /**
+   * Banner description/message
+   */
+  description?: string;
+  /**
+   * The visual variant of the banner
+   * - convex: Raised appearance with outer shadow
+   * - flat: No shadow, minimal style
+   * - concave: Pressed appearance with inner shadow
+   * @default 'convex'
    */
   variant?: BannerVariant;
   /**
-   * Banner position
-   * @default 'inline'
+   * The color theme of the banner
+   * @default 'default'
+   */
+  color?: BannerColor;
+  /**
+   * Size variant
+   * @default 'md'
+   */
+  size?: BannerSize;
+  /**
+   * Whether the banner is sticky (fixed position)
+   * @default false
+   */
+  sticky?: boolean;
+  /**
+   * Position when sticky (top or bottom)
+   * @default 'top'
    */
   position?: BannerPosition;
   /**
-   * Banner content/message
+   * Text alignment
+   * @default 'center'
    */
-  children: React.ReactNode;
+  textAlign?: BannerTextAlign;
   /**
-   * CTA button text
+   * Icon to display on the left
    */
-  ctaText?: string;
+  icon?: React.ReactNode;
   /**
-   * CTA button click handler
+   * The visual variant of the icon
+   * - convex: Raised appearance with outer shadow
+   * - flat: No shadow, minimal style
+   * - concave: Pressed appearance with inner shadow
+   * @default 'flat'
    */
-  onCtaClick?: () => void;
+  iconVariant?: BannerVariant;
   /**
-   * CTA link URL (alternative to onCtaClick)
+   * The shape of the icon container
+   * @default 'rounded'
    */
-  ctaHref?: string;
+  iconShape?: FeaturedIconShape;
+  /**
+   * The elevation level of the icon shadow
+   * @default 'low'
+   */
+  iconElevation?: FeaturedIconElevation;
+  /**
+   * The size of the icon container. If not specified, derives from banner size.
+   */
+  iconSize?: FeaturedIconSize;
+  /**
+   * Custom content to display before actions (e.g., InsetField)
+   */
+  beforeActions?: React.ReactNode;
+  /**
+   * Primary action button
+   */
+  primaryAction?: React.ReactNode;
+  /**
+   * Secondary action button
+   */
+  secondaryAction?: React.ReactNode;
   /**
    * Show close button
    * @default false
@@ -43,26 +132,75 @@ export interface BannerProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   onDismiss?: () => void;
   /**
-   * Icon to display
+   * Banner content (alternative to title/description)
    */
-  icon?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 /**
- * Banner - Marketing announcement banner component
+ * Banner - Displays an important, succinct message with optional actions
+ *
+ * Banners can be displayed at the top or bottom of the screen.
+ * Only one banner should be shown at a time.
  */
+// Helper to inject color, shadowColor, and elevation props into Button elements
+const injectButtonProps = (
+  element: React.ReactNode,
+  bannerColor: BannerColor
+): React.ReactNode => {
+  if (!React.isValidElement(element)) {
+    return element;
+  }
+
+  const elementProps = element.props as Record<string, unknown>;
+  const newProps: Record<string, unknown> = {};
+
+  // Always inject elevation="low" for banner buttons unless explicitly set
+  if (elementProps.elevation === undefined) {
+    newProps.elevation = 'low';
+  }
+
+  // Inject color and shadowColor only if banner has a color (not default)
+  if (bannerColor !== 'default') {
+    if (elementProps.color === undefined) {
+      newProps.color = bannerColor;
+    }
+
+    if (elementProps.shadowColor === undefined) {
+      newProps.shadowColor = bannerColor;
+    }
+  }
+
+  // If no props to inject, return original element
+  if (Object.keys(newProps).length === 0) {
+    return element;
+  }
+
+  return React.cloneElement(element, newProps);
+};
+
 export const Banner = forwardRef<HTMLDivElement, BannerProps>(
   (
     {
-      variant = 'info',
-      position = 'inline',
-      children,
-      ctaText,
-      onCtaClick,
-      ctaHref,
+      title,
+      description,
+      variant = 'convex',
+      color = 'default',
+      size = 'md',
+      sticky = false,
+      position = 'top',
+      textAlign = 'center',
+      icon,
+      iconVariant = 'flat',
+      iconShape = 'rounded',
+      iconElevation = 'low',
+      iconSize,
+      beforeActions,
+      primaryAction,
+      secondaryAction,
       dismissible = false,
       onDismiss,
-      icon,
+      children,
       className,
       ...props
     },
@@ -80,75 +218,94 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(
     const classNames = [
       styles.banner,
       styles[variant],
-      styles[`position-${position}`],
+      styles[`color-${color}`],
+      styles[size],
+      sticky && styles.sticky,
+      sticky && styles[`position-${position}`],
+      styles[`text-${textAlign}`],
       className,
     ]
       .filter(Boolean)
       .join(' ');
 
-    const renderCta = () => {
-      if (!ctaText) return null;
+    const hasActions = beforeActions || primaryAction || secondaryAction;
+    const hasRightSection = hasActions || dismissible;
 
-      if (ctaHref) {
-        return (
-          <a href={ctaHref} className={styles.ctaLink}>
-            {ctaText}
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M3 8H13M9 4L13 8L9 12" />
-            </svg>
-          </a>
-        );
-      }
+    // Inject color props into action buttons
+    const styledPrimaryAction = injectButtonProps(primaryAction, color);
+    const styledSecondaryAction = injectButtonProps(secondaryAction, color);
 
-      return (
-        <Button
-          variant="flat"
-          size="sm"
-          onClick={onCtaClick}
-          className={styles.ctaButton}
-          label={ctaText}
-        />
-      );
+    // Map banner size to FeaturedIcon size
+    const featuredIconSizeMap: Record<BannerSize, FeaturedIconSize> = {
+      sm: 'md',
+      md: 'lg',
+      lg: 'xl',
+    };
+    const resolvedIconSize = iconSize ?? featuredIconSizeMap[size];
+
+    // FeaturedIcon should inherit the banner's background (for colored banners) and text color
+    const isColored = color !== 'default';
+    const iconStyle: React.CSSProperties = {
+      color: 'inherit',
+      ...(isColored && { background: 'inherit' }),
     };
 
     return (
-      <div ref={ref} className={classNames} role="banner" {...props}>
-        <div className={styles.container}>
-          <div className={styles.content}>
-            {icon && <span className={styles.icon}>{icon}</span>}
-            <p className={styles.message}>{children}</p>
-          </div>
-          <div className={styles.actions}>
-            {renderCta()}
-            {dismissible && (
-              <IconButton
-                variant="flat"
-                size="sm"
-                onClick={handleDismiss}
-                className={styles.closeButton}
-                aria-label="Dismiss banner"
-                icon={
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M12 4L4 12M4 4L12 12"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                }
-              />
+      <BannerContext.Provider value={{ color }}>
+        <div ref={ref} className={classNames} role="banner" {...props}>
+          {/* Left Section - Icon */}
+          {icon && (
+            <FeaturedIcon
+              variant={iconVariant}
+              size={resolvedIconSize}
+              elevation={iconElevation}
+              shape={iconShape}
+              style={iconStyle}
+              className={styles.iconContainer}
+            >
+              {icon}
+            </FeaturedIcon>
+          )}
+
+          {/* Content Section - Title, Description, Children */}
+          <div className={styles.contentSection}>
+            {title && (
+              <Typography variant="h6" className={styles.title} component="p">
+                {title}
+              </Typography>
+            )}
+            {description && (
+              <Typography variant="body2" className={styles.description} component="p">
+                {description}
+              </Typography>
+            )}
+            {children && (
+              <div className={styles.childrenContent}>
+                {children}
+              </div>
             )}
           </div>
+
+          {/* Right Section - Actions & Dismiss */}
+          {hasRightSection && (
+            <div className={styles.rightSection}>
+              {beforeActions}
+              {styledSecondaryAction}
+              {styledPrimaryAction}
+              {dismissible && (
+                <IconButton
+                  icon={<X size={16} />}
+                  variant="flat"
+                  size="sm"
+                  className={styles.dismissButton}
+                  onClick={handleDismiss}
+                  aria-label="Dismiss banner"
+                />
+              )}
+            </div>
+          )}
         </div>
-      </div>
+      </BannerContext.Provider>
     );
   }
 );

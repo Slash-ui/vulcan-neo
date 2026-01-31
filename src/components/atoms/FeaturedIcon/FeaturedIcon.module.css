@@ -6,6 +6,9 @@
   color: var(--neo-text);
   transition: box-shadow var(--neo-transition-normal),
               transform var(--neo-transition-fast);
+  /* Inherit banner shadow colors if inside a banner, otherwise use defaults */
+  --shadow-light: var(--banner-shadow-light, var(--neo-shadow-light));
+  --shadow-dark: var(--banner-shadow-dark, var(--neo-shadow-dark));
 }
 
 /* Shapes */
@@ -49,43 +52,43 @@
 /* Convex variant - Elevation Low */
 .elevation-low.convex {
   box-shadow:
-    -4px -4px 8px var(--neo-shadow-light),
-    4px 4px 8px var(--neo-shadow-dark);
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
 }
 
 /* Convex variant - Elevation Mid */
 .elevation-mid.convex {
   box-shadow:
-    -8px -8px 16px var(--neo-shadow-light),
-    8px 8px 16px var(--neo-shadow-dark);
+    -8px -8px 16px var(--shadow-light),
+    8px 8px 16px var(--shadow-dark);
 }
 
 /* Convex variant - Elevation High */
 .elevation-high.convex {
   box-shadow:
-    -16px -16px 32px var(--neo-shadow-light),
-    16px 16px 32px var(--neo-shadow-dark);
+    -16px -16px 32px var(--shadow-light),
+    16px 16px 32px var(--shadow-dark);
 }
 
 /* Concave variant - Elevation Low */
 .elevation-low.concave {
   box-shadow:
-    inset 4px 4px 8px var(--neo-shadow-dark),
-    inset -4px -4px 8px var(--neo-shadow-light);
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
 }
 
 /* Concave variant - Elevation Mid */
 .elevation-mid.concave {
   box-shadow:
-    inset 8px 8px 16px var(--neo-shadow-dark),
-    inset -8px -8px 16px var(--neo-shadow-light);
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
 }
 
 /* Concave variant - Elevation High */
 .elevation-high.concave {
   box-shadow:
-    inset 16px 16px 32px var(--neo-shadow-dark),
-    inset -16px -16px 32px var(--neo-shadow-light);
+    inset 16px 16px 32px var(--shadow-dark),
+    inset -16px -16px 32px var(--shadow-light);
 }
 
 /* Flat variant */

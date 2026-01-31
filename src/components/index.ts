@@ -172,8 +172,8 @@ export type { CodeSnippetProps, CodeSnippetSize } from './molecules/CodeSnippet'
 export { InlineCTA } from './molecules/InlineCTA';
 export type { InlineCTAProps, InlineCTAVariant } from './molecules/InlineCTA';
 
-export { Banner } from './molecules/Banner';
-export type { BannerProps, BannerVariant, BannerPosition } from './molecules/Banner';
+export { Banner, useBannerColor } from './molecules/Banner';
+export type { BannerProps, BannerVariant, BannerColor, BannerSize, BannerPosition, BannerTextAlign } from './molecules/Banner';
 
 export { RichTextEditor } from './molecules/RichTextEditor';
 export type {
