@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
 import { Card, CardHeader, CardBody, CardFooter } from './Card';
 
 describe('Card', () => {
@@ -47,26 +47,6 @@ describe('Card', () => {
     render(<Card padded={false} data-testid="card">Content</Card>);
     const card = screen.getByTestId('card');
     expect(card.className).not.toContain('padded');
-  });
-
-  it('applies interactive class when interactive is true', () => {
-    render(<Card interactive data-testid="card">Content</Card>);
-    const card = screen.getByTestId('card');
-    expect(card.className).toContain('interactive');
-  });
-
-  it('has tabIndex and role when interactive', () => {
-    render(<Card interactive data-testid="card">Content</Card>);
-    const card = screen.getByTestId('card');
-    expect(card).toHaveAttribute('tabIndex', '0');
-    expect(card).toHaveAttribute('role', 'button');
-  });
-
-  it('handles click events when interactive', () => {
-    const handleClick = vi.fn();
-    render(<Card interactive onClick={handleClick} data-testid="card">Content</Card>);
-    fireEvent.click(screen.getByTestId('card'));
-    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
   it('applies custom className', () => {

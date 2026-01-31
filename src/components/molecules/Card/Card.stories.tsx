@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Card, CardHeader, CardBody, CardFooter } from './Card';
 import { Surface } from '../../foundation/Surface';
 import { Button } from '../../atoms/Button';
+import { Typography } from '../../foundation/Typography';
 
 /**
  * A neomorphic card container for grouping related content.
@@ -30,10 +31,13 @@ import { Button } from '../../atoms/Button';
 const meta: Meta<typeof Card> = {
   title: 'Molecules/Card',
   component: Card,
+  parameters: {
+    layout: 'padded',
+  },
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <Surface theme="light" style={{ padding: '3rem' }}>
+      <Surface theme="light" style={{ padding: '2rem' }}>
         <Story />
       </Surface>
     ),
@@ -50,7 +54,8 @@ const meta: Meta<typeof Card> = {
     variant: {
       control: 'select',
       options: ['convex', 'flat', 'concave'],
-      description: 'Visual style: **convex** (raised), **flat** (minimal), or **concave** (sunken)',
+      description:
+        'Visual style: **convex** (raised), **flat** (minimal), or **concave** (sunken)',
       table: { category: 'Appearance', defaultValue: { summary: 'convex' } },
     },
     elevation: {
@@ -87,10 +92,12 @@ export const Default: Story = {
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 1rem' }}>Card Title</h3>
-        <p style={{ margin: 0, color: 'var(--neo-text-secondary)' }}>
+        <Typography variant="h6" gutterBottom>
+          Card Title
+        </Typography>
+        <Typography color="secondary">
           This is a basic neomorphic card with elevated appearance.
-        </p>
+        </Typography>
       </div>
     ),
   },
@@ -109,16 +116,22 @@ export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
       <Card variant="convex" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>Convex</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Elevated/popped out</p>
+        <Typography variant="h6">Convex</Typography>
+        <Typography variant="body2" color="secondary">
+          Elevated/popped out
+        </Typography>
       </Card>
       <Card variant="flat" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>Flat</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>No shadow</p>
+        <Typography variant="h6">Flat</Typography>
+        <Typography variant="body2" color="secondary">
+          No shadow
+        </Typography>
       </Card>
       <Card variant="concave" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>Concave</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Sunken/pressed in</p>
+        <Typography variant="h6">Concave</Typography>
+        <Typography variant="body2" color="secondary">
+          Sunken/pressed in
+        </Typography>
       </Card>
     </div>
   ),
@@ -133,8 +146,10 @@ export const VariantConvex: Story = {
     variant: 'convex',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Convex Card</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Elevated appearance</p>
+        <Typography variant="h6">Convex Card</Typography>
+        <Typography variant="body2" color="secondary">
+          Elevated appearance
+        </Typography>
       </div>
     ),
   },
@@ -149,8 +164,10 @@ export const VariantFlat: Story = {
     variant: 'flat',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Flat Card</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>No shadow</p>
+        <Typography variant="h6">Flat Card</Typography>
+        <Typography variant="body2" color="secondary">
+          No shadow
+        </Typography>
       </div>
     ),
   },
@@ -165,8 +182,10 @@ export const VariantConcave: Story = {
     variant: 'concave',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Concave Card</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Pressed in</p>
+        <Typography variant="h6">Concave Card</Typography>
+        <Typography variant="body2" color="secondary">
+          Pressed in
+        </Typography>
       </div>
     ),
   },
@@ -183,16 +202,22 @@ export const Elevations: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
       <Card elevation="low" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>Low Elevation</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>4px shadow depth</p>
+        <Typography variant="h6">Low Elevation</Typography>
+        <Typography variant="body2" color="secondary">
+          4px shadow depth
+        </Typography>
       </Card>
       <Card elevation="mid" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>Mid Elevation</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>8px shadow depth</p>
+        <Typography variant="h6">Mid Elevation</Typography>
+        <Typography variant="body2" color="secondary">
+          8px shadow depth
+        </Typography>
       </Card>
       <Card elevation="high" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>High Elevation</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>16px shadow depth</p>
+        <Typography variant="h6">High Elevation</Typography>
+        <Typography variant="body2" color="secondary">
+          16px shadow depth
+        </Typography>
       </Card>
     </div>
   ),
@@ -207,8 +232,10 @@ export const ElevationLow: Story = {
     elevation: 'low',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Low Elevation</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Subtle shadow</p>
+        <Typography variant="h6">Low Elevation</Typography>
+        <Typography variant="body2" color="secondary">
+          Subtle shadow
+        </Typography>
       </div>
     ),
   },
@@ -223,8 +250,10 @@ export const ElevationMid: Story = {
     elevation: 'mid',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Mid Elevation</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Default shadow</p>
+        <Typography variant="h6">Mid Elevation</Typography>
+        <Typography variant="body2" color="secondary">
+          Default shadow
+        </Typography>
       </div>
     ),
   },
@@ -239,8 +268,10 @@ export const ElevationHigh: Story = {
     elevation: 'high',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>High Elevation</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Strong shadow</p>
+        <Typography variant="h6">High Elevation</Typography>
+        <Typography variant="body2" color="secondary">
+          Strong shadow
+        </Typography>
       </div>
     ),
   },
@@ -257,28 +288,40 @@ export const RoundedCorners: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
       <Card rounded="none" style={{ width: '150px' }}>
-        <h4 style={{ margin: 0 }}>None</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Sharp</p>
+        <Typography variant="h6">None</Typography>
+        <Typography variant="body2" color="secondary">
+          Sharp
+        </Typography>
       </Card>
       <Card rounded="sm" style={{ width: '150px' }}>
-        <h4 style={{ margin: 0 }}>Small</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Subtle</p>
+        <Typography variant="h6">Small</Typography>
+        <Typography variant="body2" color="secondary">
+          Subtle
+        </Typography>
       </Card>
       <Card rounded="md" style={{ width: '150px' }}>
-        <h4 style={{ margin: 0 }}>Medium</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Default</p>
+        <Typography variant="h6">Medium</Typography>
+        <Typography variant="body2" color="secondary">
+          Default
+        </Typography>
       </Card>
       <Card rounded="lg" style={{ width: '150px' }}>
-        <h4 style={{ margin: 0 }}>Large</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Rounded</p>
+        <Typography variant="h6">Large</Typography>
+        <Typography variant="body2" color="secondary">
+          Rounded
+        </Typography>
       </Card>
       <Card rounded="xl" style={{ width: '150px' }}>
-        <h4 style={{ margin: 0 }}>XL</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Extra</p>
+        <Typography variant="h6">XL</Typography>
+        <Typography variant="body2" color="secondary">
+          Extra
+        </Typography>
       </Card>
       <Card rounded="full" style={{ width: '150px' }}>
-        <h4 style={{ margin: 0 }}>Full</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Pill</p>
+        <Typography variant="h6">Full</Typography>
+        <Typography variant="body2" color="secondary">
+          Pill
+        </Typography>
       </Card>
     </div>
   ),
@@ -293,8 +336,10 @@ export const RoundedNone: Story = {
     rounded: 'none',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Sharp Corners</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>No border radius</p>
+        <Typography variant="h6">Sharp Corners</Typography>
+        <Typography variant="body2" color="secondary">
+          No border radius
+        </Typography>
       </div>
     ),
   },
@@ -309,8 +354,10 @@ export const RoundedSmall: Story = {
     rounded: 'sm',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Small Radius</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Subtle rounding</p>
+        <Typography variant="h6">Small Radius</Typography>
+        <Typography variant="body2" color="secondary">
+          Subtle rounding
+        </Typography>
       </div>
     ),
   },
@@ -325,8 +372,10 @@ export const RoundedMedium: Story = {
     rounded: 'md',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Medium Radius</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Default rounding</p>
+        <Typography variant="h6">Medium Radius</Typography>
+        <Typography variant="body2" color="secondary">
+          Default rounding
+        </Typography>
       </div>
     ),
   },
@@ -341,8 +390,10 @@ export const RoundedLarge: Story = {
     rounded: 'lg',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Large Radius</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>More rounding</p>
+        <Typography variant="h6">Large Radius</Typography>
+        <Typography variant="body2" color="secondary">
+          More rounding
+        </Typography>
       </div>
     ),
   },
@@ -357,8 +408,10 @@ export const RoundedXL: Story = {
     rounded: 'xl',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>XL Radius</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Pronounced rounding</p>
+        <Typography variant="h6">XL Radius</Typography>
+        <Typography variant="body2" color="secondary">
+          Pronounced rounding
+        </Typography>
       </div>
     ),
   },
@@ -373,8 +426,10 @@ export const RoundedFull: Story = {
     rounded: 'full',
     children: (
       <div>
-        <h4 style={{ margin: 0 }}>Full Radius</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Pill-shaped</p>
+        <Typography variant="h6">Full Radius</Typography>
+        <Typography variant="body2" color="secondary">
+          Pill-shaped
+        </Typography>
       </div>
     ),
   },
@@ -391,20 +446,44 @@ export const WithSubComponents: Story = {
   render: () => (
     <Card style={{ width: '320px' }}>
       <CardHeader>
-        <h3 style={{ margin: 0 }}>Product Card</h3>
+        <Typography variant="h6">Product Card</Typography>
       </CardHeader>
       <CardBody>
-        <p style={{ margin: 0, color: 'var(--neo-text-secondary)' }}>
+        <Typography color="secondary">
           This card demonstrates the use of CardHeader, CardBody, and CardFooter
           sub-components for structured content.
-        </p>
+        </Typography>
       </CardBody>
       <CardFooter>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>
+        <div
+          style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}
+        >
           <Button variant="flat" size="sm" label="Cancel" />
           <Button size="sm" label="Confirm" />
         </div>
       </CardFooter>
+    </Card>
+  ),
+};
+
+/**
+ * CardHeader with title and subtitle.
+ */
+export const CardHeaderExample: Story = {
+  tags: ['!dev'],
+  render: () => (
+    <Card style={{ width: '320px' }}>
+      <CardHeader>
+        <Typography variant="h6">Card Title</Typography>
+        <Typography variant="body2" color="secondary">
+          Subtitle text
+        </Typography>
+      </CardHeader>
+      <CardBody>
+        <Typography color="secondary">
+          CardHeader provides a bordered section at the top of the card.
+        </Typography>
+      </CardBody>
     </Card>
   ),
 };
@@ -422,19 +501,75 @@ export const ProductCard: Story = {
       <div
         style={{
           height: '160px',
-          background: 'linear-gradient(135deg, var(--neo-accent-primary), var(--neo-accent-secondary))',
+          background:
+            'linear-gradient(135deg, var(--neo-accent-primary), var(--neo-accent-secondary))',
           borderRadius: 'var(--neo-radius-md)',
           marginBottom: '1rem',
         }}
       />
-      <h3 style={{ margin: '0 0 0.5rem' }}>Premium Headphones</h3>
-      <p style={{ margin: '0 0 1rem', color: 'var(--neo-text-secondary)', fontSize: '14px' }}>
+      <Typography variant="h6" gutterBottom>
+        Premium Headphones
+      </Typography>
+      <Typography variant="body2" color="secondary" gutterBottom>
         Wireless noise-canceling headphones with premium sound quality.
-      </p>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ fontSize: '20px', fontWeight: 'bold' }}>$299</span>
+      </Typography>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="h5">$299</Typography>
         <Button size="sm" label="Add to Cart" />
       </div>
+    </Card>
+  ),
+};
+
+/**
+ * Example of a stats widget card.
+ */
+export const StatsWidget: Story = {
+  render: () => (
+    <Card style={{ width: '200px' }} variant="concave">
+      <Typography variant="overline" color="secondary">
+        Total Users
+      </Typography>
+      <Typography variant="h3">12,345</Typography>
+      <Typography variant="caption" color="success">
+        +12% from last month
+      </Typography>
+    </Card>
+  ),
+};
+
+/**
+ * Example of a notification card.
+ */
+export const NotificationCard: Story = {
+  render: () => (
+    <Card style={{ width: '360px' }}>
+      <CardHeader>
+        <Typography variant="h6">System Update</Typography>
+        <Typography variant="caption" color="secondary">
+          2 hours ago
+        </Typography>
+      </CardHeader>
+      <CardBody>
+        <Typography variant="body2" color="secondary">
+          A new system update is available. Please restart your application to
+          apply the changes.
+        </Typography>
+      </CardBody>
+      <CardFooter>
+        <div
+          style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}
+        >
+          <Button variant="flat" size="sm" label="Remind Later" />
+          <Button size="sm" label="Update Now" />
+        </div>
+      </CardFooter>
     </Card>
   ),
 };
@@ -450,16 +585,18 @@ export const DarkTheme: Story = {
   args: {
     children: (
       <div>
-        <h3 style={{ margin: '0 0 1rem' }}>Dark Theme Card</h3>
-        <p style={{ margin: 0 }}>
+        <Typography variant="h6" gutterBottom>
+          Dark Theme Card
+        </Typography>
+        <Typography color="secondary">
           Cards adapt to the dark theme automatically.
-        </p>
+        </Typography>
       </div>
     ),
   },
   decorators: [
     (Story) => (
-      <Surface theme="dark" style={{ padding: '3rem' }}>
+      <Surface theme="dark" style={{ padding: '2rem' }}>
         <Story />
       </Surface>
     ),
@@ -473,22 +610,65 @@ export const DarkThemeVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
       <Card variant="convex" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>Convex</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Elevated</p>
+        <Typography variant="h6">Convex</Typography>
+        <Typography variant="body2" color="secondary">
+          Elevated
+        </Typography>
       </Card>
       <Card variant="flat" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>Flat</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>No shadow</p>
+        <Typography variant="h6">Flat</Typography>
+        <Typography variant="body2" color="secondary">
+          No shadow
+        </Typography>
       </Card>
       <Card variant="concave" style={{ width: '200px' }}>
-        <h4 style={{ margin: 0 }}>Concave</h4>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '14px' }}>Sunken</p>
+        <Typography variant="h6">Concave</Typography>
+        <Typography variant="body2" color="secondary">
+          Sunken
+        </Typography>
       </Card>
     </div>
   ),
   decorators: [
     (Story) => (
-      <Surface theme="dark" style={{ padding: '3rem' }}>
+      <Surface theme="dark" style={{ padding: '2rem' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
+};
+
+/**
+ * Card with sub-components on dark background.
+ */
+export const DarkThemeSubComponents: Story = {
+  render: () => (
+    <Card style={{ width: '320px' }}>
+      <CardHeader>
+        <Typography variant="h6">Dark Theme Header</Typography>
+        <Typography variant="body2" color="secondary">
+          Sub-components adapt
+        </Typography>
+      </CardHeader>
+      <CardBody>
+        <Typography color="secondary">
+          CardHeader, CardBody, and CardFooter work seamlessly on dark
+          backgrounds.
+        </Typography>
+      </CardBody>
+      <CardFooter>
+        <div
+          style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}
+        >
+          <Button variant="flat" size="sm" label="Cancel" />
+          <Button size="sm" label="Confirm" />
+        </div>
+      </CardFooter>
+    </Card>
+  ),
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '2rem' }}>
         <Story />
       </Surface>
     ),
