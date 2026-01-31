@@ -70,13 +70,14 @@ describe('DatePicker', () => {
 
     // Open calendar
     fireEvent.click(screen.getByRole('button', { name: /jan 15, 2024/i }));
-    expect(screen.getByText('January 2024')).toBeInTheDocument();
+    // Month name is in a separate button now
+    expect(screen.getByRole('button', { name: /january/i })).toBeInTheDocument();
 
     // Select a date
     fireEvent.click(screen.getByText('20'));
 
-    // Calendar should be closed
-    expect(screen.queryByText('January 2024')).not.toBeInTheDocument();
+    // Calendar should be closed - month button should not be visible
+    expect(screen.queryByRole('button', { name: /january/i })).not.toBeInTheDocument();
   });
 
   it('shows clear button when value and clearable', () => {
@@ -128,10 +129,12 @@ describe('DatePicker', () => {
   it('closes on Escape key', () => {
     render(<DatePicker />);
     fireEvent.click(screen.getByRole('button', { name: /select a date/i }));
-    expect(screen.getByText(/January|February|March|April|May|June|July|August|September|October|November|December/)).toBeInTheDocument();
+    // Calendar is open - check for month button
+    expect(screen.getByRole('button', { name: /January|February|March|April|May|June|July|August|September|October|November|December/i })).toBeInTheDocument();
 
     fireEvent.keyDown(document, { key: 'Escape' });
-    expect(screen.queryByText(/^January|February|March|April|May|June|July|August|September|October|November|December \d{4}$/)).not.toBeInTheDocument();
+    // Calendar is closed - month button should not be visible
+    expect(screen.queryByRole('button', { name: /January|February|March|April|May|June|July|August|September|October|November|December/i })).not.toBeInTheDocument();
   });
 
   it('applies size classes correctly', () => {

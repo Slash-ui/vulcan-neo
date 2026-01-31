@@ -1,10 +1,15 @@
 .calendar {
   display: inline-flex;
-  flex-direction: column;
-  padding: var(--neo-space-md);
-  border-radius: var(--neo-radius-md);
+  flex-direction: row;
+  border-radius: var(--neo-radius-lg);
   background: var(--neo-bg);
   font-family: var(--neo-font-family);
+}
+
+.calendarContent {
+  display: flex;
+  flex-direction: column;
+  padding: var(--neo-space-lg);
 }
 
 /* Elevation levels */
@@ -26,128 +31,284 @@
     12px 12px 24px var(--neo-shadow-dark);
 }
 
-/* Sizes */
-.sm {
-  --day-size: 32px;
-  --nav-size: 28px;
+/* =============================================================================
+   VARIANT STYLES
+   ============================================================================= */
+
+/* Medium variant (default) */
+.variant-medium {
+  flex-direction: column;
+}
+
+/* Compact variant */
+.variant-compact {
+  flex-direction: column;
+}
+
+.variant-compact .calendarContent {
   padding: var(--neo-space-sm);
+}
+
+.variant-compact .header {
+  margin-bottom: var(--neo-space-sm);
+  padding-bottom: 0;
+  border-bottom: none;
   gap: var(--neo-space-xs);
 }
 
-.md {
-  --day-size: 40px;
-  --nav-size: 32px;
-  padding: var(--neo-space-md);
+.variant-compact .weekdaysWrapper {
+  margin-bottom: var(--neo-space-xs);
+}
+
+.variant-compact .weekdays {
+  gap: 2px;
+}
+
+.variant-compact .days {
+  gap: 2px;
+}
+
+.variant-compact .weekNumbers {
+  gap: 2px;
+}
+
+/* Full variant */
+.variant-full {
+  flex-direction: row;
+}
+
+.todayPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--neo-space-xl) var(--neo-space-lg);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  min-width: 140px;
+  background: linear-gradient(135deg, rgba(var(--neo-accent-primary-rgb, 59, 130, 246), 0.05), transparent);
+  position: relative;
+}
+
+.todayDay {
+  font-size: 4rem !important;
+  line-height: 1 !important;
+  margin-bottom: var(--neo-space-xs);
+}
+
+.todayDayName {
+  text-transform: capitalize;
+  margin-bottom: var(--neo-space-xs);
+}
+
+.todayMonthYear {
+  opacity: 0.7;
+}
+
+/* Panel label for range selection */
+.panelLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--neo-space-xs);
+}
+
+.panelHint {
+  opacity: 0.6;
+  text-align: center;
+}
+
+/* Range panel full layout (when both dates selected) */
+.rangePanelFull {
+  min-width: 160px;
+  justify-content: center;
+}
+
+.rangeDatesWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--neo-space-sm);
 }
 
-.lg {
+.rangeDateBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--neo-space-xs) 0;
+}
+
+.rangeDateDay {
+  font-size: 2.5rem !important;
+  line-height: 1 !important;
+  margin-bottom: var(--neo-space-xs);
+}
+
+.durationBlock {
+  position: absolute;
+  bottom: var(--neo-space-lg);
+  left: 0;
+  right: 0;
+  padding-top: var(--neo-space-sm);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.durationText {
+  font-weight: normal;
+}
+
+/* =============================================================================
+   SIZES
+   ============================================================================= */
+
+.sm {
+  --day-size: 36px;
+  --nav-size: 28px;
+  --dropdown-height: 32px;
+  --week-number-width: 24px;
+  border-radius: var(--neo-radius-md);
+}
+
+.sm .calendarContent {
+  padding: var(--neo-space-md);
+  gap: var(--neo-space-xs);
+}
+
+.sm .weekNumberHeader,
+.sm .weekNumber {
+  width: var(--week-number-width);
+}
+
+.md {
   --day-size: 48px;
-  --nav-size: 40px;
+  --nav-size: 36px;
+  --dropdown-height: 40px;
+  --week-number-width: 32px;
+  border-radius: var(--neo-radius-lg);
+}
+
+.md .calendarContent {
   padding: var(--neo-space-lg);
+  gap: var(--neo-space-sm);
+}
+
+.md .weekNumberHeader,
+.md .weekNumber {
+  width: var(--week-number-width);
+}
+
+.lg {
+  --day-size: 56px;
+  --nav-size: 44px;
+  --dropdown-height: 48px;
+  --week-number-width: 40px;
+  border-radius: var(--neo-radius-xl);
+}
+
+.lg .calendarContent {
+  padding: var(--neo-space-xl);
   gap: var(--neo-space-md);
 }
 
-/* Header */
+.lg .weekNumberHeader,
+.lg .weekNumber {
+  width: var(--week-number-width);
+}
+
+/* =============================================================================
+   HEADER
+   ============================================================================= */
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--neo-space-md);
+  margin-bottom: var(--neo-space-lg);
+  padding-bottom: var(--neo-space-md);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Navigation button group */
+.navGroup {
+  display: flex;
+  gap: var(--neo-space-xs);
+}
+
+
+/* =============================================================================
+   WEEKDAYS
+   ============================================================================= */
+
+.weekdaysWrapper {
+  display: flex;
   margin-bottom: var(--neo-space-sm);
 }
 
-/* Navigation buttons - base styles */
-.navButton {
+.weekdaysWrapper.withWeekNumbers {
+  gap: var(--neo-space-sm);
+}
+
+.weekNumberHeader {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--nav-size);
-  height: var(--nav-size);
-  padding: 0;
-  background: var(--neo-bg);
-  border: none;
-  border-radius: var(--neo-radius-xs);
-  color: var(--neo-text-secondary);
-  cursor: pointer;
-  transition: all var(--neo-transition-fast);
+  width: 32px;
+  height: calc(var(--day-size) * 0.6);
+  flex-shrink: 0;
 }
 
-.navButton:hover {
-  color: var(--neo-text);
-}
-
-.navButton:focus-visible {
-  outline: 2px solid var(--neo-accent-primary);
-  outline-offset: 2px;
-}
-
-.navButton svg {
-  display: block;
-}
-
-/* Navigation button - convex variant */
-.nav-convex {
-  box-shadow:
-    -3px -3px 6px var(--neo-shadow-light),
-    3px 3px 6px var(--neo-shadow-dark);
-}
-
-.nav-convex:hover {
-  box-shadow:
-    -4px -4px 8px var(--neo-shadow-light),
-    4px 4px 8px var(--neo-shadow-dark);
-}
-
-.nav-convex:active {
-  box-shadow:
-    inset 2px 2px 4px var(--neo-shadow-dark),
-    inset -2px -2px 4px var(--neo-shadow-light);
-}
-
-/* Navigation button - flat variant */
-.nav-flat {
-  box-shadow: none;
-  background: transparent;
-}
-
-.nav-flat:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.nav-flat:active {
-  background: rgba(0, 0, 0, 0.08);
-}
-
-/* Weekdays */
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, var(--day-size));
   gap: var(--neo-space-xs);
-  margin-bottom: var(--neo-space-xs);
 }
 
 .weekday {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--day-size);
+  height: calc(var(--day-size) * 0.6);
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* Days grid */
+/* =============================================================================
+   DAYS GRID
+   ============================================================================= */
+
+.daysWrapper {
+  display: flex;
+}
+
+.daysWrapper.withWeekNumbers {
+  gap: var(--neo-space-sm);
+}
+
+.weekNumbers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neo-space-xs);
+  flex-shrink: 0;
+}
+
+.weekNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: var(--day-size);
+  opacity: 0.6;
+}
+
 .days {
   display: grid;
   grid-template-columns: repeat(7, var(--day-size));
   gap: var(--neo-space-xs);
 }
 
-.emptyDay {
-  width: var(--day-size);
-  height: var(--day-size);
-}
-
 .day {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: var(--day-size);
@@ -156,31 +317,77 @@
   color: var(--neo-text);
   background: var(--neo-bg);
   border: none;
-  border-radius: var(--neo-radius-xs);
+  border-radius: 50%;
   cursor: pointer;
   transition: all var(--neo-transition-fast);
   outline: none;
+  position: relative;
 }
 
-.day:hover:not(:disabled):not(.selected) {
+.day:hover:not(:disabled):not(.selected):not(.otherMonth):not(.rangeStart):not(.rangeEnd) {
   box-shadow:
     -3px -3px 6px var(--neo-shadow-light),
     3px 3px 6px var(--neo-shadow-dark);
 }
 
-.day:active:not(:disabled):not(.selected) {
+.day:active:not(:disabled):not(.selected):not(.otherMonth) {
   box-shadow:
     inset 2px 2px 4px var(--neo-shadow-dark),
     inset -2px -2px 4px var(--neo-shadow-light);
 }
 
-/* Today */
-.day.today {
+/* Other month days (faded) */
+.day.otherMonth {
+  color: var(--neo-text-disabled);
+  opacity: 0.5;
+}
+
+.day.otherMonth:hover {
+  opacity: 0.7;
+}
+
+/* =============================================================================
+   TODAY VARIANTS
+   ============================================================================= */
+
+/* Today - colored variant (default) */
+.day.today.today-colored {
   color: var(--neo-accent-primary);
 }
 
-/* Weekend - only applies when highlightWeekends is enabled */
-.highlightWeekends .day.weekend {
+/* Today - circle variant */
+.day.today.today-circle {
+  color: var(--neo-accent-primary);
+  box-shadow:
+    inset 0 0 0 2px var(--neo-accent-primary);
+}
+
+.day.today.today-circle:hover:not(:disabled):not(.selected) {
+  box-shadow:
+    inset 0 0 0 2px var(--neo-accent-primary),
+    -3px -3px 6px var(--neo-shadow-light),
+    3px 3px 6px var(--neo-shadow-dark);
+}
+
+/* Today - handdrawn variant */
+.day.today.today-handdrawn {
+  color: var(--neo-accent-primary);
+}
+
+.handdrawnCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--neo-accent-primary);
+  pointer-events: none;
+}
+
+/* =============================================================================
+   WEEKEND HIGHLIGHTING
+   ============================================================================= */
+
+.highlightWeekends .day.weekend:not(.otherMonth) {
   color: var(--calendar-weekend-color, var(--neo-accent-secondary, #e91e63));
 }
 
@@ -192,7 +399,10 @@
   color: var(--calendar-weekend-color, var(--neo-accent-secondary, #e91e63));
 }
 
-/* Selected */
+/* =============================================================================
+   SELECTED STATE
+   ============================================================================= */
+
 .day.selected {
   color: var(--neo-accent-primary);
   box-shadow:
@@ -200,7 +410,10 @@
     inset -4px -4px 8px var(--neo-shadow-light);
 }
 
-/* Disabled */
+/* =============================================================================
+   DISABLED STATE
+   ============================================================================= */
+
 .day.disabled {
   cursor: not-allowed;
   opacity: 0.4;
@@ -211,4 +424,106 @@
 .day:focus-visible {
   outline: 2px solid var(--neo-accent-primary);
   outline-offset: 2px;
+}
+
+/* =============================================================================
+   RANGE SELECTION
+   ============================================================================= */
+
+.rangeMode .day {
+  cursor: pointer;
+}
+
+/* Range start (first selected date) */
+.day.rangeStart {
+  color: var(--neo-accent-primary);
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+  z-index: 2;
+}
+
+/* Range end (second selected date) */
+.day.rangeEnd {
+  color: var(--neo-accent-primary);
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light);
+  z-index: 2;
+}
+
+/* Days in range (between start and end) */
+.day.inRange:not(.rangeStart):not(.rangeEnd) {
+  background: rgba(var(--neo-accent-primary-rgb, 59, 130, 246), 0.15);
+  color: var(--neo-accent-primary);
+  border-radius: 50%;
+}
+
+.day.inRange:not(.rangeStart):not(.rangeEnd):hover {
+  background: rgba(var(--neo-accent-primary-rgb, 59, 130, 246), 0.25);
+}
+
+/* Range preview (when hovering during selection) */
+.day.rangePreview.inRange:not(.rangeStart):not(.rangeEnd) {
+  background: rgba(var(--neo-accent-primary-rgb, 59, 130, 246), 0.1);
+}
+
+/* =============================================================================
+   INDICATORS (DOTS)
+   ============================================================================= */
+
+.indicators {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.indicator {
+  width: 4px !important;
+  height: 4px !important;
+  min-width: 4px !important;
+  min-height: 4px !important;
+  padding: 0 !important;
+}
+
+/* Size adjustments for indicators */
+.sm .indicators {
+  bottom: 2px;
+  gap: 1px;
+}
+
+.sm .indicator {
+  width: 3px !important;
+  height: 3px !important;
+  min-width: 3px !important;
+  min-height: 3px !important;
+}
+
+.lg .indicators {
+  bottom: 6px;
+  gap: 3px;
+}
+
+.lg .indicator {
+  width: 5px !important;
+  height: 5px !important;
+  min-width: 5px !important;
+  min-height: 5px !important;
+}
+
+/* =============================================================================
+   FOOTER / TODAY BUTTON
+   ============================================================================= */
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--neo-space-md);
+  padding-top: var(--neo-space-md);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
