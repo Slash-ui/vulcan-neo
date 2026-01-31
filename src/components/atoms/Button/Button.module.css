@@ -17,6 +17,9 @@
   outline: none;
   position: relative;
   overflow: hidden;
+  /* Inherit banner shadow colors if inside a banner */
+  --shadow-light: var(--banner-shadow-light, var(--neo-shadow-light));
+  --shadow-dark: var(--banner-shadow-dark, var(--neo-shadow-dark));
 }
 
 /* Sizes */
@@ -41,61 +44,61 @@
 /* Elevation: Low (4px) */
 .elevation-low.convex {
   box-shadow:
-    -4px -4px 8px var(--neo-shadow-light),
-    4px 4px 8px var(--neo-shadow-dark);
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
 }
 
 .elevation-low.convex:hover:not(.disabled):not(:active) {
   box-shadow:
-    -2px -2px 4px var(--neo-shadow-light),
-    2px 2px 4px var(--neo-shadow-dark);
+    -2px -2px 4px var(--shadow-light),
+    2px 2px 4px var(--shadow-dark);
 }
 
 .elevation-low.convex:active:not(.disabled),
 .elevation-low.convex.active {
   box-shadow:
-    inset 4px 4px 8px var(--neo-shadow-dark),
-    inset -4px -4px 8px var(--neo-shadow-light);
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
 }
 
 /* Elevation: Mid (8px) - Default */
 .elevation-mid.convex {
   box-shadow:
-    -8px -8px 16px var(--neo-shadow-light),
-    8px 8px 16px var(--neo-shadow-dark);
+    -8px -8px 16px var(--shadow-light),
+    8px 8px 16px var(--shadow-dark);
 }
 
 .elevation-mid.convex:hover:not(.disabled):not(:active) {
   box-shadow:
-    -4px -4px 8px var(--neo-shadow-light),
-    4px 4px 8px var(--neo-shadow-dark);
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
 }
 
 .elevation-mid.convex:active:not(.disabled),
 .elevation-mid.convex.active {
   box-shadow:
-    inset 8px 8px 16px var(--neo-shadow-dark),
-    inset -8px -8px 16px var(--neo-shadow-light);
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
 }
 
 /* Elevation: High (16px) */
 .elevation-high.convex {
   box-shadow:
-    -16px -16px 32px var(--neo-shadow-light),
-    16px 16px 32px var(--neo-shadow-dark);
+    -16px -16px 32px var(--shadow-light),
+    16px 16px 32px var(--shadow-dark);
 }
 
 .elevation-high.convex:hover:not(.disabled):not(:active) {
   box-shadow:
-    -8px -8px 16px var(--neo-shadow-light),
-    8px 8px 16px var(--neo-shadow-dark);
+    -8px -8px 16px var(--shadow-light),
+    8px 8px 16px var(--shadow-dark);
 }
 
 .elevation-high.convex:active:not(.disabled),
 .elevation-high.convex.active {
   box-shadow:
-    inset 16px 16px 32px var(--neo-shadow-dark),
-    inset -16px -16px 32px var(--neo-shadow-light);
+    inset 16px 16px 32px var(--shadow-dark),
+    inset -16px -16px 32px var(--shadow-light);
 }
 
 /* Flat variant */
@@ -107,14 +110,14 @@
 .flat:hover:not(.disabled) {
   background: var(--neo-bg);
   box-shadow:
-    -4px -4px 8px var(--neo-shadow-light),
-    4px 4px 8px var(--neo-shadow-dark);
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
 }
 
 .flat:active:not(.disabled) {
   box-shadow:
-    inset 4px 4px 8px var(--neo-shadow-dark),
-    inset -4px -4px 8px var(--neo-shadow-light);
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
 }
 
 /* FAB variant */
@@ -124,8 +127,8 @@
   height: 56px;
   padding: 0;
   box-shadow:
-    -12px -12px 24px var(--neo-shadow-light),
-    12px 12px 24px var(--neo-shadow-dark);
+    -12px -12px 24px var(--shadow-light),
+    12px 12px 24px var(--shadow-dark);
 }
 
 .fab.sm {
@@ -142,15 +145,15 @@
 
 .fab:hover:not(.disabled):not(:active) {
   box-shadow:
-    -6px -6px 12px var(--neo-shadow-light),
-    6px 6px 12px var(--neo-shadow-dark);
+    -6px -6px 12px var(--shadow-light),
+    6px 6px 12px var(--shadow-dark);
   transform: translateY(1px);
 }
 
 .fab:active:not(.disabled) {
   box-shadow:
-    inset 8px 8px 16px var(--neo-shadow-dark),
-    inset -8px -8px 16px var(--neo-shadow-light);
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
 }
 
 /* Focus visible */
