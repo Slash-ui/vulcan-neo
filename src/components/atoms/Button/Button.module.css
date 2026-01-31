@@ -202,3 +202,373 @@
 .label {
   flex-shrink: 0;
 }
+
+/* Color variants */
+.colored {
+  --shadow-light: rgba(255, 255, 255, 0.25);
+  --shadow-dark: rgba(0, 0, 0, 0.25);
+}
+
+.color-primary {
+  background: var(--neo-color-primary);
+  color: var(--neo-color-on-primary);
+}
+
+.color-primary-light {
+  background: var(--neo-color-primary-light);
+  color: var(--neo-color-primary-dark);
+}
+
+.color-primary-dark {
+  background: var(--neo-color-primary-dark);
+  color: var(--neo-color-on-primary);
+}
+
+.color-secondary {
+  background: var(--neo-color-secondary);
+  color: var(--neo-color-on-secondary);
+}
+
+.color-secondary-light {
+  background: var(--neo-color-secondary-light);
+  color: var(--neo-color-secondary-dark);
+}
+
+.color-secondary-dark {
+  background: var(--neo-color-secondary-dark);
+  color: var(--neo-color-on-secondary);
+}
+
+.color-tertiary {
+  background: var(--neo-color-tertiary);
+  color: var(--neo-color-on-tertiary);
+}
+
+.color-tertiary-light {
+  background: var(--neo-color-tertiary-light);
+  color: var(--neo-color-tertiary-dark);
+}
+
+.color-tertiary-dark {
+  background: var(--neo-color-tertiary-dark);
+  color: white;
+}
+
+.color-success {
+  background: var(--neo-color-success);
+  color: white;
+}
+
+.color-warning {
+  background: var(--neo-color-warning);
+  color: var(--neo-text);
+}
+
+.color-error {
+  background: var(--neo-color-error);
+  color: white;
+}
+
+.color-info {
+  background: var(--neo-color-info);
+  color: white;
+}
+
+/* Custom color */
+.customColor {
+  background: var(--button-bg);
+  color: var(--button-color);
+}
+
+/* Colored button shadows - Elevation Low */
+.colored.elevation-low.convex {
+  box-shadow:
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
+}
+
+.colored.elevation-low.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -2px -2px 4px var(--shadow-light),
+    2px 2px 4px var(--shadow-dark);
+}
+
+.colored.elevation-low.convex:active:not(.disabled),
+.colored.elevation-low.convex.active {
+  box-shadow:
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+/* Colored button shadows - Elevation Mid */
+.colored.elevation-mid.convex {
+  box-shadow:
+    -8px -8px 16px var(--shadow-light),
+    8px 8px 16px var(--shadow-dark);
+}
+
+.colored.elevation-mid.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
+}
+
+.colored.elevation-mid.convex:active:not(.disabled),
+.colored.elevation-mid.convex.active {
+  box-shadow:
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
+}
+
+/* Colored button shadows - Elevation High */
+.colored.elevation-high.convex {
+  box-shadow:
+    -16px -16px 32px var(--shadow-light),
+    16px 16px 32px var(--shadow-dark);
+}
+
+.colored.elevation-high.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -8px -8px 16px var(--shadow-light),
+    8px 8px 16px var(--shadow-dark);
+}
+
+.colored.elevation-high.convex:active:not(.disabled),
+.colored.elevation-high.convex.active {
+  box-shadow:
+    inset 16px 16px 32px var(--shadow-dark),
+    inset -16px -16px 32px var(--shadow-light);
+}
+
+/* Colored flat variant */
+.colored.flat {
+  box-shadow: none;
+}
+
+.colored.flat:hover:not(.disabled) {
+  box-shadow:
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
+}
+
+.colored.flat:active:not(.disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+/* Colored FAB variant */
+.colored.fab {
+  box-shadow:
+    -12px -12px 24px var(--shadow-light),
+    12px 12px 24px var(--shadow-dark);
+}
+
+.colored.fab:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -6px -6px 12px var(--shadow-light),
+    6px 6px 12px var(--shadow-dark);
+}
+
+.colored.fab:active:not(.disabled) {
+  box-shadow:
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
+}
+
+/* Shadow color variants */
+.customShadow {
+  --shadow-light: color-mix(in srgb, var(--shadow-color) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--shadow-color) 50%, black 50%);
+}
+
+.shadow-primary {
+  --shadow-color: var(--neo-color-primary);
+  --shadow-light: color-mix(in srgb, var(--neo-color-primary) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-primary) 50%, black 50%);
+}
+
+.shadow-primary-light {
+  --shadow-color: var(--neo-color-primary-light);
+  --shadow-light: color-mix(in srgb, var(--neo-color-primary-light) 40%, white 60%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-primary-light) 60%, black 40%);
+}
+
+.shadow-primary-dark {
+  --shadow-color: var(--neo-color-primary-dark);
+  --shadow-light: color-mix(in srgb, var(--neo-color-primary-dark) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-primary-dark) 50%, black 50%);
+}
+
+.shadow-secondary {
+  --shadow-color: var(--neo-color-secondary);
+  --shadow-light: color-mix(in srgb, var(--neo-color-secondary) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-secondary) 50%, black 50%);
+}
+
+.shadow-secondary-light {
+  --shadow-color: var(--neo-color-secondary-light);
+  --shadow-light: color-mix(in srgb, var(--neo-color-secondary-light) 40%, white 60%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-secondary-light) 60%, black 40%);
+}
+
+.shadow-secondary-dark {
+  --shadow-color: var(--neo-color-secondary-dark);
+  --shadow-light: color-mix(in srgb, var(--neo-color-secondary-dark) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-secondary-dark) 50%, black 50%);
+}
+
+.shadow-tertiary {
+  --shadow-color: var(--neo-color-tertiary);
+  --shadow-light: color-mix(in srgb, var(--neo-color-tertiary) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-tertiary) 50%, black 50%);
+}
+
+.shadow-tertiary-light {
+  --shadow-color: var(--neo-color-tertiary-light);
+  --shadow-light: color-mix(in srgb, var(--neo-color-tertiary-light) 40%, white 60%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-tertiary-light) 60%, black 40%);
+}
+
+.shadow-tertiary-dark {
+  --shadow-color: var(--neo-color-tertiary-dark);
+  --shadow-light: color-mix(in srgb, var(--neo-color-tertiary-dark) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-tertiary-dark) 50%, black 50%);
+}
+
+.shadow-success {
+  --shadow-color: var(--neo-color-success);
+  --shadow-light: color-mix(in srgb, var(--neo-color-success) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-success) 50%, black 50%);
+}
+
+.shadow-warning {
+  --shadow-color: var(--neo-color-warning);
+  --shadow-light: color-mix(in srgb, var(--neo-color-warning) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-warning) 50%, black 50%);
+}
+
+.shadow-error {
+  --shadow-color: var(--neo-color-error);
+  --shadow-light: color-mix(in srgb, var(--neo-color-error) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-error) 50%, black 50%);
+}
+
+.shadow-info {
+  --shadow-color: var(--neo-color-info);
+  --shadow-light: color-mix(in srgb, var(--neo-color-info) 30%, white 70%);
+  --shadow-dark: color-mix(in srgb, var(--neo-color-info) 50%, black 50%);
+}
+
+.shadow-default {
+  --shadow-light: var(--neo-shadow-light);
+  --shadow-dark: var(--neo-shadow-dark);
+}
+
+/* Shadow color convex - Elevation Low */
+.customShadow.elevation-low.convex,
+[class*="shadow-"].elevation-low.convex {
+  box-shadow:
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
+}
+
+.customShadow.elevation-low.convex:hover:not(.disabled):not(:active),
+[class*="shadow-"].elevation-low.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -2px -2px 4px var(--shadow-light),
+    2px 2px 4px var(--shadow-dark);
+}
+
+.customShadow.elevation-low.convex:active:not(.disabled),
+[class*="shadow-"].elevation-low.convex:active:not(.disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+/* Shadow color convex - Elevation Mid */
+.customShadow.elevation-mid.convex,
+[class*="shadow-"].elevation-mid.convex {
+  box-shadow:
+    -8px -8px 16px var(--shadow-light),
+    8px 8px 16px var(--shadow-dark);
+}
+
+.customShadow.elevation-mid.convex:hover:not(.disabled):not(:active),
+[class*="shadow-"].elevation-mid.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
+}
+
+.customShadow.elevation-mid.convex:active:not(.disabled),
+[class*="shadow-"].elevation-mid.convex:active:not(.disabled) {
+  box-shadow:
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
+}
+
+/* Shadow color convex - Elevation High */
+.customShadow.elevation-high.convex,
+[class*="shadow-"].elevation-high.convex {
+  box-shadow:
+    -16px -16px 32px var(--shadow-light),
+    16px 16px 32px var(--shadow-dark);
+}
+
+.customShadow.elevation-high.convex:hover:not(.disabled):not(:active),
+[class*="shadow-"].elevation-high.convex:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -8px -8px 16px var(--shadow-light),
+    8px 8px 16px var(--shadow-dark);
+}
+
+.customShadow.elevation-high.convex:active:not(.disabled),
+[class*="shadow-"].elevation-high.convex:active:not(.disabled) {
+  box-shadow:
+    inset 16px 16px 32px var(--shadow-dark),
+    inset -16px -16px 32px var(--shadow-light);
+}
+
+/* Shadow color flat variant */
+.customShadow.flat,
+[class*="shadow-"].flat {
+  box-shadow: none;
+}
+
+.customShadow.flat:hover:not(.disabled),
+[class*="shadow-"].flat:hover:not(.disabled) {
+  box-shadow:
+    -4px -4px 8px var(--shadow-light),
+    4px 4px 8px var(--shadow-dark);
+}
+
+.customShadow.flat:active:not(.disabled),
+[class*="shadow-"].flat:active:not(.disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+/* Shadow color FAB variant */
+.customShadow.fab,
+[class*="shadow-"].fab {
+  box-shadow:
+    -12px -12px 24px var(--shadow-light),
+    12px 12px 24px var(--shadow-dark);
+}
+
+.customShadow.fab:hover:not(.disabled):not(:active),
+[class*="shadow-"].fab:hover:not(.disabled):not(:active) {
+  box-shadow:
+    -6px -6px 12px var(--shadow-light),
+    6px 6px 12px var(--shadow-dark);
+}
+
+.customShadow.fab:active:not(.disabled),
+[class*="shadow-"].fab:active:not(.disabled) {
+  box-shadow:
+    inset 8px 8px 16px var(--shadow-dark),
+    inset -8px -8px 16px var(--shadow-light);
+}
