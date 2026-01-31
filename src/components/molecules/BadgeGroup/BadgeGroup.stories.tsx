@@ -5,72 +5,30 @@ import { Avatar } from '../../atoms/Avatar';
 import { Badge } from '../../atoms/Badge';
 import { Surface } from '../../foundation/Surface';
 
-const sampleUsers = [
-  { initials: 'JD', src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop' },
-  { initials: 'AS', src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop' },
-  { initials: 'MK', src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop' },
-  { initials: 'RW', src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop' },
-  { initials: 'PT', src: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop' },
-  { initials: 'LH' },
-  { initials: 'CB' },
-];
-
-// Children options for the control
-const childrenOptions = {
-  'Avatars (7 users)': sampleUsers.map((user, i) => (
-    <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
-  )),
-  'Avatars (4 users)': sampleUsers.slice(0, 4).map((user, i) => (
-    <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
-  )),
-  'Badges (6 tags)': [
-    <Badge key="1" color="primary">React</Badge>,
-    <Badge key="2" color="success">TypeScript</Badge>,
-    <Badge key="3" color="warning">Node.js</Badge>,
-    <Badge key="4" color="error">Python</Badge>,
-    <Badge key="5" color="default">Go</Badge>,
-    <Badge key="6" color="primary">Rust</Badge>,
-  ],
-  'Badges (3 tags)': [
-    <Badge key="1" color="primary">React</Badge>,
-    <Badge key="2" color="success">TypeScript</Badge>,
-    <Badge key="3" color="warning">Node.js</Badge>,
-  ],
-  'Initials Only': [
-    <Avatar key="1" fallback="A" size="md" />,
-    <Avatar key="2" fallback="B" size="md" />,
-    <Avatar key="3" fallback="C" size="md" />,
-    <Avatar key="4" fallback="D" size="md" />,
-    <Avatar key="5" fallback="E" size="md" />,
-  ],
-};
-
-// Overflow indicator options for the control
-const overflowIndicatorOptions = {
-  'Default (+N)': undefined,
-  'Primary Filled': (count: number) => (
-    <Badge color="primary" filled size="md">+{count}</Badge>
-  ),
-  'Success with text': (count: number) => (
-    <Badge color="success" filled size="md">{count} more</Badge>
-  ),
-  'Error Filled': (count: number) => (
-    <Badge color="error" filled size="md">+{count}</Badge>
-  ),
-  'With Icon': (
-    <Badge color="default" size="md" leftIcon={<Users size={12} />}>more</Badge>
-  ),
-  'Icon Only': (
-    <Badge color="default" size="md"><MoreHorizontal size={14} /></Badge>
-  ),
-  'Custom Purple': (count: number) => (
-    <Badge customColor="#8B5CF6" filled size="md">+{count}</Badge>
-  ),
-  'Custom Pink': (count: number) => (
-    <Badge customColor="#EC4899" filled size="md">{count} hidden</Badge>
-  ),
-};
-
+/**
+ * A component for displaying stacked collections of avatars or badges with overflow handling.
+ * Items overlap in a visually appealing stack with configurable density.
+ *
+ * ## When to Use
+ *
+ * - **User lists**: Show team members or collaborators
+ * - **Assignees**: Display who's working on a task
+ * - **Skill tags**: Compact tag lists with overflow
+ * - **Participants**: Event attendees or chat members
+ *
+ * ## Key Features
+ *
+ * - **Overflow handling**: Shows "+N" indicator when items exceed max
+ * - **Custom indicators**: Replace default overflow with any content
+ * - **Hover animation**: Optional expand effect on hover
+ * - **Flexible spacing**: Compact, normal, or loose stacking
+ *
+ * ## Best Practices
+ *
+ * - Set appropriate `max` based on available space
+ * - Use consistent sizes for all children
+ * - Consider using custom overflow indicators for better UX
+ */
 const meta: Meta<typeof BadgeGroup> = {
   title: 'Molecules/BadgeGroup',
   component: BadgeGroup,
@@ -83,40 +41,57 @@ const meta: Meta<typeof BadgeGroup> = {
     ),
   ],
   argTypes: {
-    max: {
-      control: { type: 'number', min: 1, max: 10 },
-      description: 'Maximum number of items to display before showing overflow count',
+    // Content
+    children: {
+      control: 'select',
+      options: ['Avatars (7 users)', 'Avatars (4 users)', 'Badges (6 tags)', 'Badges (3 tags)', 'Initials Only'],
+      mapping: {
+        'Avatars (7 users)': null, // Will be set in args
+        'Avatars (4 users)': null,
+        'Badges (6 tags)': null,
+        'Badges (3 tags)': null,
+        'Initials Only': null,
+      },
+      description: 'Badge or Avatar children to display',
+      table: { category: 'Content' },
     },
+    overflowIndicator: {
+      control: 'select',
+      options: ['Default (+N)', 'Primary Filled', 'Success with text', 'Error Filled', 'With Icon', 'Icon Only'],
+      description: 'Custom overflow indicator (ReactNode or render function)',
+      table: { category: 'Content' },
+    },
+
+    // Appearance
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
-      description: 'The size of the badges',
-    },
-    overflowDirection: {
-      control: 'select',
-      options: ['left', 'right'],
-      description: 'Direction of overflow stacking',
+      description: 'Size of the badges/avatars',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
     spacing: {
       control: 'select',
       options: ['compact', 'normal', 'loose'],
-      description: 'Spacing between stacked items',
+      description: 'Overlap density between stacked items',
+      table: { category: 'Appearance', defaultValue: { summary: 'normal' } },
+    },
+
+    // Behavior
+    max: {
+      control: { type: 'number', min: 1, max: 10 },
+      description: 'Maximum visible items before showing overflow',
+      table: { category: 'Behavior' },
+    },
+    overflowDirection: {
+      control: 'select',
+      options: ['left', 'right'],
+      description: 'Position of overflow indicator',
+      table: { category: 'Behavior', defaultValue: { summary: 'right' } },
     },
     animate: {
       control: 'boolean',
       description: 'Enable hover animation that expands items',
-    },
-    children: {
-      control: 'select',
-      options: Object.keys(childrenOptions),
-      mapping: childrenOptions,
-      description: 'Badge/Avatar children',
-    },
-    overflowIndicator: {
-      control: 'select',
-      options: Object.keys(overflowIndicatorOptions),
-      mapping: overflowIndicatorOptions,
-      description: 'Custom overflow indicator (ReactNode or render function)',
+      table: { category: 'Behavior', defaultValue: { summary: 'false' } },
     },
   },
 };
@@ -124,6 +99,23 @@ const meta: Meta<typeof BadgeGroup> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const sampleUsers = [
+  { initials: 'JD', src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop' },
+  { initials: 'AS', src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop' },
+  { initials: 'MK', src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop' },
+  { initials: 'RW', src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop' },
+  { initials: 'PT', src: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop' },
+  { initials: 'LH' },
+  { initials: 'CB' },
+];
+
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default avatar stack with overflow indicator. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     max: 3,
@@ -131,11 +123,23 @@ export const Default: Story = {
     overflowDirection: 'right',
     spacing: 'normal',
     animate: false,
-    children: childrenOptions['Avatars (7 users)'],
-    overflowIndicator: undefined,
   },
+  render: (args) => (
+    <BadgeGroup {...args}>
+      {sampleUsers.map((user, i) => (
+        <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
+      ))}
+    </BadgeGroup>
+  ),
 };
 
+// =============================================================================
+// MAX LIMIT
+// =============================================================================
+
+/**
+ * Different max values control when overflow appears.
+ */
 export const WithMaxLimit: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -153,63 +157,98 @@ export const WithMaxLimit: Story = {
   ),
 };
 
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Three sizes for different contexts and densities.
+ */
 export const Sizes: Story = {
-  render: (args) => (
+  render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <BadgeGroup size="sm" max={args.max} overflowDirection={args.overflowDirection}>
+      <BadgeGroup size="sm" max={4}>
         {sampleUsers.map((user, i) => (
           <Avatar key={i} src={user.src} fallback={user.initials} size="sm" />
         ))}
       </BadgeGroup>
-      <BadgeGroup size="md" max={args.max} overflowDirection={args.overflowDirection}>
+      <BadgeGroup size="md" max={4}>
         {sampleUsers.map((user, i) => (
           <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
         ))}
       </BadgeGroup>
-      <BadgeGroup size="lg" max={args.max} overflowDirection={args.overflowDirection}>
+      <BadgeGroup size="lg" max={4}>
         {sampleUsers.map((user, i) => (
           <Avatar key={i} src={user.src} fallback={user.initials} size="lg" />
         ))}
       </BadgeGroup>
     </div>
   ),
-  args: {
-    max: 4,
-    overflowDirection: 'right',
-  },
 };
 
+// =============================================================================
+// OVERFLOW DIRECTION
+// =============================================================================
+
+/**
+ * Overflow indicator on the left side instead of right.
+ */
 export const OverflowLeft: Story = {
-  args: {
-    max: 3,
-    size: 'md',
-    overflowDirection: 'left',
-    children: childrenOptions['Avatars (7 users)'],
-  },
+  render: () => (
+    <BadgeGroup max={3} overflowDirection="left">
+      {sampleUsers.map((user, i) => (
+        <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
+      ))}
+    </BadgeGroup>
+  ),
 };
 
+// =============================================================================
+// WITH BADGES
+// =============================================================================
+
+/**
+ * Works with Badge components for skill tags or categories.
+ */
 export const WithBadges: Story = {
-  args: {
-    max: 4,
-    size: 'md',
-    overflowDirection: 'right',
-    children: childrenOptions['Badges (6 tags)'],
-  },
+  render: () => (
+    <BadgeGroup max={4}>
+      <Badge color="primary">React</Badge>
+      <Badge color="success">TypeScript</Badge>
+      <Badge color="warning">Node.js</Badge>
+      <Badge color="error">Python</Badge>
+      <Badge color="default">Go</Badge>
+      <Badge color="primary">Rust</Badge>
+    </BadgeGroup>
+  ),
 };
 
+/**
+ * When all items fit, no overflow indicator is shown.
+ */
 export const NoOverflow: Story = {
-  args: {
-    size: 'md',
-    children: childrenOptions['Badges (3 tags)'],
-  },
+  render: () => (
+    <BadgeGroup>
+      <Badge color="primary">React</Badge>
+      <Badge color="success">TypeScript</Badge>
+      <Badge color="warning">Node.js</Badge>
+    </BadgeGroup>
+  ),
 };
 
+// =============================================================================
+// SPACING
+// =============================================================================
+
+/**
+ * Three spacing options control overlap density.
+ */
 export const Spacing: Story = {
-  render: (args) => (
+  render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <div>
         <p style={{ margin: '0 0 0.5rem', fontSize: '14px', color: 'var(--neo-text-secondary)' }}>Compact</p>
-        <BadgeGroup spacing="compact" max={args.max} animate={args.animate}>
+        <BadgeGroup spacing="compact" max={5}>
           {sampleUsers.map((user, i) => (
             <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
           ))}
@@ -217,7 +256,7 @@ export const Spacing: Story = {
       </div>
       <div>
         <p style={{ margin: '0 0 0.5rem', fontSize: '14px', color: 'var(--neo-text-secondary)' }}>Normal</p>
-        <BadgeGroup spacing="normal" max={args.max} animate={args.animate}>
+        <BadgeGroup spacing="normal" max={5}>
           {sampleUsers.map((user, i) => (
             <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
           ))}
@@ -225,7 +264,7 @@ export const Spacing: Story = {
       </div>
       <div>
         <p style={{ margin: '0 0 0.5rem', fontSize: '14px', color: 'var(--neo-text-secondary)' }}>Loose</p>
-        <BadgeGroup spacing="loose" max={args.max} animate={args.animate}>
+        <BadgeGroup spacing="loose" max={5}>
           {sampleUsers.map((user, i) => (
             <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
           ))}
@@ -233,12 +272,15 @@ export const Spacing: Story = {
       </div>
     </div>
   ),
-  args: {
-    max: 5,
-    animate: false,
-  },
 };
 
+// =============================================================================
+// ANIMATION
+// =============================================================================
+
+/**
+ * Hover animation expands items for better visibility.
+ */
 export const Animated: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -264,16 +306,6 @@ export const Animated: Story = {
       </div>
       <div>
         <p style={{ margin: '0 0 0.5rem', fontSize: '14px', color: 'var(--neo-text-secondary)' }}>
-          Loose spacing with animation
-        </p>
-        <BadgeGroup max={4} animate spacing="loose">
-          {sampleUsers.map((user, i) => (
-            <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
-          ))}
-        </BadgeGroup>
-      </div>
-      <div>
-        <p style={{ margin: '0 0 0.5rem', fontSize: '14px', color: 'var(--neo-text-secondary)' }}>
           Left direction with animation
         </p>
         <BadgeGroup max={4} animate overflowDirection="left">
@@ -286,10 +318,16 @@ export const Animated: Story = {
   ),
 };
 
+// =============================================================================
+// CUSTOM OVERFLOW INDICATORS
+// =============================================================================
+
+/**
+ * Replace the default "+N" with custom styled indicators.
+ */
 export const CustomOverflowIndicator: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      {/* Using render function to access count */}
       <BadgeGroup
         max={3}
         overflowIndicator={(count) => (
@@ -303,7 +341,6 @@ export const CustomOverflowIndicator: Story = {
         ))}
       </BadgeGroup>
 
-      {/* Using static ReactNode */}
       <BadgeGroup
         max={3}
         overflowIndicator={
@@ -317,7 +354,6 @@ export const CustomOverflowIndicator: Story = {
         ))}
       </BadgeGroup>
 
-      {/* Icon only indicator */}
       <BadgeGroup
         max={4}
         overflowIndicator={
@@ -331,7 +367,6 @@ export const CustomOverflowIndicator: Story = {
         ))}
       </BadgeGroup>
 
-      {/* Filled colored badges */}
       <BadgeGroup
         max={3}
         overflowIndicator={(count) => (
@@ -348,6 +383,9 @@ export const CustomOverflowIndicator: Story = {
   ),
 };
 
+/**
+ * Custom hex colors for brand-specific overflow indicators.
+ */
 export const CustomColorOverflow: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -380,13 +418,21 @@ export const CustomColorOverflow: Story = {
   ),
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * BadgeGroup adapts to dark theme automatically.
+ */
 export const DarkTheme: Story = {
-  args: {
-    max: 4,
-    size: 'md',
-    overflowDirection: 'right',
-    children: childrenOptions['Avatars (7 users)'],
-  },
+  render: () => (
+    <BadgeGroup max={4}>
+      {sampleUsers.map((user, i) => (
+        <Avatar key={i} src={user.src} fallback={user.initials} size="md" />
+      ))}
+    </BadgeGroup>
+  ),
   decorators: [
     (Story) => (
       <Surface theme="dark" style={{ padding: '3rem' }}>

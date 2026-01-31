@@ -3,6 +3,30 @@ import { useState } from 'react';
 import { Slider } from './Slider';
 import { Surface } from '../../foundation/Surface';
 
+/**
+ * An interactive control for selecting a value from a continuous range.
+ * Features a concave track with a raised thumb for the neomorphic aesthetic.
+ *
+ * ## When to Use
+ *
+ * - **Volume controls**: Adjust audio or video volume
+ * - **Brightness/Contrast**: Image or display settings
+ * - **Price filters**: Select price ranges in e-commerce
+ * - **Progress**: Scrub through media playback
+ *
+ * ## Key Features
+ *
+ * - **Neomorphic design**: Concave track with raised draggable thumb
+ * - **Two orientations**: Horizontal (default) and vertical
+ * - **Three variants**: Default, gradient, and glow effects
+ * - **Custom formatting**: Format displayed values (%, $, °C, etc.)
+ *
+ * ## Best Practices
+ *
+ * - Use labels to describe what the slider controls
+ * - Show the current value when precision matters
+ * - Use appropriate step sizes for the value range
+ */
 const meta: Meta<typeof Slider> = {
   title: 'Atoms/Slider',
   component: Slider,
@@ -15,55 +39,94 @@ const meta: Meta<typeof Slider> = {
     ),
   ],
   argTypes: {
+    // Value
+    value: {
+      control: { type: 'number' },
+      description: 'Current value (controlled)',
+      table: { category: 'Value' },
+    },
+    defaultValue: {
+      control: { type: 'number' },
+      description: 'Initial value (uncontrolled)',
+      table: { category: 'Value' },
+    },
+    min: {
+      control: 'number',
+      description: 'Minimum value',
+      table: { category: 'Value', defaultValue: { summary: '0' } },
+    },
+    max: {
+      control: 'number',
+      description: 'Maximum value',
+      table: { category: 'Value', defaultValue: { summary: '100' } },
+    },
+    step: {
+      control: 'number',
+      description: 'Step increment',
+      table: { category: 'Value', defaultValue: { summary: '1' } },
+    },
+
+    // Appearance
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Track and thumb size',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
     variant: {
       control: 'select',
       options: ['default', 'gradient', 'glow'],
+      description: 'Visual effect: **default**, **gradient**, or **glow**',
+      table: { category: 'Appearance', defaultValue: { summary: 'default' } },
     },
     orientation: {
       control: 'select',
       options: ['horizontal', 'vertical'],
+      description: 'Slider orientation',
+      table: { category: 'Appearance', defaultValue: { summary: 'horizontal' } },
     },
+
+    // Color
     color: {
       control: 'select',
       options: [
         'default',
-        'primary',
-        'primary-light',
-        'primary-dark',
-        'secondary',
-        'secondary-light',
-        'secondary-dark',
-        'tertiary',
-        'tertiary-light',
-        'tertiary-dark',
-        'success',
-        'warning',
-        'error',
-        'info',
+        'primary', 'primary-light', 'primary-dark',
+        'secondary', 'secondary-light', 'secondary-dark',
+        'tertiary', 'tertiary-light', 'tertiary-dark',
+        'success', 'warning', 'error', 'info',
       ],
+      description: 'Color theme',
+      table: { category: 'Color', defaultValue: { summary: 'default' } },
     },
     customColor: {
       control: 'color',
-      description: 'Custom hex color that overrides the color prop',
+      description: 'Custom hex color (overrides color prop)',
+      table: { category: 'Color' },
     },
-    min: {
-      control: 'number',
-    },
-    max: {
-      control: 'number',
-    },
-    step: {
-      control: 'number',
+
+    // Label
+    label: {
+      control: 'text',
+      description: 'Label text above the slider',
+      table: { category: 'Label' },
     },
     showValue: {
       control: 'boolean',
+      description: 'Show current value',
+      table: { category: 'Label', defaultValue: { summary: 'false' } },
     },
+    formatValue: {
+      control: false,
+      description: 'Custom value formatter function: `(value) => string`',
+      table: { category: 'Label' },
+    },
+
+    // State
     disabled: {
       control: 'boolean',
+      description: 'Disable the slider',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
     },
   },
 };
@@ -71,12 +134,26 @@ const meta: Meta<typeof Slider> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default horizontal slider. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     defaultValue: 50,
   },
 };
 
+// =============================================================================
+// WITH LABEL
+// =============================================================================
+
+/**
+ * Slider with label and visible value display.
+ */
 export const WithLabel: Story = {
   args: {
     label: 'Volume',
@@ -84,6 +161,10 @@ export const WithLabel: Story = {
     showValue: true,
   },
 };
+
+// =============================================================================
+// CONTROLLED
+// =============================================================================
 
 const ControlledDemo = () => {
   const [value, setValue] = useState(50);
@@ -98,10 +179,20 @@ const ControlledDemo = () => {
   );
 };
 
+/**
+ * Controlled component with external state management.
+ */
 export const Controlled: Story = {
   render: () => <ControlledDemo />,
 };
 
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Three sizes for different contexts.
+ */
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -112,6 +203,15 @@ export const Sizes: Story = {
   ),
 };
 
+// =============================================================================
+// VARIANTS
+// =============================================================================
+
+/**
+ * - **Default**: Solid fill color
+ * - **Gradient**: Color gradient effect on track fill
+ * - **Glow**: Adds a glow around the filled track
+ */
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -122,19 +222,20 @@ export const Variants: Story = {
   ),
 };
 
+// =============================================================================
+// COLORS
+// =============================================================================
+
+/**
+ * All available color themes.
+ */
 export const Colors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <Slider color="default" defaultValue={70} />
       <Slider color="primary" defaultValue={70} />
-      <Slider color="primary-light" defaultValue={70} />
-      <Slider color="primary-dark" defaultValue={70} />
       <Slider color="secondary" defaultValue={70} />
-      <Slider color="secondary-light" defaultValue={70} />
-      <Slider color="secondary-dark" defaultValue={70} />
       <Slider color="tertiary" defaultValue={70} />
-      <Slider color="tertiary-light" defaultValue={70} />
-      <Slider color="tertiary-dark" defaultValue={70} />
       <Slider color="success" defaultValue={70} />
       <Slider color="warning" defaultValue={70} />
       <Slider color="error" defaultValue={70} />
@@ -143,41 +244,9 @@ export const Colors: Story = {
   ),
 };
 
-export const ColorsWithLabels: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '100px', fontSize: '12px' }}>Primary</span>
-        <Slider color="primary" defaultValue={65} showValue style={{ flex: 1 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '100px', fontSize: '12px' }}>Secondary</span>
-        <Slider color="secondary" defaultValue={45} showValue style={{ flex: 1 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '100px', fontSize: '12px' }}>Tertiary</span>
-        <Slider color="tertiary" defaultValue={80} showValue style={{ flex: 1 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '100px', fontSize: '12px' }}>Success</span>
-        <Slider color="success" defaultValue={100} showValue style={{ flex: 1 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '100px', fontSize: '12px' }}>Warning</span>
-        <Slider color="warning" defaultValue={55} showValue style={{ flex: 1 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '100px', fontSize: '12px' }}>Error</span>
-        <Slider color="error" defaultValue={25} showValue style={{ flex: 1 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '100px', fontSize: '12px' }}>Info</span>
-        <Slider color="info" defaultValue={90} showValue style={{ flex: 1 }} />
-      </div>
-    </div>
-  ),
-};
-
+/**
+ * Use any hex color with the `customColor` prop.
+ */
 export const CustomColors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -188,14 +257,6 @@ export const CustomColors: Story = {
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <span style={{ width: '80px', fontSize: '12px' }}>Teal</span>
         <Slider customColor="#4ECDC4" defaultValue={65} style={{ flex: 1 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '80px', fontSize: '12px' }}>Sky Blue</span>
-        <Slider customColor="#45B7D1" defaultValue={80} style={{ flex: 1 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ width: '80px', fontSize: '12px' }}>Sage</span>
-        <Slider customColor="#96CEB4" defaultValue={55} style={{ flex: 1 }} />
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <span style={{ width: '80px', fontSize: '12px' }}>Plum</span>
@@ -209,6 +270,13 @@ export const CustomColors: Story = {
   ),
 };
 
+// =============================================================================
+// VERTICAL ORIENTATION
+// =============================================================================
+
+/**
+ * Vertical sliders for space-constrained layouts or audio mixer UIs.
+ */
 export const Vertical: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-end', height: '250px' }}>
@@ -228,6 +296,9 @@ export const Vertical: Story = {
   ],
 };
 
+/**
+ * Vertical slider sizes.
+ */
 export const VerticalSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-end', height: '200px' }}>
@@ -245,49 +316,13 @@ export const VerticalSizes: Story = {
   ],
 };
 
-export const VerticalColors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-end', height: '200px' }}>
-      <Slider orientation="vertical" defaultValue={80} color="primary" />
-      <Slider orientation="vertical" defaultValue={65} color="primary-light" />
-      <Slider orientation="vertical" defaultValue={70} color="primary-dark" />
-      <Slider orientation="vertical" defaultValue={55} color="secondary" />
-      <Slider orientation="vertical" defaultValue={75} color="tertiary" />
-      <Slider orientation="vertical" defaultValue={90} color="success" />
-      <Slider orientation="vertical" defaultValue={45} color="warning" />
-      <Slider orientation="vertical" defaultValue={60} color="error" />
-      <Slider orientation="vertical" defaultValue={85} color="info" />
-    </div>
-  ),
-  decorators: [
-    (Story) => (
-      <Surface theme="light" style={{ padding: '3rem', width: 'auto' }}>
-        <Story />
-      </Surface>
-    ),
-  ],
-};
+// =============================================================================
+// CUSTOM RANGES
+// =============================================================================
 
-export const VerticalCustomColors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-end', height: '200px' }}>
-      <Slider orientation="vertical" customColor="#FF6B6B" defaultValue={80} />
-      <Slider orientation="vertical" customColor="#4ECDC4" defaultValue={65} />
-      <Slider orientation="vertical" customColor="#45B7D1" defaultValue={70} />
-      <Slider orientation="vertical" customColor="#9B59B6" defaultValue={55} />
-      <Slider orientation="vertical" customColor="#F39C12" defaultValue={75} />
-      <Slider orientation="vertical" customColor="#E91E63" defaultValue={90} />
-    </div>
-  ),
-  decorators: [
-    (Story) => (
-      <Surface theme="light" style={{ padding: '3rem', width: 'auto' }}>
-        <Story />
-      </Surface>
-    ),
-  ],
-};
-
+/**
+ * Custom min/max range with formatted value display.
+ */
 export const CustomRange: Story = {
   args: {
     label: 'Temperature',
@@ -299,6 +334,9 @@ export const CustomRange: Story = {
   },
 };
 
+/**
+ * Discrete steps for whole number selection.
+ */
 export const Steps: Story = {
   args: {
     label: 'Rating',
@@ -310,6 +348,9 @@ export const Steps: Story = {
   },
 };
 
+/**
+ * Large step increments for coarse adjustments.
+ */
 export const LargeSteps: Story = {
   args: {
     label: 'Quantity',
@@ -321,15 +362,9 @@ export const LargeSteps: Story = {
   },
 };
 
-export const Disabled: Story = {
-  args: {
-    label: 'Disabled',
-    defaultValue: 60,
-    disabled: true,
-    showValue: true,
-  },
-};
-
+/**
+ * Custom currency formatting.
+ */
 export const CustomFormat: Story = {
   args: {
     label: 'Price',
@@ -341,6 +376,29 @@ export const CustomFormat: Story = {
   },
 };
 
+// =============================================================================
+// STATES
+// =============================================================================
+
+/**
+ * Disabled state prevents interaction.
+ */
+export const Disabled: Story = {
+  args: {
+    label: 'Disabled',
+    defaultValue: 60,
+    disabled: true,
+    showValue: true,
+  },
+};
+
+// =============================================================================
+// USE CASES
+// =============================================================================
+
+/**
+ * RGB color picker example with multiple coordinated sliders.
+ */
 export const MultipleSliders: Story = {
   render: () => {
     const [rgb, setRgb] = useState({ r: 108, g: 92, b: 231 });
@@ -386,6 +444,13 @@ export const MultipleSliders: Story = {
   },
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Sliders adapt to dark theme automatically.
+ */
 export const DarkTheme: Story = {
   args: {
     label: 'Volume',
@@ -402,6 +467,9 @@ export const DarkTheme: Story = {
   ],
 };
 
+/**
+ * Color themes on dark background.
+ */
 export const DarkThemeColors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -423,6 +491,9 @@ export const DarkThemeColors: Story = {
   ],
 };
 
+/**
+ * Vertical sliders on dark background.
+ */
 export const DarkThemeVertical: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-end', height: '200px' }}>

@@ -2,6 +2,29 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Radio } from './Radio';
 import { Surface } from '../../foundation/Surface';
 
+/**
+ * A form control for selecting a single option from a group of choices.
+ * Only one radio button in a group can be selected at a time.
+ *
+ * ## When to Use
+ *
+ * - **Single selection**: Choose one option from a list of mutually exclusive choices
+ * - **Settings**: Select a preference from predefined options
+ * - **Surveys**: Answer single-choice questions
+ * - **Payment methods**: Select one payment option
+ *
+ * ## Key Features
+ *
+ * - **Neomorphic design**: Concave (pressed) appearance that pops when selected
+ * - **Flexible labels**: Position labels on left or right
+ * - **Group behavior**: Use the same `name` prop to create a radio group
+ * - **Accessible**: Full keyboard support and ARIA attributes
+ *
+ * ## Accessibility
+ *
+ * Always provide a `label` or `aria-label` for screen readers. Group related
+ * radio buttons using the same `name` prop for proper keyboard navigation.
+ */
 const meta: Meta<typeof Radio> = {
   title: 'Atoms/Radio',
   component: Radio,
@@ -14,16 +37,42 @@ const meta: Meta<typeof Radio> = {
     ),
   ],
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
+    // Content
+    label: {
+      control: 'text',
+      description: 'Text label displayed next to the radio button',
+      table: { category: 'Content' },
     },
     labelPosition: {
       control: 'select',
       options: ['left', 'right'],
+      description: 'Position of the label relative to the radio button',
+      table: { category: 'Content', defaultValue: { summary: 'right' } },
     },
+    name: {
+      control: 'text',
+      description: 'Group name for radio buttons (required for grouping)',
+      table: { category: 'Content' },
+    },
+
+    // Appearance
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Radio button size',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
+    },
+
+    // State
     disabled: {
       control: 'boolean',
+      description: 'Disable the radio button',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
+    },
+    defaultChecked: {
+      control: 'boolean',
+      description: 'Initial selected state (uncontrolled)',
+      table: { category: 'State' },
     },
   },
 };
@@ -31,6 +80,13 @@ const meta: Meta<typeof Radio> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default radio button with a label. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     label: 'Radio option',
@@ -38,6 +94,13 @@ export const Default: Story = {
   },
 };
 
+// =============================================================================
+// STATES
+// =============================================================================
+
+/**
+ * Pre-selected radio button using `defaultChecked` prop.
+ */
 export const Checked: Story = {
   args: {
     label: 'Selected',
@@ -45,6 +108,9 @@ export const Checked: Story = {
   },
 };
 
+/**
+ * Three sizes for different contexts and densities.
+ */
 export const Sizes: Story = {
   render: () => (
     <>
@@ -55,6 +121,9 @@ export const Sizes: Story = {
   ),
 };
 
+/**
+ * Labels can be positioned on either side of the radio button.
+ */
 export const LabelPositions: Story = {
   render: () => (
     <>
@@ -64,6 +133,9 @@ export const LabelPositions: Story = {
   ),
 };
 
+/**
+ * Radio buttons without visible labels. Always provide `aria-label` for accessibility.
+ */
 export const WithoutLabel: Story = {
   render: () => (
     <>
@@ -74,6 +146,9 @@ export const WithoutLabel: Story = {
   ),
 };
 
+/**
+ * Disabled radio buttons prevent user interaction.
+ */
 export const Disabled: Story = {
   render: () => (
     <>
@@ -83,6 +158,13 @@ export const Disabled: Story = {
   ),
 };
 
+// =============================================================================
+// USE CASES
+// =============================================================================
+
+/**
+ * Example of a radio group for single selection. All radios share the same `name`.
+ */
 export const RadioGroup: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -101,6 +183,13 @@ export const RadioGroup: Story = {
   ],
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Radio buttons adapt to dark theme automatically.
+ */
 export const DarkTheme: Story = {
   args: {
     label: 'Dark theme radio',

@@ -3,6 +3,30 @@ import { SocialButton } from './SocialButton';
 import { Surface } from '../../foundation/Surface';
 import { iconMapLg, createIconArgType } from '../../../../.storybook/icons';
 
+/**
+ * A button styled for social login and OAuth authentication flows.
+ * Displays a provider icon alongside the action text.
+ *
+ * ## When to Use
+ *
+ * - **Social login**: "Continue with Google", "Sign in with Apple"
+ * - **OAuth flows**: Third-party authentication buttons
+ * - **Account linking**: Connect social accounts to a profile
+ * - **Sharing**: Share to social platforms
+ *
+ * ## Key Features
+ *
+ * - **Neomorphic design**: Supports `convex` and `flat` variants
+ * - **Provider icons**: Bring your own brand icons (Google, Apple, etc.)
+ * - **Consistent styling**: Maintains visual harmony with other buttons
+ * - **Full-width option**: Ideal for login forms
+ *
+ * ## Best Practices
+ *
+ * - Use official brand icons when available
+ * - Follow provider brand guidelines for icon colors
+ * - Keep button text consistent (e.g., "Continue with [Provider]")
+ */
 const meta: Meta<typeof SocialButton> = {
   title: 'Atoms/SocialButton',
   component: SocialButton,
@@ -15,24 +39,47 @@ const meta: Meta<typeof SocialButton> = {
     ),
   ],
   argTypes: {
-    icon: createIconArgType(iconMapLg, 'Icon to display'),
+    // Content
+    children: {
+      control: 'text',
+      description: 'Button text',
+      table: { category: 'Content' },
+    },
+    icon: {
+      ...createIconArgType(iconMapLg, 'Provider icon'),
+      table: { category: 'Content' },
+    },
+
+    // Appearance
     variant: {
       control: 'select',
       options: ['convex', 'flat'],
+      description: 'Visual style: **convex** (raised) or **flat** (minimal)',
+      table: { category: 'Appearance', defaultValue: { summary: 'convex' } },
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Button size',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
     elevation: {
       control: 'select',
       options: ['low', 'mid', 'high'],
+      description: 'Shadow intensity',
+      table: { category: 'Appearance', defaultValue: { summary: 'mid' } },
     },
     fullWidth: {
       control: 'boolean',
+      description: 'Expand to fill container width',
+      table: { category: 'Appearance', defaultValue: { summary: 'false' } },
     },
+
+    // State
     disabled: {
       control: 'boolean',
+      description: 'Disable the button',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
     },
   },
 };
@@ -68,6 +115,13 @@ const TwitterIcon = () => (
   </svg>
 );
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default social button. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     icon: 'User' as unknown as React.ReactNode,
@@ -78,6 +132,13 @@ export const Default: Story = {
   },
 };
 
+// =============================================================================
+// SOCIAL PROVIDERS
+// =============================================================================
+
+/**
+ * Common social login providers with their brand icons.
+ */
 export const SocialProviders: Story = {
   render: () => (
     <>
@@ -89,6 +150,13 @@ export const SocialProviders: Story = {
   ),
 };
 
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Three sizes for different contexts.
+ */
 export const Sizes: Story = {
   render: () => (
     <>
@@ -99,6 +167,14 @@ export const Sizes: Story = {
   ),
 };
 
+// =============================================================================
+// VARIANTS
+// =============================================================================
+
+/**
+ * - **Convex** (default): Raised appearance with shadows
+ * - **Flat**: No shadows, minimal style
+ */
 export const Variants: Story = {
   render: () => (
     <>
@@ -108,6 +184,13 @@ export const Variants: Story = {
   ),
 };
 
+// =============================================================================
+// FULL WIDTH
+// =============================================================================
+
+/**
+ * Full-width button for login forms.
+ */
 export const FullWidth: Story = {
   args: {
     icon: 'User' as unknown as React.ReactNode,
@@ -123,6 +206,13 @@ export const FullWidth: Story = {
   ],
 };
 
+// =============================================================================
+// STATES
+// =============================================================================
+
+/**
+ * Disabled state prevents interaction.
+ */
 export const Disabled: Story = {
   args: {
     icon: 'User' as unknown as React.ReactNode,
@@ -131,6 +221,13 @@ export const Disabled: Story = {
   },
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Social buttons adapt to dark theme automatically.
+ */
 export const DarkTheme: Story = {
   args: {
     icon: 'User' as unknown as React.ReactNode,
@@ -145,6 +242,9 @@ export const DarkTheme: Story = {
   ],
 };
 
+/**
+ * Social providers on dark background.
+ */
 export const DarkThemeSocialProviders: Story = {
   render: () => (
     <>

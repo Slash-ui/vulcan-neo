@@ -3,8 +3,29 @@ import { Switch } from './Switch';
 import { Surface } from '../../foundation/Surface';
 import { iconMapSm, createIconArgType, Sun, Moon, Volume2, VolumeX, Wifi, WifiOff, Eye, EyeOff } from '../../../../.storybook/icons';
 
-const colorOptions = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'info'];
-
+/**
+ * A toggle control for switching between two states (on/off).
+ * Features a sliding thumb with optional icons for visual feedback.
+ *
+ * ## When to Use
+ *
+ * - **Feature toggles**: Enable or disable features in settings
+ * - **Preferences**: Dark mode, notifications, auto-save
+ * - **Binary choices**: Any on/off decision that takes effect immediately
+ * - **Visibility controls**: Show/hide elements
+ *
+ * ## Key Features
+ *
+ * - **Neomorphic design**: Concave track with raised sliding thumb
+ * - **State icons**: Optional icons for checked/unchecked states
+ * - **Color customization**: Different colors for each state
+ * - **Flexible labels**: Position labels on left or right
+ *
+ * ## Switch vs Checkbox
+ *
+ * Use **Switch** for settings that take effect immediately. Use **Checkbox** for
+ * selections that require a form submission to apply.
+ */
 const meta: Meta<typeof Switch> = {
   title: 'Atoms/Switch',
   component: Switch,
@@ -17,38 +38,79 @@ const meta: Meta<typeof Switch> = {
     ),
   ],
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
+    // Content
+    label: {
+      control: 'text',
+      description: 'Text label displayed next to the switch',
+      table: { category: 'Content' },
     },
     labelPosition: {
       control: 'radio',
       options: ['left', 'right'],
+      description: 'Position of the label relative to the switch',
+      table: { category: 'Content', defaultValue: { summary: 'right' } },
     },
-    disabled: {
-      control: 'boolean',
-    },
-    checked: {
-      control: 'boolean',
+
+    // Appearance
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Switch size',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
     showIcons: {
       control: 'boolean',
+      description: 'Show icons inside the thumb',
+      table: { category: 'Appearance', defaultValue: { summary: 'false' } },
     },
-    checkedIcon: createIconArgType(iconMapSm, 'Icon for checked state'),
-    uncheckedIcon: createIconArgType(iconMapSm, 'Icon for unchecked state'),
+    checkedIcon: {
+      ...createIconArgType(iconMapSm, 'Icon for checked state'),
+      table: { category: 'Appearance' },
+    },
+    uncheckedIcon: {
+      ...createIconArgType(iconMapSm, 'Icon for unchecked state'),
+      table: { category: 'Appearance' },
+    },
+
+    // Color
     checkedColor: {
       control: 'select',
-      options: colorOptions,
+      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'info'],
+      description: 'Track color when checked',
+      table: { category: 'Color', defaultValue: { summary: 'success' } },
     },
     uncheckedColor: {
       control: 'select',
-      options: colorOptions,
+      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'error', 'info'],
+      description: 'Track color when unchecked',
+      table: { category: 'Color', defaultValue: { summary: 'error' } },
     },
     customCheckedColor: {
       control: 'color',
+      description: 'Custom hex color when checked',
+      table: { category: 'Color' },
     },
     customUncheckedColor: {
       control: 'color',
+      description: 'Custom hex color when unchecked',
+      table: { category: 'Color' },
+    },
+
+    // State
+    checked: {
+      control: 'boolean',
+      description: 'Controlled checked state',
+      table: { category: 'State' },
+    },
+    defaultChecked: {
+      control: 'boolean',
+      description: 'Initial checked state (uncontrolled)',
+      table: { category: 'State' },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disable the switch',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
     },
   },
 };
@@ -56,16 +118,33 @@ const meta: Meta<typeof Switch> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default switch without label. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {},
 };
 
+// =============================================================================
+// WITH LABELS
+// =============================================================================
+
+/**
+ * Switch with label on the right (default position).
+ */
 export const WithLabel: Story = {
   args: {
     label: 'Enable notifications',
   },
 };
 
+/**
+ * Label positioned on the left side.
+ */
 export const LabelLeft: Story = {
   args: {
     label: 'Dark mode',
@@ -73,6 +152,13 @@ export const LabelLeft: Story = {
   },
 };
 
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Three sizes for different contexts.
+ */
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -83,6 +169,13 @@ export const Sizes: Story = {
   ),
 };
 
+// =============================================================================
+// STATES
+// =============================================================================
+
+/**
+ * Pre-checked switch using `defaultChecked` prop.
+ */
 export const Checked: Story = {
   args: {
     label: 'Enabled feature',
@@ -90,6 +183,9 @@ export const Checked: Story = {
   },
 };
 
+/**
+ * Disabled switches prevent interaction.
+ */
 export const Disabled: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -99,24 +195,9 @@ export const Disabled: Story = {
   ),
 };
 
-export const DarkTheme: Story = {
-  args: {
-    label: 'Dark theme switch',
-  },
-  decorators: [
-    (Story) => (
-      <Surface theme="dark" style={{ padding: '3rem' }}>
-        <Story />
-      </Surface>
-    ),
-  ],
-  globals: {
-    backgrounds: {
-      value: "neomorphic-dark"
-    }
-  },
-};
-
+/**
+ * All visual states: unchecked, checked, disabled unchecked, disabled checked.
+ */
 export const AllStates: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -128,6 +209,13 @@ export const AllStates: Story = {
   ),
 };
 
+// =============================================================================
+// WITH ICONS
+// =============================================================================
+
+/**
+ * Show default check/X icons inside the thumb.
+ */
 export const WithIcons: Story = {
   args: {
     label: 'With icons',
@@ -135,6 +223,9 @@ export const WithIcons: Story = {
   },
 };
 
+/**
+ * Custom icons for different use cases.
+ */
 export const CustomIcons: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -168,6 +259,9 @@ export const CustomIcons: Story = {
   ),
 };
 
+/**
+ * Comparison of icon variants.
+ */
 export const IconVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -183,6 +277,13 @@ export const IconVariants: Story = {
   ),
 };
 
+// =============================================================================
+// COLORS
+// =============================================================================
+
+/**
+ * Available colors for the checked (on) state.
+ */
 export const CheckedColors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -197,6 +298,9 @@ export const CheckedColors: Story = {
   ),
 };
 
+/**
+ * Available colors for the unchecked (off) state.
+ */
 export const UncheckedColors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -211,6 +315,9 @@ export const UncheckedColors: Story = {
   ),
 };
 
+/**
+ * Combine different checked and unchecked colors.
+ */
 export const ColorCombinations: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -239,6 +346,9 @@ export const ColorCombinations: Story = {
   ),
 };
 
+/**
+ * Use any hex colors for complete customization.
+ */
 export const CustomColors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -268,6 +378,9 @@ export const CustomColors: Story = {
   ),
 };
 
+/**
+ * Custom colors combined with custom icons.
+ */
 export const CustomColorsWithIcons: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -299,4 +412,24 @@ export const CustomColorsWithIcons: Story = {
       />
     </div>
   ),
+};
+
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Switches adapt to dark theme automatically.
+ */
+export const DarkTheme: Story = {
+  args: {
+    label: 'Dark theme switch',
+  },
+  decorators: [
+    (Story) => (
+      <Surface theme="dark" style={{ padding: '3rem' }}>
+        <Story />
+      </Surface>
+    ),
+  ],
 };

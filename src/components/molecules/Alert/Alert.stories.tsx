@@ -6,6 +6,32 @@ import { Surface } from '../../foundation/Surface';
 import { Button } from '../../atoms/Button';
 import { iconMapLg, createIconArgType } from '../../../../.storybook/icons';
 
+/**
+ * A contextual feedback component for displaying important messages to users.
+ * Supports multiple severity levels with appropriate visual styling.
+ *
+ * ## When to Use
+ *
+ * - **System status**: Inform users about system state or maintenance
+ * - **Form feedback**: Success, error, or validation messages
+ * - **Notifications**: Important updates that need attention
+ * - **Warnings**: Caution users about potential issues
+ *
+ * ## Key Features
+ *
+ * - **Four variants**: Info, success, warning, and error states
+ * - **Dismissible**: Optional close button with callback
+ * - **Custom icons**: Replace default icons for specific contexts
+ * - **Action buttons**: Add interactive elements for user response
+ * - **Raise animation**: Smooth neomorphic show/hide transitions
+ *
+ * ## Best Practices
+ *
+ * - Use appropriate variant for message severity
+ * - Keep messages concise and actionable
+ * - Use `dismissible` for non-critical alerts
+ * - Add action buttons for alerts requiring user response
+ */
 const meta: Meta<typeof Alert> = {
   title: 'Molecules/Alert',
   component: Alert,
@@ -18,22 +44,58 @@ const meta: Meta<typeof Alert> = {
     ),
   ],
   argTypes: {
+    // Content
+    title: {
+      control: 'text',
+      description: 'Alert title (optional)',
+      table: { category: 'Content' },
+    },
+    children: {
+      control: 'text',
+      description: 'Alert message content',
+      table: { category: 'Content' },
+    },
+    icon: {
+      ...createIconArgType(iconMapLg, 'Custom icon to display'),
+      table: { category: 'Content' },
+    },
+    action: {
+      control: false,
+      description: 'Action element (e.g., Button) displayed on the right',
+      table: { category: 'Content' },
+    },
+
+    // Appearance
     variant: {
       control: 'select',
       options: ['info', 'success', 'warning', 'error'],
+      description: 'Alert severity level',
+      table: { category: 'Appearance', defaultValue: { summary: 'info' } },
     },
-    dismissible: {
-      control: 'boolean',
-    },
-    icon: createIconArgType(iconMapLg, 'Custom icon to display'),
     animation: {
       control: 'select',
       options: ['none', 'raise'],
       description: 'Animation style for show/hide transitions',
+      table: { category: 'Appearance', defaultValue: { summary: 'none' } },
     },
+
+    // State
     visible: {
       control: 'boolean',
-      description: 'Controls visibility of the alert (used with animation)',
+      description: 'Controls visibility (used with animation)',
+      table: { category: 'State', defaultValue: { summary: 'true' } },
+    },
+    dismissible: {
+      control: 'boolean',
+      description: 'Show close button',
+      table: { category: 'State', defaultValue: { summary: 'false' } },
+    },
+
+    // Events
+    onDismiss: {
+      action: 'dismissed',
+      description: 'Callback when dismiss button is clicked',
+      table: { category: 'Events' },
     },
   },
 };
@@ -41,6 +103,13 @@ const meta: Meta<typeof Alert> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default info alert with title and message. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     title: 'Information',
@@ -48,6 +117,13 @@ export const Default: Story = {
   },
 };
 
+// =============================================================================
+// VARIANTS
+// =============================================================================
+
+/**
+ * Four severity levels for different message types.
+ */
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -67,6 +143,13 @@ export const Variants: Story = {
   ),
 };
 
+// =============================================================================
+// DISMISSIBLE
+// =============================================================================
+
+/**
+ * Alerts with close button for user dismissal.
+ */
 export const Dismissible: Story = {
   render: () => {
     const [visible, setVisible] = useState(true);
@@ -86,6 +169,13 @@ export const Dismissible: Story = {
   },
 };
 
+// =============================================================================
+// WITH ACTION
+// =============================================================================
+
+/**
+ * Action buttons allow users to respond directly from the alert.
+ */
 export const WithAction: Story = {
   render: () => (
     <Alert
@@ -98,6 +188,13 @@ export const WithAction: Story = {
   ),
 };
 
+// =============================================================================
+// CONTENT VARIATIONS
+// =============================================================================
+
+/**
+ * Alerts without titles for simpler messages.
+ */
 export const WithoutTitle: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -111,6 +208,9 @@ export const WithoutTitle: Story = {
   ),
 };
 
+/**
+ * Title-only alerts for brief notifications.
+ */
 export const TitleOnly: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -120,6 +220,27 @@ export const TitleOnly: Story = {
   ),
 };
 
+/**
+ * Longer content wraps naturally within the alert.
+ */
+export const LongContent: Story = {
+  render: () => (
+    <Alert variant="warning" title="System Maintenance" dismissible>
+      We will be performing scheduled maintenance on our servers this weekend from
+      Saturday 10:00 PM to Sunday 2:00 AM EST. During this time, the service may be
+      unavailable or experience intermittent issues. We apologize for any inconvenience
+      this may cause. Please save your work before the maintenance window begins.
+    </Alert>
+  ),
+};
+
+// =============================================================================
+// CUSTOM ICONS
+// =============================================================================
+
+/**
+ * Replace default icons for context-specific alerts.
+ */
 export const CustomIcon: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -155,17 +276,13 @@ export const CustomIcon: Story = {
   ),
 };
 
-export const LongContent: Story = {
-  render: () => (
-    <Alert variant="warning" title="System Maintenance" dismissible>
-      We will be performing scheduled maintenance on our servers this weekend from
-      Saturday 10:00 PM to Sunday 2:00 AM EST. During this time, the service may be
-      unavailable or experience intermittent issues. We apologize for any inconvenience
-      this may cause. Please save your work before the maintenance window begins.
-    </Alert>
-  ),
-};
+// =============================================================================
+// ANIMATIONS
+// =============================================================================
 
+/**
+ * Raise animation creates a neomorphic show/hide effect.
+ */
 export const RaiseAnimation: Story = {
   render: () => {
     const [visible, setVisible] = useState(true);
@@ -190,6 +307,9 @@ export const RaiseAnimation: Story = {
   },
 };
 
+/**
+ * Combine animation with dismissible for smooth dismiss transitions.
+ */
 export const AnimatedDismissible: Story = {
   render: () => {
     const [visible, setVisible] = useState(true);
@@ -218,6 +338,9 @@ export const AnimatedDismissible: Story = {
   },
 };
 
+/**
+ * All variants with raise animation applied.
+ */
 export const AnimationVariants: Story = {
   render: () => {
     const [visibleStates, setVisibleStates] = useState({
@@ -261,6 +384,13 @@ export const AnimationVariants: Story = {
   },
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Alerts adapt to dark theme automatically.
+ */
 export const DarkTheme: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

@@ -3,23 +3,24 @@ import { useState } from 'react';
 import { Tag } from './Tag';
 import { Surface } from '../../foundation/Surface';
 
-const colorOptions = [
-  'default',
-  'primary',
-  'primary-light',
-  'primary-dark',
-  'secondary',
-  'secondary-light',
-  'secondary-dark',
-  'tertiary',
-  'tertiary-light',
-  'tertiary-dark',
-  'success',
-  'warning',
-  'error',
-  'info',
-];
-
+/**
+ * A compact label for categorization, filtering, or status indication.
+ * Supports multiple visual variants and optional remove functionality.
+ *
+ * ## When to Use
+ *
+ * - **Categorization**: Label items with categories or topics
+ * - **Filtering**: Show active filters that can be removed
+ * - **Status indicators**: Display state or type information
+ * - **Hashtags**: Social media style tagging
+ *
+ * ## Key Features
+ *
+ * - **Four variants**: Convex, concave, extrude, and flat styles
+ * - **Removable tags**: Optional close button for filter chips
+ * - **Icon support**: Add icons for visual context
+ * - **Color themes**: Full palette including custom colors
+ */
 const meta: Meta<typeof Tag> = {
   title: 'Atoms/Tag',
   component: Tag,
@@ -32,26 +33,66 @@ const meta: Meta<typeof Tag> = {
     ),
   ],
   argTypes: {
+    // Content
+    children: {
+      control: 'text',
+      description: 'Tag label text',
+      table: { category: 'Content' },
+    },
+    leftIcon: {
+      control: false,
+      description: 'Icon displayed before the label',
+      table: { category: 'Content' },
+    },
+
+    // Appearance
     variant: {
       control: 'select',
       options: ['convex', 'concave', 'extrude', 'flat'],
+      description: 'Visual style of the tag',
+      table: { category: 'Appearance', defaultValue: { summary: 'convex' } },
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
-    },
-    color: {
-      control: 'select',
-      options: colorOptions,
+      description: 'Tag size',
+      table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
     filled: {
       control: 'boolean',
+      description: 'Use filled background instead of subtle',
+      table: { category: 'Appearance', defaultValue: { summary: 'false' } },
+    },
+
+    // Color
+    color: {
+      control: 'select',
+      options: [
+        'default',
+        'primary', 'primary-light', 'primary-dark',
+        'secondary', 'secondary-light', 'secondary-dark',
+        'tertiary', 'tertiary-light', 'tertiary-dark',
+        'success', 'warning', 'error', 'info',
+      ],
+      description: 'Color theme',
+      table: { category: 'Color', defaultValue: { summary: 'default' } },
     },
     customColor: {
       control: 'color',
+      description: 'Custom hex color (overrides color prop)',
+      table: { category: 'Color' },
     },
+
+    // Behavior
     removable: {
       control: 'boolean',
+      description: 'Show remove button',
+      table: { category: 'Behavior', defaultValue: { summary: 'false' } },
+    },
+    onRemove: {
+      action: 'removed',
+      description: 'Callback when remove button is clicked',
+      table: { category: 'Behavior' },
     },
   },
 };
@@ -68,6 +109,13 @@ const HashIcon = () => (
   </svg>
 );
 
+// =============================================================================
+// DEFAULT EXAMPLE
+// =============================================================================
+
+/**
+ * Default tag with convex styling. Use controls to explore all options.
+ */
 export const Default: Story = {
   args: {
     children: 'Tag',
@@ -76,6 +124,13 @@ export const Default: Story = {
   },
 };
 
+// =============================================================================
+// VARIANTS
+// =============================================================================
+
+/**
+ * Four visual styles for different design contexts.
+ */
 export const Variants: Story = {
   render: () => (
     <>
@@ -87,6 +142,13 @@ export const Variants: Story = {
   ),
 };
 
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Three sizes for different contexts and densities.
+ */
 export const Sizes: Story = {
   render: () => (
     <>
@@ -97,6 +159,13 @@ export const Sizes: Story = {
   ),
 };
 
+// =============================================================================
+// COLORS
+// =============================================================================
+
+/**
+ * Primary color options for common use cases.
+ */
 export const Colors: Story = {
   render: () => (
     <>
@@ -112,6 +181,9 @@ export const Colors: Story = {
   ),
 };
 
+/**
+ * Full color palette including light and dark variants.
+ */
 export const AllColors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -141,6 +213,9 @@ export const AllColors: Story = {
   ),
 };
 
+/**
+ * Filled tags have solid color backgrounds for higher emphasis.
+ */
 export const FilledColors: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -170,6 +245,9 @@ export const FilledColors: Story = {
   ),
 };
 
+/**
+ * Use any hex color for brand-specific or custom designs.
+ */
 export const CustomColors: Story = {
   render: () => (
     <>
@@ -183,6 +261,13 @@ export const CustomColors: Story = {
   ),
 };
 
+// =============================================================================
+// WITH ICONS
+// =============================================================================
+
+/**
+ * Tags with leading icons for hashtag-style labeling.
+ */
 export const WithIcons: Story = {
   render: () => (
     <>
@@ -193,6 +278,13 @@ export const WithIcons: Story = {
   ),
 };
 
+// =============================================================================
+// REMOVABLE
+// =============================================================================
+
+/**
+ * Tags with a remove button for filter chip behavior.
+ */
 export const Removable: Story = {
   args: {
     children: 'Removable',
@@ -225,10 +317,20 @@ const RemovableDemo = () => {
   );
 };
 
+/**
+ * Interactive example showing tags being removed from a list.
+ */
 export const RemovableInteractive: Story = {
   render: () => <RemovableDemo />,
 };
 
+// =============================================================================
+// USE CASES
+// =============================================================================
+
+/**
+ * Mixed variants and colors for a tag cloud display.
+ */
 export const TagCloud: Story = {
   render: () => (
     <>
@@ -244,6 +346,13 @@ export const TagCloud: Story = {
   ),
 };
 
+// =============================================================================
+// DARK THEME
+// =============================================================================
+
+/**
+ * Tags adapt to dark theme automatically.
+ */
 export const DarkTheme: Story = {
   args: {
     children: 'Dark Theme',
