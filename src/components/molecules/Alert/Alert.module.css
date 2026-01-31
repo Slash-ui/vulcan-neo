@@ -13,6 +13,32 @@
     6px 6px 12px var(--neo-shadow-dark);
 }
 
+/* Animation styles */
+.animated {
+  transition:
+    box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 100ms cubic-bezier(0.4, 0, 0.2, 1),
+    scale 50ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Raised state (visible) - convex appearance */
+.raised {
+  opacity: 1;
+  scale: 1;
+  box-shadow:
+    -6px -6px 12px var(--neo-shadow-light),
+    6px 6px 12px var(--neo-shadow-dark);
+}
+
+/* Flat state (hidden) - flattened into surface */
+.flat {
+  opacity: 0;
+  scale: 0.99;
+  box-shadow:
+    0 0 0 var(--neo-shadow-light),
+    0 0 0 var(--neo-shadow-dark);
+}
+
 /* Variant colors */
 .info {
   --alert-color: var(--neo-info, #3b82f6);

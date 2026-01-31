@@ -80,4 +80,32 @@ describe('Alert', () => {
     expect(screen.getByText('Title')).toBeInTheDocument();
     expect(screen.getByText('Message content')).toBeInTheDocument();
   });
+
+  it('applies animation classes when animation is raise and visible', () => {
+    render(<Alert animation="raise" visible={true} data-testid="alert">Message</Alert>);
+    const alert = screen.getByTestId('alert');
+    expect(alert.className).toContain('animated');
+    expect(alert.className).toContain('raised');
+  });
+
+  it('applies flat class when animation is raise and not visible', () => {
+    render(<Alert animation="raise" visible={false} data-testid="alert">Message</Alert>);
+    const alert = screen.getByTestId('alert');
+    expect(alert.className).toContain('animated');
+    expect(alert.className).toContain('flat');
+  });
+
+  it('does not apply animation classes when animation is none', () => {
+    render(<Alert animation="none" visible={true} data-testid="alert">Message</Alert>);
+    const alert = screen.getByTestId('alert');
+    expect(alert.className).not.toContain('animated');
+    expect(alert.className).not.toContain('raised');
+    expect(alert.className).not.toContain('flat');
+  });
+
+  it('defaults to no animation', () => {
+    render(<Alert data-testid="alert">Message</Alert>);
+    const alert = screen.getByTestId('alert');
+    expect(alert.className).not.toContain('animated');
+  });
 });

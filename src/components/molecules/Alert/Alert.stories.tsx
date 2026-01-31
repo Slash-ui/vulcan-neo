@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { Rocket, Bell, Shield, Zap } from 'lucide-react';
 import { Alert } from './Alert';
 import { Surface } from '../../foundation/Surface';
 import { Button } from '../../atoms/Button';
+import { iconMapLg, createIconArgType } from '../../../../.storybook/icons';
 
 const meta: Meta<typeof Alert> = {
   title: 'Molecules/Alert',
@@ -22,6 +24,16 @@ const meta: Meta<typeof Alert> = {
     },
     dismissible: {
       control: 'boolean',
+    },
+    icon: createIconArgType(iconMapLg, 'Custom icon to display'),
+    animation: {
+      control: 'select',
+      options: ['none', 'raise'],
+      description: 'Animation style for show/hide transitions',
+    },
+    visible: {
+      control: 'boolean',
+      description: 'Controls visibility of the alert (used with animation)',
     },
   },
 };
@@ -109,26 +121,38 @@ export const TitleOnly: Story = {
 };
 
 export const CustomIcon: Story = {
-  render: () => {
-    const RocketIcon = () => (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-      </svg>
-    );
-
-    return (
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <Alert
         variant="success"
         title="Launch Successful!"
-        icon={<RocketIcon />}
+        icon={<Rocket size={20} />}
       >
         Your application has been deployed to production.
       </Alert>
-    );
-  },
+      <Alert
+        variant="info"
+        title="New Notification"
+        icon={<Bell size={20} />}
+      >
+        You have 3 unread messages.
+      </Alert>
+      <Alert
+        variant="warning"
+        title="Security Alert"
+        icon={<Shield size={20} />}
+      >
+        Please enable two-factor authentication.
+      </Alert>
+      <Alert
+        variant="error"
+        title="Connection Lost"
+        icon={<Zap size={20} />}
+      >
+        Unable to establish connection to the server.
+      </Alert>
+    </div>
+  ),
 };
 
 export const LongContent: Story = {
@@ -140,6 +164,101 @@ export const LongContent: Story = {
       this may cause. Please save your work before the maintenance window begins.
     </Alert>
   ),
+};
+
+export const RaiseAnimation: Story = {
+  render: () => {
+    const [visible, setVisible] = useState(true);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <Button
+          variant="convex"
+          onClick={() => setVisible(!visible)}
+          label={visible ? 'Flatten Alert' : 'Raise Alert'}
+        />
+        <Alert
+          variant="success"
+          title="Animated Alert"
+          animation="raise"
+          visible={visible}
+        >
+          This alert smoothly raises from the surface when shown and flattens when hidden.
+        </Alert>
+      </div>
+    );
+  },
+};
+
+export const AnimatedDismissible: Story = {
+  render: () => {
+    const [visible, setVisible] = useState(true);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        {!visible && (
+          <Button
+            variant="convex"
+            onClick={() => setVisible(true)}
+            label="Show Alert"
+          />
+        )}
+        <Alert
+          variant="warning"
+          title="Dismissible with Animation"
+          animation="raise"
+          visible={visible}
+          dismissible
+          onDismiss={() => setVisible(false)}
+        >
+          Click the X button to see the flatten animation.
+        </Alert>
+      </div>
+    );
+  },
+};
+
+export const AnimationVariants: Story = {
+  render: () => {
+    const [visibleStates, setVisibleStates] = useState({
+      info: true,
+      success: true,
+      warning: true,
+      error: true,
+    });
+
+    const toggleAll = () => {
+      const allVisible = Object.values(visibleStates).every(Boolean);
+      setVisibleStates({
+        info: !allVisible,
+        success: !allVisible,
+        warning: !allVisible,
+        error: !allVisible,
+      });
+    };
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <Button
+          variant="convex"
+          onClick={toggleAll}
+          label={Object.values(visibleStates).every(Boolean) ? 'Flatten All' : 'Raise All'}
+        />
+        <Alert variant="info" title="Information" animation="raise" visible={visibleStates.info}>
+          Animated info alert.
+        </Alert>
+        <Alert variant="success" title="Success" animation="raise" visible={visibleStates.success}>
+          Animated success alert.
+        </Alert>
+        <Alert variant="warning" title="Warning" animation="raise" visible={visibleStates.warning}>
+          Animated warning alert.
+        </Alert>
+        <Alert variant="error" title="Error" animation="raise" visible={visibleStates.error}>
+          Animated error alert.
+        </Alert>
+      </div>
+    );
+  },
 };
 
 export const DarkTheme: Story = {
