@@ -75,7 +75,7 @@ export const Default: Story = {
 
 export const WithIconButton: Story = {
   args: {
-    trigger: <IconButton aria-label="More options"><MoreIcon /></IconButton>,
+    trigger: <IconButton aria-label="More options" icon={<MoreIcon />} />,
     items: defaultItems,
     onSelect: (id) => console.log('Selected:', id),
   },

@@ -53,7 +53,7 @@ export const WithActions: Story = {
   args: {
     title: 'Team Members',
     subtitle: '5 members',
-    actions: <IconButton aria-label="More options"><MoreIcon /></IconButton>,
+    actions: <IconButton aria-label="More options" icon={<MoreIcon />} />,
   },
 };
 
@@ -62,7 +62,7 @@ export const WithAvatar: Story = {
     title: 'John Doe',
     subtitle: 'Software Engineer',
     icon: <Avatar fallback="JD" size="md" />,
-    actions: <IconButton aria-label="More options"><MoreIcon /></IconButton>,
+    actions: <IconButton aria-label="More options" icon={<MoreIcon />} />,
   },
 };
 
@@ -86,7 +86,7 @@ export const DarkTheme: Story = {
   args: {
     title: 'Card Title',
     subtitle: 'Card subtitle',
-    actions: <IconButton aria-label="More options"><MoreIcon /></IconButton>,
+    actions: <IconButton aria-label="More options" icon={<MoreIcon />} />,
   },
   decorators: [
     (Story) => (

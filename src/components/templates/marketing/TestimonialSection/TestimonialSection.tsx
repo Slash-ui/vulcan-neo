@@ -155,17 +155,18 @@ export const TestimonialSection = forwardRef<HTMLElement, TestimonialSectionProp
                 onClick={handlePrev}
                 className={styles.navButton}
                 aria-label="Previous testimonial"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M12.5 15L7.5 10L12.5 5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </IconButton>
+                icon={
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M12.5 15L7.5 10L12.5 5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                }
+              />
               <div className={styles.carouselContent}>
                 <div className={styles.carouselCard}>
                   {testimonials[currentIndex].rating && (
@@ -219,17 +220,18 @@ export const TestimonialSection = forwardRef<HTMLElement, TestimonialSectionProp
                 onClick={handleNext}
                 className={styles.navButton}
                 aria-label="Next testimonial"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M7.5 15L12.5 10L7.5 5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </IconButton>
+                icon={
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M7.5 15L12.5 10L7.5 5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                }
+              />
             </div>
           )}
 

@@ -79,7 +79,7 @@ export const WithIconButton: Story = {
   args: {
     content: 'More information',
     placement: 'right',
-    children: <IconButton aria-label="Info"><InfoIcon /></IconButton>,
+    children: <IconButton aria-label="Info" icon={<InfoIcon />} />,
   },
 };
 
