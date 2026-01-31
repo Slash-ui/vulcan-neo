@@ -1,10 +1,14 @@
 import React, { forwardRef, Children, isValidElement, cloneElement } from 'react';
+import { ChevronRight } from 'lucide-react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Breadcrumbs.module.css';
+
+export type BreadcrumbsSize = 'sm' | 'md' | 'lg';
 
 export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * Custom separator between items
-   * @default '/'
+   * Custom separator between items (icon recommended)
+   * @default ChevronRight icon
    */
   separator?: React.ReactNode;
   /**
@@ -12,10 +16,17 @@ export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLElement> {
    */
   maxItems?: number;
   /**
+   * Size of the breadcrumbs
+   * @default 'md'
+   */
+  size?: BreadcrumbsSize;
+  /**
    * BreadcrumbItem children
    */
   children: React.ReactNode;
 }
+
+export type BreadcrumbItemVariant = 'text' | 'icon' | 'both';
 
 export interface BreadcrumbItemProps extends React.HTMLAttributes<HTMLLIElement> {
   /**
@@ -27,16 +38,31 @@ export interface BreadcrumbItemProps extends React.HTMLAttributes<HTMLLIElement>
    */
   current?: boolean;
   /**
+   * Icon to display (typically for home item)
+   */
+  icon?: React.ReactNode;
+  /**
+   * How to display the home item: text only, icon only, or both
+   * Only applies when icon is provided
+   * @default 'both'
+   */
+  variant?: BreadcrumbItemVariant;
+  /**
    * Item content
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
+
+/**
+ * Default separator icon (ChevronRight from Lucide)
+ */
+const DefaultSeparator = () => <ChevronRight size={16} />;
 
 /**
  * BreadcrumbItem - Individual breadcrumb item
  */
 export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItemProps>(
-  ({ href, current, children, className, ...props }, ref) => {
+  ({ href, current, icon, variant = 'both', children, className, ...props }, ref) => {
     const classNames = [
       styles.item,
       current ? styles.current : '',
@@ -45,13 +71,34 @@ export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItemProps>(
       .filter(Boolean)
       .join(' ');
 
+    // Determine what to render based on icon and variant
+    const renderContent = () => {
+      if (icon) {
+        switch (variant) {
+          case 'icon':
+            return <span className={styles.iconOnly}>{icon}</span>;
+          case 'text':
+            return children;
+          case 'both':
+          default:
+            return (
+              <>
+                <span className={styles.icon}>{icon}</span>
+                {children}
+              </>
+            );
+        }
+      }
+      return children;
+    };
+
     const content = href && !current ? (
       <a href={href} className={styles.link}>
-        {children}
+        {renderContent()}
       </a>
     ) : (
       <span className={styles.text} aria-current={current ? 'page' : undefined}>
-        {children}
+        {renderContent()}
       </span>
     );
 
@@ -73,8 +120,9 @@ BreadcrumbItem.displayName = 'BreadcrumbItem';
 export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
   (
     {
-      separator = '/',
+      separator,
       maxItems,
+      size = 'md',
       children,
       className,
       ...props
@@ -112,10 +160,14 @@ export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
 
     const classNames = [
       styles.breadcrumbs,
+      styles[size],
       className || '',
     ]
       .filter(Boolean)
       .join(' ');
+
+    // Use default separator if none provided
+    const separatorContent = separator ?? <DefaultSeparator />;
 
     return (
       <nav ref={ref} className={classNames} aria-label="Breadcrumb" {...props}>
@@ -125,15 +177,23 @@ export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
               {child}
               {index < itemsWithCurrent.length - 1 && (
                 <li className={styles.separator} aria-hidden="true">
-                  {separator}
+                  <Typography variant="caption" color="disabled" component="span">
+                    {separatorContent}
+                  </Typography>
                 </li>
               )}
               {showEllipsis && index === Math.ceil((maxItems! - 1) / 2) - 1 && (
                 <>
                   <li className={styles.separator} aria-hidden="true">
-                    {separator}
+                    <Typography variant="caption" color="disabled" component="span">
+                      {separatorContent}
+                    </Typography>
                   </li>
-                  <li className={styles.ellipsis}>...</li>
+                  <li className={styles.ellipsis}>
+                    <Typography variant="caption" color="disabled" component="span">
+                      ...
+                    </Typography>
+                  </li>
                 </>
               )}
             </React.Fragment>

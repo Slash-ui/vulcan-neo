@@ -15,6 +15,7 @@ import {
   UserPlus,
   Settings,
   Home,
+  House,
   Search,
   Menu,
 
@@ -214,6 +215,7 @@ const createIconMap = (size: number) => ({
   UserPlus: <UserPlus size={size} />,
   Settings: <Settings size={size} />,
   Home: <Home size={size} />,
+  House: <House size={size} />,
   Search: <Search size={size} />,
   Menu: <Menu size={size} />,
 
@@ -427,6 +429,7 @@ export {
   UserPlus,
   Settings,
   Home,
+  House,
   Search,
   Menu,
   ArrowRight,
