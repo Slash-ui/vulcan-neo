@@ -1,4 +1,5 @@
 import React, { forwardRef, createContext, useContext, useState, useId } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Tabs.module.css';
 
 export type TabsVariant = 'line' | 'pills' | 'enclosed';
@@ -132,7 +133,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
         {...props}
       >
         {icon && <span className={styles.icon}>{icon}</span>}
-        <span className={styles.label}>{children}</span>
+        <Typography variant="body2" className={styles.label}>{children}</Typography>
       </button>
     );
   }

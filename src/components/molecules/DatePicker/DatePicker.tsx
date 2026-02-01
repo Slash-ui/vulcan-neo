@@ -1,4 +1,5 @@
 import React, { forwardRef, useState, useRef, useEffect } from 'react';
+import { Typography } from '../../foundation/Typography';
 import { Calendar } from '../Calendar';
 import styles from './DatePicker.module.css';
 
@@ -159,7 +160,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
     return (
       <div ref={containerRef} className={classNames}>
-        {label && <label className={styles.label}>{label}</label>}
+        {label && <Typography component="label" variant="body2" className={styles.label}>{label}</Typography>}
 
         <div
           ref={ref}
@@ -196,7 +197,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           )}
         </div>
 
-        {errorMessage && <span className={styles.errorMessage}>{errorMessage}</span>}
+        {errorMessage && <Typography variant="caption" color="error" className={styles.errorMessage}>{errorMessage}</Typography>}
 
         {isOpen && (
           <div className={styles.dropdown}>

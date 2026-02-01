@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import { Typography } from '../../foundation/Typography';
+import { IconButton } from '../../atoms/IconButton';
 import styles from './InlineCTA.module.css';
 
 export type InlineCTAVariant = 'default' | 'highlight' | 'gradient';
@@ -106,13 +107,14 @@ export const InlineCTA = forwardRef<HTMLDivElement, InlineCTAProps>(
         )}
 
         {dismissible && (
-          <button
+          <IconButton
+            variant="flat"
+            size="sm"
             className={styles.dismissButton}
             onClick={onDismiss}
             aria-label="Dismiss"
-          >
-            <CloseIcon />
-          </button>
+            icon={<CloseIcon />}
+          />
         )}
       </div>
     );

@@ -1,5 +1,7 @@
 import React, { forwardRef, useEffect, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import { Typography } from '../../foundation/Typography';
+import { IconButton } from '../../atoms/IconButton';
 import styles from './Notification.module.css';
 
 export type NotificationVariant = 'info' | 'success' | 'warning' | 'error';
@@ -148,19 +150,20 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
         <span className={styles.icon}>{icon || defaultIcons[variant]}</span>
 
         <div className={styles.content}>
-          {title && <div className={styles.title}>{title}</div>}
-          {children && <div className={styles.message}>{children}</div>}
+          {title && <Typography variant="body1" className={styles.title}>{title}</Typography>}
+          {children && <Typography variant="body2" color="secondary" className={styles.message}>{children}</Typography>}
         </div>
 
         {action && <div className={styles.action}>{action}</div>}
 
-        <button
+        <IconButton
+          variant="flat"
+          size="sm"
           className={styles.closeButton}
           onClick={handleClose}
           aria-label="Dismiss notification"
-        >
-          <CloseIcon />
-        </button>
+          icon={<CloseIcon />}
+        />
       </div>
     );
 

@@ -1,4 +1,5 @@
 import React, { forwardRef, createContext, useContext, useId } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './RadioGroup.module.css';
 
 export type RadioGroupSize = 'sm' | 'md' | 'lg';
@@ -117,8 +118,8 @@ export const RadioGroupItem = forwardRef<HTMLInputElement, RadioGroupItemProps>(
           </span>
         </div>
         <div className={styles.textContainer}>
-          <span className={styles.label}>{label}</span>
-          {description && <span className={styles.description}>{description}</span>}
+          <Typography variant="body2" className={styles.label}>{label}</Typography>
+          {description && <Typography variant="caption" color="secondary" className={styles.description}>{description}</Typography>}
         </div>
       </label>
     );
@@ -175,7 +176,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
         value={{ name, value: currentValue, onChange: handleChange, size, disabled }}
       >
         <div ref={ref} role="radiogroup" className={containerClasses} {...props}>
-          {label && <span className={styles.groupLabel}>{label}</span>}
+          {label && <Typography variant="body1" className={styles.groupLabel}>{label}</Typography>}
           <div className={styles.options}>
             {children}
           </div>

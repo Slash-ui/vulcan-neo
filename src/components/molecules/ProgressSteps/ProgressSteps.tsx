@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './ProgressSteps.module.css';
 
 export type ProgressStepsSize = 'sm' | 'md' | 'lg';
@@ -118,9 +119,9 @@ export const ProgressSteps = forwardRef<HTMLDivElement, ProgressStepsProps>(
                   )}
                 </span>
                 <span className={styles.stepContent}>
-                  <span className={styles.stepLabel}>{step.label}</span>
+                  <Typography variant="body2" className={styles.stepLabel}>{step.label}</Typography>
                   {step.description && (
-                    <span className={styles.stepDescription}>{step.description}</span>
+                    <Typography variant="caption" color="secondary" className={styles.stepDescription}>{step.description}</Typography>
                   )}
                 </span>
               </button>

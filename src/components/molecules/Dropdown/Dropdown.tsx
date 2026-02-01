@@ -1,4 +1,5 @@
 import React, { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Dropdown.module.css';
 
 export type DropdownPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
@@ -152,7 +153,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                     disabled={item.disabled}
                   >
                     {item.icon && <span className={styles.icon}>{item.icon}</span>}
-                    <span className={styles.label}>{item.label}</span>
+                    <Typography variant="body2" className={styles.label}>{item.label}</Typography>
                   </button>
                 );
               })}

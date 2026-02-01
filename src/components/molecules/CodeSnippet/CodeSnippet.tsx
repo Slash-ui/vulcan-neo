@@ -1,4 +1,5 @@
 import React, { forwardRef, useState } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './CodeSnippet.module.css';
 
 export type CodeSnippetSize = 'sm' | 'md' | 'lg';
@@ -111,10 +112,10 @@ export const CodeSnippet = forwardRef<HTMLDivElement, CodeSnippetProps>(
                 <span className={styles.dot} />
                 <span className={styles.dot} />
               </span>
-              {title && <span className={styles.title}>{title}</span>}
+              {title && <Typography variant="caption" className={styles.title}>{title}</Typography>}
             </div>
             <div className={styles.headerRight}>
-              {language && <span className={styles.language}>{language}</span>}
+              {language && <Typography variant="caption" color="secondary" className={styles.language}>{language}</Typography>}
               {showCopyButton && (
                 <button
                   className={`${styles.copyButton} ${copied ? styles.copied : ''}`}

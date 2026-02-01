@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
+import { Typography } from '../../../foundation/Typography';
 import styles from './LineChart.module.css';
 
 export interface LineChartDataPoint {
@@ -249,7 +250,7 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
                   className={styles.legendColor}
                   style={{ background: series.color || defaultColors[i % defaultColors.length] }}
                 />
-                <span className={styles.legendLabel}>{series.name}</span>
+                <Typography variant="body2" className={styles.legendLabel}>{series.name}</Typography>
               </div>
             ))}
           </div>

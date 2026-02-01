@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './LoadingIndicator.module.css';
 
 export type LoadingSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -137,7 +138,7 @@ export const LoadingIndicator = forwardRef<HTMLDivElement, LoadingIndicatorProps
         {...props}
       >
         {renderIndicator()}
-        {label && <span className={styles.label}>{label}</span>}
+        {label && <Typography variant="body2" color="secondary" className={styles.label}>{label}</Typography>}
       </div>
     );
   }

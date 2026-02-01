@@ -1,4 +1,5 @@
 import React, { forwardRef, useId, useState, useRef, useEffect } from 'react';
+import { Typography } from '../../foundation/Typography';
 import styles from './Select.module.css';
 
 export type SelectSize = 'sm' | 'md' | 'lg';
@@ -163,7 +164,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 
     return (
       <div ref={ref} className={containerClasses} {...props}>
-        {label && <label className={styles.label}>{label}</label>}
+        {label && <Typography component="label" variant="body2" className={styles.label}>{label}</Typography>}
         <div ref={containerRef} className={styles.selectWrapper}>
           <button
             ref={triggerRef}
@@ -228,8 +229,8 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
             </ul>
           )}
         </div>
-        {error && <span className={styles.errorText}>{error}</span>}
-        {!error && helperText && <span className={styles.helperText}>{helperText}</span>}
+        {error && <Typography variant="caption" color="error" className={styles.errorText}>{error}</Typography>}
+        {!error && helperText && <Typography variant="caption" color="secondary" className={styles.helperText}>{helperText}</Typography>}
       </div>
     );
   }

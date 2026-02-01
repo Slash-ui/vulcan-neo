@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import { Typography } from '../../../foundation/Typography';
 import styles from './PieChart.module.css';
 
 export interface PieChartDataPoint {
@@ -145,12 +146,12 @@ export const PieChart = forwardRef<HTMLDivElement, PieChartProps>(
                   className={styles.legendColor}
                   style={{ background: item.color || defaultColors[i % defaultColors.length] }}
                 />
-                <span className={styles.legendLabel}>{item.label}</span>
-                <span className={styles.legendValue}>
+                <Typography variant="body2" className={styles.legendLabel}>{item.label}</Typography>
+                <Typography variant="body2" color="secondary" className={styles.legendValue}>
                   {showPercentages
                     ? `${((item.value / total) * 100).toFixed(1)}%`
                     : item.value}
-                </span>
+                </Typography>
               </div>
             ))}
           </div>

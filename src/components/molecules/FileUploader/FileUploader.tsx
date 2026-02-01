@@ -1,4 +1,7 @@
 import React, { forwardRef, useState, useRef, useCallback } from 'react';
+import { Typography } from '../../foundation/Typography';
+import { ProgressBar } from '../../atoms/ProgressBar';
+import { IconButton } from '../../atoms/IconButton';
 import styles from './FileUploader.module.css';
 
 export type FileUploaderSize = 'sm' | 'md' | 'lg';
@@ -222,22 +225,20 @@ export const FileUploader = forwardRef<HTMLDivElement, FileUploaderProps>(
           </span>
           <div className={styles.content}>
             {label || (
-              <>
-                <span className={styles.primary}>
-                  <strong>Click to upload</strong> or drag and drop
-                </span>
-              </>
+              <Typography variant="body2" className={styles.primary}>
+                <strong>Click to upload</strong> or drag and drop
+              </Typography>
             )}
-            {helperText && <span className={styles.secondary}>{helperText}</span>}
+            {helperText && <Typography variant="caption" color="secondary" className={styles.secondary}>{helperText}</Typography>}
             {accept && (
-              <span className={styles.secondary}>
+              <Typography variant="caption" color="secondary" className={styles.secondary}>
                 Accepted: {accept}
-              </span>
+              </Typography>
             )}
             {maxSize && (
-              <span className={styles.secondary}>
+              <Typography variant="caption" color="secondary" className={styles.secondary}>
                 Max size: {formatFileSize(maxSize)}
-              </span>
+              </Typography>
             )}
           </div>
         </div>
@@ -250,30 +251,26 @@ export const FileUploader = forwardRef<HTMLDivElement, FileUploaderProps>(
                   <FileIcon />
                 </span>
                 <div className={styles.fileInfo}>
-                  <span className={styles.fileName}>{uploadedFile.file.name}</span>
-                  <span className={styles.fileSize}>
+                  <Typography variant="body2" className={styles.fileName}>{uploadedFile.file.name}</Typography>
+                  <Typography variant="caption" color="secondary" className={styles.fileSize}>
                     {formatFileSize(uploadedFile.file.size)}
-                  </span>
+                  </Typography>
                   {uploadedFile.progress !== undefined && uploadedFile.progress < 100 && (
-                    <div className={styles.progressBar}>
-                      <div
-                        className={styles.progressFill}
-                        style={{ width: `${uploadedFile.progress}%` }}
-                      />
-                    </div>
+                    <ProgressBar value={uploadedFile.progress} size="sm" className={styles.progressBar} />
                   )}
                   {uploadedFile.error && (
-                    <span className={styles.fileError}>{uploadedFile.error}</span>
+                    <Typography variant="caption" color="error" className={styles.fileError}>{uploadedFile.error}</Typography>
                   )}
                 </div>
                 {onRemove && (
-                  <button
+                  <IconButton
+                    variant="flat"
+                    size="sm"
                     className={styles.removeButton}
                     onClick={() => onRemove(uploadedFile)}
                     aria-label="Remove file"
-                  >
-                    <CloseIcon />
-                  </button>
+                    icon={<CloseIcon />}
+                  />
                 )}
               </div>
             ))}
