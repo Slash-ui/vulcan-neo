@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.slashui.com/logo/logo-slashui-full-light.svg" alt="Vulcan Neo" width="200" />
+  <img src="./.github/assets/logo-slashui-full-light.svg" alt="Vulcan Neo" width="200" />
 </p>
 
 <h1 align="center">Vulcan Neo</h1>
